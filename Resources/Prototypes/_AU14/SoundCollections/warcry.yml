@@ -1,10 +1,6 @@
 - type: soundCollection
   id: AU14MaleWarcry
   files:
-  - /Audio/_AU14/Voice/Warcrys/warcry_male_attack.ogg
-  - /Audio/_AU14/Voice/Warcrys/warcry_male_charge.ogg
-  - /Audio/_AU14/Voice/Warcrys/warcry_male_charge2.ogg
-  - /Audio/_AU14/Voice/Warcrys/warcry_male_go.ogg
   - /Audio/_AU14/Voice/Warcrys/warcry_male_1.ogg
   - /Audio/_AU14/Voice/Warcrys/warcry_male_2.ogg
   - /Audio/_AU14/Voice/Warcrys/warcry_male_3.ogg
@@ -44,8 +40,6 @@
 - type: soundCollection
   id: AU14FemaleWarcry
   files:
-  - /Audio/_AU14/Voice/Warcrys/warcry_female_yell1.ogg
-  - /Audio/_AU14/Voice/Warcrys/warcry_female_charge.ogg
   - /Audio/_AU14/Voice/Warcrys/warcry_female_1.ogg
   - /Audio/_AU14/Voice/Warcrys/warcry_female_2.ogg
   - /Audio/_AU14/Voice/Warcrys/warcry_female_3.ogg
