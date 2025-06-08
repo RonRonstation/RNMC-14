@@ -390,12 +390,38 @@
   description: A vacuum sealed packet of chemically treated gauze designed to stop arterial bleeding fast. The powder burns like hell, but it works. Single-use. Rip it open, jam it in, hope for the best.
   components:
   - type: Sprite
-    state: gauze
+    sprite: _AU14/Items/quickclot.rsi
+    state: quickclot
+  - type: Item
+    sprite: _AU14/Items/quickclot.rsi
+    inhandVisuals:
+      left:
+      - state: qc_left
+      right:
+      - state: qc_right
   - type: SpawnItemsOnUse
     items:
+    - id: AU14HemostaticGauzePacketTrash
     - id: AU14HemostaticGauze
     sound:
       path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: CMBaseHealingItem
+  id: AU14HemostaticGauzePacketTrash
+  name: used hemostatic gauze packet
+  description: A vacuum sealed packet of chemically treated gauze designed to stop arterial bleeding fast. The powder burns like hell, but it works. Single-use. This one is trash, its already been used!
+  components:
+  - type: Sprite
+    sprite: _AU14/Items/quickclot.rsi
+    state: qc_ripped
+  - type: Item
+    sprite: _AU14/Items/quickclot.rsi
+    inhandVisuals:
+      left:
+      - state: qc_left
+      right:
+      - state: qc_right
 
 - type: entity
   parent: CMBaseHealingItem
@@ -407,9 +433,15 @@
     tags:
     - Brutepack
   - type: Sprite
-    state: gauze
+    sprite: _AU14/Items/quickclot.rsi
+    state: hemgauze
   - type: Item
-    heldPrefix: gauze
+    sprite: _AU14/Items/quickclot.rsi
+    inhandVisuals:
+      left:
+      - state: hemgauze_left
+      right:
+      - state: hemgauze_right
   - type: WoundTreater
     wound: Brute
     treats: true
