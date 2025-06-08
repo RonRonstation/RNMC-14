@@ -467,6 +467,7 @@
 
 #tourniquet
 
+#to do: add pain when applied
 - type: entity
   parent: CMBaseHealingItem
   id: AU14Tourniquet
