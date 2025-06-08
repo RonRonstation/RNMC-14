@@ -387,7 +387,7 @@
   parent: CMBaseHealingItem
   id: AU14HemostaticGauzePacket
   name: hemostatic gauze packet
-  description: Some sterile gauze to wrap around bloody stumps and lacerations.
+  description: A vacuum sealed packet of chemically treated gauze designed to stop arterial bleeding fast. The powder burns like hell, but it works. Single-use. Rip it open, jam it in, hope for the best.
   components:
   - type: Sprite
     state: gauze
@@ -401,8 +401,7 @@
   parent: CMBaseHealingItem
   id: AU14HemostaticGauze
   name: hemostatic gauze
-  description: Some sterile gauze to wrap around bloody stumps and lacerations.
-  suffix: Ten
+  description: A strip of gauze soaked with a powdery clotting agent. Once it’s out of the packet, the clock’s ticking, stuff it deep into the wound and stop the bleeding before it’s too late.
   components:
   - type: Tag
     tags:
@@ -423,9 +422,9 @@
       path: "/Audio/_RMC14/Medical/bandage.ogg"
     treatEndSound:
       path: "/Audio/Items/Medical/brutepack_end.ogg"
-    userPopup: cm-gauze-user-popup
-    targetPopup: cm-gauze-target-popup
-    othersPopup: cm-gauze-others-popup
+    userPopup: au14-hs-user-popup
+    targetPopup: au14-hs-target-popup
+    othersPopup: au14-hs-others-popup
     noneSelfPopup: cm-gauze-none-self-popup
     noneOtherPopup: cm-gauze-none-other-popup
     noWoundsOnUserPopup: cm-wounds-already-treated-self-popup
@@ -433,8 +432,47 @@
   - type: MedicallyUnskilledDoAfter
     min: 2
     doAfter: 5
-  - type: Stack
-    stackType: CMGauze
-    count: 1
-  - type: StackPrice
-    price: 1
+
+#tourniquet
+
+- type: entity
+  parent: CMBaseHealingItem
+  id: AU14Tourniquet
+  name: CAT tourniquet
+  description: A single use tourniquet designed for self-application under fire. The CAT uses a high-tension Velcro strap and windlass rod to cut off arterial bleeding on limbs. Effective, painful and not exactly gentle. Overuse can lead to nerve damage or amputation. Still, better maimed than dead.
+  components:
+  - type: Tag
+    tags:
+    - Brutepack
+  - type: Sprite
+    sprite: Objects/Specific/Medical/medical.rsi
+    state: tourniquet
+  - type: Item
+    sprite: Objects/Specific/Medical/medical.rsi
+    inhandVisuals:
+      left:
+      - state: tourniquet-inhand-left
+      right:
+      - state: tourniquet-inhand-right
+  - type: WoundTreater
+    wound: Brute
+    treats: true
+    group: Brute
+    consumable: true
+    canUseUnskilled: true
+    skills:
+      RMCSkillMedical: 2
+    treatBeginSound:
+      path: "/Audio/_RMC14/Medical/splint.ogg"
+    treatEndSound:
+      path: "/Audio/Items/Medical/brutepack_begin.ogg"
+    userPopup: au14-tq-user-popup
+    targetPopup: au14-tq-target-popup
+    othersPopup: au14-tq-others-popup
+    noneSelfPopup: cm-gauze-none-self-popup
+    noneOtherPopup: cm-gauze-none-other-popup
+    noWoundsOnUserPopup: cm-wounds-already-treated-self-popup
+    noWoundsOnTargetPopup: cm-wounds-already-treated-target-popup
+  - type: MedicallyUnskilledDoAfter
+    min: 6
+    doAfter: 8
