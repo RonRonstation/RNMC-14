@@ -31,7 +31,6 @@
 #        recommended: true
       - id: CMBloodPackFull # TODO RMC14 O-
         name: blood bag (O-)
-        points: 4
     - name: Firstaid Kits
       entries:
       - id: CMAdvFirstAidKitFilled
@@ -50,16 +49,11 @@
     - name: Pill Bottles
       entries:
       - id: CMPillCanisterBicaridine
-        points: 5
         recommended: true
       - id: CMPillCanisterDexalin
-        points: 5
       - id: CMPillCanisterDylovene
-        points: 5
       - id: CMPillCanisterInaprovaline
-        points: 5
       - id: CMPillCanisterKelotane
-        points: 5
         recommended: true
 #      - id: CMPillCanisterPeridaxon
 #        points: 5
@@ -69,21 +63,15 @@
     - name: Autoinjectors
       entries:
       - id: CMBicaridineAutoInjector
-        points: 1
       - id: CMDexalinPlusAutoInjector
-        points: 1
       - id: CMEpinephrineAutoInjector
-        points: 2
       - id: CMInaprovalineAutoInjector
-        points: 1
       - id: CMKelotaneAutoInjector
-        points: 1
 #      - id: CMAutoinjectorOxycodone
 #        points: 2
 #      - id: CMAutoinjectorTramadol
 #        points: 1
       - id: CMTricordrazineAutoInjector
-        points: 1
     - name: Medical Utilities
       entries:
      #    CMMS11SmartRefillTank: 6P
@@ -93,7 +81,6 @@
       - id: CMHealthAnalyzer
         points: 4
       - id: CMStasisBagFolded
-        points: 6
     - name: Explosives
       entries:
       - id: CMPacketGrenadeHighExplosiveFilled
