@@ -58,8 +58,8 @@
   - type: XenoDevour
   - type: XenoHide
   - type: XenoPlasma
-    plasma: 0
-    maxPlasma: 0
+    plasma: 300
+    maxPlasma: 300
     plasmaRegenOnWeeds: 0
   - type: CMArmor
     explosionArmor: 10
@@ -109,8 +109,8 @@
       sprite: _RMC14/Interface/map_blips.rsi
       state: runner
   - type: MovementSpeedModifier
-    baseWalkSpeed: 5.55
-    baseSprintSpeed: 10
+    baseWalkSpeed: 4.44 # just barely slower than a human lol
+    baseSprintSpeed: 8
   - type: IntelRecoverCorpseObjectiveOnDeath
     value: 0.1
   - type: MobCollision
@@ -142,6 +142,7 @@
     - ActionXenoLeap
     - ActionXenoBoneChips
     - ActionXenoZoom
+    - ActionXenoTailSweep
     - ActionXenoDevolve
   - type: XenoBoneChips
   - type: XenoLeap
@@ -149,11 +150,15 @@
     knockdownTime: 2
     leapSound: /Audio/_RMC14/Xeno/alien_pounce.ogg
   - type: MovementSpeedModifier
-    baseWalkSpeed: 5.55
-    baseSprintSpeed: 10
+    baseWalkSpeed: 4.44
+    baseSprintSpeed: 8
   - type: XenoEvolution
     strains:
     - RMCXenoRunnerAcider
+  - type: XenoTailSweep
+    damage:
+      types:
+        Slash: 30
 
 - type: entity
   parent: CMXenoRunnerBase

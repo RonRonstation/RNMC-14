@@ -30,7 +30,9 @@
       - id: RMCM79Case
       - id: RMCMOU53Case
       - id: RMCCaseXM88
-      - id: RMCKitEngineering
+      - id: RMCKitEngineeringPamphlets
+      - id: RMCKitMedical
+      - id: RMCKitJTAC
     - name: Armors
       entries:
       - id: RMCArmorM4Zipties

@@ -1,0 +1,73 @@
+- type: entity
+  parent: RMCKitBase
+  id: RMCKitMedical
+  name: medical kit
+  description: Contains a synth graft, surgical line, lifesaver bag, and medical guides.
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Storage
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,7,0
+  - type: Sprite
+    sprite: _RMC14/Objects/Storage/procase_mini.rsi
+  - type: Icon
+    sprite: _RMC14/Objects/Storage/procase_mini.rsi
+  - type: StorageFill
+    contents:
+    - id: CMPamphletMedical
+    - id: CMPamphletMedicalProfessional
+    - id: CMSynthGraft
+    - id: CMSurgicalLine
+    - id: CMBeltMedicBag
+
+- type: entity
+  parent: RMCKitBase
+  id: RMCKitEngineeringPamphlets
+  name: engineering kit
+  description: Contains one stack of metal sheets, welding goggles, combat utility belt, and engineering guides.
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Storage
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,9,0
+  - type: Sprite
+    sprite: _RMC14/Objects/Storage/procase_mini.rsi
+  - type: Icon
+    sprite: _RMC14/Objects/Storage/procase_mini.rsi
+  - type: StorageFill
+    contents:
+    - id: CMPamphletEngineer
+    - id: CMPamphletAdvancedEngineering
+    - id: CMPamphletEngineerConstruction
+    - id: CMSheetMetal
+    - id: RMCWeldingGoggles
+    - id: CMBeltUtilityCombat
+
+- type: entity
+  parent: RMCKitBase
+  id: RMCKitJTAC
+  name: JTAC kit
+  description: Contains a laser designator, CAS flares, and JTAC guides.
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Storage
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,9,0
+  - type: Sprite
+    sprite: _RMC14/Objects/Storage/procase_mini.rsi
+  - type: Icon
+    sprite: _RMC14/Objects/Storage/procase_mini.rsi
+  - type: StorageFill
+    contents:
+    - id: CMPamphletJTAC
+    - id: CMPamphletJTACTrained
+    - id: CMPamphletJTACProfessional
+    - id: RMCLaserDesignator
+    - id: RMCPackFlareCAS
+    - id: RMCPackFlareCAS

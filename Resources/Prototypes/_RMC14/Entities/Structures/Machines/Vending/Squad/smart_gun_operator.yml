@@ -103,12 +103,14 @@
         points: 15
       - id: RMCVisorWelding
         points: 5
-    - name: Pamphlets
+    - name: Skills
       entries:
-      - id: CMPamphletJTAC
+      - id: RMCKitJTAC
         points: 15
-      - id: CMPamphletEngineer
-        points: 15
+      - id: RMCKitEngineering
+        points: 30
+      - id: RMCKitMedical
+        points: 30
     - name: Radio Keys
       entries:
       - id: CMEncryptionKeyEngineer

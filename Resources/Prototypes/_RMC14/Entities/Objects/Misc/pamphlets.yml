@@ -23,21 +23,37 @@
 - type: entity
   parent: CMPamphlet
   id: CMPamphletMedical
-  name: medical instructional pamphlet
-  description: A pamphlet used to quickly impart vital knowledge. This one has a medical insignia.
+  name: How To Not Kill Yourself With Injectors
+  description: A pamphlet used to quickly impart vital knowledge. This one is a PSA on properly using injectors, sharing new techniques.
   components:
   - type: Sprite
     state: pamphlet_medical
   - type: SkillPamphlet
     addSkills:
       RMCSkillMedical: 1
+  bypassLimit: true
 
-# gives miniengie skill
+- type: entity
+  parent: CMPamphlet
+  id: CMPamphletMedicalProfessional
+  name: Medical Professional's Handbook
+  description: A pamphlet used to quickly impart vital knowledge. This one is a guide to advanced medical procedures.
+  components:
+  - type: Sprite
+    state: pamphlet_medical
+  - type: SkillPamphlet
+    addSkills:
+      RMCSkillMedical: 1
+    skillCap:
+      RMCSkillMedical: 2
+    bypassLimit: true
+
+# gives engie skill
 - type: entity
   parent: CMPamphlet
   id: CMPamphletEngineer
-  name: engineer instructional pamphlet
-  description: A pamphlet used to quickly impart vital knowledge. This one has an engineering insignia.
+  name: Basic Engineering & Construction; Screwing In A Lightbulb, Idiot's First Barricade
+  description: A pamphlet used to quickly impart vital knowledge. This one instructs you on basic engineering work.
   components:
   - type: Sprite
     state: pamphlet_construction
@@ -45,26 +61,88 @@
     addSkills:
       RMCSkillEngineer: 1
       RMCSkillConstruction: 1
+    bypassLimit: true
+
+- type: entity
+  parent: CMPamphlet
+  id: CMPamphletAdvancedEngineering
+  name: Engineering; Generators, Powernets, Explosives
+  description: A pamphlet used to quickly impart vital knowledge. This one instructs you on engineering work.
+  components:
+  - type: Sprite
+    state: pamphlet_construction
+  - type: SkillPamphlet
+    addSkills:
+      RMCSkillEngineer: 1
+    skillCap:
+      RMCSkillEngineer: 2
+    bypassLimit: true
+
+- type: entity
+  parent: CMPamphlet
+  id: CMPamphletEngineerConstruction
+  name: Construction; Construction Worker's Insights
+  description: A pamphlet used to quickly impart vital knowledge. This one instructs you on engineering work.
+  components:
+  - type: Sprite
+    state: pamphlet_construction
+  - type: SkillPamphlet
+    addSkills:
+      RMCSkillConstruction: 1
+    skillCap:
+      RMCSkillConstruction: 2
+    bypassLimit: true
 
 # gives jtac skill
 - type: entity
   parent: CMPamphlet
   id: CMPamphletJTAC
-  name: JTAC instructional pamphlet
-  description: A pamphlet used to quickly impart vital knowledge. This one has the image of a radio on it.
+  name: JTAC; Baby's First Steps
+  description: A pamphlet used to quickly impart vital knowledge. This one instructs you on doing basic JTAC work.
   components:
   - type: Sprite
     state: pamphlet_jtac
   - type: SkillPamphlet
     addSkills:
       RMCSkillJtac: 1
+    bypassLimit: true
+
+- type: entity
+  parent: CMPamphlet
+  id: CMPamphletJTACTrained
+  name: JTAC; Introduction To Your Sky Buddy
+  description: A pamphlet used to quickly impart vital knowledge. This one instructs you on doing proper JTAC work.
+  components:
+  - type: Sprite
+    state: pamphlet_jtac
+  - type: SkillPamphlet
+    addSkills:
+      RMCSkillJtac: 1
+    skillCap:
+      RMCSkillJtac: 2
+    bypassLimit: true
+
+- type: entity
+  parent: CMPamphlet
+  id: CMPamphletJTACProfessional
+  name: JTAC; Professional's Manual
+  description: A pamphlet used to quickly impart vital knowledge. This one instructs you on tips and tricks that JTAC operators use. You doubt they're that useful.
+  components:
+  - type: Sprite
+    state: pamphlet_jtac
+  - type: SkillPamphlet
+    addSkills:
+      RMCSkillJtac: 1
+    skillCap:
+      RMCSkillJtac: 3
+    bypassLimit: true
 
 # gives spotter skill / bypasses limit
 - type: entity
   parent: CMPamphlet
   id: CMPamphletSpotter
-  name: spotter instructional pamphlet
-  description: A pamphlet used to quickly impart vital knowledge. This one has the image of a pair of binoculars on it.
+  name: Basic Spotting 101
+  description: A pamphlet used to quickly impart vital knowledge. This one instructs you on working as a spotter.
   components:
   - type: Sprite
     state: pamphlet_spotter
@@ -82,16 +160,16 @@
     giveMapBlip:
       sprite: _RMC14/Interface/map_blips.rsi
       state: spotter
-    jobWhitelists:
-    - popup: rmc-pamphlets-rifleman-warning
-      jobProto: CMRifleman
+    # jobWhitelists:
+    # - popup: rmc-pamphlets-rifleman-warning
+    #   jobProto: CMRifleman
 
 # gives powerloader skill / bypasses limit
 - type: entity
   parent: CMPamphlet
   id: CMPamphletPowerloader
-  name: powerloader instructional pamphlet
-  description: A pamphlet used to quickly impart vital knowledge. This one has a powerloader insignia. The title reads 'Moving freight and squishing heads - a practical guide to a Work Loader'.
+  name: Passing Forklift Certification; Professional's Guide
+  description: A pamphlet used to quickly impart vital knowledge. This one has a powerloader insignia. The title reads 'Moving freight and squishing heads - a professional's guide to Work Loader.
   components:
     - type: Sprite
       state: pamphlet_powerloader
@@ -104,8 +182,8 @@
 - type: entity
   parent: CMPamphlet
   id: CMPamphletPolice
-  name: policing instructional pamphlet
-  description: A pamphlet used to quickly impart vital knowledge. This one has the image of a radio on it.
+  name: Policeman's Guide To Beating People Up
+  description: A pamphlet used to quickly impart vital knowledge. This one instructs you on how to operate police gear.
   components:
   - type: Sprite
     state: pamphlet_jtac
@@ -118,8 +196,8 @@
 - type: entity
   parent: CMPamphlet
   id: CMPamphletSurgery
-  name: surgery instructional pamphlet
-  description: A pamphlet used to quickly impart vital knowledge. This one has a medical insignia.
+  name: Cutting A Person Open; Surgeon's Insight
+  description: A pamphlet used to quickly impart vital knowledge. This one instructs you on doing basic surgeries.
   components:
   - type: Sprite
     state: pamphlet_medical
@@ -128,12 +206,25 @@
       RMCSkillSurgery: 1
     bypassLimit: true
 
+- type: entity
+  parent: CMPamphletSurgery
+  id: CMPamphletSurgeryProfessional
+  name: Surgery; Professional Guide
+  description: A pamphlet used to quickly impart vital knowledge. This one instructs you on doing advanced surgeries.
+  components:
+  - type: SkillPamphlet
+    addSkills:
+      RMCSkillSurgery: 1
+    skillCap:
+      RMCSkillSurgery: 2
+    bypassLimit: true
+
 # gives intel skill / bypasses limit
 - type: entity
   parent: CMPamphlet
   id: CMPamphletIntel
-  name: field intelligence instructional pamphlet
-  description: A pamphlet used to quickly impart vital knowledge. This one has an intelligence insignia.
+  name: Collecting Papers; Basic Guide
+  description: A pamphlet used to quickly impart vital knowledge. This one instructs you on how to properly do intelwork.
   components:
   - type: Sprite
     state: pamphlet_reading
@@ -147,8 +238,8 @@
 - type: entity
   parent: CMPamphlet
   id: RMCPamphletLoader
-  name: loader instructional pamphlet
-  description: A pamphlet used to quickly impart vital knowledge. This one has the image of a rocket on it.
+  name: Loading The Boomstick 101
+  description: A pamphlet used to quickly impart vital knowledge. This instructs you on loading a rocket launcher.
   components:
   - type: Sprite
     state: pamphlet_loader
@@ -174,8 +265,8 @@
 - type: entity
   parent: CMPamphlet
   id: RMCPamphletMortarOperator
-  name: mortar operator instructional pamphlet
-  description: A pamphlet used to quickly impart vital knowledge. This one has the image of a mortar on it.
+  name: Groundside Fireworks
+  description: A pamphlet used to quickly impart vital knowledge. This one instructs you on using a mortar. 
   components:
   - type: Sprite
     state: pamphlet_mortar
@@ -196,9 +287,9 @@
       sprite: _RMC14/Interface/map_blips.rsi
       state: mortar
     bypassLimit: true
-    jobWhitelists:
-    - popup: rmc-pamphlets-rifleman-warning
-      jobProto: CMRifleman
+    # jobWhitelists:
+    # - popup: rmc-pamphlets-rifleman-warning
+    #   jobProto: CMRifleman
 
 # LANGUAGE / bypasses limit
 
