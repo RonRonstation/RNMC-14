@@ -36,6 +36,7 @@
       skills:
         RMCSkillFirearms: 1
         RMCSkillFireman: 1
+        RMCSkillConstruction: 1
         RMCSkillJtac: 1
         RMCSkillSmartGun: 1
     - type: CMVendorUser

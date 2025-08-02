@@ -8,6 +8,17 @@
       - id: CMSandbagEmpty50
 
 - type: entity
+  id: RMCCrateSentries
+  parent: RMCCrateConstruction
+  name: sentry crate
+  components:
+  - type: StorageFill
+    contents:
+     - id: RMCSentry
+     - id: RMCSentry
+     - id: RMCSentry
+
+- type: entity
   id: RMCCrateSandbagsConstructionKit
   parent: RMCCrateConstruction
   name: sandbags construction kit

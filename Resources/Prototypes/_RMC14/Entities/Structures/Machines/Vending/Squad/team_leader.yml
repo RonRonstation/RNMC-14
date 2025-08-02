@@ -141,6 +141,10 @@
         points: 15
       - id: RMCVisorWelding
         points: 5
+    - name: Skills
+      entries:
+      - id: RMCKitMedical
+        points: 30
     - name: Radio Keys
       entries:
       - id: CMEncryptionKeyEngineer

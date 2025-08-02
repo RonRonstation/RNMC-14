@@ -43,11 +43,11 @@
         points: 3
       - id: CMSheetMetal10
         name: metal x10
-        points: 5
+        points: 3
         recommended: true
       - id: CMSheetPlasteel10
         name: plasteel x10
-        points: 7
+        points: 5
         recommended: true
       - id: RMCExplosivePlastic
         points: 3
@@ -180,10 +180,14 @@
         points: 12
       - id: RMCVisorWelding
         points: 5
-    - name: Pamphlets
+      - id: RMCVisorNightVision
+        points: 35
+    - name: Skills
       entries:
-      - id: CMPamphletJTAC
+      - id: RMCKitJTAC
         points: 15
+      - id: RMCKitMedical
+        points: 30
     - name: Radio Keys
       entries:
       - id: CMEncryptionKeyIntel

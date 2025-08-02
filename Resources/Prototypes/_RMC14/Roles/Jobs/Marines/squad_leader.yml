@@ -51,8 +51,8 @@
         RMCSkillFireman: 1
         RMCSkillIntel: 1
         RMCSkillJtac: 2
-        RMCSkillLeadership: 1
-        RMCSkillMedical: 1
+        RMCSkillLeadership: 2
+        RMCSkillMedical: 2
         RMCSkillVehicles: 1
         RMCSkillPolice: 1
     - type: CMVendorUser

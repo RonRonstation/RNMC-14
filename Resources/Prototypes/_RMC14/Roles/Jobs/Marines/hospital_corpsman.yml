@@ -38,9 +38,10 @@
       skills:
         RMCSkillFirearms: 1
         RMCSkillFireman: 1
+        RMCSkillConstruction: 1
         RMCSkillJtac: 1
         RMCSkillMedical: 2
-        RMCSkillSurgery: 1
+        RMCSkillSurgery: 2 # fuck you larvas
     - type: CMVendorUser
       points: 45
     - type: SquadArmorWearer
