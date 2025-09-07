@@ -1,8 +1,8 @@
 - type: entity
   parent: RMCGunRackBase
-  id: RMCGunRackType71Empty
+  id: RNMCGunRackType71Empty # RNMC-14 - Duplicate.
   name: Type 71 gun rack
-  suffix: Type 71, Empty
+  suffix: RNMC, Type 71, Empty # RNMC-14 - Duplicate.
   description: AEGIS-produced gun rack for storage of long guns. While initial model was supposed to be extremely modifiable, UNMC comissioned racks with fixed slots which only fit M54C rifles. Due to the power of Communism and local engineer's ingenuity, it can now only fit Type 71 rifles.
   components:
   - type: ContainerContainer
@@ -86,8 +86,8 @@
 
 - type: entity
   parent: RMCGunRackM54CEmpty
-  id: RMCGunRackType71Filled
-  suffix: Type 71, Filled
+  id: RNMCGunRackType71Filled # RNMC-14 - Duplicate.
+  suffix: RNMC, Type 71, Filled # RNMC-14 - Duplicate.
   components:
   - type: ContainerFill
     containers:

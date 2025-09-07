@@ -363,12 +363,23 @@
     color: "#4148c8"
     blacklistedSquadArmor:
     - Helmet
+    - Goggles # RNMC-14
     - Armor
     - Gloves
-    radio: MarineAlpha
+    radio: SunRiders # RNMC-14
     minimapBackground:
      sprite: /Textures/_RMC14/Interface/map_blips.rsi
      state: background_delta
+    # RNMC-14 Start
+    maxRoles:
+      CMSquadLeaderPVE: 2
+      CMSmartGunOperatorPVE: 2
+      CMHospitalCorpsmanPVE: 1
+      CMRiflemanPVE: 4
+      CMSectionSergeantPVE: 1
+      CMPlatoonCommanderPVE: 1
+    group: SunRiders
+    # RNMC-14 End
   - type: Tag
     tags:
     - RMCSquadSunRiders

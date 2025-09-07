@@ -1,12 +1,12 @@
 # marines
-cm-job-name-platoon-commander = Platoon Commander
-cm-job-description-platoon-commander = Conduct the briefing for the platoon, monitor the operation, and listen to your superior officers.
-cm-job-prefix-platoon-commander = PLATCO
+rnmc-job-name-platoon-commander = Platoon Commander
+rnmc-job-description-platoon-commander = Conduct the briefing for the platoon, monitor the operation, and listen to your superior officers.
+rnmc-job-prefix-platoon-commander = PLATCO
 CMJobPlatoonCommander = Platoon Commander
 
-cm-job-name-section-sergeant = Section Sergeant
-cm-job-description-section-sergeant = You are responsible for the men and women of your entire section. Make sure they are on task, working together, and communicating.
-cm-job-prefix-section-sergeant = SCTSGT
+rnmc-job-name-section-sergeant = Section Sergeant
+rnmc-job-description-section-sergeant = You are responsible for the men and women of your entire section. Make sure they are on task, working together, and communicating.
+rnmc-job-prefix-section-sergeant = SCTSGT
 CMJobSectionSergeant = Section Sergeant
 
 # SOF
