@@ -33,10 +33,12 @@
   - !type:AddComponentSpecial
     components:
     - type: CMVendorUser
+      id: CMFireteamLeader
       points: 45
     - type: Skills
       skills:
         RMCSkillConstruction: 2
+        RMCSkillEndurance: 1
         RMCSkillEngineer: 2
         RMCSkillFirearms: 1
         RMCSkillFireman: 1
@@ -47,7 +49,7 @@
     - type: SeeNewPlayers # RNMC-14 - Fireteam leaders need to know who's new and teach them.
     - type: TacticalMapIcon
       icon:
-        sprite: _RMC14/Interface/map_blips.rsi
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
         state: tl
 
 - type: startingGear
