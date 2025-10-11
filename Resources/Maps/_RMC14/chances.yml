@@ -4,7 +4,7 @@ meta:
   engineVersion: 264.0.2
   forkId: ""
   forkVersion: ""
-  time: 10/06/2025 09:03:42
+  time: 10/06/2025 19:42:35
   entityCount: 27127
 maps:
 - 1
@@ -42523,7 +42523,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -60947.273
+      secondsUntilStateChange: -61079.344
       state: Opening
 - proto: CMAirlockMedicalLocked
   entities:
@@ -53182,7 +53182,7 @@ entities:
     - type: CMDoubleDoor
       lastOpeningAt: 10666.0893339
     - type: Door
-      secondsUntilStateChange: -48525.926
+      secondsUntilStateChange: -48657.996
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -53198,7 +53198,7 @@ entities:
     - type: CMDoubleDoor
       lastOpeningAt: 10666.0893339
     - type: Door
-      secondsUntilStateChange: -48525.926
+      secondsUntilStateChange: -48657.996
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -58433,11 +58433,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-  - uid: 3425
-    components:
-    - type: Transform
-      pos: -2.5,11.5
-      parent: 1
 - proto: CMMagazineRifleM54C
   entities:
   - uid: 3426
@@ -58450,6 +58445,42 @@ entities:
     - type: Transform
       pos: -70.8125,6.78125
       parent: 1
+- proto: CMMagazineRifleM54CAP
+  entities:
+  - uid: 9775
+    components:
+    - type: Transform
+      pos: -16.563574,11.495938
+      parent: 1
+  - uid: 9778
+    components:
+    - type: Transform
+      pos: -17.497522,17.432697
+      parent: 1
+  - uid: 9780
+    components:
+    - type: Transform
+      pos: -19.466272,16.620197
+      parent: 1
+  - uid: 9781
+    components:
+    - type: Transform
+      pos: -22.465546,13.495197
+      parent: 1
+  - uid: 26929
+    components:
+    - type: Transform
+      pos: -21.552006,9.606669
+      parent: 1
+- proto: CMMagazineRifleM54CE2HT
+  entities:
+  - uid: 8201
+    components:
+    - type: Transform
+      parent: 8199
+    - type: Physics
+      canCollide: False
+    - type: InsideEntityStorage
 - proto: CMMagazineRifleM54CExt
   entities:
   - uid: 3428
@@ -82235,18 +82266,22 @@ entities:
     - type: Transform
       pos: 3.65625,10.65625
       parent: 1
-- proto: RMCBoxMagazineRifleM4SPRAPEmpty
+- proto: RMCBoxMagazineRifleL42AAP
+  entities:
+  - uid: 7803
+    components:
+    - type: Transform
+      pos: -9.463099,3.4771643
+      parent: 1
+- proto: RMCBoxMagazineRifleL42AExt
   entities:
   - uid: 7802
     components:
     - type: Transform
-      pos: -9.5,3.5
+      pos: -4.494349,2.5240393
       parent: 1
-  - uid: 7803
-    components:
-    - type: Transform
-      pos: -4.5,2.5
-      parent: 1
+- proto: RMCBoxMagazineRifleM4SPRAPEmpty
+  entities:
   - uid: 7804
     components:
     - type: Transform
@@ -84546,6 +84581,41 @@ entities:
       air:
         volume: 200
         immutable: False
+        temperature: 75.31168
+        moles:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 8201
+          - 8200
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+  - uid: 8202
+    components:
+    - type: Transform
+      pos: -80.5,35.5
+      parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
         temperature: 147.92336
         moles:
         - 0
@@ -84566,43 +84636,8 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 8200
-          - 8201
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-  - uid: 8202
-    components:
-    - type: Transform
-      pos: -80.5,35.5
-      parent: 1
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14673
-        moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 8203
           - 8204
+          - 8203
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -96164,6 +96199,13 @@ entities:
     - type: Transform
       pos: 47.5,-28.5
       parent: 1
+- proto: RMCMagazineRifleL42AExtended
+  entities:
+  - uid: 9783
+    components:
+    - type: Transform
+      pos: -2.5216045,11.463306
+      parent: 1
 - proto: RMCMagazineRifleM4SPRAPEmpty
   entities:
   - uid: 9764
@@ -96223,11 +96265,6 @@ entities:
     - type: Transform
       pos: -22.5,9.5
       parent: 1
-  - uid: 9775
-    components:
-    - type: Transform
-      pos: -21.5,9.5
-      parent: 1
   - uid: 9776
     components:
     - type: Transform
@@ -96238,35 +96275,15 @@ entities:
     - type: Transform
       pos: -16.5,9.5
       parent: 1
-  - uid: 9778
-    components:
-    - type: Transform
-      pos: -16.5,11.5
-      parent: 1
   - uid: 9779
     components:
     - type: Transform
       pos: -16.5,16.5
       parent: 1
-  - uid: 9780
-    components:
-    - type: Transform
-      pos: -17.5,17.5
-      parent: 1
-  - uid: 9781
-    components:
-    - type: Transform
-      pos: -19.5,16.5
-      parent: 1
   - uid: 9782
     components:
     - type: Transform
       pos: -22.5,15.5
-      parent: 1
-  - uid: 9783
-    components:
-    - type: Transform
-      pos: -22.5,13.5
       parent: 1
   - uid: 9784
     components:
@@ -182149,6 +182166,33 @@ entities:
     - type: Transform
       pos: 50.5,-9.5
       parent: 1
+- proto: RMCWeaponRifleL42A
+  entities:
+  - uid: 3425
+    components:
+    - type: Transform
+      pos: -3.5216045,12.463306
+      parent: 1
+  - uid: 26910
+    components:
+    - type: Transform
+      pos: -9.538866,8.465162
+      parent: 1
+  - uid: 26911
+    components:
+    - type: Transform
+      pos: -9.538866,8.465162
+      parent: 1
+  - uid: 26912
+    components:
+    - type: Transform
+      pos: -9.538866,8.465162
+      parent: 1
+  - uid: 26913
+    components:
+    - type: Transform
+      pos: -9.538866,8.465162
+      parent: 1
 - proto: RMCWeaponRifleM54C
   entities:
   - uid: 26915
@@ -182230,13 +182274,13 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-  - uid: 8201
+- proto: RMCWeaponRifleMAR30
+  entities:
+  - uid: 26914
     components:
     - type: Transform
-      parent: 8199
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
+      pos: -1.5766637,-56.492504
+      parent: 1
 - proto: RMCWestonYamadaCup
   entities:
   - uid: 26249
@@ -185610,38 +185654,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-  - uid: 26910
-    components:
-    - type: Transform
-      pos: -3.5,12.5
-      parent: 1
-  - uid: 26911
-    components:
-    - type: Transform
-      pos: -9.5,8.5
-      parent: 1
-  - uid: 26912
-    components:
-    - type: Transform
-      pos: -9.5,8.5
-      parent: 1
-  - uid: 26913
-    components:
-    - type: Transform
-      pos: -9.5,8.5
-      parent: 1
-  - uid: 26914
-    components:
-    - type: Transform
-      pos: -9.5,8.5
-      parent: 1
-- proto: WeaponRifleMAR40
-  entities:
-  - uid: 26929
-    components:
-    - type: Transform
-      pos: -1.5,-56.5
-      parent: 1
 - proto: XenoStickyResin
   entities:
   - uid: 26930
