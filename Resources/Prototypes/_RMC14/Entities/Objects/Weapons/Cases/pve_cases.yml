@@ -239,14 +239,14 @@
       - RMCMagazineSentry
   - type: StorageFill
     contents:
-    - id: RMCSentry
+    - id: RMCSentryPVE
     - id: RMCMagazineSentry
   - type: ItemMapper
     mapLayers:
       gun:
         whitelist:
           tags:
-          - RMCSentry
+          - RMCSentryPVE
 
 - type: entity
   parent: RMCPVECaseSentry
