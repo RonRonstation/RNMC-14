@@ -451,6 +451,8 @@ entities:
         path: /Audio/Effects/alert.ogg
       inherent: True
       enabled: True
+    - type: BecomesStation  # rnmc
+      id: Hybrisa_Greenshift # rnmc
     - type: StationInfiniteBatteryTarget
     - type: BecomesStation
       id: HybrisaGreenshift
