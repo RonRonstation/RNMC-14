@@ -228,11 +228,11 @@
       whitelist:
         components:
         - RequisitionsCrate #Lockers/Crates
-    - type: MobThresholds
-      thresholds:
-        0: Alive
-        200: Critical  # RNMC
-        350: Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Critical  # RNMC
+      350: Dead
   - type: MobStateActions
     actions:
       Critical:
