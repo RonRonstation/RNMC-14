@@ -140,7 +140,9 @@
     - offset: 0,2
       radius: 0.75
       interiorCoords: 0.25,-1
-
+  - type: NpcFactionMember # RNMC
+    factions:
+    - Human
 
 - type: entity
   id: RMCVehicleCLFVan
@@ -283,6 +285,9 @@
     - offset: 0,2
       radius: 0.75
       interiorCoords: 0.25,-1
+  - type: NpcFactionMember # RNMC
+    factions:
+    - Human
 
 - type: entity
   id: RMCVehicleBoxVan
@@ -426,6 +431,9 @@
     - offset: 0,2
       radius: 0.75
       interiorCoords: -1.74,1.22
+  - type: NpcFactionMember # RNMC
+    factions:
+    - Human
 
 - type: entity
   id: RMCVehiclePizzaVan
@@ -569,6 +577,9 @@
     - offset: 0,2
       radius: 0.75
       interiorCoords: -0.75,1.2
+  - type: NpcFactionMember # RNMC
+    factions:
+    - Human
 
 - type: entity
   id: RMCVehicleExitArea
@@ -770,6 +781,9 @@
     - offset: 0,2
       radius: 0.85
       interiorCoords: 0.25,-1
+  - type: NpcFactionMember # RNMC
+    factions:
+    - Human
 
 - type: entity
   parent: RMCVehicleAPC
@@ -859,6 +873,9 @@
     - offset: 0,2
       radius: 0.85
       interiorCoords: 0.25,-1
+  - type: NpcFactionMember # RNMC
+    factions:
+    - Human
 
 - type: entity
   id: RMCVehicleHumveeBase
@@ -1022,7 +1039,9 @@
     - offset: 1,-0.1
       radius: 0.45
       interiorCoords: 2.41,-1.35
-
+  - type: NpcFactionMember # RNMC
+    factions:
+    - Human
 
 - type: entity
   parent: RMCVehicleHumveeBase

@@ -14,6 +14,7 @@
   - Civilian
   - CLF
   - TSE
+  - Human # RNMC
 
 - type: npcFaction
   id: RMCDumb
