@@ -6,12 +6,15 @@ using Content.Client._RMC14.Weapons.Ranged.Prediction;
 using Content.Client.Animations;
 using Content.Client.Gameplay;
 using Content.Client.Items;
+using Content.Client._RMC14.Vehicle;
 using Content.Client.Weapons.Ranged.Components;
+using Content.Shared._RMC14.Vehicle;
 using Content.Shared._RMC14.Weapons.Ranged;
 using Content.Shared._RMC14.Weapons.Ranged.Prediction;
 using Content.Shared.CombatMode;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
+using Content.Shared.Weapons.Ranged.Components;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -40,6 +43,8 @@ public sealed partial class GunSystem : SharedGunSystem
     [Dependency] private readonly SharedMapSystem _maps = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private readonly VehicleTurretInputSystem _vehicleTurretInput = default!;
+    [Dependency] private readonly VehicleTurretMuzzleOffsetSystem _vehicleTurretMuzzle = default!;
 
     // RMC14
     [Dependency] private readonly ItemPickupSystem _itemPickup = default!;
@@ -192,6 +197,11 @@ public sealed partial class GunSystem : SharedGunSystem
             return;
 
         var mousePos = _eyeManager.PixelToMap(_inputManager.MouseScreenPosition);
+        if (TryComp<VehicleTurretComponent>(gunUid, out _) &&
+            _vehicleTurretInput.TryGetLastAimCoordinates(gunUid, out var vehicleAim))
+        {
+            mousePos = vehicleAim;
+        }
 
         if (mousePos.MapId == MapId.Nullspace)
         {
@@ -201,8 +211,19 @@ public sealed partial class GunSystem : SharedGunSystem
             return;
         }
 
-        // Define target coordinates relative to gun entity, so that network latency on moving grids doesn't fuck up the target location.
-        var coordinates = TransformSystem.ToCoordinates(entity, mousePos);
+        EntityCoordinates coordinates;
+        if (HasComp<ShootAtFixedPointComponent>(gunUid))
+        {
+            // Fixed-point weapons need a stable world target, not a target relative to the rotating gun.
+            // Otherwise the endpoint rotates with the barrel and diverges from the aimed map position.
+            coordinates = TransformSystem.ToCoordinates(mousePos);
+        }
+        else
+        {
+            // Define target coordinates relative to gun entity, so that network latency on moving grids doesn't fuck up the target location.
+            var coordinateEntity = HasComp<GunUseGunOriginComponent>(gunUid) ? gunUid : entity;
+            coordinates = TransformSystem.ToCoordinates(coordinateEntity, mousePos);
+        }
 
         NetEntity? target = null;
         if (_state.CurrentState is GameplayStateBase screen)
@@ -304,17 +325,17 @@ public sealed partial class GunSystem : SharedGunSystem
         };
 
         _animPlayer.Play(ent, anim, "muzzle-flash");
-        if (!TryComp(gunUid, out PointLightComponent? light))
+        if (!TryComp(ent, out PointLightComponent? light))
         {
             light = Factory.GetComponent<PointLightComponent>();
             light.NetSyncEnabled = false;
-            AddComp(gunUid, light);
+            AddComp(ent, light);
         }
 
-        Lights.SetEnabled(gunUid, true, light);
-        Lights.SetRadius(gunUid, 2f, light);
-        Lights.SetColor(gunUid, Color.FromHex("#cc8e2b"), light);
-        Lights.SetEnergy(gunUid, 5f, light);
+        Lights.SetEnabled(ent, true, light);
+        Lights.SetRadius(ent, 2f, light);
+        Lights.SetColor(ent, Color.FromHex("#cc8e2b"), light);
+        Lights.SetEnergy(ent, 5f, light);
 
         var animTwo = new Animation()
         {
@@ -346,10 +367,10 @@ public sealed partial class GunSystem : SharedGunSystem
             }
         };
 
-        var uidPlayer = EnsureComp<AnimationPlayerComponent>(gunUid);
+        var uidPlayer = EnsureComp<AnimationPlayerComponent>(ent);
 
-        _animPlayer.Stop(gunUid, uidPlayer, "muzzle-flash-light");
-        _animPlayer.Play((gunUid, uidPlayer), animTwo, "muzzle-flash-light");
+        _animPlayer.Stop(ent, uidPlayer, "muzzle-flash-light");
+        _animPlayer.Play((ent, uidPlayer), animTwo, "muzzle-flash-light");
     }
 
     public override void ShootProjectile(EntityUid uid,
@@ -362,5 +383,11 @@ public sealed partial class GunSystem : SharedGunSystem
         EnsureComp<PredictedProjectileClientComponent>(uid);
         Physics.UpdateIsPredicted(uid);
         base.ShootProjectile(uid, direction, gunVelocity, gunUid, user, speed);
+
+        if (gunUid is { } weaponUid &&
+            _vehicleTurretMuzzle.TryGetRenderedGunOrigin(weaponUid, null, out var renderedOrigin))
+        {
+            _xform.SetCoordinates(uid, renderedOrigin);
+        }
     }
 }
