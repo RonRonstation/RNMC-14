@@ -10,7 +10,13 @@
   - !type:AddComponentSpecial
     components:
     - type: Skills
-      preset: RMCSkillPresetSurvivor
+      skills:
+        RMCSkillConstruction: 1
+        RMCSkillEndurance: 2
+        RMCSkillFireman: 1
+        RMCSkillFirearms: 1
+        RMCSkillMedical: 3
+        RMCSkillSurgery: 2
     - type: EquipSurvivorPreset
       preset: RMCGearSurvivorPresetSoroCivilian
     - type: RMCSurvivor

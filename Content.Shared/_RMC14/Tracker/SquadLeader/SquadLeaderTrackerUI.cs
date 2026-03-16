@@ -1,6 +1,4 @@
-﻿using Content.Shared._RMC14.Marines.Squads;
-using Robust.Shared.GameObjects;
-using Robust.Shared.Serialization;
+﻿using Robust.Shared.Serialization;
 
 namespace Content.Shared._RMC14.Tracker.SquadLeader;
 
@@ -8,17 +6,6 @@ namespace Content.Shared._RMC14.Tracker.SquadLeader;
 public enum SquadLeaderTrackerUI
 {
     Key,
-}
-
-[Serializable, NetSerializable]
-public sealed class SquadLeaderTrackerBoundUserInterfaceState : BoundUserInterfaceState
-{
-    public readonly Dictionary<SquadObjectiveType, string> Objectives;
-
-    public SquadLeaderTrackerBoundUserInterfaceState(Dictionary<SquadObjectiveType, string> objectives)
-    {
-        Objectives = objectives;
-    }
 }
 
 [Serializable, NetSerializable]

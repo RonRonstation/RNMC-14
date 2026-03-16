@@ -23,8 +23,7 @@
     fullNameLocId: cm-access-dogtags-component-owner-full-name-job-title-text
     canMicrowave: false
   - type: ItemIFF
-    factions:
-    - FactionMarine
+    faction: FactionMarine
   - type: TakeableTags
   - type: Appearance
   - type: Foldable
@@ -175,8 +174,7 @@
     tags:
     - DoorBumpOpener
   - type: ItemIFF
-    factions:
-    - FactionMarine
+    faction: FactionMarine
   - type: Corrodible
     isCorrodible: false
 
@@ -224,3 +222,46 @@
     slots:
     - idcard
     sprite: _RMC14/Objects/CMIDs/lanyard.rsi
+
+- type: entity
+  id: FactionMarine
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: IFFFaction
+  - type: FactionFrequencies
+    channels:
+    - MarineCommand
+    - MarineMedical
+    - MarineEngineer
+    - MarineMilitaryPolice
+#    - TODO RMC14 sentry
+    - MarineAlpha
+    - MarineBravo
+    - MarineCharlie
+    - MarineDelta
+    - MarineEcho
+    - MarineFoxtrot
+    - MarineRequisition
+    - MarineJTAC
+    - MarineIntel
+    - MarineSOF
+    - WEYA
+
+- type: entity
+  id: FactionSurvivor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: IFFFaction
+  - type: FactionFrequencies
+    channels:
+    - Colony
+
+- type: entity
+  id: FactionTSE
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: IFFFaction
+  - type: FactionFrequencies
+    channels:
+    - Colony
+    - TSE

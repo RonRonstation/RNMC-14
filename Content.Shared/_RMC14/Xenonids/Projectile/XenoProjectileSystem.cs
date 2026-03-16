@@ -2,7 +2,6 @@ using System.Numerics;
 using Content.Shared._RMC14.Explosion;
 using Content.Shared._RMC14.Light;
 using Content.Shared._RMC14.Movement;
-using Content.Shared._RMC14.Projectiles;
 using Content.Shared._RMC14.Random;
 using Content.Shared._RMC14.Weapons.Ranged;
 using Content.Shared._RMC14.Weapons.Ranged.Prediction;
@@ -275,9 +274,6 @@ public sealed class XenoProjectileSystem : EntitySystem
 
             _gun.ShootProjectile(projectile, diff, Vector2.Zero, xeno, xeno, speed);
 
-            var ev = new ProjectileShotEvent(xeno, predicted);
-            RaiseLocalEvent(projectile, ref ev);
-
             ammoShotEvent.FiredProjectiles.Add(projectile);
 
             // let hive member logic apply
@@ -303,7 +299,7 @@ public sealed class XenoProjectileSystem : EntitySystem
             {
                 var limitHits = EnsureComp<ProjectileLimitHitsComponent>(projectile);
                 limitHits.Limit = projectileHitLimit.Value;
-                limitHits.OriginEntityId = xeno.Id;
+                limitHits.OriginEntity = xeno;
                 limitHits.ExtraId = _limitHitsId;
                 Dirty(projectile, limitHits);
             }

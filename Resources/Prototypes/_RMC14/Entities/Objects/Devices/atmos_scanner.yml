@@ -27,7 +27,3 @@
         enabled:
           True: { state: working }
           False: { state: icon }
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 30
-      CMGlass: 20

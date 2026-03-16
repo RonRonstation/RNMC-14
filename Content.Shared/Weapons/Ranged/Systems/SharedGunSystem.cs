@@ -3,7 +3,6 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared._RMC14.Attachable.Systems;
 using Content.Shared._RMC14.CCVar;
-using Content.Shared._RMC14.Emplacements;
 using Content.Shared._RMC14.Random;
 using Content.Shared._RMC14.Weapons.Ranged;
 using Content.Shared._RMC14.Weapons.Ranged.Flamer;
@@ -238,15 +237,6 @@ public abstract partial class SharedGunSystem : EntitySystem
             gunComp = gun;
             return true;
         }
-
-        //RMC14
-        if (_rmcSharedWeaponController.TryGetControlledWeapon(entity, out var weapon, out gun))
-        {
-            gunEntity = weapon.Value;
-            gunComp = gun;
-            return true;
-        }
-        //
 
         return false;
     }
@@ -1194,7 +1184,7 @@ public abstract partial class SharedGunSystem : EntitySystem
         }
     }
 
-    protected abstract void CreateEffect(EntityUid gunUid, MuzzleFlashEvent message, EntityUid? user = null, EntityUid? player = null, Vector2 offset = default, Vector2 originOffset = default);
+    protected abstract void CreateEffect(EntityUid gunUid, MuzzleFlashEvent message, EntityUid? user = null, EntityUid? player = null);
 
     /// <summary>
     /// Used for animated effects on the client.

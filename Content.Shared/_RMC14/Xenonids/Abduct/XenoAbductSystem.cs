@@ -213,9 +213,7 @@ public sealed partial class XenoAbductSystem : EntitySystem
                 _dazed.TryDaze(ent, dazeTime, true, stutter: true);
                 _stun.TryParalyze(ent, _xeno.TryApplyXenoDebuffMultiplier(ent, stunTime), true);
 
-                var knockBackDistance = dis < hook.TargetStopDistance
-                    ? -hook.MinimumHookDistance
-                    : -(dis - hook.TargetStopDistance);
+                var knockBackDistance = -Math.Max(dis - 2, 0.5f); //Lands right in front.
                 _rmcObstacleSlamming.MakeImmune(ent);
                 _size.KnockBack(ent, mapCoords, knockBackDistance, knockBackDistance, 10);
             }

@@ -31,14 +31,14 @@ public sealed partial class Ketogenic : RMCChemicalEffect
         var target = args.TargetEntity;
         var hungerSystem = entityManager.System<HungerSystem>();
 
-        hungerSystem.ModifyHunger(target, PotencyPerSecond * -5);
-        // TODO RMC14 M.overeatduration = 0
+        hungerSystem.ModifyHunger(target, -PotencyPerSecond * 5);
 
         var bloodstream = args.EntityManager.System<SharedRMCBloodstreamSystem>();
         var alcoholRemoved = bloodstream.RemoveBloodstreamAlcohols(args.TargetEntity, potency);
 
         if (!alcoholRemoved)
             return;
+
         var drunkSystem = args.EntityManager.System<SharedDrunkSystem>();
         drunkSystem.TryApplyDrunkenness(args.TargetEntity, PotencyPerSecond * 5);
     }
@@ -48,7 +48,8 @@ public sealed partial class Ketogenic : RMCChemicalEffect
         var entityManager = args.EntityManager;
         var target = args.TargetEntity;
         var hungerSystem = entityManager.System<HungerSystem>();
-        hungerSystem.ModifyHunger(target, PotencyPerSecond * -5);
+
+        hungerSystem.ModifyHunger(target, -PotencyPerSecond * 5);
 
         var damage = new DamageSpecifier();
         damage.DamageDict[PoisonType] = potency;
@@ -57,6 +58,7 @@ public sealed partial class Ketogenic : RMCChemicalEffect
         var random = IoCManager.Resolve<IRobustRandom>();
         if (!random.Prob(0.025f * ActualPotency))
             return;
+
         var vomitEvent = new RMCVomitEvent(target);
         entityManager.EventBus.RaiseEvent(EventSource.Local, ref vomitEvent);
     }
@@ -67,8 +69,8 @@ public sealed partial class Ketogenic : RMCChemicalEffect
         status.TryAddStatusEffect<RMCUnconsciousComponent>(
             args.TargetEntity,
             Unconscious,
-            TimeSpan.FromSeconds(40),
-            true
+            TimeSpan.FromSeconds(10),
+            false
         );
     }
 }

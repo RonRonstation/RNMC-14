@@ -90,8 +90,8 @@
         key: Unconscious
         component: RMCUnconscious
         type: Add
-        time: 40
-        refresh: true
+        time: 10
+        refresh: false
 
 - type: reagent
   parent: [ CMReagent, Romerol ]

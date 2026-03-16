@@ -76,7 +76,6 @@
     Emerald: RMCMedalRibbonEmeraldService
     Amethyst: RMCMedalRibbonAmethystService
     Prismatic: RMCMedalRibbonPrismaticService
-
 - type: job
   abstract: true
   parent: CMJobBase

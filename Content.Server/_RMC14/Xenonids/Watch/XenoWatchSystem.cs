@@ -154,7 +154,7 @@ public sealed class XenoWatchSystem : SharedXenoWatchSystem
         RaiseLocalEvent(watcher, ref ev);
     }
 
-    public override void Unwatch(Entity<EyeComponent?> watcher, ICommonSession player)
+    protected override void Unwatch(Entity<EyeComponent?> watcher, ICommonSession player)
     {
         if (!Resolve(watcher, ref watcher.Comp))
             return;

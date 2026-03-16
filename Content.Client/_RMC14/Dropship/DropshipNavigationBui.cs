@@ -55,7 +55,6 @@ public sealed class DropshipNavigationBui : BoundUserInterface
         _window.OnClose += OnClose;
         SetFlightHeader("Flight Controls");
         SetDoorHeader("Door Controls");
-        SetRemoteControlHeader("Remote Control:");
 
         if (_entities.TryGetComponent(Owner, out TransformComponent? transform) &&
             _entities.TryGetComponent(transform.ParentUid, out MetaDataComponent? metaData))
@@ -86,7 +85,6 @@ public sealed class DropshipNavigationBui : BoundUserInterface
         _window.LockdownButtonAft.Button.OnPressed += _ => SendPredictedMessage(new DropshipLockdownMsg(DoorLocation.Aft));
         _window.LockdownButtonPort.Button.OnPressed += _ => SendPredictedMessage(new DropshipLockdownMsg(DoorLocation.Port));
         _window.LockdownButtonStarboard.Button.OnPressed += _ => SendPredictedMessage(new DropshipLockdownMsg(DoorLocation.Starboard));
-        _window.RemoteControlButton.Button.OnPressed += _ => SendPredictedMessage(new DropshipRemoteControlToggleMsg());
         _entities.System<DropshipSystem>().Uis.Add(this);
     }
 
@@ -153,7 +151,6 @@ public sealed class DropshipNavigationBui : BoundUserInterface
         }
 
         RefreshDoorLockStatus(destinations.DoorLockStatus);
-        SetRemoteControl(destinations.RemoteControlStatus);
     }
 
     private void Set(DropshipNavigationTravellingBuiState travelling)
@@ -208,7 +205,6 @@ public sealed class DropshipNavigationBui : BoundUserInterface
         }
 
         RefreshDoorLockStatus(travelling.DoorLockStatus);
-        SetRemoteControl(travelling.RemoteControlStatus);
 
         var startEndTime = travelling.Time;
         _window.ProgressBar.MinValue = 0;
@@ -224,11 +220,6 @@ public sealed class DropshipNavigationBui : BoundUserInterface
     private void SetDoorHeader(string label)
     {
         _window?.DoorHeader.SetMarkup($"[color=#0BDC49][font size=16][bold]{label}[/bold][/font][/color]");
-    }
-
-    private void SetRemoteControlHeader(string label)
-    {
-        _window?.RemoteControlHeader.SetMarkup($"[color=#0BDC49][font size=16][bold]{label}[/bold][/font][/color]");
     }
 
     private void SetLaunchDisabled(bool disabled)
@@ -256,14 +247,6 @@ public sealed class DropshipNavigationBui : BoundUserInterface
         _window.LockdownButtonAft.Button.Disabled = disabled;
         _window.LockdownButtonPort.Button.Disabled = disabled;
         _window.LockdownButtonStarboard.Button.Disabled = disabled;
-    }
-
-    private void SetRemoteControl(bool status)
-    {
-        if (_window == null)
-            return;
-
-        _window.RemoteControlButton.Text = status ? "Enabled" : "Disabled";
     }
 
     private void ResetDestinationButtons()

@@ -184,8 +184,9 @@
     isCorrodible: false
   - type: Spotting
   - type: TargetingLaser
-    laserState: laser_beam_spotter
-    laserAlpha: 1
+    laserColor: orange
+    currentLaserColor: orange
+    laserAlpha: 0.2
     gradualAlpha: false
 
 - type: entity

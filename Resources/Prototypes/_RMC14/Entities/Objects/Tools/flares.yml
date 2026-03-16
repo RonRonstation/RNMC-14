@@ -4,17 +4,6 @@
   id: CMFlare
   description: A red Marine issued flare. There are instructions on the side, it reads 'pull cord, make light'.
   components:
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.25,-0.25,0.25,0.25"
-        density: 20
-        mask:
-        - ItemMask
-        restitution: 1.0
-        friction: 0.2
   - type: Tag
     tags:
     - Flare
@@ -626,9 +615,3 @@
 
 - type: Tag
   id: RMCPackFlareCAS
-
-- type: Tag
-  id: RMCFlareL96
-
-- type: Tag
-  id: RMCPackFlareL96

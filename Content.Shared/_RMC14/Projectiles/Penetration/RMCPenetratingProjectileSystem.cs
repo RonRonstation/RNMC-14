@@ -36,7 +36,7 @@ public sealed class RMCPenetratingProjectileSystem : EntitySystem
     /// </summary>
     private void OnPreventCollide(Entity<RMCPenetratingProjectileComponent> ent, ref PreventCollideEvent args)
     {
-        if(!ent.Comp.HitTargetIds.Contains(GetNetEntity(args.OtherEntity).Id))
+        if(!ent.Comp.HitTargets.Contains(args.OtherEntity))
             return;
 
         args.Cancelled = true;
@@ -47,14 +47,13 @@ public sealed class RMCPenetratingProjectileSystem : EntitySystem
     /// </summary>
     private void OnProjectileHit(Entity<RMCPenetratingProjectileComponent> ent, ref ProjectileHitEvent args)
     {
-        var netId = GetNetEntity(args.Target).Id;
-        if (ent.Comp.HitTargetIds.Contains(netId))
+        if (ent.Comp.HitTargets.Contains(args.Target))
         {
             args.Handled = true;
             return;
         }
 
-        ent.Comp.HitTargetIds.Add(netId);
+        ent.Comp.HitTargets.Add(args.Target);
         Dirty(ent);
     }
 
@@ -118,7 +117,7 @@ public sealed class RMCPenetratingProjectileSystem : EntitySystem
             (_transform.GetMoverCoordinates(ent).Position - ent.Comp.ShotFrom.Value.Position).Length();
         var range = ent.Comp.Range - distanceTravelled;
 
-        ent.Comp.HitTargetIds.Add(GetNetEntity(args.Target).Id);
+        ent.Comp.HitTargets.Add(args.Target);
         Dirty(ent);
 
         if (range < 0)

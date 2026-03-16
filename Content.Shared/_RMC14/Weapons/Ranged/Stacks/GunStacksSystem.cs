@@ -1,5 +1,4 @@
 ﻿using Content.Shared._RMC14.Armor;
-using Content.Shared._RMC14.Marines;
 using Content.Shared._RMC14.Xenonids;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Systems;
@@ -24,16 +23,13 @@ public sealed class GunStacksSystem : EntitySystem
     private EntityQuery<GunStacksComponent> _gunStacksQuery;
     private EntityQuery<RMCSelectiveFireComponent> _selectiveFireQuery;
     private EntityQuery<XenoComponent> _xenoQuery;
-    private EntityQuery<MarineComponent> _marineQuery;
-    private EntityQuery<RMCAdjustableArmorValueComponent> _adjustableArmor;
 
     public override void Initialize()
     {
         _gunStacksQuery = GetEntityQuery<GunStacksComponent>();
         _selectiveFireQuery = GetEntityQuery<RMCSelectiveFireComponent>();
         _xenoQuery = GetEntityQuery<XenoComponent>();
-        _marineQuery = GetEntityQuery<MarineComponent>();
-        _adjustableArmor = GetEntityQuery<RMCAdjustableArmorValueComponent>();
+
         SubscribeLocalEvent<GunStacksComponent, AmmoShotEvent>(OnStacksAmmoShot);
 
         SubscribeLocalEvent<GunStacksActiveComponent, GetGunDamageModifierEvent>(OnStacksActiveGetGunDamageModifier);
@@ -100,23 +96,13 @@ public sealed class GunStacksSystem : EntitySystem
         }
 
         var target = args.Target;
-        if ((_xenoQuery.HasComp(target) || _marineQuery.HasComp(target) || _adjustableArmor.HasComp(target)) && !_mobState.IsDead(target))
+        if (_xenoQuery.HasComp(target) && !_mobState.IsDead(target))
         {
             if (!TryComp<GunStacksActiveComponent>(ent.Comp.Gun, out var gun))
                 gun = EnsureComp<GunStacksActiveComponent>(ent.Comp.Gun.Value);
 
-            // Reset the counter if the new target is a xeno while the last hit target was a target dummy.
-            if (gun.LastHitEntity != null &&
-                HasComp<RMCAdjustableArmorValueComponent>(gun.LastHitEntity.Value) &&
-                HasComp<XenoComponent>(target))
-            {
-                Reset((ent.Comp.Gun.Value, gun));
-                return;
-            }
-
             gun.Hits++;
             gun.ExpireAt = _timing.CurTime + gun.StacksExpire;
-            gun.LastHitEntity = target;
             if (args.Shooter is { } shooter &&
                 _net.IsServer)
             {

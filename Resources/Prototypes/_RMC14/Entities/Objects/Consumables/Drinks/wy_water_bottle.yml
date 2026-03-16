@@ -31,6 +31,3 @@
     blacklist:
       components:
       - Xeno
-  - type: PhysicalComposition
-    materialComposition:
-      RMCPlastic: 5

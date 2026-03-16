@@ -23,7 +23,6 @@
   - type: Tag
     tags:
     - Radio
-  - type: ChatRepeatIgnoreSender # RMC14
   - type: InteractedBlacklist
     blacklist:
       components:
@@ -32,7 +31,3 @@
     quickEquip: false
     slots:
     - suitstorage
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 75
-      CMGlass: 25

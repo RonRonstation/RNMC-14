@@ -144,8 +144,7 @@
           "/Audio/Weapons/smash.ogg"
   - type: AirlockReceiverXenoClaws
   - type: Damageable
-    damageContainer: StructuralMarine
-    damageModifierSet: StructuralMarine
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -172,7 +171,7 @@
   id: CMBaseDoorConstructible
   components:
   - type: Construction
-    graph: CMAirlock
+    graph: Airlock
     node: airlock
     containers:
     - board

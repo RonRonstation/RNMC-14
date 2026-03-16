@@ -246,7 +246,7 @@
       - id: RMCPouchMagazinePistolLarge
       - id: RMCPouchGeneralMedium
       - id: RMCPouchPistol
-      - id: RMCPouchSling
+      #- id: CMSlingPouch
     - name: Accessories
       choices: { CMAccessories: 1 }
       entries:

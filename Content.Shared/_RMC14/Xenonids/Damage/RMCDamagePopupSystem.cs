@@ -2,19 +2,21 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Popups;
+using Robust.Shared.Network;
 
 namespace Content.Shared._RMC14.Xenonids.Damage;
 
 public sealed class RMCDamagePopupSystem : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<DamagePopupComponent, ProjectileDamageDealtEvent>(OnDamagePopup);
+        SubscribeLocalEvent<DamagePopupComponent, DamageDealtEvent>(OnDamagePopup);
     }
 
-    private void OnDamagePopup(Entity<DamagePopupComponent> ent, ref ProjectileDamageDealtEvent args)
+    private void OnDamagePopup(Entity<DamagePopupComponent> ent, ref DamageDealtEvent args)
     {
         if (!TryComp(ent, out DamageableComponent? damageable))
             return;
@@ -28,12 +30,11 @@ public sealed class RMCDamagePopupSystem : EntitySystem
             return;
 
         var delta = damageDelta.GetTotal();
-        var total = damageTotal + damageDelta.GetTotal(); // The total does not include the damage dealt yet on the client side.
         var msg = type switch
         {
             DamagePopupType.Delta => delta.ToString(),
-            DamagePopupType.Total => total.ToString(),
-            DamagePopupType.Combined => delta + " | " + total,
+            DamagePopupType.Total => damageTotal.ToString(),
+            DamagePopupType.Combined => delta + " | " + damageTotal,
             DamagePopupType.Hit => "!",
             _ => "Invalid type",
         };

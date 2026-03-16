@@ -12,9 +12,7 @@
   - type: CMArmor
     melee: 30
     bullet: 10
-    # armor_laser = 10
-    # armor_energy = 10
-    # armor_internaldamage = 25
+    explosionArmor: 0
   - type: CMHardArmor
 
 - type: entity
@@ -45,6 +43,3 @@
   - type: CMArmor
     melee: 20
     bullet: 15
-    # armor_laser = 10
-    # armor_energy = 10
-    # armor_internaldamage = 20

@@ -1,7 +1,6 @@
 using Content.Shared.Body.Events;
 using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
-using Content.Shared.Gibbing.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -48,9 +47,6 @@ public sealed class RMCGibSystem : EntitySystem
 
     private void OnDeath(Entity<RMCGibOnDeathComponent> ent, ref MobStateChangedEvent args)
     {
-        if (!HasComp<GibbableComponent>(ent))
-            return;
-
         if (args.NewMobState != MobState.Dead)
             return;
 

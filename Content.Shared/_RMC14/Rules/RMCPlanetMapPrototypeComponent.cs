@@ -1,5 +1,4 @@
 using Content.Shared._RMC14.Item;
-using Content.Shared.Paper;
 using Content.Shared.Roles;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -32,10 +31,10 @@ public sealed partial class RMCPlanetMapPrototypeComponent : Component
 
     /// <summary>
     /// Will override a preferred job to a list of other variants
-    /// For example, if you have security survivor selected it will pick one of the variants
+    /// For example, if you have security survivor selected it will pick one of the inserts
     /// </summary>
     [DataField, AutoNetworkedField]
-    public Dictionary<ProtoId<JobPrototype>, List<(ProtoId<JobPrototype> Variant, int Amount)>>? SurvivorJobVariants;
+    public Dictionary<ProtoId<JobPrototype>, List<(ProtoId<JobPrototype> Insert, int Amount)>>? SurvivorJobInserts;
 
     /// <summary>
     /// Will override a preferred job to another
@@ -46,29 +45,17 @@ public sealed partial class RMCPlanetMapPrototypeComponent : Component
     public Dictionary<ProtoId<JobPrototype>, ProtoId<JobPrototype>>? SurvivorJobOverrides;
 
     /// <summary>
-    /// Instead of using the limits of the variant, this will select a random variant and use the base job's limit when true.
-    /// If it is false, it will use the slots of the variant instead of a random one. See Chance's Claim.
+    /// Instead of using the limits of the insert, this will select a random insert and use the base job's limit when true.
+    /// If it is false, it will use the job slots of the insert. See Chance's Claim.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool SelectRandomSurvivorVariant = true;
+    public bool SelectRandomSurvivorInsert = true;
 
     /// <summary>
-    /// List of base survivor jobs that appear in a specific scenario. These have a higher priority than other job types.
+    /// List of survivor jobs that appear in a specific scenario. These have a higher priority than other job types.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public Dictionary<string, List<(ProtoId<JobPrototype> Job, int Amount)>>? SurvivorJobScenarios;
-
-    /// <summary>
-    /// List of survivor job variant that appear in a specific scenario. These have a higher priority than other job types.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public Dictionary<string, Dictionary<ProtoId<JobPrototype>, List<(ProtoId<JobPrototype> Special, int Amount)>>>? SurvivorJobVariantScenarios;
-
-    /// <summary>
-    /// List of survivor job overrides that are in a specific scenario.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public Dictionary<string, Dictionary<ProtoId<JobPrototype>, ProtoId<JobPrototype>>>? SurvivorJobOverrideScenarios;
+    public Dictionary<string, Dictionary<ProtoId<JobPrototype>, List<(ProtoId<JobPrototype> Special, int Amount)>>>? SurvivorJobScenarios;
 
     /// <summary>
     /// List of nightmare scenarios that can occur, which are used for conditionally spawning map inserts.
@@ -79,13 +66,6 @@ public sealed partial class RMCPlanetMapPrototypeComponent : Component
 
     [DataField, AutoNetworkedField]
     public bool InRotation = true;
-
-    /// <summary>
-    /// Special faxes that should be sent roundstart.
-    /// The dictionary is the fax ID and then the entity to be faxed.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public Dictionary<string, EntProtoId<PaperComponent>>? SpecialFaxes;
 }
 
 [DataDefinition]

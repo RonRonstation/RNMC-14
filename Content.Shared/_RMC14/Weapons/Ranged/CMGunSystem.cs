@@ -40,10 +40,8 @@ using Content.Shared.Wieldable.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
-using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Physics;
-using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
@@ -51,7 +49,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._RMC14.Weapons.Ranged;
 
@@ -68,7 +65,6 @@ public sealed class CMGunSystem : EntitySystem
     [Dependency] private readonly INetConfigurationManager _netConfig = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedProjectileSystem _projectile = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -85,9 +81,6 @@ public sealed class CMGunSystem : EntitySystem
 
     private EntityQuery<PhysicsComponent> _physicsQuery;
     private EntityQuery<ProjectileComponent> _projectileQuery;
-
-    private HashSet<Entity<FixturesComponent>> _intersectedEntities = new();
-    private HashSet<Entity<FixturesComponent>> _impassableEntities = new();
 
     private readonly int _blockArcCollisionGroup = (int) (CollisionGroup.HighImpassable | CollisionGroup.Impassable);
 
@@ -249,7 +242,6 @@ public sealed class CMGunSystem : EntitySystem
             comp.TargetCoordinates = new MapCoordinates(from.Position + projectileDirection * distance, from.MapId);
             comp.FlyEndTime = time + TimeSpan.FromSeconds(distance / gun.ProjectileSpeedModified);
         }
-
     }
 
     /// <summary>
@@ -448,15 +440,9 @@ public sealed class CMGunSystem : EntitySystem
     private void OnGunPointBlankAmmoShot(Entity<GunPointBlankComponent> gun, ref AmmoShotEvent args)
     {
         if (!TryComp(gun.Owner, out GunComponent? gunComp) ||
-            gunComp.Target == null)
-        {
-            return;
-        }
-
-        var target = gunComp.Target.Value;
-
-        if (!HasComp<TransformComponent>(target) ||
-            !HasComp<EvasionComponent>(target))
+            gunComp.Target == null ||
+            !HasComp<TransformComponent>(gunComp.Target) ||
+            !HasComp<EvasionComponent>(gunComp.Target))
         {
             return;
         }
@@ -464,16 +450,16 @@ public sealed class CMGunSystem : EntitySystem
         if (!TryGetGunUser(gun.Owner, out var user))
             return;
 
-        var shooterFactionEvent = new GetIFFFactionEvent(SlotFlags.IDCARD, new());
-        RaiseLocalEvent(user.Owner, ref shooterFactionEvent);
+        var shooterFactionEvent = new GetIFFFactionEvent(null, SlotFlags.IDCARD);
+        RaiseLocalEvent(user, ref shooterFactionEvent);
 
-        var targetFactionEvent = new GetIFFFactionEvent(SlotFlags.IDCARD, new());
-        RaiseLocalEvent(target, ref targetFactionEvent);
+        var targetFactionEvent = new GetIFFFactionEvent(null, SlotFlags.IDCARD);
+        RaiseLocalEvent(gunComp.Target.Value, ref targetFactionEvent);
 
-        if (shooterFactionEvent.Factions.Count != 0 &&
-            targetFactionEvent.Factions.Count != 0 &&
-            shooterFactionEvent.Factions.Overlaps(targetFactionEvent.Factions) &&
-            HasComp<EntityActiveInvisibleComponent>(target))
+        if (shooterFactionEvent.Faction != null && 
+            targetFactionEvent.Faction != null && 
+            shooterFactionEvent.Faction == targetFactionEvent.Faction &&
+            HasComp<EntityActiveInvisibleComponent>(gunComp.Target))
         {
             return;
         }
@@ -627,7 +613,6 @@ public sealed class CMGunSystem : EntitySystem
         RaiseLocalEvent(gun, ref ev);
 
         gun.Comp.ModifiedMultiplier = ev.Multiplier;
-        Dirty(gun);
     }
 
     public bool HasRequiredEquippedPopup(Entity<GunRequireEquippedComponent?> gun, EntityUid user)
@@ -934,15 +919,3 @@ public sealed partial class DelayedAmmoInsertDoAfterEvent : SimpleDoAfterEvent;
 /// </summary>
 [Serializable, NetSerializable]
 public sealed partial class DelayedCycleDoAfterEvent : SimpleDoAfterEvent;
-
-/// <summary>
-/// An event raised before a shot attempt is made.
-/// </summary>
-[ByRefEvent]
-public record struct BeforeAttemptShootEvent(EntityCoordinates Origin, Vector2 Offset, bool Handled = false);
-
-/// <summary>
-/// An event raised right before a muzzle flash event is raised.
-/// </summary>
-[ByRefEvent]
-public record struct RMCBeforeMuzzleFlashEvent(EntityUid Weapon, Vector2 Offset = default);

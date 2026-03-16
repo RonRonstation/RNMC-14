@@ -9,7 +9,14 @@
   - !type:AddComponentSpecial
     components:
     - type: Skills
-      preset: RMCSkillPresetSurvivorMiner
+      skills:
+        RMCSkillConstruction: 1
+        RMCSkillEndurance: 2
+        RMCSkillFirearms: 1
+        RMCSkillFireman: 1
+        RMCSkillEngineer: 1
+        RMCSkillPowerLoader: 2
+        RMCSkillVehicles: 1
     - type: EquipSurvivorPreset
       preset: RMCGearSurvivorPresetHybrisaTMCCMiner
     - type: RMCSurvivor
@@ -19,6 +26,7 @@
       - Civilian
     - type: IntelRescueSurvivorObjective
     - type: RMCAllowSuitStorage
+  useLoadoutOfJob: CMSurvivor # for inheritance
 
 - type: startingGear
   parent: RMCGearSurvivorBaseNoBackpack
@@ -57,4 +65,4 @@
     - [ RMCHardhatRedTMCC, RMCJumpsuitTMCC, CMBackpackEngineer, RMCHazardVestTMCC, RMCShoesJackboots, RMCPouchToolsFill, RMCHandsCombat ]
     - [ CMBackpackEngineer, RMCJumpsuitTMCC, RMCArmorTMCC, RMCArmorHelmetTMCCMiner, RMCShoesJackboots, RMCPouchToolsFill, RMCHandsCombat, WeaponRifleMAR40, RMCPouchMagazineFilledMAR40Ext ]
     - [ CMBackpackEngineer, RMCJumpsuitTMCC, RMCArmorTMCC, RMCArmorHelmetTMCCMiner, RMCShoesJackboots, RMCPouchToolsFill, RMCHandsCombat, WeaponRifleMAR40, RMCPouchMagazineFilledMAR40Ext ]
-    - [ RMCSatchelLightpack, RMCPouchToolsFill, RMCJumpsuitTMCC, RMCArmorTMCCAlt, RMCArmorHelmetTMCCMiner, RMCBootsRoyalFilled, RMCHandsVeteranRoyalMarine, RMCWeaponSMGPDW90, RMCPouchMagazineFilledPDW90 ]
+    - [ RMCSatchelLightpack, RMCPouchToolsFill, RMCJumpsuitTMCC, RMCArmorTMCCAlt, RMCArmorHelmetTMCCMiner, RMCBootsRoyalFilled, RMCHandsVeteranRoyalMarine, RMCWeaponSMGP90, RMCPouchMagazineFilledP90 ]

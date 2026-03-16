@@ -1,9 +1,0 @@
-- type: rmcConstruction
-  id: RMCWeaponMountBuild
-  name: ML66D mount
-  prototype: RMCML66DMount
-  noRotate: true
-  doAfterTime: 1
-  materialCost: 10
-  ignoreBuildRestrictions: true
-  restrictedCollisionGroup: null

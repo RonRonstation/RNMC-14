@@ -1,8 +1,6 @@
-using Robust.Shared.GameStates;
-
 namespace Content.Shared._RMC14.Rangefinder.Spotting;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class SpotterWhitelistComponent : Component
 {
 

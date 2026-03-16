@@ -1,10 +1,8 @@
-﻿using System.Numerics;
-using Robust.Shared.Audio;
+﻿using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._RMC14.OrbitalCannon;
 
@@ -13,31 +11,10 @@ namespace Content.Shared._RMC14.OrbitalCannon;
 public sealed partial class OrbitalCannonComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public string CannonChamberContainer = "rmc_orbital_cannon_chamber";
+    public string WarheadContainer = "rmc_orbital_cannon_warhead";
 
     [DataField, AutoNetworkedField]
-    public string BaseLayerKey = "CannonLayerKey";
-
-    [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi? LoadingAnimation = new(new ResPath("_RMC14/Structures/orbital_cannon.rsi"), "obc_loading");
-
-    [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi? UnloadingAnimation = new(new ResPath("_RMC14/Structures/orbital_cannon.rsi"), "obc_unloading");
-
-    [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi? ChamberingAnimation = new(new ResPath("_RMC14/Structures/orbital_cannon.rsi"), "obc_chambering");
-
-    [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi? FiringAnimation = new(new ResPath("_RMC14/Structures/orbital_cannon.rsi"), "obc_firing");
-
-    [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi UnloadedState = new(new ResPath("_RMC14/Structures/orbital_cannon.rsi"), "obc_unloaded");
-
-    [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi LoadedState = new(new ResPath("_RMC14/Structures/orbital_cannon.rsi"), "obc_loaded");
-
-    [DataField, AutoNetworkedField]
-    public SpriteSpecifier.Rsi ChamberedState = new(new ResPath("_RMC14/Structures/orbital_cannon.rsi"), "obc_chambered");
+    public string FuelContainer = "rmc_orbital_cannon_fuel";
 
     [DataField, AutoNetworkedField]
     public EntProtoId<OrbitalCannonWarheadComponent>[] WarheadTypes =
@@ -51,6 +28,9 @@ public sealed partial class OrbitalCannonComponent : Component
 
     [DataField, AutoNetworkedField]
     public OrbitalCannonStatus Status = OrbitalCannonStatus.Unloaded;
+
+    [DataField, AutoNetworkedField]
+    public int MaxFuel = 6;
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField, AutoPausedField]
     public TimeSpan LastToggledAt;
@@ -90,26 +70,17 @@ public sealed partial class OrbitalCannonComponent : Component
 
     [DataField, AutoNetworkedField]
     public TimeSpan FireCooldown = TimeSpan.FromSeconds(500);
-
-    [DataField]
-    public EntProtoId? TrayPrototype = "RMCOrbitalCannonTray";
-
-    [DataField]
-    public Vector2 TraySpawnOffset = new(0.78f, 0.69f);
-
-    [DataField, AutoNetworkedField]
-    public EntityUid? LinkedTray;
-
-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField, AutoPausedField]
-    public TimeSpan? UnloadingTrayAt;
-
-    [DataField, AutoNetworkedField]
-    public TimeSpan UnloadingTrayDelay = TimeSpan.FromSeconds(1);
 }
 
 [DataRecord]
 [Serializable, NetSerializable]
 public readonly record struct WarheadFuelRequirement(EntProtoId<OrbitalCannonWarheadComponent> Warhead, int Fuel);
+
+[Serializable, NetSerializable]
+public enum OrbitalCannonVisuals
+{
+    Base,
+}
 
 [Serializable, NetSerializable]
 public enum OrbitalCannonStatus

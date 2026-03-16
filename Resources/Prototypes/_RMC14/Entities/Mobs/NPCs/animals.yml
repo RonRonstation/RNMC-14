@@ -54,7 +54,7 @@
   parent: [RMCSimpleMob, MobMonkey, RMCSmallHost]
   id: CMMobMonkey
   name: monkey
-  suffix: RMC
+  suffix: CM
   components:
   - type: GhostRole
     prob: 0
@@ -63,7 +63,7 @@
   parent: [RMCSimpleMob, MobKobold, RMCSmallHost]
   id: CMMobKobold
   name: kobold
-  suffix: RMC
+  suffix: CM
   components:
   - type: GhostRole
     prob: 0
@@ -71,9 +71,7 @@
 - type: entity
   parent: [RMCSimpleMob, MobMouse]
   id: CMMobMouse
-  name: mouse
-  description: Squeak!
-  suffix: RMC
+  suffix: CM
   components:
   - type: GhostRole
     prob: 0
@@ -88,9 +86,7 @@
 - type: entity
   parent: [RMCSimpleMob, MobMouse1]
   id: CMMobMouse1
-  name: mouse
-  description: Squeak!
-  suffix: RMC
+  suffix: CM
   components:
   - type: GhostRole
     prob: 0
@@ -104,9 +100,7 @@
 - type: entity
   parent: [RMCSimpleMob, MobMouse2]
   id: CMMobMouse2
-  name: mouse
-  description: Squeak!
-  suffix: RMC
+  suffix: CM
   components:
   - type: GhostRole
     prob: 0
@@ -438,7 +432,7 @@
 - type: entity
   parent: SpawnMobMouse
   id: CMSpawnMobMouse
-  suffix: RMC
+  suffix: CM
   components:
   - type: ConditionalSpawner
     prototypes:
@@ -507,7 +501,7 @@
   parent: MarkerBase
   id: CMSpawnMobWiggles
   name: Mr. Wiggles Spawner
-  suffix: RMC
+  suffix: CM
   components:
   - type: Sprite
     layers:
@@ -522,7 +516,7 @@
   parent: MarkerBase
   id: CMSpawnMobJones
   name: Jones Spawner
-  suffix: RMC
+  suffix: CM
   components:
   - type: Sprite
     layers:

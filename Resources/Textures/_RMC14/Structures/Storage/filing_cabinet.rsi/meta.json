@@ -36,10 +36,6 @@
     },
     {
       "name": "filingcabinet-open"
-    },
-    {
-      "name": "sidecabinet",
-      "directions": 4
     }
   ]
 }

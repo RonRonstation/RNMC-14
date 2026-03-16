@@ -90,8 +90,6 @@
   - RMCBoxBulletsRifleAPEmptyBuild
   - RMCBoxBulletsSMGEmptyBuild
   - RMCBoxBulletsSMGAPEmptyBuild
-  - RMCBoxBulletsPistolEmptyBuild
-  - RMCBoxBulletsPistolAPEmptyBuild
 
 - type: rmcConstruction
   parent: RMCCardboardBuildBase
@@ -116,18 +114,6 @@
   id: RMCBoxBulletsSMGAPEmptyBuild
   name: SMG ammunition box (10x20mm AP)
   prototype: RMCBoxBulletsSMGAPEmpty
-
-- type: rmcConstruction
-  parent: RMCCardboardBuildBase
-  id: RMCBoxBulletsPistolEmptyBuild
-  name: pistol ammunition box (10x20mm-APC)
-  prototype: RMCBoxBulletsPistolEmpty
-
-- type: rmcConstruction
-  parent: RMCCardboardBuildBase
-  id: RMCBoxBulletsPistolAPEmptyBuild
-  name: pistol ammunition box (10x20mm-APC (AP))
-  prototype: RMCBoxBulletsPistolAPEmpty
 
 # empty rifle magazine boxes
 - type: rmcConstruction

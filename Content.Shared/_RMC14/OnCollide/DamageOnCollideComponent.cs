@@ -47,7 +47,7 @@ public sealed partial class DamageOnCollideComponent : Component
     public bool Fire = false;
 
     [DataField]
-    public CollisionGroup Collision = CollisionGroup.HighImpassable | CollisionGroup.MidImpassable | CollisionGroup.LowImpassable | CollisionGroup.BulletImpassable | CollisionGroup.InteractImpassable;
+    public CollisionGroup Collision = CollisionGroup.FullTileLayer;
 
     [DataField]
     public TimeSpan AcidComboDuration;
@@ -60,9 +60,6 @@ public sealed partial class DamageOnCollideComponent : Component
 
     [DataField]
     public int AcidComboResists;
-
-    [DataField]
-    public int DirectHitMultiplier = 3;
 
     [DataField]
     public TimeSpan Paralyze;

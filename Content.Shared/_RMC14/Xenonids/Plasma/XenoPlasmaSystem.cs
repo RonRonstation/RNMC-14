@@ -2,7 +2,6 @@ using Content.Shared._RMC14.Actions;
 using Content.Shared._RMC14.Xenonids.Egg;
 using Content.Shared._RMC14.Xenonids.Evolution;
 using Content.Shared.Alert;
-using Content.Shared.Coordinates;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Jittering;
@@ -10,7 +9,6 @@ using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Rounding;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Map;
 using Robust.Shared.Network;
 
 namespace Content.Shared._RMC14.Xenonids.Plasma;
@@ -78,18 +76,17 @@ public sealed class XenoPlasmaSystem : EntitySystem
             return;
         }
 
-        if (!HasPlasmaPopup((xeno, xeno), args.Cost + args.Amount, popupOn: args.Target))
+        if (!HasPlasmaPopup((xeno, xeno), args.Amount))
             return;
 
         args.Handled = true;
 
-        var ev = new XenoTransferPlasmaDoAfterEvent(args.Cost, args.Amount, args.TargetPercentage);
+        var ev = new XenoTransferPlasmaDoAfterEvent(args.Amount);
         var doAfter = new DoAfterArgs(EntityManager, xeno, xeno.Comp.PlasmaTransferDelay, ev, xeno, args.Target)
         {
             BreakOnMove = true,
             DistanceThreshold = args.Range,
             TargetEffect = "RMCEffectHealPlasma",
-            RangeCheck = false,
         };
 
         _doAfter.TryStartDoAfter(doAfter);
@@ -102,43 +99,24 @@ public sealed class XenoPlasmaSystem : EntitySystem
 
         if (self.Owner == target ||
             HasComp<XenoAttachedOvipositorComponent>(args.Target) ||
-            !TryComp(target, out XenoPlasmaComponent? otherXeno))
+            !TryComp(target, out XenoPlasmaComponent? otherXeno) ||
+            otherXeno.Plasma == otherXeno.MaxPlasma ||
+            !TryRemovePlasma((self, self), args.Amount))
         {
             return;
         }
-
-        if (otherXeno.Plasma == otherXeno.MaxPlasma)
-        {
-            _popup.PopupClient("That xeno already has max plasma!", args.Target.Value, self, PopupType.MediumCaution);
-            return;
-        }
-
-        if (!TryRemovePlasmaPopup((self, self), args.Cost + args.Amount, popupOn: args.Target.Value.ToCoordinates()))
-            return;
 
         args.Handled = true;
-        var restored = RegenPlasma(target, args.Amount);
+        RegenPlasma(target, args.Amount);
 
-        if (args.TargetPercentage is { } percentage)
-            restored += RegenPlasma(target, otherXeno.MaxPlasma * percentage);
+        _jitter.DoJitter(target, TimeSpan.FromSeconds(1), true, 80, 8, true);
 
         // for some reason the popup will sometimes not show for the predicting client here
         if (_net.IsClient)
             return;
 
-        _jitter.DoJitter(target, TimeSpan.FromSeconds(1), true, 80, 8, true);
-
-        var selfMsg = Loc.GetString("cm-xeno-plasma-transferred-to-other",
-            ("plasma", restored),
-            ("target", target),
-            ("total", self.Comp.Plasma));
-        _popup.PopupEntity(selfMsg, target, self);
-
-        var targetMsg = Loc.GetString("cm-xeno-plasma-transferred-to-self",
-            ("plasma", restored),
-            ("target", self.Owner),
-            ("total", otherXeno.Plasma));
-        _popup.PopupEntity(targetMsg, target, target);
+        _popup.PopupEntity(Loc.GetString("cm-xeno-plasma-transferred-to-other", ("plasma", args.Amount), ("target", target), ("total", self.Comp.Plasma)), self, self);
+        _popup.PopupEntity(Loc.GetString("cm-xeno-plasma-transferred-to-self", ("plasma", args.Amount), ("target", self.Owner), ("total", otherXeno.Plasma)), target, target);
 
         _audio.PlayPredicted(self.Comp.PlasmaTransferSound, self, self);
 
@@ -203,19 +181,15 @@ public sealed class XenoPlasmaSystem : EntitySystem
         return xeno.Comp.Plasma >= plasma;
     }
 
-    public bool HasPlasmaPopup(Entity<XenoPlasmaComponent?> xeno, FixedPoint2 plasma, bool predicted = true, bool doPopup = true, EntityUid? popupOn = null)
+    public bool HasPlasmaPopup(Entity<XenoPlasmaComponent?> xeno, FixedPoint2 plasma, bool predicted = true)
     {
         void DoPopup()
         {
-            if (!doPopup)
-                return;
-
-            popupOn ??= xeno;
             var popup = Loc.GetString("cm-xeno-not-enough-plasma");
             if (predicted)
-                _popup.PopupClient(popup, popupOn.Value, xeno, PopupType.MediumCaution);
+                _popup.PopupClient(popup, xeno, xeno);
             else
-                _popup.PopupEntity(popup, popupOn.Value, xeno, PopupType.MediumCaution);
+                _popup.PopupEntity(popup, xeno, xeno);
         }
 
         if (!Resolve(xeno, ref xeno.Comp, false))
@@ -233,20 +207,19 @@ public sealed class XenoPlasmaSystem : EntitySystem
         return true;
     }
 
-    public FixedPoint2 RegenPlasma(Entity<XenoPlasmaComponent?> xeno, FixedPoint2 amount)
+    public void RegenPlasma(Entity<XenoPlasmaComponent?> xeno, FixedPoint2 amount)
     {
         if (!_xenoPlasmaQuery.Resolve(xeno, ref xeno.Comp, false))
-            return FixedPoint2.Zero;
+            return;
 
         var old = xeno.Comp.Plasma;
         xeno.Comp.Plasma = FixedPoint2.Min(xeno.Comp.Plasma + amount, xeno.Comp.MaxPlasma);
 
         if (old == xeno.Comp.Plasma)
-            return FixedPoint2.Zero;
+            return;
 
         Dirty(xeno);
         UpdateAlert((xeno, xeno.Comp));
-        return xeno.Comp.Plasma - old;
     }
 
     public void RemovePlasma(Entity<XenoPlasmaComponent> xeno, FixedPoint2 plasma)
@@ -275,7 +248,7 @@ public sealed class XenoPlasmaSystem : EntitySystem
         return true;
     }
 
-    public bool TryRemovePlasmaPopup(Entity<XenoPlasmaComponent?> xeno, FixedPoint2 plasma, bool predicted = true, EntityCoordinates? popupOn = null)
+    public bool TryRemovePlasmaPopup(Entity<XenoPlasmaComponent?> xeno, FixedPoint2 plasma, bool predicted = true)
     {
         if (!Resolve(xeno, ref xeno.Comp, false))
             return false;
@@ -283,11 +256,10 @@ public sealed class XenoPlasmaSystem : EntitySystem
         if (TryRemovePlasma((xeno, xeno.Comp), plasma))
             return true;
 
-        popupOn ??= xeno.Owner.ToCoordinates();
         if (predicted)
-            _popup.PopupClient(Loc.GetString("cm-xeno-not-enough-plasma"), popupOn.Value, xeno, PopupType.MediumCaution);
+            _popup.PopupClient(Loc.GetString("cm-xeno-not-enough-plasma"), xeno, xeno);
         else
-            _popup.PopupCoordinates(Loc.GetString("cm-xeno-not-enough-plasma"), popupOn.Value, xeno, PopupType.MediumCaution);
+            _popup.PopupEntity(Loc.GetString("cm-xeno-not-enough-plasma"), xeno, xeno);
 
         return false;
     }

@@ -4,8 +4,7 @@
   abstract: true
   components:
   - type: ItemIFF
-    factions:
-    - FactionCLF
+    faction: FactionSurvivor
 
 - type: entity
   parent: RMCIDCardCLFBase
@@ -38,14 +37,6 @@
   components:
   - type: PresetIdCard
     job: RMCCLFSpecialist
-
-- type: entity
-  parent: RMCIDCardCLFBase
-  id: RMCIDCardCLFCellLeader
-  name: clf cell leader's ID card
-  components:
-  - type: PresetIdCard
-    job: RMCCLFCellLeader
 
 - type: entity
   parent: RMCIDCardCLFBase

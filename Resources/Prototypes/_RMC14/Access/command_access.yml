@@ -26,7 +26,7 @@
 - type: accessLevel
   id: CMAccessCMO
   parent: RMCBaseMedicalAccess
-  name: rmc-job-name-cmo
+  name: cm-job-name-cmo
 
 - type: accessLevel
   id: CMAccessCE

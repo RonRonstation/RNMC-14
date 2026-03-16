@@ -20,8 +20,3 @@
         params:
           volume: -5
       doPopup: false
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 500
-      CMGlass: 50
-      # 10 waste?

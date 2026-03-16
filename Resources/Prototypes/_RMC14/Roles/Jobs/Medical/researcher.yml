@@ -1,8 +1,8 @@
 ﻿- type: job
   parent: CMJobBase
   id: CMResearcher
-  name: rmc-job-name-researcher
-  description: rmc-job-description-researcher
+  name: cm-job-name-researcher
+  description: cm-job-description-researcher
   playTimeTracker: CMJobResearcher
   requirements:
   - !type:TotalJobsTimeRequirement
@@ -50,7 +50,7 @@
       - WeYa
       - UNMC
     - type: JobPrefix
-      prefix: rmc-job-prefix-researcher
+      prefix: cm-job-prefix-researcher
     - type: ViewIntelObjectives
     - type: TacticalMapIcon
       icon:

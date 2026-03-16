@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using Robust.Shared.GameStates;
+﻿using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._RMC14.Clothing;
@@ -19,7 +18,4 @@ public sealed partial class HelmetAccessoryComponent : Component
 
     [DataField, AutoNetworkedField]
     public SpriteSpecifier.Rsi? HatToggledRsi;
-
-    [DataField, AutoNetworkedField]
-    public Vector2 Offset;
 }

@@ -20,7 +20,7 @@
     solutions:
       drink:
         maxVol: 50
-  - type: PhysicalComposition
+  - type: PhysicalComposition # TODO RMC14 add cm materials
     materialComposition:
       CMSteel: 50
   - type: InteractedBlacklist

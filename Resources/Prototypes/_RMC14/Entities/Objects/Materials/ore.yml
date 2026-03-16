@@ -77,7 +77,7 @@
     solutions:
       diamondore:
         reagents:
-        - ReagentId: RMCCarbon
+        - ReagentId: Carbon
           Quantity: 20
   - type: Item
     heldPrefix: diamonds
@@ -97,7 +97,7 @@
     solutions:
       goldore:
         reagents:
-        - ReagentId: RMCGold
+        - ReagentId: Gold
           Quantity: 10
   - type: Item
     heldPrefix: gold
@@ -133,7 +133,7 @@
     solutions:
       ironore:
         reagents:
-        - ReagentId: RMCIron
+        - ReagentId: Iron
           Quantity: 10
   - type: Item
     heldPrefix: iron
@@ -207,6 +207,17 @@
   - type: Stack
     count: 1
 
+- type: reagent
+  id: RMCPlatinum
+  name: reagent-name-rmc-platinum
+  group: Elements
+  desc: reagent-desc-rmc-platinum
+  physicalDesc: reagent-physical-desc-reasonably-metallic
+  flavor: metallic
+  color: "#edf5ff"
+  boilingPoint: 3825.0
+  meltingPoint: 1768.0
+
 - type: entity
   parent: RMCOreBase
   id: RMCSilverOre
@@ -222,7 +233,7 @@
     solutions:
       silverore:
         reagents:
-        - ReagentId: RMCSilver
+        - ReagentId: Silver
           Quantity: 10
   - type: Item
     heldPrefix: silver
@@ -256,7 +267,7 @@
     solutions:
       uraniumore:
         reagents:
-        - ReagentId: RMCUranium
+        - ReagentId: Uranium
           Quantity: 10
         canReact: false
   - type: Item

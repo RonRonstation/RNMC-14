@@ -75,8 +75,6 @@
     interfaces:
       enum.MarineControlComputerUi.Key:
         type: MarineControlComputerBui
-      enum.MarineControlComputerUi.MedalsPanel:
-        type: MedalsPanelBui
       enum.DialogUiKey.Key:
         type: DialogBui
   - type: MarineControlComputer
@@ -296,9 +294,6 @@
   components:
   - type: EvacuationComputer
     earlyCrashChance: 0
-  - type: ActivatableUIRequiresAccess
-  - type: AccessReader
-    access: [ [ "RMCAccessWeYa" ] ]
 
 - type: entity
   parent: RMCCommunicationsConsoleBase
@@ -317,7 +312,6 @@
       enum.LifeboatComputerUi.Key:
         type: LifeboatComputerBui
   - type: LifeboatComputer
-  - type: ActivatableUIRequiresAccess
   - type: AccessReader
     access: [ [ "CMAccessDropship" ], [ "RMCAccessSeniorCommand" ] ]
   - type: ActivatableUIBlacklist

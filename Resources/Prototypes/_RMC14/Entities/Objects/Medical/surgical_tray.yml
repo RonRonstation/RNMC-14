@@ -30,9 +30,6 @@
       components:
       - CMSurgeryTool
 # TODO Should also be able to have PICT FixOVein and Nanopaste
-  - type: PhysicalComposition
-    materialComposition:
-      RMCPlastic: 3000
 
 - type: entity
   parent: RMCSurgicalTrayEmpty
@@ -56,3 +53,4 @@
 #   - Nanopaste
     - id: CMSurgicalLine
     - id: CMSynthGraft
+

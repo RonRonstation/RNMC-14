@@ -637,8 +637,6 @@
     isBulky: false
   - type: ItemCamouflage
     camouflageVariations: { }
-  - type: ClothingRequireEquipped
-    whitelist: null
 
 - type: entity
   parent: CMArmorM3VLBallistics

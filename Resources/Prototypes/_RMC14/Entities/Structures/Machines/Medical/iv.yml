@@ -109,9 +109,6 @@
     quickEquip: false
     slots:
     - suitstorage
-  - type: PhysicalComposition
-    materialComposition:
-      RMCPlastic: 500
 
 - type: entity
   parent: CMBloodPack

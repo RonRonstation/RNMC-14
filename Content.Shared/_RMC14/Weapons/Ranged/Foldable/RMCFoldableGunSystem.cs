@@ -7,9 +7,6 @@ using Content.Shared.DoAfter;
 using Robust.Shared.Audio.Systems;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
-using Content.Shared.Clothing;
-using Content.Shared.Clothing.Components;
-using Content.Shared.Sprite;
 
 namespace Content.Shared._RMC14.Weapons.Ranged.Foldable;
 
@@ -88,17 +85,8 @@ public sealed class RMCFoldableGunSystem : EntitySystem
         if (_hands.GetActiveHand(user) is not { } handToUse)
             return;
 
-        // Remove old entity first
-        _hands.TryDrop(user, ent.Owner, checkActionBlocker: false);
-
-        // Spawn the new entity
         var newEntity = PredictedSpawnNextToOrDrop(ent.Comp.FoldedEntity, user);
-
-        // Try to pickup in the same hand, if it fails, try any hand
-        if (!_hands.TryForcePickup(newEntity, user, handToUse, checkActionBlocker: false))
-        {
-            _hands.TryPickupAnyHand(user, newEntity);
-        }
+        _hands.TryForcePickup(newEntity, user, handToUse, checkActionBlocker: false);
 
         _popup.PopupPredicted(selfText, othersText, user, user);
         _audio.PlayPredicted(ent.Comp.ToggleFoldSound, user, user);

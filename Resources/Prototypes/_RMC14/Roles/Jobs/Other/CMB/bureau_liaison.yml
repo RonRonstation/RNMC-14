@@ -24,13 +24,6 @@
     - type: JobPrefix
       prefix: rmc-job-prefix-icb
     - type: RMCTrackable
-    - type: TacticalMapIcon
-      icon:
-        sprite: /Textures/_RMC14/Interface/map_blips.rsi
-        state: icc
-      background:
-        sprite: /Textures/_RMC14/Interface/map_blips.rsi
-        state: background_cmb
   hidden: true
 
 - type: entity

@@ -35,13 +35,6 @@
     - type: SniperWhitelist
     - type: JobPrefix
       prefix: rmc-job-prefix-pmc-sniper
-    - type: TacticalMapIcon
-      icon:
-        sprite: /Textures/_RMC14/Interface/map_blips.rsi
-        state: pmc_spec
-      background:
-        sprite: /Textures/_RMC14/Interface/map_blips.rsi
-        state: background_pmc
   hidden: true
 
 - type: entity
@@ -110,7 +103,7 @@
     - CMMagazineSMGM63AP
     - CMMagazineSMGM63AP
     - CMMagazineSMGM63AP
-    - RMCMREWeYaPMC
+    - RMCMREWeYa
     - CMEmergencyAutoInjector
     outerClothing:
     - RMCMagazineSniperXM43E1AntiMateriel

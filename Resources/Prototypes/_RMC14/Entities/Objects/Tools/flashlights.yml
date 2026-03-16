@@ -56,10 +56,6 @@
     - belt
     - suitstorage
   - type: NoHandsInteractionBlocked
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 50
-      CMGlass: 20
 
 - type: entity
   parent: RMCBoxMagazineSupplyBase
@@ -146,10 +142,6 @@
     - suitstorage
   - type: PointLight
     radius: 1.75
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 10
-      CMGlass: 5
 
 - type: Tag
   id: RMCPenlight

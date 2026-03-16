@@ -1,9 +1,9 @@
-# added Felinids, Skrell to the species restrictions list
+# added Felinids to the species restrictions list
 - type: marking
   id: TattooHiveChest
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Felinid, Skrell]
+  speciesRestriction: [Human, Dwarf, Felinid]
   coloring:
     default:
       type:
@@ -17,7 +17,7 @@
   id: TattooNightlingChest
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Human, Dwarf, Felinid, Skrell]
+  speciesRestriction: [Human, Dwarf, Felinid]
   coloring:
     default:
       type:

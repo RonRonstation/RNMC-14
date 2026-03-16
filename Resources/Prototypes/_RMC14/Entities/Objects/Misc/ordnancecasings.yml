@@ -19,9 +19,6 @@
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/CustomOrdnance/m40grenadecasing.rsi
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 4250
 
 - type: entity
   name: M15 grenade casing
@@ -31,9 +28,6 @@
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/CustomOrdnance/m15grenadecasing.rsi
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 7000
 
 - type: entity
   name: M20 mine casing
@@ -43,9 +37,6 @@
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/CustomOrdnance/m20minecasing.rsi
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 3750
 
 - type: entity
   name: C4 plastic casing
@@ -55,10 +46,6 @@
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/CustomOrdnance/c4plasticcasing.rsi
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 7500
-      RMCPlastic: 2000
 
 - type: entity
   name: 84mm rocket tube
@@ -68,9 +55,6 @@
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/CustomOrdnance/84mmrockettube.rsi
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 7500
 
 - type: entity
   name: 84mm rocket warhead
@@ -80,9 +64,6 @@
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/CustomOrdnance/84mmrocketwarhead.rsi
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 11250
 
 - type: entity
   name: 80mm mortar shell casing
@@ -92,9 +73,6 @@
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/CustomOrdnance/80mmmortarshell.rsi
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 18750
 
 - type: entity
   name: 80mm mortar shell warhead
@@ -104,9 +82,6 @@
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/CustomOrdnance/80mmmortarwarhead.rsi
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 11250
 
 - type: entity
   name: 80mm mortar shell camera warhead
@@ -116,9 +91,6 @@
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/CustomOrdnance/80mmmortarwarhead.rsi
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 15000
 
 - type: entity
   name: Custom M34 smoke tank
@@ -136,6 +108,3 @@
       map: [ "enum.SolutionContainerLayers.Fill" ]
   - type: Item
     size: Normal
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 3750

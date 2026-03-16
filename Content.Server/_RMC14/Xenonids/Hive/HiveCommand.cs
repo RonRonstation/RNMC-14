@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Content.Server.Administration;
 using Content.Shared._RMC14.Xenonids;
-using Content.Shared._RMC14.Xenonids.Construction;
 using Content.Shared._RMC14.Xenonids.Hive;
 using Content.Shared.Administration;
 using Robust.Shared.Toolshed;
@@ -50,17 +49,7 @@ public sealed class HiveCommand : ToolshedCommand
             amount++;
         }
 
-        var constructs = EntityManager.EntityQueryEnumerator<XenoConstructComponent>();
-        while (constructs.MoveNext(out var uid, out _))
-        {
-            if (hiveSystem.HasHive(uid))
-                continue;
-
-            hiveSystem.SetHive(uid, firstHive);
-            amount++;
-        }
-
-        ctx.WriteLine($"Set the hive of {amount} rogue xenos and structures to {firstHive}.");
+        ctx.WriteLine($"Set the hive of {amount} rogue xenos to {firstHive}.");
     }
 
     [CommandImplementation("set")]
@@ -69,9 +58,9 @@ public sealed class HiveCommand : ToolshedCommand
         [PipedArgument] EntityUid xeno,
         [CommandArgument] Entity<HiveComponent> hive)
     {
-        if (!HasComp<XenoComponent>(xeno) && !HasComp<XenoFriendlyComponent>(xeno) && !HasComp<XenoConstructComponent>(xeno))
+        if (!HasComp<XenoComponent>(xeno) && !HasComp<XenoFriendlyComponent>(xeno))
         {
-            ctx.WriteLine($"Entity {xeno} does not have {nameof(XenoComponent)}, {nameof(XenoFriendlyComponent)}, or {nameof(XenoConstructComponent)}");
+            ctx.WriteLine($"Entity {xeno} does not have {nameof(XenoComponent)} or {nameof(XenoFriendlyComponent)}");
             return xeno;
         }
 

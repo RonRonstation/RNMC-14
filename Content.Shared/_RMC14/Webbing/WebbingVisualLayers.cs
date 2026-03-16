@@ -2,6 +2,5 @@
 
 public enum WebbingVisualLayers
 {
-    Base,   // for uniform webbings
-    Outer   // for armor webbings
+    Base
 }

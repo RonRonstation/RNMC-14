@@ -1,4 +1,17 @@
 ﻿- type: entity
+  id: FactionSPP
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: IFFFaction
+  - type: FactionFrequencies
+    channels:
+    - SPP
+    - SPPCommand
+    - SPPEngi
+    - SPPMed
+    - SPPCCT
+
+- type: entity
   id: FactionHalcyon
   categories: [ HideSpawnMenu ]
   components:
@@ -11,39 +24,11 @@
   description: A soldier dog tag.
   components:
   - type: ItemIFF
-    factions:
-    - FactionSPP
-
-- type: entity
-  parent: CMIDCardBase
-  id: RMCIDSPPCard
-  name: SPP ID Card
-  description: A SPP officer's ID card.
-  components:
-  - type: ItemIFF
-    factions:
-    - FactionSPP
-  - type: Sprite
-    sprite: _RMC14/Objects/CMIDs/spp_id.rsi
-    state: spp
-  - type: Clothing
-    sprite: _RMC14/Objects/CMIDs/spp_id.rsi
+    faction: FactionSPP
 
 - type: entity
   parent: [ RMCIDCardStandardDogtagHidden, RMCIDSPP ]
   id: RMCIDSPPHidden
-  categories: [ HideSpawnMenu ]
-
-- type: entity
-  parent: RMCIDSPP
-  id: RMCIDSPPRifleman
-  components:
-  - type: PresetIdCard
-    job: RMCSPPRifleman
-
-- type: entity
-  parent: [ RMCIDCardStandardDogtagHidden, RMCIDSPPRifleman ]
-  id: RMCIDSPPRiflemanHidden
   categories: [ HideSpawnMenu ]
 
 - type: entity
@@ -55,9 +40,7 @@
   - type: PresetIdCard
     job: CMSurvivor
   - type: ItemIFF
-    factions:
-    - FactionSurvivor
-    - FactionSPP
+    faction: FactionSurvivor
 
 - type: entity
   parent: CMIDCardSilver
@@ -67,8 +50,7 @@
   suffix: Halcyon
   components:
   - type: ItemIFF
-    factions:
-    - FactionHalcyon
+    faction: FactionHalcyon
   - type: Access
     groups:
     - Colony

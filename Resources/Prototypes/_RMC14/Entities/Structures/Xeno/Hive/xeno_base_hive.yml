@@ -37,7 +37,6 @@
     damage:
       types:
         Heat: 3.8
-  - type: QueenEyeVision
 
 - type: entity
   abstract: true

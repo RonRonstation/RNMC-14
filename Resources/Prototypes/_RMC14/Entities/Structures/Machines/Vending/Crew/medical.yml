@@ -15,14 +15,12 @@
     jobs:
     - CMNurse
     - CMDoctor
-    - RMCFieldDoctor
     - CMResearcher
     - CMCMO
     sections:
     - name: Medical Set (Mandatory)
       jobs:
       - CMDoctor
-      - RMCFieldDoctor
       - CMResearcher
       - CMCMO
       takeAll: CMMedicalSet
@@ -131,7 +129,7 @@
       - id: RMCPouchReagentCanister
         recommended: true
         name: Pressurized Reagent Canister Pouch\n(EMPTY)
-      - id: RMCPouchSling
+      #- id: CMSlingPouch
     - name: Accessories
       choices: { CMAccessories: 1 }
       entries:

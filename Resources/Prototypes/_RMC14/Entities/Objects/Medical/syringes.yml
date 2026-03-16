@@ -25,9 +25,6 @@
     quickEquip: false
     slots:
     - suitstorage
-  - type: PhysicalComposition
-    materialComposition:
-      CMGlass: 150
 
 - type: entity
   parent: CMSyringe

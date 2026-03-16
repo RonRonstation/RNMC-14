@@ -1,13 +1,12 @@
 ﻿- type: job
   parent: CMSurvivorSecurity
   id: CMSurvivorFiorinaPrisonGuard
-  name: rmc-job-name-pmc-corporate-goon-secguard
+  name: rmc-job-name-pmc-corporate-goon
   description: cm-job-description-survivor
   playTimeTracker: CMJobSurvivorSecurity
   startingGear: RMCGearSurvivorFiorinaPrisonGuard
   accessGroups:
   - ColonistSec
-  - ColonistCorporate
   spawnMenuRoleName: We-Ya Corporate Security (Fiorina Survivor)
   icon: "RMCJobIconPMCGoonStandard"
   hasIcon: true
@@ -15,7 +14,7 @@
   - !type:AddComponentSpecial
     components:
     - type: Skills
-      preset: RMCSkillPresetSurvivorMarshal
+      preset: SurvivorMarshal
     - type: EquipSurvivorPreset
       preset: RMCSurvivorPresetSecurity
     - type: RMCSurvivor
@@ -26,13 +25,6 @@
       - Civilian
     - type: IntelRescueSurvivorObjective
     - type: RMCAllowSuitStorage
-    - type: TacticalMapIcon
-      icon:
-        sprite: /Textures/_RMC14/Interface/map_blips.rsi
-        state: cmp
-      background:
-        sprite: /Textures/_RMC14/Interface/map_blips.rsi
-        state: background_goon
 
 - type: startingGear
   parent: RMCGearSurvivorBase
@@ -42,7 +34,7 @@
     back: CMSatchelSecuritySurvivorFill
     outerClothing: RMCArmorVestWeYa
     ears: RMCHeadsetDistressWeYa
-    head: RMCArmorHelmetPMCDark
+    head: RMCHeadCapWestonYamadaDark
     gloves: RMCHandsVeteran
     shoes: RMCShoesJackboots
     id: CMIDCardLiaisonColony

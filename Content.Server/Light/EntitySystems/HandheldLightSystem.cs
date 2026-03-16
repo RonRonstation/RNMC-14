@@ -2,7 +2,6 @@ using Content.Server.Actions;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Server.PowerCell;
-using Content.Shared._RMC14.Attachable.Components;
 using Content.Shared.Actions;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
@@ -70,11 +69,6 @@ namespace Content.Server.Light.EntitySystems
 
         private void OnGetActions(EntityUid uid, HandheldLightComponent component, GetItemActionsEvent args)
         {
-            // Don't add action if this item is an attachment that requires being attached to a holder
-            if (TryComp(uid, out AttachableToggleableComponent? attachable) &&
-                attachable.AttachedOnly && !attachable.Attached)
-                return;
-
             args.AddAction(ref component.ToggleActionEntity, component.ToggleAction);
         }
 
@@ -82,14 +76,6 @@ namespace Content.Server.Light.EntitySystems
         {
             if (args.Handled)
                 return;
-
-            // Prevent toggling if item is an attachment that requires being attached to a holder
-            if (TryComp(ent.Owner, out AttachableToggleableComponent? attachable) &&
-                attachable.AttachedOnly && !attachable.Attached)
-            {
-                args.Handled = true;
-                return;
-            }
 
             if (ent.Comp.Activated)
                 TurnOff(ent);
@@ -140,14 +126,6 @@ namespace Content.Server.Light.EntitySystems
         {
             if (args.Handled || !args.Complex || !ent.Comp.ToggleOnInteract)
                 return;
-
-            // Prevent toggling if item is an attachment that requires being attached to a holder
-            if (TryComp(ent.Owner, out AttachableToggleableComponent? attachable) &&
-                attachable.AttachedOnly && !attachable.Attached)
-            {
-                args.Handled = true;
-                return;
-            }
 
             if (ToggleStatus(args.User, ent))
                 args.Handled = true;

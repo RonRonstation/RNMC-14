@@ -5,7 +5,8 @@
   components:
   - type: StorageFill
     contents:
-    - id: RMCTacticalPrybar
+    - id: RMCFlashlight
+    - id: CMCrowbar
 
 - type: entity
   parent: RMCArmorUDEPForecon
@@ -14,7 +15,8 @@
   components:
   - type: StorageFill
     contents:
-    - id: RMCTacticalPrybar
+    - id: RMCFlashlight
+    - id: CMCrowbar
 
 - type: entity
   parent: RMCJacketWindbreaker
@@ -23,4 +25,5 @@
   components:
   - type: StorageFill
     contents:
-    - id: RMCTacticalPrybar
+    - id: RMCFlashlight
+    - id: CMCrowbar

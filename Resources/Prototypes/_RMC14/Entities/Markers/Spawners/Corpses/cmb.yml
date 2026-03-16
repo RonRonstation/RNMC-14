@@ -1,8 +1,0 @@
-# CMB Deputy
-- type: entity
-  parent: RMCSpawnerCorpse
-  id: RMCSpawnerCorpseDeputy
-  name: Corpse Spawner - CMB Deputy
-  components:
-  - type: CorpseSpawner
-    spawn: RMCCorpseDeputy

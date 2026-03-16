@@ -4,7 +4,6 @@ using Content.Server.PowerCell;
 using Content.Shared.Examine;
 using Content.Shared.Power;
 using Content.Shared.PowerCell.Components;
-using Content.Shared.PowerCell; // RMC14
 using Content.Shared.Emp;
 using JetBrains.Annotations;
 using Robust.Shared.Containers;
@@ -64,12 +63,10 @@ internal sealed class ChargerSystem : EntitySystem
             }
             else
             {
-                // RMC14 - add how much each item is charged. Used SearchForBattery so items
-                // that contain a slotted battery (e.g. visors with internal powercells)
-                // have their charge shown.
+                // add how much each item is charged it
                 foreach (var contained in container.ContainedEntities)
                 {
-                    if (!SearchForBattery(contained, out var batteryUid, out var battery))
+                    if (!TryComp<BatteryComponent>(contained, out var battery))
                         continue;
 
                     var chargePercentage = (battery.CurrentCharge / battery.MaxCharge) * 100;
@@ -195,56 +192,6 @@ internal sealed class ChargerSystem : EntitySystem
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        // RMC14 - Update numeric charge-level appearance so the client visualizer can show progress frames.
-        UpdateChargeLevelVisual(uid, component, appearance);
-    }
-
-    private void UpdateChargeLevelVisual(EntityUid uid, ChargerComponent component, AppearanceComponent? appearance = null)
-    {
-        if (!_container.TryGetContainer(uid, component.SlotId, out var container))
-            return;
-
-        // RMC14 - No item -> show empty (level 0)
-        if (container.ContainedEntities.Count == 0)
-        {
-            _appearance.SetData(uid, PowerCellVisuals.ChargeLevel, (byte)0, appearance);
-            return;
-        }
-
-        var contained = container.ContainedEntities[0];
-        if (!SearchForBattery(contained, out var batteryUid, out var battery))
-        {
-            _appearance.SetData(uid, PowerCellVisuals.ChargeLevel, (byte)0, appearance);
-            return;
-        }
-
-        var max = Math.Max(1f, battery.MaxCharge);
-        var percent = battery.CurrentCharge / max;
-
-        // RMC14 - Determine number of steps from component (minimum 3: empty, at least one intermediate, full)
-        var steps = Math.Max(3, component.ChargeLevelSteps);
-        var lastIndex = steps - 1;
-
-        byte level;
-
-        if (percent >= 1f)
-        {
-            // RMC14 - Fully charged -> highest index
-            level = (byte)lastIndex;
-        }
-        else if (percent <= 0f)
-        {
-            // RMC14 - Empty
-            level = 0;
-        }
-        else
-        {
-            // RMC14 - Map 0..99% to the intermediate states 1..(steps-2)
-            var intermediateCount = steps - 2;
-            level = (byte)Math.Clamp((int)Math.Ceiling(percent * intermediateCount), 1, intermediateCount);
-        }
-
-        _appearance.SetData(uid, PowerCellVisuals.ChargeLevel, level, appearance);
     }
 
     private void OnEmpPulse(EntityUid uid, ChargerComponent component, ref EmpPulseEvent args)
@@ -301,8 +248,6 @@ internal sealed class ChargerSystem : EntitySystem
 
         _battery.SetCharge(batteryUid.Value, heldBattery.CurrentCharge + component.ChargeRate * frameTime, heldBattery);
         UpdateStatus(uid, component);
-        // RMC14 - Update charge-level appearance immediately so the client reflects progress promptly.
-        UpdateChargeLevelVisual(uid, component);
     }
 
     private bool SearchForBattery(EntityUid uid, [NotNullWhen(true)] out EntityUid? batteryUid, [NotNullWhen(true)] out BatteryComponent? component)

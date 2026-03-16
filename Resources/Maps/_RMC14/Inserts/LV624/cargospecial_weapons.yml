@@ -124,7 +124,7 @@ entities:
     - type: Transform
       pos: 1.5,2.5
       parent: 1
-- proto: RMCTankFlamerColony
+- proto: RMCTankFlamer
   entities:
   - uid: 9
     components:
@@ -148,7 +148,7 @@ entities:
     - type: Transform
       pos: 2.5,2.5
       parent: 1
-- proto: RMCWeaponFlamerColony
+- proto: RMCWeaponFlamer
   entities:
   - uid: 6
     components:

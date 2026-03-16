@@ -17,4 +17,3 @@ ui-holocard-change-searchbar-placeholder = Holocard
 ui-health-scanner-holocard-change = Change
 
 ui-holocard-change-insufficient-skill = You have insufficient medical skill to apply a holocard
-ui-holocard-change-synth-invalid = Triage holocards only work on humans.

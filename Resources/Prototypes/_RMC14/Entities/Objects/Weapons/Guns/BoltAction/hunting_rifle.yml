@@ -68,12 +68,10 @@
           tags:
           - RMCAttachmentBarrel
       rmc-aslot-rail:
-        startingAttachable: RMCAttachmentMiniscopeHunting
+        startingAttachable: RMCAttachmentHuntingScope
         whitelist:
           tags:
-          - RMCAttachmentHuntingScope
-          - RMCAttachmentMiniscopeHunting
-          - RMCAttachmentS84xTelescopicScope
+          - RMCAttachmentRail
       rmc-aslot-stock:
         locked: true
         startingAttachable: RMCAttachmentHuntingStock

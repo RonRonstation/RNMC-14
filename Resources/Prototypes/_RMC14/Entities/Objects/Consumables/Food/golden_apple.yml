@@ -11,5 +11,5 @@
         reagents:
         - ReagentId: Nutriment
           Quantity: 10
-        - ReagentId: RMCGold
+        - ReagentId: Gold
           Quantity: 2

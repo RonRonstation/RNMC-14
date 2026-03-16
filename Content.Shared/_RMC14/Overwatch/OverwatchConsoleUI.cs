@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using Content.Shared._RMC14.Marines.Roles.Ranks;
-using Content.Shared._RMC14.Marines.Squads;
 using Content.Shared.Mobs;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
@@ -154,23 +153,7 @@ public sealed class OverwatchConsoleSendMessageBuiMsg(string message) : BoundUse
 }
 
 [Serializable, NetSerializable]
-public sealed class OverwatchConsoleOpenSquadObjectivesBuiMsg : BoundUserInterfaceMessage;
-
-[Serializable, NetSerializable]
-public sealed class OverwatchConsoleSetSquadObjectiveBuiMsg(SquadObjectiveType type, string objective) : BoundUserInterfaceMessage
-{
-    public readonly SquadObjectiveType Type = type;
-    public readonly string Objective = objective;
-}
-
-[Serializable, NetSerializable]
-public sealed class OverwatchConsoleClearSquadObjectiveBuiMsg(SquadObjectiveType type) : BoundUserInterfaceMessage
-{
-    public readonly SquadObjectiveType Type = type;
-}
-
-[Serializable, NetSerializable]
-public record struct OverwatchSquad(NetEntity Id, string Name, Color Color, NetEntity? Leader, bool CanSupplyDrop, SpriteSpecifier.Rsi LeaderIcon, Dictionary<SquadObjectiveType, string> Objectives);
+public record struct OverwatchSquad(NetEntity Id, string Name, Color Color, NetEntity? Leader, bool CanSupplyDrop, SpriteSpecifier.Rsi LeaderIcon);
 
 [Serializable, NetSerializable]
 public readonly record struct OverwatchMarine(

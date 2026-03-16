@@ -64,7 +64,7 @@ public sealed class XenoPierceSystem : EntitySystem
             target = xenoCoords.WithPosition(xenoCoords.Position + newTile);
         }
 
-        var tiles = _line.DrawLine(xenoCoords, target, TimeSpan.Zero, xeno.Comp.Range.Float(), out _, ignoreBarricades: true);
+        var tiles = _line.DrawLine(xenoCoords, target, TimeSpan.Zero, xeno.Comp.Range.Float(), out _);
 
         if (tiles.Count == 0)
             return;

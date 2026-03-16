@@ -17,6 +17,4 @@
     quickEquip: false
     slots:
     - suitstorage
-  - type: PhysicalComposition
-    materialComposition:
-      RMCPlastic: 150
+    

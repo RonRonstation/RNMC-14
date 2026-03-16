@@ -9,9 +9,6 @@
     state: icon
   - type: Item
     sprite: _RMC14/Objects/Tools/Hydroponics/mini_hoe.rsi
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 50
 
 - type: entity
   parent: HydroponicsToolSpade
@@ -26,9 +23,6 @@
     sprite: _RMC14/Objects/Tools/Hydroponics/spade.rsi
   - type: XenoTunnelFiller
   - type: Shovel
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 50
 
 - type: entity
   parent: HydroponicsToolHatchet
@@ -41,6 +35,4 @@
     state: icon
   - type: Item
     sprite: _RMC14/Objects/Tools/Hydroponics/hatchet.rsi
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 15000
+

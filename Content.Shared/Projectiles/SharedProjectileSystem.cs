@@ -14,6 +14,7 @@ using Content.Shared.Effects;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Throwing;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Audio.Systems;
@@ -79,12 +80,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         if (projectile.Comp1.ProjectileSpent)
         {
             if (_net.IsServer && component.DeleteOnCollide)
-            {
-                if (component.QueueDeletion)
-                    QueueDel(uid);
-                else
-                    Del(uid);
-            }
+                QueueDel(uid);
 
             return;
         }
@@ -114,16 +110,9 @@ public abstract partial class SharedProjectileSystem : EntitySystem
             : new DamageSpecifier(ev.Damage);
         var deleted = Deleted(target);
 
-        // RMC14 this is already done on the server in TryChangeDamage.
-        if (_net.IsClient)
-        {
-            var modifyEvent = new DamageModifyEvent(ev.Damage, component.Shooter, uid);
-            RaiseLocalEvent(target, modifyEvent);
-            modifiedDamage = modifyEvent.Damage;
-        }
-
-        var popupEv = new ProjectileDamageDealtEvent(component.Shooter, modifiedDamage);
-            RaiseLocalEvent(target, ref popupEv);
+        // RMC14
+        var popupEv = new DamageDealtEvent(component.Shooter, modifiedDamage);
+        RaiseLocalEvent(target, ref popupEv);
         //
 
         var filter = Filter.Pvs(coordinates, entityMan: EntityManager);
@@ -219,22 +208,8 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         var additionalHits = new AfterProjectileHitEvent(projectile, target);
         RaiseLocalEvent(uid, ref additionalHits);
 
-        if ((_net.IsServer || IsClientSide(uid)) && component.ImpactEffect != null)
-        {
-            var impactEffectEv = new ImpactEffectEvent(component.ImpactEffect, GetNetCoordinates(coordinates));
-            if (_net.IsServer)
-                RaiseNetworkEvent(impactEffectEv, filter);
-            else
-                RaiseLocalEvent(impactEffectEv);
-        }
-
         if (!predicted && component.DeleteOnCollide && (_net.IsServer || IsClientSide(uid)))
-        {
-            if (component.QueueDeletion)
-                QueueDel(uid);
-            else
-                Del(uid);
-        }
+            QueueDel(uid);
 
         else if (_net.IsServer && component.DeleteOnCollide)
         {
@@ -246,6 +221,15 @@ public abstract partial class SharedProjectileSystem : EntitySystem
                 predictedComp.Distance = distance;
 
             Dirty(uid, predictedComp);
+        }
+
+        if ((_net.IsServer || IsClientSide(uid)) && component.ImpactEffect != null)
+        {
+            var impactEffectEv = new ImpactEffectEvent(component.ImpactEffect, GetNetCoordinates(coordinates));
+            if (_net.IsServer)
+                RaiseNetworkEvent(impactEffectEv, filter);
+            else
+                RaiseLocalEvent(impactEffectEv);
         }
     }
 

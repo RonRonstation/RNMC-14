@@ -192,7 +192,6 @@ public abstract class SharedBarbedSystem : EntitySystem
         if (barbed.Comp.IsBarbed)
         {
             args.Cancelled = true;
-            args.PopupHandled = true;
             _popupSystem.PopupClient(Loc.GetString("barbed-wire-cant-climb"), barbed.Owner, args.User);
         }
     }

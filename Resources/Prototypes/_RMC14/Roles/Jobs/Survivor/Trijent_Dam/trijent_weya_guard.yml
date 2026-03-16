@@ -1,51 +1,41 @@
 ﻿- type: job
   parent: CMSurvivorSecurity
   id: CMSurvivorTrijentGoon
-  name: rmc-job-name-pmc-corporate-goon-secguard
+  name: rmc-job-name-survivor-trijent-goon
+  description: cm-job-description-survivor
   startingGear: RMCGearSurvivorTrijentGoon
   hasIcon: true
   icon: RMCJobIconWeYaSec
-  spawnMenuRoleName: WeYa Security Guard (Trijent Survivor)
-  accessGroups:
-  - ColonistSec
-  - ColonistCorporate
+  spawnMenuRoleName: Trijent Security Guard (Trijent Survivor)
   special:
   - !type:AddComponentSpecial
     components:
     - type: Skills
-      preset: RMCSkillPresetSurvivorMarshal
+      preset: SurvivorMarshal
     - type: RMCSurvivor
     - type: MotionDetectorTracked
     - type: NpcFactionMember
       factions:
-      - WeYa
       - Civilian
     - type: IntelRescueSurvivorObjective
     - type: RMCAllowSuitStorage
     - type: EquipSurvivorPreset
-      preset: RMCSurvivorPresetSecurity
-    - type: TacticalMapIcon
-      icon:
-        sprite: /Textures/_RMC14/Interface/map_blips.rsi
-        state: cmp
-      background:
-        sprite: /Textures/_RMC14/Interface/map_blips.rsi
-        state: background_goon
+      preset: RMCGearSurvivorPresetTrijentGoon
+  useLoadoutOfJob: CMSurvivorSecurity # for inheritance
 
 - type: startingGear
   parent: RMCGearSurvivorSecurity
   id: RMCGearSurvivorTrijentGoon
   equipment:
-    head: RMCArmorHelmetPMCDark
+    head: RMCHeadCapWestonYamadaDark
     jumpsuit: CMJumpsuitLiaisonBlueKutjevoGoon
     ears: RMCHeadsetDistressWeYa
     shoes: RMCBootsCorporate
-    id: CMIDCardLiaisonColony
 
 - type: entity
   parent: CMSpawnPointJobBase
   id: RMCSpawnPointSurvivorTrijentGoon
-  name: survivor trijent weya secguard spawn point
+  name: trijent goon spawn point
   components:
   - type: SpawnPoint
     job_id: CMSurvivorTrijentGoon
@@ -53,6 +43,12 @@
     layers:
     - sprite: _RMC14/Markers/landmarks.rsi
       state: surv
+
+- type: entity
+  parent: RMCSurvivorPresetSecurity
+  id: RMCGearSurvivorPresetTrijentGoon
+  name: trijent goon colonist preset
+  categories: [ HideSpawnMenu ]
 
 - type: jobIcon
   parent: CMJobIconBase

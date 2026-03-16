@@ -38,7 +38,7 @@
       - RMCShellShotgunIncendiary
       - RMCShellShotgunBeanbag
       - RMCShellShotgunFlechette
-    proto: CMShellShotgunFlechette
+    proto: CMShellShotgunSlugs
     capacity: 3 #It's a lovely triple barrel
     soundInsert:
       path: /Audio/_RMC14/Weapons/Guns/Reload/gun_mou_reload.ogg

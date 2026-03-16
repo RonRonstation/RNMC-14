@@ -77,8 +77,6 @@
     - 60
   - type: RMCSmartFridgeInsertable
     category: Bottle
-  - type: PhysicalComposition
-    materialComposition: {}
 
 - type: entity
   parent: CMBottleEmpty

@@ -18,7 +18,7 @@
   - !type:AddComponentSpecial
     components:
     - type: Skills
-      preset: RMCSkillPresetSurvivorMarshal
+      preset: SurvivorMarshal
     - type: RMCSurvivor
     - type: MotionDetectorTracked
     - type: NpcFactionMember
@@ -36,8 +36,7 @@
       background:
         sprite: /Textures/_RMC14/Interface/map_blips.rsi
         state: background_cmb
-    - type: JobPrefix
-      prefix: rmc-job-prefix-bureau-deputy
+  useLoadoutOfJob: CMSurvivorSecurity # for inheritance
 
 - type: startingGear
   parent: RMCGearSurvivorSecurity

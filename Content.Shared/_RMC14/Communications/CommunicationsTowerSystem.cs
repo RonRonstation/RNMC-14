@@ -161,20 +161,12 @@ public sealed class CommunicationsTowerSystem : EntitySystem
         if (ent.Comp.State == CommunicationsTowerState.Broken)
             return;
 
-        var factions = new HashSet<EntProtoId<IFFFactionComponent>>();
-        if (_gunIFF.TryGetFactions(args.User, factions))
+        if (_gunIFF.TryGetFaction(args.User, out var faction) &&
+            _prototypes.TryIndex(faction, out var factionProto) &&
+            factionProto.TryGetComponent(out FactionFrequenciesComponent? frequencies, _compFactory))
         {
-            foreach (var faction in factions)
-            {
-                if (_prototypes.TryIndex(faction, out var factionProto) &&
-                    factionProto.TryGetComponent(out FactionFrequenciesComponent? frequencies, _compFactory))
-                {
-                    ent.Comp.Channels.UnionWith(frequencies.Channels);
-                }
-            }
-
-            if (factions.Count > 0)
-                Dirty(ent);
+            ent.Comp.Channels.UnionWith(frequencies.Channels);
+            Dirty(ent);
         }
 
         args.Handled = true;

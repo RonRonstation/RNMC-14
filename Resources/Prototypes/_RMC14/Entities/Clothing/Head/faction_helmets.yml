@@ -1,3 +1,4 @@
+
 # Marine raider
 - type: entity
   parent: ArmorHelmetM10
@@ -19,7 +20,7 @@
 
 # Dutch's Dozen
 - type: entity
-  parent: ArmorHelmetM10
+  parent: ArmorHelmetPMC
   id: RMCArmorHelmetDutch
   name: dutch's dozen helmet
   description: A protective helmet worn by some seriously experienced mercs.
@@ -28,14 +29,6 @@
     sprite: _RMC14/Objects/Clothing/Head/Dutch/helmet.rsi
   - type: Clothing
     sprite: _RMC14/Objects/Clothing/Head/Dutch/helmet.rsi
-  - type: ItemCamouflage
-    camouflageVariations: {}
-  - type: CMArmor
-    melee: 30
-    bullet: 35
-    explosionArmor: 20
-    # armor_energy = 15
-    # armor_rad = 20
 
 - type: entity
   parent: RMCArmorHelmetDutch
@@ -60,9 +53,8 @@
     sprite: _RMC14/Objects/Clothing/Head/Dutch/band.rsi
 
 # Iron Bear
-# I can't find this in cm?
 - type: entity
-  parent: RMCArmorHelmetDutch
+  parent: ArmorHelmetPMC
   id: RMCArmorHelmetBear
   name: iron bear helmet
   description: Is good for winter, because it has hole to put vodka through.
@@ -74,7 +66,7 @@
 
 # Skullcap
 - type: entity
-  parent: [RMCHelmetBase, RMCFoldableHelmetBase]
+  parent: ArmorHelmetM10
   id: RMCArmorHelmetSkullcap
   name: skullcap
   description: Good for keeping sweat out of your eyes.
@@ -85,14 +77,6 @@
     sprite: _RMC14/Objects/Clothing/Head/Helmets/skullcap.rsi
   - type: ItemCamouflage
     camouflageVariations: { }
-  - type: CMArmor
-    melee: 15
-    bullet: 15
-    bio: 15
-    explosionArmor: 10
-    # armor_laser = 10
-    # armor_rad = 15
-    # armor_internaldamage = 10
 
 - type: entity
   parent: RMCArmorHelmetSkullcap
@@ -107,7 +91,7 @@
 
 # Mercenaries
 - type: entity
-  parent: ArmorHelmetM10
+  parent: ArmorHelmetPMC
   id: RMCArmorHelmetMercenary
   name: mercenary K12 ceramic helmet
   description: A sturdy helmet worn by an unknown mercenary group.
@@ -116,16 +100,6 @@
     sprite: _RMC14/Objects/Clothing/Head/Mercenary/heavy.rsi
   - type: Clothing
     sprite: _RMC14/Objects/Clothing/Head/Mercenary/heavy.rsi
-  - type: ItemCamouflage
-    camouflageVariations: {}
-  - type: CMArmor
-    melee: 40
-    bullet: 40
-    bio: 35
-    explosionArmor: 20
-    # armor_energy = 15
-    # armor_rad = 20
-    # armor_internaldamage = 35
 
 - type: entity
   parent: RMCArmorHelmetMercenary
@@ -133,12 +107,10 @@
   name: mercenary modified K12 ceramic helmet
   description: A sturdy helmet worn by an unknown mercenary group. Reinforced with extra plating.
   components:
-  - type: CMArmor
-    melee: 50
-    bullet: 55
-    explosionArmor: 35
-    # armor_rad = 20
-    # armor_internaldamage = 45
+  - type: Sprite
+    sprite: _RMC14/Objects/Clothing/Head/Mercenary/heavy.rsi
+  - type: Clothing
+    sprite: _RMC14/Objects/Clothing/Head/Mercenary/heavy.rsi
 
 - type: entity
   parent: RMCArmorHelmetMercenary
@@ -168,15 +140,7 @@
   name: mercenary Z7 engineer helmet
   description: A sturdy helmet worn by an unknown mercenary group. This one includes a protective welding visor.
   components:
-  - type: CycleableVisor
-    containers:
-    - rmc_visor_one
-    - rmc_visor_two
-    - rmc_visor_three
-  - type: IntegratedVisors
-    visorsToAdd:
-    - RMCVisorSquadIntegrated
-    - RMCVisorWeldingIntegrated
+  - type: EyeProtection
 
 # HEFA
 # TODO: actually implement this
@@ -192,13 +156,6 @@
     sprite: _RMC14/Objects/Clothing/Head/Mercenary/hefa.rsi
   - type: ItemCamouflage
     camouflageVariations: { }
-  - type: CMArmor
-    melee: 40
-    bullet: 40
-    bio: 30
-    explosionArmor: 70
-    # armor_rad = 30
-    # armor_internaldamage = 30
 
 # CBRN
 - type: entity
@@ -213,10 +170,4 @@
     sprite: _RMC14/Objects/Clothing/Head/Helmets/cbrn.rsi
   - type: ItemCamouflage
     camouflageVariations: { }
-  - type: CMArmor
-    melee: 15
-    bullet: 15
-    bio: 100
-    explosionArmor: 20
-    # armor_rad = 55
 # TODO: add advanced version of CBRN helmet

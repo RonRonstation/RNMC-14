@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   parent: CMIDCardSilver
   id: CMIDCardSeniorEnlistedAdvisor
   name: senior enlisted advisor ID card
@@ -22,8 +22,7 @@
   - type: PresetIdCard
     job: CMSurvivor
   - type: ItemIFF
-    factions:
-    - FactionSurvivor
+    faction: FactionSurvivor
 
 - type: entity
   parent: CMIDCardSilver
@@ -33,8 +32,7 @@
   - type: PresetIdCard
     job: CMSurvivorDoctor
   - type: ItemIFF
-    factions:
-    - FactionSurvivor
+    faction: FactionSurvivor
 
 - type: entity
   parent: CMIDCardLanyard
@@ -44,19 +42,17 @@
   - type: PresetIdCard
     job: CMSurvivorEngineer
   - type: ItemIFF
-    factions:
-    - FactionSurvivor
+    faction: FactionSurvivor
 
 - type: entity
-  parent: CMIDCardSilver
+  parent: CMIDCardLanyard
   id: RMCIDCardColonistScientist
   name: researcher colonist ID card
   components:
   - type: PresetIdCard
     job: CMSurvivorScientist
   - type: ItemIFF
-    factions:
-    - FactionSurvivor
+    faction: FactionSurvivor
 
 - type: entity
   parent: CMIDCardLanyard
@@ -71,8 +67,7 @@
   - type: PresetIdCard
     job: CMSurvivorSecurity
   - type: ItemIFF
-    factions:
-    - FactionSurvivor
+    faction: FactionSurvivor
 
 - type: entity
   parent: CMIDCardSilver
@@ -84,9 +79,7 @@
   - type: Sprite
     state: corporate_liaison
   - type: ItemIFF
-    factions:
-    - FactionWeYa
-    - FactionMarine
+    faction: FactionWeYa
   - type: PresetIdCard
     job: CMLiaison
 
@@ -100,17 +93,7 @@
   - type: Sprite
     state: pmc
   - type: ItemIFF
-    factions:
-    - FactionWeYa
-
-- type: entity
-  parent: CMIDCardPMC
-  id: CMIDCardCommando
-  name: commando holo-badge
-  suffix: WeYa
-  components:
-  - type: Sprite
-    state: commando
+    faction: FactionWeYa
 
 - type: entity
   parent: CMIDCardLiaison
@@ -122,8 +105,7 @@
   - type: Sprite
     state: pmc
   - type: ItemIFF
-    factions:
-    - FactionWeYa
+    faction: FactionWeYa
   - type: PresetIdCard
     job: CMLiaison
 
@@ -132,10 +114,6 @@
   id: CMIDCardLiaisonColony
   name: liaison ID card
   components:
-  - type: ItemIFF
-    factions:
-    - FactionWeYa
-    - FactionSurvivor
   - type: PresetIdCard
     job: CMSurvivorCorporate
 
@@ -161,7 +139,7 @@
   name: executive corporate supervisor ID card
   components:
   - type: PresetIdCard
-    job: CMCorporateExecutiveSupervisor
+    job: CMCorporateExecutiveSpecialistLegal
 
 - type: entity
   parent: CMIDCardLiaison
@@ -202,8 +180,7 @@
   - type: PresetIdCard
     job: CMBureauMarshal
   - type: ItemIFF
-    factions:
-    - FactionMarine
+    faction: FactionMarine
 
 - type: entity
   parent: CMIDCardSilver
@@ -214,8 +191,7 @@
   - type: PresetIdCard
     job: CMBureauDeputy
   - type: ItemIFF
-    factions:
-    - FactionMarine
+    faction: FactionMarine
 
 - type: entity
   parent: CMIDCardSilver
@@ -224,12 +200,21 @@
   description: A corporate holo-badge. It has a unique uncapped bottom.
   components:
   - type: ItemIFF
-    factions:
-    - FactionWeYa
+    faction: FactionWeYa
   - type: Access
     groups:
     - Colony
     - RMCWeYa
+
+- type: entity
+  id: FactionWeYa
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: IFFFaction
+  - type: FactionFrequencies
+    channels:
+    - Colony
+    - WEYA
 
 - type: entity
   parent: CMIDCardLanyard
@@ -332,8 +317,15 @@
   - type: PresetIdCard
     job: RMCJobSyntheticColony
   - type: ItemIFF
-    factions:
-    - FactionSurvivor
+    faction: FactionSurvivor
+
+- type: entity
+  parent: CMIDCardStandardDogtag
+  id: RMCIDCardFORECONSpotter
+  name: FORECON Spotter's dogtags
+  components:
+  - type: IdCard
+    jobTitle: rmc-job-name-forecon-spotter
 
 - type: entity
   id: RMCIDCardAegis

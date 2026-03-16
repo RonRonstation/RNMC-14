@@ -173,12 +173,6 @@ public sealed partial class DoAfterArgs
     /// </summary>
     [DataField]
     public bool LagCompensated;
-
-    /// <summary>
-    ///     RMC14
-    /// </summary>
-    [DataField]
-    public bool RangeCheck = true;
     #endregion
 
     #region Duplicates

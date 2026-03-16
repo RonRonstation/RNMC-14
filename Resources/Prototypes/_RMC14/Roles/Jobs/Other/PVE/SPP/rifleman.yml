@@ -2,7 +2,7 @@
   parent: CMJobBase
   id: RMCSPPRiflemanPVE
   name: rmc-job-name-spp-rifleman
-  description: rmc-job-description-spp-rifleman-pve
+  description: rmc-ghost-role-information-spp-pve-description
   playTimeTracker: RMCJobSPPRiflemanPVE
   ranks:
    RMCRankSPPRyadovoy: []
@@ -19,14 +19,20 @@
       factions:
       - SPP
     - type: Skills
-      preset: RMCSkillPresetPVERifleman
+      skills:
+        RMCSkillCqc: 1
+        RMCSkillFirearms: 1
+        RMCSkillPolice: 2
+        RMCSkillFireman: 2
+        RMCSkillConstruction: 2
+        RMCSkillEngineer: 2
+        RMCSkillEndurance: 1
+        RMCSkillPilot: 1
+        RMCSkillPowerLoader: 1
+        RMCSkillSmartGun: 1
     - type: SquadArmorWearer
     - type: JobPrefix
       prefix: rmc-job-prefix-spp-rifleman-pve
-    - type: AssignSquad
-      whitelist:
-        tags:
-        - RMCSquadSPP
     - type: DemoSpecWhitelist
     - type: GrenadeSpecWhitelist
     - type: ScoutWhitelist
@@ -51,6 +57,9 @@
   id: RMCJobSPPRiflemanPVEGear
   equipment:
     id: RMCIDSPP
+    ears: RMCHeadsetSPP
+    jumpsuit: CMJumpsuitSPP
+    shoes: CMBootsBlackFilled
 
 - type: playTimeTracker
   id: RMCJobSPPRiflemanPVE

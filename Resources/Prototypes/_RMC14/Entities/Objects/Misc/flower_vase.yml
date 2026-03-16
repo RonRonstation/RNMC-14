@@ -38,7 +38,8 @@
         types:
           Blunt: 5
     - type: PhysicalComposition
-      materialComposition: {}
+      materialComposition:
+        Glass: 25
 
 - type: entity
   parent: RMCFlowerVase

@@ -8,7 +8,6 @@
   - type: HumanoidAppearance
     species: Avali
     hideLayersOnEquip:
-    - UndergarmentTop
     - HeadTop
     - HeadSide
   - type: Sprite

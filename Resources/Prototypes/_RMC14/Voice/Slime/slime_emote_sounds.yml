@@ -4,12 +4,6 @@
   sounds:
     Squish:
       collection: Squishes
-    RMCSlimeBubble:
-      collection: Bubbles
-    RMCSlimePop:
-      collection: Pops
-    RMCSlimeWobble:
-      collection: Wobbles
 
 - type: emoteSounds
   parent: RMCFemaleHuman
@@ -17,9 +11,3 @@
   sounds:
     Squish:
       collection: Squishes
-    RMCSlimeBubble:
-      collection: Bubbles
-    RMCSlimePop:
-      collection: Pops
-    RMCSlimeWobble:
-      collection: Wobbles

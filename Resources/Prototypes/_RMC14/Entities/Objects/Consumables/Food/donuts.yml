@@ -1,5 +1,5 @@
 ﻿- type: entity
-  parent: [ RMCBoxCardboard, BaseBagOpenClose ]
+  parent: [ BoxCardboard, BaseBagOpenClose ]
   id: RMCBoxDonutEmpty
   name: Yum! donuts
   description: A box of mouth-watering "Yum!" brand donuts
@@ -52,10 +52,6 @@
     whitelist:
       tags:
       - Donut
-  - type: InteractedBlacklist
-    blacklist:
-      components:
-      - Xeno
 
 - type: entity
   parent: RMCBoxDonutEmpty

@@ -61,7 +61,7 @@
   - !type:AddComponentSpecial
     components:
     - type: Skills
-      preset: RMCSkillPresetCommander
+      preset: Commander
     - type: MarineOrders
     - type: CMVendorUser
       id: CMCommandingOfficer
@@ -81,9 +81,6 @@
         sprite: /Textures/_RMC14/Interface/map_blips.rsi
         state: background_command
     - type: RMCTrackable
-    - type: RMCAwardRecommendation
-      maxRecommendations: 4
-    - type: SeeNewPlayers
 
 - type: startingGear
   id: CMGearCommandingOfficer

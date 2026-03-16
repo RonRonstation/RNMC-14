@@ -23,7 +23,4 @@ public sealed partial class RMCFlamerChainComponent : Component
 
     [DataField, AutoNetworkedField]
     public int MaxDuration = 24;
-
-    [DataField, AutoNetworkedField]
-    public int FuelPressure = 1;
 }

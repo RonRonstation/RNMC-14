@@ -7,9 +7,9 @@ namespace Content.Shared._RMC14.Weapons.Ranged.IFF;
 [Access(typeof(GunIFFSystem))]
 public sealed partial class ProjectileIFFComponent : Component
 {
-    [DataField, AutoNetworkedField]
-    public HashSet<EntProtoId<IFFFactionComponent>> Factions = new();
+    [DataField(required: true), AutoNetworkedField]
+    public EntProtoId<IFFFactionComponent>? Faction;
 
     [DataField, AutoNetworkedField]
-    public bool Enabled = true;
+    public bool Enabled;
 }

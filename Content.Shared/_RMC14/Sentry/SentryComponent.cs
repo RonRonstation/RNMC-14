@@ -1,5 +1,4 @@
 ﻿using Content.Shared._RMC14.Marines.Skills;
-using Content.Shared._RMC14.Sentry.Laptop;
 using Content.Shared.Tag;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Shared.Audio;
@@ -10,7 +9,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._RMC14.Sentry;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SentrySystem), typeof(SharedSentryLaptopSystem))]
+[Access(typeof(SentrySystem))]
 public sealed partial class SentryComponent : Component
 {
     [DataField, AutoNetworkedField]
@@ -62,31 +61,7 @@ public sealed partial class SentryComponent : Component
     public EntProtoId<SkillDefinitionComponent> DelaySkill = "RMCSkillConstruction";
 
     [DataField, AutoNetworkedField]
-    public EntityUid? Camera;
-
-    [DataField, AutoNetworkedField]
-    public float LowAmmoThreshold = 0.25f;
-
-    [DataField, AutoNetworkedField]
-    public float CriticalHealthThreshold = 0.25f;
-
-    [DataField, AutoNetworkedField]
-    public TimeSpan LastLowAmmoAlert;
-
-    [DataField, AutoNetworkedField]
-    public TimeSpan LastHealthAlert;
-
-    [DataField, AutoNetworkedField]
-    public TimeSpan LastTargetAlert;
-
-    [DataField, AutoNetworkedField]
-    public TimeSpan AlertCooldown = TimeSpan.FromSeconds(5);
-
-    /// <summary>
-    ///     Can the sentry be picked up or toggled on/off.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public bool IsLocked;
+    public bool HomingShots = true;
 }
 
 [Serializable, NetSerializable]

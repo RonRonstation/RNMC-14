@@ -22,12 +22,6 @@
   - type: Tag
     tags:
       - PowerCell
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 700
-      CMGlass: 50
-  - type: StaticPrice
-    price: 1.1
 
 - type: entity
   parent: RMCPowerCell
@@ -45,10 +39,6 @@
   - type: Battery
     maxCharge: 500
     startingCharge: 500
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 700
-      CMGlass: 40
 
 - type: entity
   parent: RMCPowerCellCrap
@@ -103,10 +93,6 @@
     tags:
     - PowerCell
     - RMCPowerCellHigh
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 700
-      CMGlass: 60
 
 - type: Tag
   id: RMCPowerCellHigh
@@ -134,10 +120,6 @@
   - type: Battery
     maxCharge: 20000
     startingCharge: 20000
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 700
-      CMGlass: 70
 
 - type: entity
   parent: RMCPowerCellSuper
@@ -162,10 +144,6 @@
   - type: Battery
     maxCharge: 30000
     startingCharge: 30000
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 700
-      CMGlass: 80
 
 - type: entity
   parent: RMCPowerCellHyper
@@ -193,10 +171,6 @@
   - type: BatterySelfRecharger
     autoRecharge: true
     autoRechargeRate: 1000
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 700
-      CMGlass: 80
 
 - type: entity
   parent: RMCPowerCell
@@ -229,8 +203,6 @@
     maxCharge: 10000
     startingCharge: 10000
   - type: SmartGunBattery
-  - type: PhysicalComposition
-    materialComposition: {}
 
 - type: entity
   id: RMCPowerCellSlot

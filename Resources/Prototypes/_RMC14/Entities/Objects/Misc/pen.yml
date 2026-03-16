@@ -20,9 +20,6 @@
     slots:
     - Suitstorage
     - Ears
-  - type: PhysicalComposition
-    materialComposition:
-      CMSteel: 10
 
 - type: entity
   parent: CMPen

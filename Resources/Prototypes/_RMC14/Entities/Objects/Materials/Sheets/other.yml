@@ -5,7 +5,7 @@
   name: materials-phoron
   icon: { sprite: _RMC14/Objects/Materials/Sheets/phoron.rsi, state: phoron }
   color: "#7e009e"
-  price: 0.01
+  price: 0.2
 
 - type: stack
   id: CMPhoron
@@ -23,7 +23,7 @@
   - type: Material
   - type: PhysicalComposition
     materialComposition:
-      CMPhoron: 2000
+      CMPhoron: 100
   - type: Stack
     stackType: CMPhoron
     count: 50
@@ -42,7 +42,7 @@
       phoron:
         reagents:
         - ReagentId: RMCPhoron
-          Quantity: 20
+          Quantity: 10
   - type: Tag
     tags:
     - Sheet
@@ -86,7 +86,7 @@
   name: materials-wood
   icon: { sprite: _RMC14/Objects/Materials/Sheets/wood.rsi, state: wood }
   color: "#966F33"
-  price: 0.00133
+  price: 0.05
 
 - type: stack
   id: RMCWood
@@ -105,7 +105,7 @@
   - type: Material
   - type: PhysicalComposition
     materialComposition:
-      RMCWood: 3750
+      RMCWood: 100
   - type: Stack
     stackType: RMCWood
     count: 50
@@ -147,8 +147,6 @@
     interfaces:
       enum.RMCConstructionUiKey.Key:
         type: RMCConstructionBui
-  - type: CampfireFuel
-    fuelAmount: 1
 
 - type: entity
   parent: RMCPlankWood
@@ -197,7 +195,7 @@
   name: materials-aluminum
   icon: { sprite: _RMC14/Objects/Materials/Sheets/aluminum.rsi, state: aluminum }
   color: "#A8A8A8"
-  price: 0.0053
+  price: 0.2
 
 - type: stack
   id: RMCAluminum
@@ -215,7 +213,7 @@
   - type: Material
   - type: PhysicalComposition
     materialComposition:
-      RMCAluminum: 3750
+      RMCAluminum: 100
   - type: Stack
     stackType: RMCAluminum
     count: 50

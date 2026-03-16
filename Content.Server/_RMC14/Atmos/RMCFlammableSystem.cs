@@ -2,7 +2,6 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Shared._RMC14.Atmos;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Atmos.Components;
-using Content.Shared.Damage;
 using Robust.Shared.Player;
 
 namespace Content.Server._RMC14.Atmos;
@@ -25,9 +24,9 @@ public sealed class RMCFlammableSystem : SharedRMCFlammableSystem
             args.Show = true;
     }
 
-    public override bool Ignite(Entity<FlammableComponent?> flammable, int intensity, int duration, int? maxStacks, bool igniteDamage = true, DamageSpecifier? tileDamage = null)
+    public override bool Ignite(Entity<FlammableComponent?> flammable, int intensity, int duration, int? maxStacks, bool igniteDamage = true)
     {
-        base.Ignite(flammable, intensity, duration, maxStacks, igniteDamage, tileDamage);
+        base.Ignite(flammable, intensity, duration, maxStacks);
 
         if (!Resolve(flammable, ref flammable.Comp, false))
             return false;
@@ -49,7 +48,6 @@ public sealed class RMCFlammableSystem : SharedRMCFlammableSystem
 
         flammable.Comp.Intensity = intensity;
         flammable.Comp.Duration = duration;
-        flammable.Comp.TileDamage = tileDamage;
         return true;
     }
 

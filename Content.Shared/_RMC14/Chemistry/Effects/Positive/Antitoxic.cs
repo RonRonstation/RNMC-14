@@ -46,7 +46,6 @@ public sealed partial class Antitoxic : RMCChemicalEffect
 
     protected override void TickCriticalOverdose(DamageableSystem damageable, FixedPoint2 potency, EntityEffectReagentArgs args)
     {
-        // TODO RMC14 Drowsiness. if drowsiness > 10 5% change to paralyze(knockout) for 10 seconds.
         var random = IoCManager.Resolve<IRobustRandom>();
         if (!random.Prob(0.05f))
             return;
@@ -55,8 +54,8 @@ public sealed partial class Antitoxic : RMCChemicalEffect
         status.TryAddStatusEffect<RMCUnconsciousComponent>(
             args.TargetEntity,
             Unconscious,
-            TimeSpan.FromSeconds(10),
-            true
+            TimeSpan.FromSeconds(5),
+            false
         );
     }
 }

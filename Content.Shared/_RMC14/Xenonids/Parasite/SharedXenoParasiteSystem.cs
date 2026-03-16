@@ -351,9 +351,9 @@ public abstract partial class SharedXenoParasiteSystem : EntitySystem
 
         if (nearestResinDoor is not null)
         {
-            var collisionPreventComp = EnsureComp<PreventCollideComponent>(ent);
+            PreventCollideComponent collisionPreventComp = new();
             collisionPreventComp.Uid = nearestResinDoor.Value;
-            Dirty(ent, collisionPreventComp);
+            AddComp(ent, collisionPreventComp);
         }
 
         if (TryComp(ent, out FixturesComponent? fixtures))
@@ -365,7 +365,7 @@ public abstract partial class SharedXenoParasiteSystem : EntitySystem
 
     private void OnParasiteLeapStopped(Entity<XenoParasiteComponent> ent, ref XenoLeapStoppedEvent args)
     {
-        RemComp<PreventCollideComponent>(ent);
+        RemCompDeferred<PreventCollideComponent>(ent);
 
         if (TryComp(ent, out FixturesComponent? fixtures))
         {
