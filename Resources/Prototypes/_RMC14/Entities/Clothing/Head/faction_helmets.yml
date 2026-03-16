@@ -11,16 +11,6 @@
     sprite: _RMC14/Objects/Clothing/Head/Helmets/marsoc.rsi
   - type: ItemCamouflage
     camouflageVariations: { }
-  - type: CycleableVisor # TODO 4 visor slots but integrated security visor
-    containers:
-    - rmc_visor_one
-    - rmc_visor_two
-    - rmc_visor_three
-  - type: IntegratedVisors
-    visorsToAdd:
-    - RMCVisorWeldingIntegrated
-    - RMCVisorMedicalAdvancedIntegrated
-    - RMCVisorNightVisionIntegrated
   - type: CMArmor
     melee: 25
     bullet: 30
