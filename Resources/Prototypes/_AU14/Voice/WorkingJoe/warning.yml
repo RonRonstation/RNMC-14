@@ -111,6 +111,20 @@
     - WorkingJoe
 
 - type: emote
+  id: WorkingJoeFire
+  name: emote-name-workingjoe-fire
+  category: Warning
+  icon: Interface/Emotes/scream.png
+  available: false
+  chatMessages:
+    - emote-name-workingjoe-fire
+  chatTriggers:
+    - fire
+  whitelist:
+    tags:
+    - WorkingJoe
+
+- type: emote
   id: WorkingJoeFireDrill
   name: emote-name-workingjoe-firedrill
   category: Warning

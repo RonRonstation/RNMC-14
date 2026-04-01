@@ -3,7 +3,6 @@
   id: AU14MobWorkingJoe
   name: Working Joe
   suffix: AU14, civilian
-  supervisors: au14-job-supervisors-workingjoe-colony
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRoleApplySpecial
