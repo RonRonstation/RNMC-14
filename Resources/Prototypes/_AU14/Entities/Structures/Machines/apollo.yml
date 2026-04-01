@@ -1,0 +1,75 @@
+- type: entity
+  id: AU14AICoreApolloCivilian
+  parent: RMCAICore
+  name: APOLLO Central A.I.
+  description: This is the artificial intelligence system for monitoring the Working Joes. It is manufactured by Seegson Corporation.
+  suffix: AU14, Colony
+  components:
+  - type: Sprite
+    sprite: _RMC14/Structures/Machines/AIStuff/aicore.rsi
+    noRot: true
+    layers:
+    - state: hydra-off
+    - state: hydra
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: NameModifier
+    baseName: "APOLLO Central A.I."
+  - type: AssignXenoName
+  - type: ApcPowerReceiver
+    powerLoad: 0
+    needsPower: false
+  - type: GhostTakeoverAvailable
+  - type: GhostRoleApplySpecial
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    reregister: false
+    name: au14-job-name-apollo
+    description: au14-job-description-apollo
+    raffle:
+      settings: short
+  - type: TypingIndicator
+    proto: joe
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - AI
+    - Colony
+    - WEYA
+    - CMB
+  - type: ActiveRadio
+    channels:
+    - AI
+
+- type: entity
+  id: AU14AICoreApolloGOVFOR
+  parent: AU14AICoreApolloCivilian
+  name: APOLLO Central A.I.
+  suffix: AU14, GOVFOR
+  components:
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - AI
+    - MarineCommand
+    - MarineJTAC
+    - MarineAlpha
+    - GovforCharlie
+    - GovforBravo
+    - GovforIntel
+
+- type: entity
+  id: AU14AICoreApolloOPFOR
+  parent: AU14AICoreApolloCivilian
+  name: APOLLO Central A.I.
+  suffix: AU14, OPFOR
+  components:
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - AI
+    - opfor
+    - opforcommand
+    - OpforCharlie
+    - OpforBravo
+    - OpforIntel
+    - opforjtac

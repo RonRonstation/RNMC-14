@@ -1,0 +1,83 @@
+- type: entity
+  parent: RMCBaseMobSpeciesOrganic
+  id: AU14MobWorkingJoe
+  name: Working Joe
+  suffix: AU14, civilian
+  supervisors: au14-job-supervisors-workingjoe-colony
+  components:
+  - type: GhostTakeoverAvailable
+  - type: GhostRoleApplySpecial
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    reregister: false
+    name: au14-job-name-workingjoe
+    description: au14-job-description-workingjoe
+    job: AU14JobColonyWorkingJoe
+    raffle:
+      settings: short
+  - type: HumanoidAppearance
+    species: WorkingJoe
+    hideLayersOnEquip:
+    - UndergarmentTop
+    - HeadTop
+  - type: Icon
+    sprite: _AU14/Mobs/WorkingJoe/parts.rsi
+    state: full
+  - type: WorkingJoeVoice
+  - type: UserInterface
+    interfaces:
+      enum.WorkingJoeVoiceUiKey.Key:
+        type: WorkingJoeVoiceBui
+  - type: Vocal
+    sounds:
+      Male: AU14WorkingJoeSounds
+      Female: AU14WorkingJoeSounds
+      Unsexed: AU14WorkingJoeSounds
+  - type: TypingIndicator
+    proto: joe
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - AI
+    - Colony
+    - WEYA
+    - CMB
+  - type: ActiveRadio
+    channels:
+    - AI
+  - type: Skills
+    preset: AU14SkillPresetPlatoonWorkingJoe
+  - type: TacticalMapIcon
+    icon:
+      sprite: /Textures/_RMC14/Interface/map_blips.rsi
+      state: synth
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/_RMC14/Weapons/synthpunch1.ogg
+      params:
+        variation: 0.15
+        volume: -1
+    angle: 30
+    animation: WeaponArcFist
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 60
+  - type: Synth
+    generation: "species-name-workingjoe"
+  - type: NameModifier
+    baseName: "Working Joe"
+  - type: AssignXenoName
+  - type: Actions
+  - type: GrantAreaInfo
+  - type: GrantMarineIcons
+    factions:
+    - UNMC
+  - type: Tag
+    tags:
+    - WorkingJoe
+
+- type: Tag
+  id: WorkingJoe

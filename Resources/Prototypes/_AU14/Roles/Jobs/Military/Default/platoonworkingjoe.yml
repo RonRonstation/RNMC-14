@@ -1,0 +1,121 @@
+- type: job
+  parent: AU14JobWorkingJoeBase
+  id: AU14JobGOVFORWorkingJoe
+  requirements:
+  - !type:RoleTimeRequirement
+    role: AU14JobGOVFORAuxSupportSynth
+    time: 9000 # 2.5 hours
+  - !type:TraitsRequirement
+    inverted: true
+    traits:
+    - SocialAnxietyHeavy
+    - FrontalLisp
+    - NonResuscitable
+    - Epilepsy
+  startingGear: AU14GearGOVFORWorkingJoe
+  dummyStartingGear: AU14GearGOVFORWorkingJoeDummy
+  icon: "AU14JobIconGovSynth"
+  spawnMenuRoleName: Working Joe (GOVFOR)
+  supervisors: au14-job-supervisors-workingjoe-military
+  accessGroups:
+  - AU14GovforCommand
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Skills
+      preset: AU14SkillPresetPlatoonWorkingJoe
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: synth
+    - type: MeleeWeapon
+      soundHit:
+        path: /Audio/_RMC14/Weapons/synthpunch1.ogg
+        params:
+          variation: 0.15
+          volume: -1
+      angle: 30
+      animation: WeaponArcFist
+      attackRate: 1
+      damage:
+        types:
+          Blunt: 60
+    - type: Synth
+      generation: "species-name-workingjoe"
+    - type: NameModifier
+      baseName: "Working Joe"
+    - type: AssignXenoName
+    - type: HumanoidAppearance
+      species: WorkingJoe
+      hideLayersOnEquip:
+      - UndergarmentTop
+      - HeadTop
+    - type: Icon
+      sprite: _AU14/Mobs/WorkingJoe/parts.rsi
+      state: full
+    - type: NpcFactionMember
+      factions:
+      - GOVFOR
+    - type: Marine
+      Faction: govfor
+    - type: UserIFF
+      factions:
+      - GOVFOR
+    - type: WorkingJoeVoice
+    - type: UserInterface
+      interfaces:
+        enum.WorkingJoeVoiceUiKey.Key:
+          type: WorkingJoeVoiceBui
+    - type: Vocal
+      sounds:
+        Male: AU14WorkingJoeSounds
+        Female: AU14WorkingJoeSounds
+        Unsexed: AU14WorkingJoeSounds
+    - type: TypingIndicator
+      proto: joe
+    - type: IntrinsicRadioReceiver
+    - type: IntrinsicRadioTransmitter
+      channels:
+      - AI
+      - MarineCommand
+      - MarineJTAC
+      - MarineAlpha
+      - GovforCharlie
+      - GovforBravo
+      - GovforIntel
+    - type: ActiveRadio
+      channels:
+      - AI
+      - MarineCommand
+      - MarineJTAC
+      - MarineAlpha
+      - GovforCharlie
+      - GovforBravo
+      - GovforIntel
+    - type: Tag
+      tags:
+      - WorkingJoe
+  hidden: true
+
+- type: startingGear
+  parent: AU14GearWorkingJoeBase
+  id: AU14GearGOVFORWorkingJoe
+  equipment:
+    id: AU14IDCardGOVFORWorkingJoe
+    ears: AU14HeadsetWorkingJoe
+    ears2: RMCM5CameraGear
+    back: CMSatchelMarine
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: AU14SpawnPointGOVFORWorkingJoe
+  name: Spawn Point Working Joe (GOVFOR)
+  components:
+  - type: SpawnPoint
+    job_id: AU14JobGOVFORWorkingJoe
+  - type: Sprite
+    state: syn_spawn
+
+- type: startingGear
+  parent: AU14GearGOVFORWorkingJoe
+  id: AU14GearGOVFORWorkingJoeDummy
