@@ -1,0 +1,48 @@
+- type: entity
+  id: AU14AICoreFURTHURGOVFOR
+  parent: AU14AICoreApolloGOVFOR
+  name: FUR/TH/UR 2600 A.I.
+  description: This is the artificial intelligence system for monitoring the space ships, colonies or stations. It is manufactured by Weyland-Yutani.
+  suffix: AU14, GOVFOR
+
+- type: entity
+  id: AU14AICoreFURTHUROPFOR
+  parent: AU14AICoreApolloOPFOR
+  name: FUR/TH/UR 2600 A.I.
+  description: This is the artificial intelligence system for monitoring the space ships, colonies or stations. It is manufactured by Weyland-Yutani.
+  suffix: AU14, OPFOR
+
+- type: entity
+  id: AU14AICoreCPUFURTHUR
+  parent: AU14AICoreCPU
+  name: FUR/TH/UR 2600 A.I. CPU
+  description: This is FUR/TH/UR's central processor. Made of a casing designed to withstand nuclear blasts, the CPU also contains FUR/TH/UR's blackbox recorder.
+
+- type: entity
+  id: AU14AICoreSubstrateFURTHUR
+  parent: AU14AICoreSubstrate
+  name: FUR/TH/UR 2600 A.I. Substrate
+  description: The memory substrate of FUR/TH/UR, containing complex protocols and information. Limited capabilities can operate on substrate alone, without the main FUR/TH/UR Unit operational.
+
+- type: entity
+  parent: APOLLOAICoreProcessor
+  id: FURTHURAICoreProcessor
+  name: FUR/TH/UR 2600 A.I. Processor
+  description: An external processor for FUR/TH/UR, used to process vast amounts of information.
+
+- type: entity
+  parent: RMCAreaGA
+  id: AU14AreaGAAIFURTHUR
+  name: FUR/TH/UR 2600 A.I. Interface
+  components:
+  - type: Sprite
+    state: wylab
+
+- type: entity
+  parent: CMChairComfyARES
+  id: AU14ChairComfyAIFURTHUR
+  name: FUR/TH/UR 2600 A.I. interface chair
+  suffix: AU14, FURTHUR
+  components:
+  - type: Sprite
+    state: ai_interface_chair

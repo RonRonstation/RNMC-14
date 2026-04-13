@@ -29,6 +29,29 @@
     interfaces:
       enum.WorkingJoeVoiceUiKey.Key:
         type: WorkingJoeVoiceBui
+      enum.VoiceMaskUIKey.Key:
+        type: VoiceMaskBoundUserInterface
+      enum.HumanoidMarkingModifierKey.Key:
+        type: HumanoidMarkingModifierBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.CMSurgeryUIKey.Key:
+        type: CMSurgeryBui
+      enum.HolocardChangeUIKey.Key:
+        type: HolocardChangeBoundUserInterface
+        interactionRange: 0
+        requireInputValidation: false
+      enum.CMMobStateActionsUI.Key:
+        type: CMGhostActionBui
+        requireInputValidation: false
+      enum.TacticalMapUserUi.Key:
+        type: TacticalMapUserBui
+      enum.SquadLeaderTrackerUI.Key:
+        type: SquadInfoBui
+      enum.DialogUiKey.Key:
+        type: DialogBui
+      enum.ViewIntelObjectivesUI.Key:
+        type: ViewIntelObjectivesBui
   - type: Vocal
     sounds:
       Male: AU14WorkingJoeSounds
@@ -70,6 +93,9 @@
     baseName: "Working Joe"
   - type: AssignXenoName
   - type: Actions
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.85
+    baseSprintSpeed: 3.25
   - type: GrantAreaInfo
   - type: GrantMarineIcons
     factions:
@@ -77,6 +103,10 @@
   - type: Tag
     tags:
     - WorkingJoe
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
+
 
 - type: Tag
   id: WorkingJoe
