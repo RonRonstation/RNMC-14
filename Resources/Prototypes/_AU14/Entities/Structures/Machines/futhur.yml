@@ -1,48 +1,48 @@
 - type: entity
-  id: AU14AICoreFURTHURGOVFOR
+  id: AU14AICoreFARTHURGOVFOR
   parent: AU14AICoreApolloGOVFOR
-  name: FUR/TH/UR 2600 A.I.
+  name: FAR/TH/UR 2600 A.I.
   description: This is the artificial intelligence system for monitoring the space ships, colonies or stations. It is manufactured by Weyland-Yutani.
   suffix: AU14, GOVFOR
 
 - type: entity
-  id: AU14AICoreFURTHUROPFOR
+  id: AU14AICoreFARTHUROPFOR
   parent: AU14AICoreApolloOPFOR
-  name: FUR/TH/UR 2600 A.I.
+  name: FAR/TH/UR 2600 A.I.
   description: This is the artificial intelligence system for monitoring the space ships, colonies or stations. It is manufactured by Weyland-Yutani.
   suffix: AU14, OPFOR
 
 - type: entity
-  id: AU14AICoreCPUFURTHUR
+  id: AU14AICoreCPUFARTHUR
   parent: AU14AICoreCPU
-  name: FUR/TH/UR 2600 A.I. CPU
-  description: This is FUR/TH/UR's central processor. Made of a casing designed to withstand nuclear blasts, the CPU also contains FUR/TH/UR's blackbox recorder.
+  name: FAR/TH/UR 2600 A.I. CPU
+  description: This is FAR/TH/UR's central processor. Made of a casing designed to withstand nuclear blasts, the CPU also contains FAR/TH/UR's blackbox recorder.
 
 - type: entity
-  id: AU14AICoreSubstrateFURTHUR
+  id: AU14AICoreSubstrateFARTHUR
   parent: AU14AICoreSubstrate
-  name: FUR/TH/UR 2600 A.I. Substrate
-  description: The memory substrate of FUR/TH/UR, containing complex protocols and information. Limited capabilities can operate on substrate alone, without the main FUR/TH/UR Unit operational.
+  name: FAR/TH/UR 2600 A.I. Substrate
+  description: The memory substrate of FAR/TH/UR, containing complex protocols and information. Limited capabilities can operate on substrate alone, without the main FAR/TH/UR Unit operational.
 
 - type: entity
   parent: APOLLOAICoreProcessor
-  id: FURTHURAICoreProcessor
-  name: FUR/TH/UR 2600 A.I. Processor
-  description: An external processor for FUR/TH/UR, used to process vast amounts of information.
+  id: FARTHURAICoreProcessor
+  name: FAR/TH/UR 2600 A.I. Processor
+  description: An external processor for FAR/TH/UR, used to process vast amounts of information.
 
 - type: entity
   parent: RMCAreaGA
-  id: AU14AreaGAAIFURTHUR
-  name: FUR/TH/UR 2600 A.I. Interface
+  id: AU14AreaGAAIFARTHUR
+  name: FAR/TH/UR 2600 A.I. Interface
   components:
   - type: Sprite
     state: wylab
 
 - type: entity
   parent: CMChairComfyARES
-  id: AU14ChairComfyAIFURTHUR
-  name: FUR/TH/UR 2600 A.I. interface chair
-  suffix: AU14, FURTHUR
+  id: AU14ChairComfyAIFARTHUR
+  name: FAR/TH/UR 2600 A.I. interface chair
+  suffix: AU14, FARTHUR
   components:
   - type: Sprite
     state: ai_interface_chair
