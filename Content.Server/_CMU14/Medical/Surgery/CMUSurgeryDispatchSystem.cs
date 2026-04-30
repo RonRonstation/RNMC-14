@@ -177,6 +177,7 @@ public sealed class CMUSurgeryDispatchSystem : EntitySystem
             {
                 var severityKey = severity switch
                 {
+                    FractureSeverity.Hairline => "hairline",
                     FractureSeverity.Simple => "simple",
                     FractureSeverity.Compound => "compound",
                     FractureSeverity.Comminuted => "comminuted",
