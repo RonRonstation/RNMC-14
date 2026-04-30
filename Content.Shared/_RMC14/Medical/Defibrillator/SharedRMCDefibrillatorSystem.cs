@@ -7,6 +7,7 @@ using Content.Shared.Damage;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Medical;
+using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Serialization;
 
@@ -16,6 +17,7 @@ public abstract class SharedRMCDefibrillatorSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedRMCBloodstreamSystem _rmcBloodstream = default!;
     [Dependency] private readonly SharedRMCDamageableSystem _rmcDamageable = default!;
     [Dependency] private readonly RMCReagentSystem _rmcReagent = default!;
@@ -30,6 +32,20 @@ public abstract class SharedRMCDefibrillatorSystem : EntitySystem
 
     private void OnDefibrillatorDamageModify(Entity<DefibrillatorComponent> ent, ref RMCDefibrillatorDamageModifyEvent args)
     {
+        // CMU14: gate revival on per-organ subsystems (Phase 4D Heart system
+        // cancels if the heart is dead or still beating). When cancelled, we
+        // wipe the heal so DefibrillatorSystem.Zap's TryChangeDamage no-ops.
+        var attempt = new RMCDefibrillatorAttemptEvent(args.Target);
+        RaiseLocalEvent(args.Target, attempt);
+        if (attempt.Cancelled)
+        {
+            args.Heal = new DamageSpecifier();
+
+            if (!string.IsNullOrEmpty(attempt.CancelReason))
+                _popup.PopupEntity(Loc.GetString(attempt.CancelReason), args.Target, PopupType.MediumCaution);
+            return;
+        }
+
         if (ent.Comp.RMCZapDamage != null)
         {
             foreach (var (group, amount) in ent.Comp.RMCZapDamage)

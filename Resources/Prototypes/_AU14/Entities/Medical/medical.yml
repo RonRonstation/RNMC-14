@@ -509,3 +509,8 @@
   - type: MedicallyUnskilledDoAfter
     min: 6
     doAfter: 8
+  - type: CMUTourniquetItem
+    applyDelay: 1.5
+    removeDelay: 1.0
+    consumedOnApply: true
+    refundOnRemove: AU14Tourniquet
