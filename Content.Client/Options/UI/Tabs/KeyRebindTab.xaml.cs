@@ -186,6 +186,10 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(CMUKeyFunctions.CMUCycleBodyZoneTarget);
             AddButton(CMUKeyFunctions.CMUCycleBodyZoneTargetReverse);
 
+            AddHeader("ui-options-header-cmu-medical");
+            AddButton(CMUKeyFunctions.CMUCycleBodyZoneTarget);
+            AddButton(CMUKeyFunctions.CMUCycleBodyZoneTargetReverse);
+
             AddHeader("ui-options-header-rmc-xeno");
             AddButton(CMKeyFunctions.CMXenoWideSwing);
             AddButton(CMKeyFunctions.RMCXenoRest);
