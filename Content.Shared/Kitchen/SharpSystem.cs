@@ -53,8 +53,6 @@ public sealed class SharpSystem : EntitySystem
         if (args.Handled || args.Target is null || !args.CanReach)
             return;
 
-        // Surgery tools take precedence on surgery targets; otherwise the client predicts a butcher
-        // DoAfter while the server opens the surgery UI, and both happen at once.
         if (HasComp<CMSurgeryToolComponent>(uid) && HasComp<CMSurgeryTargetComponent>(args.Target.Value))
             return;
 
