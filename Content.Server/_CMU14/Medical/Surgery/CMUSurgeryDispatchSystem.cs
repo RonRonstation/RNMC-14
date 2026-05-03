@@ -244,6 +244,8 @@ public sealed class CMUSurgeryDispatchSystem : EntitySystem
         "suture" => 60,
         "head_organ" => 60,
         "parasite" => 50,
+        "remove_organ" => 30,
+        "amputation" => 20,
         "close_up" => -50,
         _ => 0,
     };
@@ -438,7 +440,9 @@ public sealed class CMUSurgeryDispatchSystem : EntitySystem
 
                 if (lockComp.AwaitingClosureChoice)
                 {
-                    if (!IsOrganRepairChoiceCategory(metadata.Category))
+                    if (!IsContinuationChoiceCategory(metadata.Category))
+                        continue;
+                    if (lockComp.LeafSurgeryId == metadata.Surgery)
                         continue;
                 }
                 else if (lockComp.LeafSurgeryId != metadata.Surgery)
@@ -484,12 +488,15 @@ public sealed class CMUSurgeryDispatchSystem : EntitySystem
                 metadata.Category));
         }
 
-        // Post-abandon cleanup: surface CMSurgeryCloseIncision /
-        // CMSurgeryCloseRibcage when V1 markers linger after abandon so a
-        // fresh surgeon can finish the cleanup. These don't have V2
-        // metadata; labels + tool categories are synthesised from the
-        // step prototypes.
+        // Post-abandon cleanup: surface the CMU close-up that matches the
+        // physical access state. Soft-tissue openings only need cautery;
+        // opened skulls/ribcages must be closed and mended first.
+        var closeUpLockedHere = lockComp is not null
+            && targetPart is { } lockedPart
+            && lockComp.Part == lockedPart
+            && IsCloseUpSurgeryId(lockComp.LeafSurgeryId);
         var canShowCloseUp = lockComp is null
+            || closeUpLockedHere
             || (lockComp.AwaitingClosureChoice && targetPart is { } choicePart && lockComp.Part == choicePart);
         if (canShowCloseUp && targetPart is { } closePart)
         {
@@ -508,6 +515,162 @@ public sealed class CMUSurgeryDispatchSystem : EntitySystem
         }
 
         return entries;
+    }
+
+    private bool NeedsBoneCavityClosure(EntityUid part)
+    {
+        return HasComp<CMRibcageOpenComponent>(part)
+            || HasComp<CMRibcageSawedComponent>(part);
+    }
+
+    private bool NeedsSoftTissueClosure(EntityUid part)
+    {
+        return HasComp<CMIncisionOpenComponent>(part)
+            || HasComp<CMBleedersClampedComponent>(part)
+            || HasComp<CMSkinRetractedComponent>(part);
+    }
+
+    private static bool IsCloseUpSurgeryId(string surgeryId)
+    {
+        return surgeryId is "CMUSurgeryCloseIncision"
+            or "CMUSurgeryCloseBoneCavity"
+            or "CMSurgeryCloseIncision"
+            or "CMSurgeryCloseRibcage";
+    }
+
+    private bool IsNeededSurgeryForPart(
+        EntityUid patient,
+        EntityUid? targetPart,
+        string surgeryId,
+        string category,
+        BodyPartType partType)
+    {
+        if (targetPart is not { } part)
+            return category == "reattach";
+
+        return category switch
+        {
+            "fracture" => TryComp<FractureComponent>(part, out var fracture)
+                && fracture.Severity != FractureSeverity.None,
+            "bleed" => HasComp<InternalBleedingComponent>(part),
+            "burn" => HasComp<CMUEscharComponent>(part),
+            "parasite" => partType == BodyPartType.Torso,
+            "suture" or "head_organ" => HasDamagedOrganForSurgery(part, surgeryId),
+            "remove_organ" => HasOrganForSurgery(part, surgeryId),
+            "transplant" => IsOrganReplacementNeededForSurgery(part, surgeryId),
+            "amputation" => partType is BodyPartType.Arm or BodyPartType.Leg,
+            _ => true,
+        };
+    }
+
+    private bool HasDamagedOrganForSurgery(EntityUid part, string surgeryId)
+    {
+        if (!TryGetOrganConditionForSurgery(surgeryId, out var slot, out var minStage))
+            return false;
+
+        return HasOrganInSlotAtLeast(part, slot, minStage);
+    }
+
+    private bool HasDeadOrganForSurgery(EntityUid part, string surgeryId)
+    {
+        if (!TryGetOrganConditionForSurgery(surgeryId, out var slot, out _))
+            return false;
+
+        return HasOrganInSlotAtLeast(part, slot, OrganDamageStage.Dead);
+    }
+
+    private bool HasOrganForSurgery(EntityUid part, string surgeryId)
+    {
+        if (!TryGetOrganConditionForSurgery(surgeryId, out var slot, out _))
+            return false;
+
+        return TryGetOrganInSlot(part, slot, out _);
+    }
+
+    private bool IsOrganReplacementNeededForSurgery(EntityUid part, string surgeryId)
+    {
+        if (!TryGetReinsertOrganSlotForSurgery(surgeryId, out var slot))
+            return false;
+
+        return !TryGetOrganInSlot(part, slot, out _);
+    }
+
+    private bool HasOrganInSlotAtLeast(EntityUid part, string slot, OrganDamageStage stage)
+    {
+        return TryGetOrganInSlot(part, slot, out var organ)
+            && TryComp<OrganHealthComponent>(organ, out var health)
+            && health.Stage.IsAtLeast(stage);
+    }
+
+    private bool TryGetOrganInSlot(EntityUid part, string slotId, out EntityUid organ)
+    {
+        organ = default;
+        var containerId = SharedBodySystem.GetOrganContainerId(slotId);
+        if (!_containers.TryGetContainer(part, containerId, out var container))
+            return false;
+
+        foreach (var contained in container.ContainedEntities)
+        {
+            if (!HasComp<OrganComponent>(contained))
+                continue;
+
+            organ = contained;
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool TryGetOrganConditionForSurgery(string surgeryId, out string slot, out OrganDamageStage minStage)
+    {
+        slot = string.Empty;
+        minStage = OrganDamageStage.Bruised;
+
+        if (_rmcSurgery.GetSingleton(new EntProtoId(surgeryId)) is not { } surgeryEnt
+            || !TryComp<CMSurgeryComponent>(surgeryEnt, out var surgery))
+        {
+            return false;
+        }
+
+        foreach (var stepId in surgery.Steps)
+        {
+            if (_rmcSurgery.GetSingleton(stepId) is not { } stepEnt
+                || !TryComp<CMUOrganDamagedSurgeryConditionComponent>(stepEnt, out var condition))
+            {
+                continue;
+            }
+
+            slot = condition.OrganSlot;
+            minStage = condition.MinStage;
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool TryGetReinsertOrganSlotForSurgery(string surgeryId, out string slot)
+    {
+        slot = string.Empty;
+
+        if (_rmcSurgery.GetSingleton(new EntProtoId(surgeryId)) is not { } surgeryEnt
+            || !TryComp<CMSurgeryComponent>(surgeryEnt, out var surgery))
+        {
+            return false;
+        }
+
+        foreach (var stepId in surgery.Steps)
+        {
+            if (_rmcSurgery.GetSingleton(stepId) is not { } stepEnt
+                || !TryComp<CMUSurgeryStepReinsertOrganEffectComponent>(stepEnt, out var reinsert))
+            {
+                continue;
+            }
+
+            slot = reinsert.OrganSlot;
+            return true;
+        }
+
+        return false;
     }
 
     private bool HasRequiredSurgerySkill(EntityUid surgeon, int minSkill)
@@ -746,5 +909,18 @@ public sealed class CMUSurgeryDispatchSystem : EntitySystem
     private static bool IsOrganRepairChoiceCategory(string category)
     {
         return category is "suture" or "head_organ";
+    }
+
+    private static bool IsContinuationChoiceCategory(string category)
+    {
+        return category is "bleed"
+            or "fracture"
+            or "burn"
+            or "parasite"
+            or "suture"
+            or "head_organ"
+            or "remove_organ"
+            or "amputation"
+            or "transplant";
     }
 }

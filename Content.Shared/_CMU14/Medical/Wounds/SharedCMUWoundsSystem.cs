@@ -299,25 +299,13 @@ public abstract class SharedCMUWoundsSystem : EntitySystem
         }
     }
 
-        if (maxRate <= 0f)
-        {
-            if (HasComp<InternalBleedingComponent>(part))
-            {
-                RemComp<InternalBleedingComponent>(part);
-                RaiseInternalBleedingChanged(part, true);
-            }
-            return;
-        }
+    private static bool IsSuppressedBleedSourceMatch(string suppressed, string current)
+    {
+        if (suppressed == current)
+            return true;
 
-        var changed = !TryComp<InternalBleedingComponent>(part, out var before)
-            || MathF.Abs(before.BloodlossPerSecond - maxRate) > 0.001f
-            || before.Source != source;
-        var ib = EnsureComp<InternalBleedingComponent>(part);
-        ib.BloodlossPerSecond = maxRate;
-        ib.Source = source;
-        Dirty(part, ib);
-        if (changed)
-            RaiseInternalBleedingChanged(part, false);
+        return suppressed.StartsWith("fracture:", StringComparison.Ordinal)
+            && current.StartsWith("fracture:", StringComparison.Ordinal);
     }
 
     private float GetSplintAdjustedFractureBleedRate(
