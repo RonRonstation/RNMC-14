@@ -55,6 +55,10 @@
         suppressionPercent: 0.75
         durationPerUnit: 90
       - !type:HealthChange
+        damage:
+          types:
+            Poison: 0.2
+      - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
           min: 20
