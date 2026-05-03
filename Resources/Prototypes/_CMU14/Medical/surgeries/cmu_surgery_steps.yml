@@ -6,7 +6,7 @@
   name: Realign simple fracture
   components:
   - type: CMSurgeryStep
-    skill: 2
+    skill: 1
     tool:
     - type: CMBoneSetter
     add:
@@ -23,7 +23,7 @@
   name: Realign compound fracture
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 1
     tool:
     - type: CMBoneSetter
     add:
@@ -44,7 +44,7 @@
   name: Apply bone gel
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 1
     tool:
     - type: CMBoneGel
     remove:
@@ -65,7 +65,7 @@
   name: Realign comminuted fracture
   components:
   - type: CMSurgeryStep
-    skill: 4
+    skill: 1
     tool:
     - type: CMBoneSetter
     add:
@@ -105,7 +105,7 @@
   name: Insert bone graft
   components:
   - type: CMSurgeryStep
-    skill: 4
+    skill: 1
     tool:
     - type: CMUBoneGraft
     add:
@@ -197,7 +197,7 @@
   name: Clamp liver vessels
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMUOrganClamp
     add:
@@ -212,7 +212,7 @@
   name: Extract liver
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMHemostat
     add:
@@ -234,7 +234,7 @@
   name: Insert replacement liver
   components:
   - type: CMSurgeryStep
-    skill: 4
+    skill: 2
     remove:
     - type: CMULiverRemovedMarker
     - type: CMULiverVesselsClampedMarker
@@ -250,7 +250,7 @@
   name: Clamp lung vessels
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMUOrganClamp
     add:
@@ -265,7 +265,7 @@
   name: Extract lungs
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMHemostat
     add:
@@ -287,7 +287,7 @@
   name: Insert replacement lungs
   components:
   - type: CMSurgeryStep
-    skill: 4
+    skill: 2
     remove:
     - type: CMULungsRemovedMarker
     - type: CMULungsVesselsClampedMarker
@@ -303,7 +303,7 @@
   name: Clamp kidney vessels
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMUOrganClamp
     add:
@@ -318,7 +318,7 @@
   name: Extract kidneys
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMHemostat
     add:
@@ -340,7 +340,7 @@
   name: Insert replacement kidneys
   components:
   - type: CMSurgeryStep
-    skill: 4
+    skill: 2
     remove:
     - type: CMUKidneysRemovedMarker
     - type: CMUKidneysVesselsClampedMarker
@@ -356,7 +356,7 @@
   name: Clamp heart vessels
   components:
   - type: CMSurgeryStep
-    skill: 4
+    skill: 2
     tool:
     - type: CMUOrganClamp
     add:
@@ -371,7 +371,7 @@
   name: Extract heart
   components:
   - type: CMSurgeryStep
-    skill: 4
+    skill: 2
     tool:
     - type: CMHemostat
     add:
@@ -393,7 +393,7 @@
   name: Transplant donor heart
   components:
   - type: CMSurgeryStep
-    skill: 4
+    skill: 2
     remove:
     - type: CMUHeartRemovedMarker
     - type: CMUHeartVesselsClampedMarker
@@ -409,7 +409,7 @@
   name: Clamp stomach vessels
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMUOrganClamp
     add:
@@ -424,7 +424,7 @@
   name: Extract stomach
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMHemostat
     add:
@@ -446,7 +446,7 @@
   name: Insert replacement stomach
   components:
   - type: CMSurgeryStep
-    skill: 4
+    skill: 2
     remove:
     - type: CMUStomachRemovedMarker
     - type: CMUStomachVesselsClampedMarker
@@ -464,7 +464,7 @@
   name: Suture liver
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMHemostat
     remove:
@@ -484,7 +484,7 @@
   name: Suture lungs
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMHemostat
     remove:
@@ -504,7 +504,7 @@
   name: Suture kidneys
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMHemostat
     remove:
@@ -524,7 +524,7 @@
   name: Suture heart
   components:
   - type: CMSurgeryStep
-    skill: 4
+    skill: 2
     tool:
     - type: CMHemostat
     remove:
@@ -544,7 +544,7 @@
   name: Suture stomach
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMHemostat
     remove:
@@ -651,7 +651,7 @@
   name: Repair brain
   components:
   - type: CMSurgeryStep
-    skill: 4
+    skill: 2
     tool:
     - type: CMHemostat
   - type: CMUOrganDamagedSurgeryCondition
@@ -669,7 +669,7 @@
   name: Repair eyes
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMHemostat
   - type: CMUOrganDamagedSurgeryCondition
@@ -687,7 +687,7 @@
   name: Repair ears
   components:
   - type: CMSurgeryStep
-    skill: 3
+    skill: 2
     tool:
     - type: CMHemostat
   - type: CMUOrganDamagedSurgeryCondition

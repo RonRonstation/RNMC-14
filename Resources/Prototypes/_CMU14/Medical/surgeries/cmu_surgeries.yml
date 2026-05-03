@@ -339,6 +339,11 @@
     priority: 6
     requirement: CMUSurgeryOpenBoneCavity
     steps:
+    - CMSurgeryStepOpenIncisionScalpel
+    - CMSurgeryStepClampBleeders
+    - CMSurgeryStepRetractSkin
+    - CMSurgeryStepSawBones
+    - CMSurgeryStepPriseOpenBones
     - CMUSurgeryStepClampLiverVessels
     - CMUSurgeryStepSutureLiver
     - CMSurgeryStepCloseBones
@@ -354,6 +359,11 @@
     priority: 6
     requirement: CMUSurgeryOpenBoneCavity
     steps:
+    - CMSurgeryStepOpenIncisionScalpel
+    - CMSurgeryStepClampBleeders
+    - CMSurgeryStepRetractSkin
+    - CMSurgeryStepSawBones
+    - CMSurgeryStepPriseOpenBones
     - CMUSurgeryStepClampLungVessels
     - CMUSurgeryStepSutureLungs
     - CMSurgeryStepCloseBones
@@ -369,6 +379,11 @@
     priority: 6
     requirement: CMUSurgeryOpenBoneCavity
     steps:
+    - CMSurgeryStepOpenIncisionScalpel
+    - CMSurgeryStepClampBleeders
+    - CMSurgeryStepRetractSkin
+    - CMSurgeryStepSawBones
+    - CMSurgeryStepPriseOpenBones
     - CMUSurgeryStepClampKidneyVessels
     - CMUSurgeryStepSutureKidneys
     - CMSurgeryStepCloseBones
@@ -384,6 +399,11 @@
     priority: 6
     requirement: CMUSurgeryOpenBoneCavity
     steps:
+    - CMSurgeryStepOpenIncisionScalpel
+    - CMSurgeryStepClampBleeders
+    - CMSurgeryStepRetractSkin
+    - CMSurgeryStepSawBones
+    - CMSurgeryStepPriseOpenBones
     - CMUSurgeryStepClampHeartVessels
     - CMUSurgeryStepSutureHeart
     - CMSurgeryStepCloseBones
@@ -399,6 +419,11 @@
     priority: 6
     requirement: CMUSurgeryOpenBoneCavity
     steps:
+    - CMSurgeryStepOpenIncisionScalpel
+    - CMSurgeryStepClampBleeders
+    - CMSurgeryStepRetractSkin
+    - CMSurgeryStepSawBones
+    - CMSurgeryStepPriseOpenBones
     - CMUSurgeryStepClampStomachVessels
     - CMUSurgeryStepSutureStomach
     - CMSurgeryStepCloseBones

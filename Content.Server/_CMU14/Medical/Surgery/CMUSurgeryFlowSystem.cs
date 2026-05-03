@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Content.Shared._CMU14.Medical;
+using Content.Shared._CMU14.Medical.Bones;
+using Content.Shared._CMU14.Medical.Items;
 using Content.Shared._CMU14.Medical.Surgery;
 using Content.Shared._RMC14.Marines.Skills;
 using Content.Shared._RMC14.Medical.Surgery;
@@ -29,6 +31,8 @@ public sealed class CMUSurgeryFlowSystem : SharedCMUSurgeryFlowSystem
     [Dependency] private readonly SkillsSystem _skills = default!;
 
     private const float StepDoAfterSeconds = 2f;
+    private const float PostOpCastWindowMinutes = 5f;
+    private const float PostOpMalunionChance = 0.3f;
     private const string OpenIncisionScalpelStep = "CMSurgeryStepOpenIncisionScalpel";
     private static readonly EntProtoId<SkillDefinitionComponent> SurgerySkill = "RMCSkillSurgery";
     private static readonly float[] SurgeryStepDelayMultipliers = { 1.25f, 1f, 0.75f, 0.55f, 0.4f };
@@ -38,7 +42,6 @@ public sealed class CMUSurgeryFlowSystem : SharedCMUSurgeryFlowSystem
         "CMSurgeryStepCloseBones",
         "CMSurgeryStepMendRibcage",
         "CMSurgeryStepCloseIncision",
-        "CMUSurgeryStepCloseIncision",
         "CMUSurgeryStepCloseReattach",
     };
 
@@ -71,7 +74,7 @@ public sealed class CMUSurgeryFlowSystem : SharedCMUSurgeryFlowSystem
         ["scalpel_or_burn_kit"] = new SoundCollectionSpecifier("RMCSurgeryScalpel"),
     };
 
-    protected override void StartStepDoAfter(EntityUid patient, CMUSurgeryArmedStepComponent armed, EntityUid surgeon, EntityUid tool, EntityUid targetPart)
+    protected override bool StartStepDoAfter(EntityUid patient, CMUSurgeryArmedStepComponent armed, EntityUid surgeon, EntityUid tool, EntityUid targetPart)
     {
         var delay = ResolveStepDoAfterDelay(surgeon);
         if (TryComp<CMUImprovisedSurgeryToolComponent>(tool, out var improvised))
@@ -93,12 +96,12 @@ public sealed class CMUSurgeryFlowSystem : SharedCMUSurgeryFlowSystem
             CancelDuplicate = false,
         };
         if (!DoAfter.TryStartDoAfter(doAfter))
-            return;
+            return false;
 
         if (HasComp<BlowtorchComponent>(tool))
         {
             _audio.PlayPvs(WelderStepSound, tool);
-            return;
+            return true;
         }
 
         if (armed.RequiredToolCategory is { } category
@@ -106,6 +109,8 @@ public sealed class CMUSurgeryFlowSystem : SharedCMUSurgeryFlowSystem
         {
             _audio.PlayPvs(sound, patient);
         }
+
+        return true;
     }
 
     private TimeSpan ResolveStepDoAfterDelay(EntityUid surgeon)
@@ -205,6 +210,7 @@ public sealed class CMUSurgeryFlowSystem : SharedCMUSurgeryFlowSystem
         {
             if (armed.StepIndex >= leafComp.Steps.Count - 1)
             {
+                MarkFracturePostOpIfNeeded(patient, stepPart, surgeon, leafId);
                 var completeEvLast = new CMSurgeryCompleteEvent(patient, surgeon, leafId);
                 RaiseLocalEvent(patient, ref completeEvLast);
                 RemComp<CMUSurgeryArmedStepComponent>(patient);
@@ -215,22 +221,27 @@ public sealed class CMUSurgeryFlowSystem : SharedCMUSurgeryFlowSystem
 
             if (TryResolveStepAt(leafId, armed.StepIndex + 1, out var nextLinear, stepPart))
             {
-                if (!IsCloseUpSurgeryId(leafId)
-                    && IsClosureStep(nextLinear.ResolvedSurgeryId, nextLinear.StepIndex))
+                if (IsClosureStep(nextLinear.ResolvedSurgeryId, nextLinear.StepIndex))
                 {
                     MarkFracturePostOpIfNeeded(patient, stepPart, surgeon, leafId);
                     var completeEvFunctional = new CMSurgeryCompleteEvent(patient, surgeon, leafId);
                     RaiseLocalEvent(patient, ref completeEvFunctional);
 
-                    RemComp<CMUSurgeryArmedStepComponent>(patient);
-                    SetAwaitingClosureChoice(patient, stepPart);
-                    Popup.PopupEntity(
-                        Loc.GetString("cmu-medical-surgery-choose-repair-or-close"),
-                        patient,
-                        surgeon,
-                        PopupType.Medium);
-                    _dispatch.RefreshUiForPatient(patient);
-                    return;
+                    if (ShouldOfferRepairOrClose(patient, surgeon, stepPart, leafId))
+                    {
+                        RemComp<CMUSurgeryArmedStepComponent>(patient);
+                        SetAwaitingClosureChoice(patient, stepPart);
+                        Popup.PopupEntity(
+                            Loc.GetString("cmu-medical-surgery-choose-repair-or-close"),
+                            patient,
+                            surgeon,
+                            PopupType.Medium);
+                        _dispatch.RefreshUiForPatient(patient);
+                        return;
+                    }
+
+                    if (TryArmSamePartContinuation(patient, armed, surgeon, stepPart, leafId))
+                        return;
                 }
 
                 armed.SurgeryId = nextLinear.ResolvedSurgeryId;
@@ -257,6 +268,7 @@ public sealed class CMUSurgeryFlowSystem : SharedCMUSurgeryFlowSystem
         }
 
         var completeEv = new CMSurgeryCompleteEvent(patient, surgeon, leafId);
+        MarkFracturePostOpIfNeeded(patient, stepPart, surgeon, leafId);
         RaiseLocalEvent(patient, ref completeEv);
         RemComp<CMUSurgeryArmedStepComponent>(patient);
         ClearSurgeryInFlight(patient);
@@ -289,11 +301,8 @@ public sealed class CMUSurgeryFlowSystem : SharedCMUSurgeryFlowSystem
     private static bool IsFractureSurgeryId(string surgeryId)
     {
         return surgeryId is "CMUSurgerySetSimpleFracture"
-            or "CMUSurgerySetSimpleFractureCavity"
             or "CMUSurgerySetCompoundFracture"
-            or "CMUSurgerySetCompoundFractureCavity"
-            or "CMUSurgerySetComminutedFracture"
-            or "CMUSurgerySetComminutedFractureCavity";
+            or "CMUSurgerySetComminutedFracture";
     }
 
     private bool ShouldOfferRepairOrClose(EntityUid patient, EntityUid surgeon, EntityUid stepPart, string currentLeafId)
@@ -394,14 +403,6 @@ public sealed class CMUSurgeryFlowSystem : SharedCMUSurgeryFlowSystem
     {
         var stepId = ResolveStepPrototypeId(surgeryId, stepIndex);
         return stepId is not null && ClosureStepIds.Contains(stepId);
-    }
-
-    private static bool IsCloseUpSurgeryId(string surgeryId)
-    {
-        return surgeryId is "CMUSurgeryCloseIncision"
-            or "CMUSurgeryCloseBoneCavity"
-            or "CMSurgeryCloseIncision"
-            or "CMSurgeryCloseRibcage";
     }
 
     private static bool CanAutoContinueCategory(string category)
