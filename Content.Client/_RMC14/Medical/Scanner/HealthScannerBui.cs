@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Numerics;
+using Content.Client._CMU14.Medical.UI;
 using Content.Client._RMC14.Medical.HUD;
 using Content.Client.Message;
 using Content.Shared._CMU14.Medical.Wounds;
@@ -189,7 +190,7 @@ public sealed class HealthScannerBui : BoundUserInterface
                 if (prototype.Overdose != null && reagent.Quantity > prototype.Overdose)
                     text = $"[bold][color=red]{FormattedMessage.EscapeText(text)} OD[/color][/bold]";
 
-                var label = new RichTextLabel();
+                var label = new CMUScaledRichTextLabel();
                 label.SetMarkupPermissive(text);
                 _window.ChemicalsContainer.AddChild(label);
                 anyChemicals = true;
@@ -262,6 +263,8 @@ public sealed class HealthScannerBui : BoundUserInterface
         {
             _window.OpenCentered();
         }
+
+        _window.ApplyUniformScale(true);
     }
 
     private HealthScannerWindow EnsureWindow()
@@ -453,6 +456,7 @@ public sealed class HealthScannerBui : BoundUserInterface
             Text = PartDisplayName(part.Type, part.Symmetry),
             MinWidth = 112,
             VerticalAlignment = Control.VAlignment.Center,
+            ClipText = true,
         });
 
         row.AddChild(new Label
@@ -474,7 +478,11 @@ public sealed class HealthScannerBui : BoundUserInterface
             FontColorOverride = SeverityTextColor(sev),
         });
 
-        var chipStrip = new BoxContainer { Orientation = LayoutOrientation.Horizontal };
+        var chipStrip = new BoxContainer
+        {
+            Orientation = LayoutOrientation.Horizontal,
+            HorizontalExpand = true,
+        };
         AppendFractureChip(chipStrip, uiState, part);
         AppendBleedChip(chipStrip, uiState, part);
         AppendWoundChip(chipStrip, part);
@@ -509,13 +517,20 @@ public sealed class HealthScannerBui : BoundUserInterface
             },
         };
 
-        var row = new BoxContainer
+        var stack = new BoxContainer
         {
-            Orientation = LayoutOrientation.Horizontal,
+            Orientation = LayoutOrientation.Vertical,
             Margin = new Thickness(8, 6),
             HorizontalExpand = true,
         };
-        card.AddChild(row);
+        card.AddChild(stack);
+
+        var row = new BoxContainer
+        {
+            Orientation = LayoutOrientation.Horizontal,
+            HorizontalExpand = true,
+        };
+        stack.AddChild(row);
 
         row.AddChild(new PanelContainer
         {
@@ -528,6 +543,7 @@ public sealed class HealthScannerBui : BoundUserInterface
             Text = PartDisplayName(type, sym),
             MinWidth = 112,
             VerticalAlignment = Control.VAlignment.Center,
+            ClipText = true,
         });
         // Em-dash instead of "0%" so a missing limb reads visually
         // distinct from a 0-HP attached one.
@@ -539,6 +555,7 @@ public sealed class HealthScannerBui : BoundUserInterface
             FontColorOverride = SeverityTextColor(PartSeverity.Severed),
         });
         row.AddChild(BuildHpBar(0f, PartSeverity.Severed));
+
         row.AddChild(new Label
         {
             Text = SeverityWord(PartSeverity.Severed),
@@ -1121,7 +1138,7 @@ public sealed class HealthScannerBui : BoundUserInterface
             PanelOverride = new StyleBoxFlat { BackgroundColor = accent },
         });
 
-        var label = new RichTextLabel();
+        var label = new CMUScaledRichTextLabel();
         label.SetMarkupPermissive(recommendation.Text);
         label.HorizontalExpand = true;
         row.AddChild(label);
