@@ -896,15 +896,17 @@ public sealed class CMUSurgeryDispatchSystem : EntitySystem
         var marker = ent.Comp;
         if (!marker.Patient.IsValid())
             return;
-        // BUI cancel = explicit abandon: lift the in-flight lock so a
-        // different surgery can be started. Physical-state markers stay
-        // and a fresh surgeon sees the matching CMU close-up cleanup option.
+        // BUI cancel is deliberate takeover/abandon. Opening another
+        // surgeon's menu is harmless, but once a medic presses abandon they
+        // should be able to stop a stale or unsafe surgery order.
+        var medic = ent.Owner;
         _flowSurgery.ClearArmed(marker.Patient);
         _flowSurgery.ClearSurgeryInFlight(marker.Patient);
 
-        var parts = BuildPartEntries(marker.Patient, ent.Owner);
-        var state = _flowSurgery.BuildBuiState(marker.Patient, Name(marker.Patient), parts, null);
-        _ui.SetUiState(ent.Owner, CMUSurgeryUIKey.Key, state);
+        var parts = BuildPartEntries(marker.Patient, medic);
+        var refreshedArmed = CompOrNull<CMUSurgeryArmedStepComponent>(marker.Patient);
+        var state = _flowSurgery.BuildBuiState(marker.Patient, Name(marker.Patient), parts, refreshedArmed, medic);
+        _ui.SetUiState(medic, CMUSurgeryUIKey.Key, state);
     }
 
     private void OnUiClosed(Entity<CMUSurgeryWindowOpenComponent> ent, ref BoundUIClosedEvent args)
