@@ -1,7 +1,7 @@
 - type: entity
   parent: AU14MobWorkingJoe
-  id: AU14MobWorkingJoeGOVFOR
-  suffix: AU14, GOVFOR
+  id: AU14MobWorkingJoeColony
+  suffix: AU14, civilian
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRoleApplySpecial
@@ -10,8 +10,8 @@
     allowSpeech: true
     allowMovement: true
     reregister: false
-    name: Working Joe (GOVFOR)
+    name: au14-job-name-workingjoe
     description: au14-job-description-workingjoe
-    job: AU14JobGOVFORWorkingJoe
+    job: AU14JobColonyWorkingJoe
     raffle:
       settings: short

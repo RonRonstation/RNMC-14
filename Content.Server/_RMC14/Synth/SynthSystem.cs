@@ -50,7 +50,7 @@ public sealed class SynthSystem : SharedSynthSystem
         if (!HasComp<BodyComponent>(ent.Owner))
             return;
 
-        var organComps = _body.GetBodyOrganEntityComps<OrganComponent>(ent.Owner);
+        var organComps = _body.GetBodyOrganEntityComps<OrganComponent>((ent.Owner, body));
 
         foreach (var organ in organComps)
         {
@@ -63,6 +63,7 @@ public sealed class SynthSystem : SharedSynthSystem
         {
             var newBrain = SpawnNextToOrDrop(ent.Comp.NewBrain, ent);
             _body.AddOrganToFirstValidSlot(part.Id, newBrain);
+            break;
         }
     }
 
