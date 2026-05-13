@@ -1,4 +1,5 @@
-﻿using Content.Server._RMC14.Rules;
+using Content.Server._RMC14.Rules;
+using Content.Server._RMC14.Rules.DistressSignal;
 using Content.Server._RMC14.Announce;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
