@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.2-fix-physics
   forkId: ""
   forkVersion: ""
-  time: 01/29/2026 06:49:02
-  entityCount: 59
+  time: 03/18/2026 20:30:39
+  entityCount: 60
 maps:
 - 1
 grids:
@@ -161,7 +161,7 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 2.169057,-0.51171803
       parent: 2
-- proto: RMCVehicleHumveeAmmoLoader
+- proto: VehicleHumveeAmmoLoader
   entities:
   - uid: 59
     components:
@@ -169,28 +169,34 @@ entities:
     - type: Transform
       pos: 2.8285725,-0.35967326
       parent: 2
-- proto: RMCVehicleHumveeCarrierBackDoor1
+    missingComponents:
+    - InteractionTransparency
+- proto: VehicleHumveeCarrierBackDoor1
   entities:
   - uid: 6
     components:
     - type: Transform
       pos: 0.67971706,-0.3049401
       parent: 2
-- proto: RMCVehicleHumveeCarrierBackDoor2
+    missingComponents:
+    - InteractionTransparency
+- proto: VehicleHumveeCarrierBackDoor2
   entities:
   - uid: 7
     components:
     - type: Transform
       pos: 0.6829958,-1.3013349
       parent: 2
-- proto: RMCVehicleHumveeChassisTransport
+    missingComponents:
+    - InteractionTransparency
+- proto: VehicleHumveeChassisTransport
   entities:
   - uid: 3
     components:
     - type: Transform
       pos: 3.3730245,-0.71111596
       parent: 2
-- proto: RMCVehicleHumveeExitDoor
+- proto: VehicleHumveeExitDoor
   entities:
   - uid: 5
     components:
@@ -201,7 +207,9 @@ entities:
       fixtures: {}
     - type: VehicleExit
       entryIndex: 0
-- proto: RMCVehicleHumveeExitDoorDirectional
+    missingComponents:
+    - InteractionTransparency
+- proto: VehicleHumveeExitDoorDirectional
   entities:
   - uid: 4
     components:
@@ -210,19 +218,25 @@ entities:
       parent: 2
     - type: VehicleExit
       entryIndex: 1
-- proto: RMCVehicleHumveeViewportDoor
+    missingComponents:
+    - InteractionTransparency
+- proto: VehicleHumveeViewportDoor
   entities:
   - uid: 8
     components:
     - type: Transform
       pos: 3.5056162,0.13426018
       parent: 2
+    missingComponents:
+    - InteractionTransparency
   - uid: 9
     components:
     - type: Transform
       pos: 3.528564,-1.5897646
       parent: 2
-- proto: RMCVehicleHumveeViewportFrontNorth
+    missingComponents:
+    - InteractionTransparency
+- proto: VehicleHumveeViewportFrontNorth
   entities:
   - uid: 17
     components:
@@ -230,12 +244,16 @@ entities:
       rot: 3.141592653589793 rad
       pos: 4.2862577,-1.1493816
       parent: 2
+    missingComponents:
+    - InteractionTransparency
   - uid: 18
     components:
     - type: Transform
       pos: 4.3059278,-0.17920816
       parent: 2
-- proto: RMCVehicleHumveeViewportSmall
+    missingComponents:
+    - InteractionTransparency
+- proto: VehicleHumveeViewportSmall
   entities:
   - uid: 16
     components:
@@ -243,12 +261,16 @@ entities:
       rot: 3.141592653589793 rad
       pos: 2.640549,0.3135938
       parent: 2
+    missingComponents:
+    - InteractionTransparency
   - uid: 20
     components:
     - type: Transform
       pos: 2.652617,-1.2974658
       parent: 2
-- proto: RMCVehicleInteriorWallPhone
+    missingComponents:
+    - InteractionTransparency
+- proto: VehicleInteriorWallPhone
   entities:
   - uid: 13
     components:
@@ -262,20 +284,17 @@ entities:
   - uid: 23
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 1.5,0.5
+      pos: 1.4866872,0.7034707
       parent: 2
   - uid: 24
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 2.5,0.5
+      pos: 2.3454518,0.7034707
       parent: 2
   - uid: 25
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 3.5,0.5
+      pos: 3.0794225,0.7034707
       parent: 2
   - uid: 26
     components:
@@ -339,6 +358,11 @@ entities:
     components:
     - type: Transform
       pos: 1.3601265,-2.3495896
+      parent: 2
+  - uid: 60
+    components:
+    - type: Transform
+      pos: 3.87108,0.7034707
       parent: 2
 - proto: RMCWallInvisibleBulletLightBlocker
   entities:

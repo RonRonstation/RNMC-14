@@ -39,23 +39,46 @@ public sealed partial class GridVehicleMoverSystem : EntitySystem
     {
         pushing = false;
         if (vehicle.Operator is { } op && TryComp<InputMoverComponent>(op, out var inputComp))
+        {
+            _activeXenoPushers.Remove(uid);
             return GetInputDirection(inputComp);
+        }
 
         if (vehicle.Operator != null)
+        {
+            _activeXenoPushers.Remove(uid);
             return Vector2i.Zero;
+        }
 
         if (!TryGetActivePusher(uid, mover, out var pusher))
+        {
+            if (mover.IsPushMove &&
+                mover.PushDirection != Vector2i.Zero &&
+                mover.CurrentSpeed > MinVehicleSpeed)
+            {
+                pushing = true;
+                return Vector2i.Zero;
+            }
+
+            _activeXenoPushers.Remove(uid);
             return Vector2i.Zero;
+        }
 
         pushing = true;
-        if (!CanPushNow(mover))
+        if (!mover.IsPushMove && !CanPushNow(mover))
+        {
+            _activeXenoPushers.Remove(uid);
             return Vector2i.Zero;
+        }
 
         var pushDir = GetPushDirection(uid, pusher);
         if (pushDir == Vector2i.Zero)
+        {
+            _activeXenoPushers.Remove(uid);
             return Vector2i.Zero;
+        }
 
-        pushing = true;
+        _activeXenoPushers[uid] = pusher;
         return pushDir;
     }
 
@@ -68,17 +91,20 @@ public sealed partial class GridVehicleMoverSystem : EntitySystem
         if (!fixtureQ.TryComp(uid, out var fixtures))
             return false;
 
-        var vehiclePos = transform.GetWorldPosition(uid);
-        var contacts = physics.GetContacts((uid, fixtures));
+        var vehiclePos = _transform.GetWorldPosition(uid);
+        var contacts = _physics.GetContacts((uid, fixtures));
         var bestScore = 0f;
 
         while (contacts.MoveNext(out var contact))
         {
-            if (contact == null || !contact.IsTouching || !contact.Hard)
+            if (contact == null || !contact.IsTouching)
                 continue;
 
             var other = contact.OtherEnt(uid);
             if (!HasComp<XenoComponent>(other))
+                continue;
+
+            if (!contact.Hard)
                 continue;
 
             if (!CanXenoPushVehicle(mover, other))
@@ -91,7 +117,7 @@ public sealed partial class GridVehicleMoverSystem : EntitySystem
             if (dir == Vector2i.Zero)
                 continue;
 
-            var otherPos = transform.GetWorldPosition(other);
+            var otherPos = _transform.GetWorldPosition(other);
             var toVehicle = vehiclePos - otherPos;
             if (toVehicle.LengthSquared() <= 0.0001f)
                 continue;
@@ -108,13 +134,16 @@ public sealed partial class GridVehicleMoverSystem : EntitySystem
             }
         }
 
-        return bestScore > 0f;
+        if (bestScore > 0f)
+            return true;
+
+        return false;
     }
 
     private Vector2i GetPushDirection(EntityUid uid, EntityUid pusher)
     {
-        var vehiclePos = transform.GetWorldPosition(uid);
-        var pusherPos = transform.GetWorldPosition(pusher);
+        var vehiclePos = _transform.GetWorldPosition(uid);
+        var pusherPos = _transform.GetWorldPosition(pusher);
         var delta = vehiclePos - pusherPos;
         if (delta.LengthSquared() <= 0.0001f)
             return Vector2i.Zero;
