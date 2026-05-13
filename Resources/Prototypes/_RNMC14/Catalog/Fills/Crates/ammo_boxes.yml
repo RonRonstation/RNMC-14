@@ -7,3 +7,23 @@
     contents:
     - id: RNMCBoxBulletElephant
       amount: 1
+
+- type: entity
+  parent: RMCCrateAmmo
+  id: RNMCCrateF101BehemothEXPAmmo
+  name: F-101 "«Behemoth»" APHEBC Ammo Crate (x1)
+  components:
+  - type: StorageFill
+    contents:
+    - id: RNMCBoxBulletBehemothEXP
+      amount: 1
+
+- type: entity
+  parent: RMCCrateAmmo
+  id: RNMCCrateF101BehemothEXPIAmmo
+  name: F-101 "«Behemoth»" SAPCBCI Ammo Crate (x1)
+  components:
+  - type: StorageFill
+    contents:
+    - id: RNMCBoxBulletBehemothEXPI
+      amount: 1

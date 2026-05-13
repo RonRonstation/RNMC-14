@@ -79,7 +79,7 @@
 - type: entity
   parent: CMCartridgeSniper10x28mm
   id: RNMCBulletBehemothEXP
-  name: cartridge (15,2×76 mm EXP)
+  name: cartridge (15,2×76 mm APHEBC)
   components:
   - type: Item
     size: Normal
@@ -94,7 +94,7 @@
 - type: entity
   parent: CMCartridgeSniper10x28mm
   id: RNMCBulletBehemothEXPI
-  name: cartridge (15,2×76 mm EXPI)
+  name: cartridge (15,2×76 mm SAPCBCI)
   components:
   - type: Item
     size: Normal

@@ -1,0 +1,9 @@
+- type: entity
+  parent: RMCCrateWeapons
+  id: RNMCCrateF101BehemothEXP
+  name: F-101 "«Behemoth»" EXP Crate
+  components:
+  - type: StorageFill
+    contents:
+    - id: RNMCF99BehemothSniperRifleEXP
+      amount: 1
