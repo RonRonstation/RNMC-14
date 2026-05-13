@@ -236,6 +236,7 @@ public sealed partial class ActionUIController : UIController, IOnStateChanged<G
 
     private void TriggerAction(int index)
     {
+        // RMC14
         var activeActions = GetActiveHotbarActions();
         if (index < 0 || index >= activeActions.Count)
             return;
@@ -249,6 +250,7 @@ public sealed partial class ActionUIController : UIController, IOnStateChanged<G
             ToggleTargeting((actionId, action.Comp, target));
         else
             _actionsSystem?.TriggerAction(action);
+        // RMC14
     }
 
     private void OnActionAdded(EntityUid actionId)
@@ -261,17 +263,21 @@ public sealed partial class ActionUIController : UIController, IOnStateChanged<G
         if (action.Comp.Toggled && EntityManager.TryGetComponent<TargetActionComponent>(actionId, out var target))
             StartTargeting((action, action, target));
 
-        if (EntityManager.HasComponent<RMCVehicleHardpointActionComponent>(actionId))
+        // RMC14
+        if (EntityManager.HasComponent<VehicleHardpointActionComponent>(actionId))
         {
             RefreshVehicleHotbarOverride(forceUpdate: true);
             return;
         }
+        // RMC14
 
         if (_actions.Contains(action))
             return;
 
         _actions.Add(action);
+        // RMC14
         RefreshVehicleHotbarOverride(forceUpdate: true);
+        // RMC14
     }
 
     private void OnActionRemoved(EntityUid actionId)
@@ -279,22 +285,28 @@ public sealed partial class ActionUIController : UIController, IOnStateChanged<G
         if (actionId == SelectingTargetFor)
             StopTargeting();
 
-        if (EntityManager.HasComponent<RMCVehicleHardpointActionComponent>(actionId) ||
+        // RMC14
+        if (EntityManager.HasComponent<VehicleHardpointActionComponent>(actionId) ||
             _vehicleActions.Contains(actionId))
         {
             _vehicleActions.RemoveAll(x => x == actionId);
             RefreshVehicleHotbarOverride();
             return;
         }
+        // RMC14
 
         _actions.RemoveAll(x => x == actionId);
+        // RMC14
         RefreshVehicleHotbarOverride(forceUpdate: true);
+        // RMC14
     }
 
     private void OnActionsUpdated()
     {
         QueueWindowUpdate();
+        // RMC14
         RefreshVehicleHotbarOverride(forceUpdate: true);
+        // RMC14
     }
 
     private void ActionButtonPressed(ButtonEventArgs args)
@@ -741,7 +753,7 @@ public sealed partial class ActionUIController : UIController, IOnStateChanged<G
         _actions.Clear();
         foreach (var assign in assignments)
         {
-            if (EntityManager.HasComponent<RMCVehicleHardpointActionComponent>(assign.ActionId))
+            if (EntityManager.HasComponent<VehicleHardpointActionComponent>(assign.ActionId))
                 continue;
 
             _actions.Add(assign.ActionId);
@@ -809,7 +821,7 @@ public sealed partial class ActionUIController : UIController, IOnStateChanged<G
         _actions.Clear();
         foreach (var (action, _) in actions)
         {
-            if (EntityManager.HasComponent<RMCVehicleHardpointActionComponent>(action))
+            if (EntityManager.HasComponent<VehicleHardpointActionComponent>(action))
                 continue;
 
             if (!_actions.Contains(action))

@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: CMSeatBase
   id: CMSeatPassenger
   name: passenger seat
@@ -25,6 +25,9 @@
   - type: Sprite
     sprite: _RMC14/Structures/Furniture/vehicle_seats.rsi
     state: pilot_chair
+  - type: RemoveComponents
+    components:
+    - type: Damageable
 
 - type: entity
   parent: CMSeatBase
@@ -43,6 +46,11 @@
     skills:
       all:
         RMCSkillVehicles: 1
+  - type: RemoveComponents
+    components:
+    - type: Damageable
+    - type: Destructible
+    - type: Corrodible
 
 - type: entity
   parent: CMSeatBase
@@ -100,6 +108,11 @@
   - type: Sprite
     sprite: _RMC14/Structures/Vehicles/Interiors/general.rsi
     state: armor_chair
+  - type: RemoveComponents
+    components:
+    - type: Damageable
+    - type: Destructible
+    - type: Corrodible
 
 - type: entity
   parent: RMCSeatArmoredBase
@@ -128,8 +141,8 @@
     allowHotbarSelection: true
   - type: UserInterface
     interfaces:
-      enum.RMCVehicleWeaponsUiKey.Key:
-        type: RMCVehicleWeaponsBoundUserInterface
+      enum.VehicleWeaponsUiKey.Key:
+        type: VehicleWeaponsBoundUserInterface
 
 - type: entity
   parent: RMCSeatArmoredBase
@@ -160,8 +173,8 @@
     - Support
   - type: UserInterface
     interfaces:
-      enum.RMCVehicleWeaponsUiKey.Key:
-        type: RMCVehicleWeaponsBoundUserInterface
+      enum.VehicleWeaponsUiKey.Key:
+        type: VehicleWeaponsBoundUserInterface
 
 - type: entity
   parent: RMCSeatArmoredBase
@@ -178,8 +191,32 @@
     allowHotbarSelection: true
   - type: UserInterface
     interfaces:
-      enum.RMCVehicleWeaponsUiKey.Key:
-        type: RMCVehicleWeaponsBoundUserInterface
+      enum.VehicleWeaponsUiKey.Key:
+        type: VehicleWeaponsBoundUserInterface
+
+- type: entity
+  parent: RMCSeatArmoredBase
+  id: RMCSeatTankCommander
+  name: tank commander seat
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: VehicleWeaponsSeat
+    skills:
+      all: {}
+    isPrimaryOperatorSeat: false
+    allowUiSelection: true
+    allowHotbarSelection: true
+    baseViewPvsScale: 0.35
+    baseViewCursorMaxOffset: 5
+    baseViewCursorPvsIncrease: 0.5
+    allowedHardpointTypes:
+    - Secondary
+    - Launcher
+  - type: UserInterface
+    interfaces:
+      enum.VehicleWeaponsUiKey.Key:
+        type: VehicleWeaponsBoundUserInterface
 
 - type: entity
   abstract: true
@@ -196,6 +233,12 @@
     state: car_seat
     drawdepth: BelowMobs
   - type: RMCStrapNoDrawDepthChange
+  - type: RemoveComponents
+    components:
+    - type: Damageable
+    - type: Destructible
+    - type: Corrodible
+
 
 - type: entity
   parent: RMCSeatHumveeBase
@@ -224,5 +267,5 @@
     allowHotbarSelection: true
   - type: UserInterface
     interfaces:
-      enum.RMCVehicleWeaponsUiKey.Key:
-        type: RMCVehicleWeaponsBoundUserInterface
+      enum.VehicleWeaponsUiKey.Key:
+        type: VehicleWeaponsBoundUserInterface

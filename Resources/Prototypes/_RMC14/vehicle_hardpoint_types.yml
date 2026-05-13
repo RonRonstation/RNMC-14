@@ -1,41 +1,69 @@
-- type: rMCHardpointVehicleFamily
-  id: Van
+- type: entity
+  id: HardpointVehicleFamilyVan
+  components:
+  - type: HardpointVehicleFamily
 
-- type: rMCHardpointVehicleFamily
-  id: APC
+- type: entity
+  id: HardpointVehicleFamilyAPC
+  components:
+  - type: HardpointVehicleFamily
 
-- type: rMCHardpointVehicleFamily
-  id: Humvee
+- type: entity
+  id: HardpointVehicleFamilyHumvee
+  components:
+  - type: HardpointVehicleFamily
 
-- type: rMCHardpointVehicleFamily
-  id: Tank
+- type: entity
+  id: HardpointVehicleFamilyTank
+  components:
+  - type: HardpointVehicleFamily
 
-- type: rMCHardpointSlotType
-  id: Wheel
+- type: entity
+  id: HardpointSlotTypeWheel
+  components:
+  - type: HardpointSlotType
 
-- type: rMCHardpointSlotType
-  id: Turret
+- type: entity
+  id: HardpointSlotTypeTurret
+  components:
+  - type: HardpointSlotType
 
-- type: rMCHardpointSlotType
-  id: Cannon
+- type: entity
+  id: HardpointSlotTypeCannon
+  components:
+  - type: HardpointSlotType
 
-- type: rMCHardpointSlotType
-  id: Launcher
+- type: entity
+  id: HardpointSlotTypeLauncher
+  components:
+  - type: HardpointSlotType
 
-- type: rMCHardpointSlotType
-  id: RoofAttachment
+- type: entity
+  id: HardpointSlotTypeRoofAttachment
+  components:
+  - type: HardpointSlotType
 
-- type: rMCHardpointSlotType
-  id: FrontAttachment
+- type: entity
+  id: HardpointSlotTypeFrontAttachment
+  components:
+  - type: HardpointSlotType
 
-- type: rMCHardpointSlotType
-  id: SupportAttachment
+- type: entity
+  id: HardpointSlotTypeSupportAttachment
+  components:
+  - type: HardpointSlotType
 
-- type: rMCHardpointSlotType
-  id: Armor
+- type: entity
+  id: HardpointSlotTypeArmor
+  components:
+  - type: HardpointSlotType
 
-- type: rMCHardpointSlotType
-  id: Treads
+- type: entity
+  id: HardpointSlotTypeTreads
+  components:
+  - type: HardpointSlotType
 
-- type: rMCHardpointSlotType
-  id: Tires
+- type: entity
+  id: HardpointSlotTypeTires
+  components:
+  - type: HardpointSlotType

@@ -4,6 +4,7 @@ using Content.Shared.DoAfter;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using System;
 
 namespace Content.Shared._RMC14.Vehicle;
 
@@ -21,7 +22,7 @@ public sealed partial class VehicleEntryPoint
 }
 
 [RegisterComponent, NetworkedComponent]
-[Access(typeof(RMCVehicleSystem))]
+[Access(typeof(VehicleSystem))]
 public sealed partial class VehicleEnterComponent : Component
 {
     [DataField(required: true)]
@@ -47,11 +48,14 @@ public sealed partial class VehicleEnterComponent : Component
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(RMCVehicleSystem))]
+[Access(typeof(VehicleSystem))]
 public sealed partial class VehicleExitComponent : Component
 {
     [DataField, AutoNetworkedField]
     public int EntryIndex;
+
+    [NonSerialized]
+    public bool PendingExit;
 }
 
 [Serializable, NetSerializable]
@@ -73,7 +77,7 @@ public sealed partial class VehicleEnterDoAfterEvent : SimpleDoAfterEvent
 public sealed partial class VehicleExitDoAfterEvent : SimpleDoAfterEvent;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(RMCVehicleSystem))]
+[Access(typeof(VehicleSystem))]
 public sealed partial class VehicleDriverSeatComponent : Component
 {
     [DataField, AutoNetworkedField]

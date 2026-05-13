@@ -123,7 +123,7 @@ public sealed class VehicleTurretSystem : EntitySystem
             if (session.SenderSession.AttachedEntity is not { } user)
                 return;
 
-            if (TryComp(user, out RMCVehicleViewToggleComponent? viewToggle) && !viewToggle.IsOutside)
+            if (TryComp(user, out VehicleViewToggleComponent? viewToggle) && !viewToggle.IsOutside)
                 return;
 
             if (!TryComp(user, out VehicleWeaponsOperatorComponent? operatorComp) ||
@@ -167,7 +167,7 @@ public sealed class VehicleTurretSystem : EntitySystem
         if (turret.VisualEntity is { } existing && Exists(existing))
             return;
 
-        var visual = Spawn("RMCVehicleTurretVisual", Transform(vehicle).Coordinates);
+        var visual = Spawn("VehicleTurretVisual", new EntityCoordinates(vehicle, Vector2.Zero));
         var visualComp = EnsureComp<VehicleTurretVisualComponent>(visual);
         visualComp.Turret = GetNetEntity(turretUid);
         Dirty(visual, visualComp);
@@ -598,53 +598,19 @@ public sealed class VehicleTurretSystem : EntitySystem
         if (!targetTurret.RotateToCursor)
             return;
 
-        if (!TryGetVehicle(targetUid, out var vehicle))
-            return;
-
-        if (!IsAlignedForShot(ent.Owner, ent.Comp, targetUid, targetTurret, vehicle, args.ToCoordinates))
-        {
-            args.Cancelled = true;
-            args.ResetCooldown = true;
-            return;
-        }
-
-        ApplyShotDirectionConstraint(ent.Comp, targetTurret, targetUid, vehicle, ref args);
-    }
-
-    public bool IsAlignedForShot(EntityUid turretUid, EntityCoordinates? toCoordinates)
-    {
-        if (!TryComp(turretUid, out VehicleTurretComponent? turret))
-            return true;
-
-        if (!TryResolveRotationTarget(turretUid, turret, out var targetUid, out var targetTurret))
-            return true;
-
-        if (!targetTurret.RotateToCursor)
-            return true;
-
-        if (!TryGetVehicle(targetUid, out var vehicle))
-            return true;
-
-        return IsAlignedForShot(turretUid, turret, targetUid, targetTurret, vehicle, toCoordinates);
-    }
-
-    private bool IsAlignedForShot(
-        EntityUid turretUid,
-        VehicleTurretComponent turret,
-        EntityUid targetUid,
-        VehicleTurretComponent targetTurret,
-        EntityUid vehicle,
-        EntityCoordinates? toCoordinates)
-    {
         var alignmentTolerance = MathHelper.DegreesToRadians(
-            MathF.Max(FireAlignmentToleranceDegrees + turret.FireWhileRotatingGraceDegrees, 0f));
+            MathF.Max(FireAlignmentToleranceDegrees + ent.Comp.FireWhileRotatingGraceDegrees, 0f));
+
+        if (!TryGetVehicle(targetUid, out var vehicle))
+            return;
+
         var vehicleRot = _transform.GetWorldRotation(vehicle);
 
-        if (toCoordinates != null &&
-            TryGetTurretOrigin(turretUid, turret, out var originCoords))
+        if (args.ToCoordinates != null &&
+            TryGetTurretOrigin(targetUid, targetTurret, out var originCoords))
         {
             var originMap = _transform.ToMapCoordinates(originCoords);
-            var targetMap = _transform.ToMapCoordinates(toCoordinates.Value);
+            var targetMap = _transform.ToMapCoordinates(args.ToCoordinates.Value);
             var direction = targetMap.Position - originMap.Position;
             if (direction.LengthSquared() > 0.0001f)
             {
@@ -652,7 +618,11 @@ public sealed class VehicleTurretSystem : EntitySystem
                 var currentWorldRotation = (targetTurret.WorldRotation + vehicleRot).Reduced();
                 var desiredDelta = Angle.ShortestDistance(currentWorldRotation, desiredWorldRotation);
                 if (Math.Abs(desiredDelta.Theta) > alignmentTolerance)
-                    return false;
+                {
+                    args.Cancelled = true;
+                    args.ResetCooldown = true;
+                    return;
+                }
             }
         }
 
@@ -662,7 +632,14 @@ public sealed class VehicleTurretSystem : EntitySystem
             : (targetTurret.TargetRotation + vehicleRot).Reduced();
 
         var delta = Angle.ShortestDistance(worldRotation, targetWorldRotation);
-        return Math.Abs(delta.Theta) <= alignmentTolerance;
+        if (Math.Abs(delta.Theta) <= alignmentTolerance)
+        {
+            ApplyShotDirectionConstraint(ent.Comp, targetTurret, targetUid, vehicle, ref args);
+            return;
+        }
+
+        args.Cancelled = true;
+        args.ResetCooldown = true;
     }
 
     private void ApplyShotDirectionConstraint(
@@ -808,7 +785,7 @@ public sealed class VehicleTurretSystem : EntitySystem
         if (operatorComp.SelectedWeapon != turretUid)
             return false;
 
-        if (TryComp(user, out RMCVehicleViewToggleComponent? viewToggle) && !viewToggle.IsOutside)
+        if (TryComp(user, out VehicleViewToggleComponent? viewToggle) && !viewToggle.IsOutside)
             return false;
 
         return true;
