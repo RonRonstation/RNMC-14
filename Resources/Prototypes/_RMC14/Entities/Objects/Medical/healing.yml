@@ -287,6 +287,8 @@
   - type: WoundTreater
     wound: Burn
     treats: true
+    instantWoundTreatment: true
+    woundsTreatedPerUse: 2
     group: Burn
     consumable: true
     damage: -12
@@ -361,6 +363,8 @@
   - type: WoundTreater
     wound: Brute
     treats: true
+    instantWoundTreatment: true
+    woundsTreatedPerUse: 2
     group: Brute
     consumable: true
     damage: -12
@@ -419,6 +423,8 @@
   - type: WoundTreater
     wound: Burn
     treats: true
+    instantWoundTreatment: true
+    woundsTreatedPerUse: 2
     group: Burn
     consumable: true
     damage: -36
@@ -475,6 +481,8 @@
   - type: WoundTreater
     wound: Brute
     treats: true
+    instantWoundTreatment: true
+    woundsTreatedPerUse: 2
     group: Brute
     consumable: true
     damage: -36

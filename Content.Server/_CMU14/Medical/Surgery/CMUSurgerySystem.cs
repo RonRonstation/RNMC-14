@@ -132,8 +132,7 @@ public sealed class CMUSurgerySystem : SharedCMUSurgerySystem
         if (limbPart.PartType is not (BodyPartType.Arm or BodyPartType.Leg))
             return;
 
-        if (TryComp<TransformComponent>(body, out var bodyXform))
-            _transform.SetCoordinates(part, bodyXform.Coordinates);
+        _transform.SetCoordinates(part, Transform(body).Coordinates);
 
         _transform.AttachToGridOrMap(part);
 

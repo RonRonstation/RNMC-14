@@ -38,8 +38,6 @@ public sealed class BodyPartSeveranceSystem : EntitySystem
     [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoid = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    private ISawmill _sawmill = default!;
-
     private static readonly ProtoId<DamageTypePrototype> Bloodloss = "Bloodloss";
     private const float StumpBleedDamage = 30f;
     private static readonly SoundSpecifier SeveranceSound =
@@ -48,29 +46,23 @@ public sealed class BodyPartSeveranceSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        _sawmill = Logger.GetSawmill("cmu.medical.severance");
         SubscribeLocalEvent<BodyPartHealthComponent, BodyPartSeveredEvent>(OnPartSevered);
     }
 
     private void OnPartSevered(Entity<BodyPartHealthComponent> ent, ref BodyPartSeveredEvent args)
     {
-        _sawmill.Info($"Severance triggered: body={ToPrettyString(args.Body)} part={ToPrettyString(args.Part)} type={args.Type}");
-
         if (!_cfg.GetCVar(CMUMedicalCCVars.Enabled) || !_cfg.GetCVar(CMUMedicalCCVars.BodyPartEnabled))
         {
-            _sawmill.Info("  → bailed: layer CCVars off.");
             return;
         }
 
         if (IsLocked(args.Type))
         {
-            _sawmill.Info($"  → bailed: severance locked for {args.Type}.");
             return;
         }
 
         if (!HasComp<CMUHumanMedicalComponent>(args.Body))
         {
-            _sawmill.Info("  → bailed: target lacks CMUHumanMedicalComponent.");
             return;
         }
 
@@ -80,7 +72,6 @@ public sealed class BodyPartSeveranceSystem : EntitySystem
 
         if (!DetachPart(args.Part))
         {
-            _sawmill.Warning("  → DetachPart failed (no containing container).");
             return;
         }
 
@@ -89,7 +80,6 @@ public sealed class BodyPartSeveranceSystem : EntitySystem
         ApplyStumpBleed(args.Body);
         ApplyMissingLimbStatus(args.Body, args.Part, args.Type);
         _audio.PlayPvs(SeveranceSound, args.Body);
-        _sawmill.Info($"  → severed {args.Type}/{symmetry} OK.");
     }
 
     private void FlingPartFromBody(EntityUid body, EntityUid part)
@@ -97,9 +87,7 @@ public sealed class BodyPartSeveranceSystem : EntitySystem
         // compensateFriction:true so the part lands at the target instead
         // of sliding indefinitely off-grid (prior speed-8 fling was
         // overshooting the visible map).
-        if (!TryComp<TransformComponent>(body, out var bodyXform))
-            return;
-
+        var bodyXform = Transform(body);
         _transform.SetCoordinates(part, bodyXform.Coordinates);
         _transform.AttachToGridOrMap(part);
 

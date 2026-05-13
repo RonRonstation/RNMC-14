@@ -66,7 +66,7 @@ public abstract class SharedBoneSystem : EntitySystem
         if (!PartBelongsToSynth(ent.Owner))
             return;
 
-        args.Cancel();
+        args.Cancelled = true;
         ClearSynthFracture(ent.Owner);
     }
 
@@ -110,7 +110,7 @@ public abstract class SharedBoneSystem : EntitySystem
             return;
 
         var attempt = new BoneFractureAttemptEvent(ent.Owner, newSeverity);
-        RaiseLocalEvent(ent, attempt);
+        RaiseLocalEvent(ent, ref attempt);
         if (attempt.Cancelled)
             return;
 

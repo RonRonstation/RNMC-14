@@ -20,12 +20,10 @@ public sealed class CMUMedicInteractHubSystem : EntitySystem
 
     private void OnWoundTreaterIntercept(ref CMUWoundTreaterInterceptEvent args)
     {
-        Logger.GetSawmill("cmu.medical.bandage").Debug($"WoundTreaterIntercept: user={args.User} treater={args.Treater} patient={args.Patient} alreadyHandled={args.Handled}");
         if (args.Handled)
             return;
         if (!TryComp<CMUHumanMedicalComponent>(args.User, out var medicComp))
         {
-            Logger.GetSawmill("cmu.medical.bandage").Debug("  → bailed: user lacks CMUHumanMedicalComponent");
             return;
         }
 
@@ -33,7 +31,6 @@ public sealed class CMUMedicInteractHubSystem : EntitySystem
         _bandage.HandleAfterInteract((args.User, medicComp), ref fakeArgs);
         if (fakeArgs.Handled)
             args.Handled = true;
-        Logger.GetSawmill("cmu.medical.bandage").Debug($"  → fakeArgs.Handled={fakeArgs.Handled}");
     }
 
     private void OnMedicAfterInteract(Entity<CMUHumanMedicalComponent> medic, ref AfterInteractEvent args)
