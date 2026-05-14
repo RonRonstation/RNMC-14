@@ -221,6 +221,88 @@
         - RNMCBulletElephant
 
 - type: entity
+  parent: RMCBoxMagazineShellBase
+  id: RNMCBoxBulletBehemothEXPEmpty
+  name: bullet box (15x APHEBC F-101)
+  description: A heavy container containing gigantic rounds.
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Weapons/Guns/Ammunition/Boxes/modular_boxes.rsi
+    layers:
+    - state: rifle_box
+      color: "#696969"
+    - state: shell_ammo_full_base
+      map: [ "enum.CMItemSlotsLayers.Fill" ]
+    - state: shell_ammo_full_base
+      map: [ "enum.CMItemSlotsLayers2.Fill" ]
+      color: "#696969"
+    - state: shell_box_buckshot
+      color: "#e0d5c2"
+    - state: rifle_lid
+      map: [ "lid" ]
+      color: "#696969"
+  - type: CMItemSlots
+    count: 15
+    slot:
+      whitelist:
+        tags:
+        - RNMCBulletElephantEXP
+
+- type: entity
+  parent: RNMCBoxBulletBehemothEXPEmpty
+  id: RNMCBoxBulletBehemothEXP
+  suffix: Full
+  components:
+  - type: CMItemSlots
+    startingItem: RNMCBulletBehemothEXP
+    count: 15
+    slot:
+      whitelist:
+        tags:
+        - RNMCBulletBehemothEXP
+
+- type: entity
+  parent: RMCBoxMagazineShellBase
+  id: RNMCBoxBulletBehemothEXPIEmpty
+  name: bullet box (15x SAPCBCI F-101)
+  description: A heavy container containing gigantic rounds.
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Weapons/Guns/Ammunition/Boxes/modular_boxes.rsi
+    layers:
+    - state: rifle_box
+      color: "#696969"
+    - state: shell_ammo_full_base
+      map: [ "enum.CMItemSlotsLayers.Fill" ]
+    - state: shell_ammo_full_base
+      map: [ "enum.CMItemSlotsLayers2.Fill" ]
+      color: "#696969"
+    - state: shell_box_buckshot
+      color: "#e0d5c2"
+    - state: rifle_lid
+      map: [ "lid" ]
+      color: "#696969"
+  - type: CMItemSlots
+    count: 15
+    slot:
+      whitelist:
+        tags:
+        - RNMCBulletBehemothEXPI
+
+- type: entity
+  parent: RNMCBoxBulletBehemothEXPIEmpty
+  id: RNMCBoxBulletBehemothEXPI
+  suffix: Full
+  components:
+  - type: CMItemSlots
+    startingItem: RNMCBulletBehemothEXPI
+    count: 15
+    slot:
+      whitelist:
+        tags:
+        - RNMCBulletBehemothEXPI
+
+- type: entity
   parent: RMCBoxShellsBuckshotEmpty
   id: RNMCBoxShellsSuperBuckshotEmpty
   name: shell box (Spc. Buckshot x 100)
