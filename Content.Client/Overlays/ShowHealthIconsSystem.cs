@@ -3,6 +3,7 @@ using Content.Shared.Damage;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Overlays;
 using Content.Shared.StatusIcon.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client.Overlays;
 

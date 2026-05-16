@@ -13,6 +13,7 @@ using Content.Shared.Body.Part;
 using Content.Shared.GameTicking;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Log;
+using Robust.Shared.Timing;
 
 namespace Content.Server._CMU14.Medical.Telemetry;
 
