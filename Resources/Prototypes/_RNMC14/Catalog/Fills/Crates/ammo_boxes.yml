@@ -27,3 +27,21 @@
     contents:
     - id: RNMCBoxBulletBehemothEXPI
       amount: 1
+
+- type: entity
+  parent: RMCCrateAmmo
+  id: RMCCrateBoxBulletsPistol
+  name: pistol ammo box crate (10x20mm) (x984 rounds)
+  components:
+  - type: StorageFill
+    contents:
+    - id: RMCBoxBulletsPistol
+
+- type: entity
+  parent: RMCCrateAmmo
+  id: RMCCrateBoxBulletsPistolAP
+  name: pistol AP ammo box crate (10x20mm AP) (x984 rounds)
+  components:
+  - type: StorageFill
+    contents:
+    - id: RMCBoxBulletsPistolAP
