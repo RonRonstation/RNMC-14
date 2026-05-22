@@ -216,7 +216,7 @@
   parent: RMCProjectileRocket84mm
   id: RNMCProjectileBehemothEXPC
   name: BehemothEXPC
-  categories:
+  categories: [ HideSpawnMenu ]
   components:
   - type: DeleteOnFixedDistanceStop
   - type: TriggerOnCollide
@@ -263,7 +263,7 @@
   parent: RMCProjectileRocket84mm
   id: RNMCBaseBehemothCluster
   name: cluster
-  categories:
+  categories: [ HideSpawnMenu ]
   components:
   - type: TriggerOnCollide
     fixtureID: projectile
@@ -306,6 +306,7 @@
   parent: RNMCBaseBehemothCluster
   id: RNMCBehemothEXPC1
   name: cluster 1
+  categories: [ HideSpawnMenu ]
   components:
   - type: ProjectileGrenade
     evenSpread: true
@@ -325,6 +326,7 @@
   parent: RNMCBaseBehemothCluster
   id: RNMCBehemothEXPC2
   name: cluster 2
+  categories: [ HideSpawnMenu ]
   components:
   - type: TimedDespawn
     lifetime: 0.1
