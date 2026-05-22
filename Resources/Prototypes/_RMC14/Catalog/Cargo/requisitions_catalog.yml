@@ -12,6 +12,10 @@
         crate: RMCCrateBoxBulletsSMG
       - cost: 4000
         crate: RMCCrateBoxBulletsSMGAP
+      - cost: 1500
+        crate: RMCCrateBoxBulletsPistol
+      - cost: 3000
+        crate: RMCCrateBoxBulletsPistolAP
       - cost: 2000
         crate: RMCCrateBoxBulletsRifle
       - cost: 4000
