@@ -319,3 +319,44 @@
       whitelist:
         tags:
         - RMCShellShotgunBuckshot
+
+- type: entity
+  parent: RMCBoxMagazineShellBase
+  id: RNMCBoxBulletBehemothEXPCEmpty
+  name: bullet box (15x M483A1 F-101)
+  description: A heavy container containing gigantic rounds.
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Weapons/Guns/Ammunition/Boxes/modular_boxes.rsi
+    layers:
+    - state: rifle_box
+      color: "#696969"
+    - state: shell_ammo_full_base
+      map: [ "enum.CMItemSlotsLayers.Fill" ]
+    - state: shell_ammo_full_base
+      map: [ "enum.CMItemSlotsLayers2.Fill" ]
+      color: "#696969"
+    - state: shell_box_buckshot
+      color: "#e0d5c2"
+    - state: rifle_lid
+      map: [ "lid" ]
+      color: "#696969"
+  - type: CMItemSlots
+    count: 15
+    slot:
+      whitelist:
+        tags:
+        - RNMCBulletBehemothEXPC
+
+- type: entity
+  parent: RNMCBoxBulletBehemothEXPCEmpty
+  id: RNMCBoxBulletBehemothEXPC
+  suffix: Full
+  components:
+  - type: CMItemSlots
+    startingItem: RNMCBulletBehemothEXPC
+    count: 15
+    slot:
+      whitelist:
+        tags:
+        - RNMCBulletBehemothEXPC

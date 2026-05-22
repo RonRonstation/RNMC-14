@@ -38,6 +38,7 @@
       tags:
       - RNMCBulletBehemothEXP
       - RNMCBulletBehemothEXPI
+      - RNMCBulletBehemothEXPC
     proto: RNMCBulletBehemothEXP
     capacity: 1
   - type: GunUserWhitelist
@@ -104,6 +105,20 @@
     - RNMCBulletBehemothEXPI
   - type: CartridgeAmmo
     proto: RNMCProjectileBehemothEXPI
+
+- type: entity
+  parent: CMCartridgeSniper10x28mm
+  id: RNMCBulletBehemothEXPC
+  name: cartridge (15,2×76 mm M483A1)
+  components:
+  - type: Item
+    size: Normal
+  - type: Tag
+    tags:
+    - Cartridge
+    - RNMCBulletBehemothEXPC
+  - type: CartridgeAmmo
+    proto: RNMCProjectileBehemothEXPC
 
 #Projectiles
 
@@ -196,6 +211,124 @@
         - Impassable
         - BulletImpassable
 
+#Explosive EXPC Projectile
+- type: entity
+  parent: RMCProjectileRocket84mm
+  id: RNMCProjectileBehemothEXPC
+  name: BehemothEXPC
+  categories:
+  components:
+  - type: DeleteOnFixedDistanceStop
+  - type: TriggerOnCollide
+    fixtureID: projectile
+    ignoreOtherNonHard: false
+  - type: Projectile
+    impactEffect: BulletImpactEffect
+    damage:
+      types:
+        Blunt: 25
+        Piercing: 15
+      maxFixedRange: 0
+  - type: TriggerOnFixedDistanceStop
+    delay: 0
+  - type: DeleteOnTrigger
+  - type: SpawnOnTerminate
+    spawn: RNMCBehemothEXPCImpact
+  - type: ProjectileGrenade
+    evenSpread: true
+    minVelocity: 1.5
+    maxVelocity: 3.5
+    fillPrototype: RNMCBehemothEXPC1
+    rebounds: true
+    capacity: 4
+    spreadAngle: 360
+    DirectHitProjectiles: 1
+  - type: RMCProjectileAccuracy
+    accuracy: 110
+    thresholds:
+    - range: 8
+      falloff: 10
+  - type: Sprite
+    sprite: _RMC14/Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    scale: "1.2, 1.2"
+    layers:
+    - state: ltb
+      shader: unshaded
+
+## Clusters
+
+# Cluster Base
+
+- type: entity
+  parent: RMCProjectileRocket84mm
+  id: RNMCBaseBehemothCluster
+  name: cluster
+  categories:
+  components:
+  - type: TriggerOnCollide
+    fixtureID: projectile
+    ignoreOtherNonHard: false
+  - type: Projectile
+    impactEffect: BulletImpactEffect
+    damage:
+      types:
+        Blunt: 10
+        Piercing: 5
+      maxFixedRange: 0
+  - type: DeleteOnTrigger
+  - type: SpawnOnTerminate
+    spawn: RNMCBehemothEXPCImpact
+  - type: Sprite
+    sprite: _RMC14/Objects/Weapons/Guns/Ammunition/Projectiles/firesentry_projectile.rsi
+    layers:
+    - state: pulse0
+      shader: unshaded
+    soundHit:
+      path: /Audio/Weapons/Guns/Hits/bullet_hit.ogg
+  - type: CMArmorPiercing
+    amount: 20
+  - type: RMCStunOnHit
+    stuns:
+    - whitelist:
+        minMobSize: VerySmallXeno
+      maxRange: 3
+      stunTime: 1.5
+      slowTime: 5
+  - type: RMCProjectileAccuracy
+    accuracy: 105
+    thresholds:
+    - range: 5
+      falloff: 35
+
+# Cluster 1
+
+- type: entity
+  parent: RNMCBaseBehemothCluster
+  id: RNMCBehemothEXPC1
+  name: cluster 1
+  components:
+  - type: ProjectileGrenade
+    evenSpread: true
+    minVelocity: 1.5
+    maxVelocity: 3.5
+    fillPrototype: RNMCBehemothEXPC2
+    rebounds: true
+    capacity: 4
+    spreadAngle: 360
+    DirectHitProjectiles: 1
+  - type: TimedDespawn
+    lifetime: 10
+
+# Cluster 2
+
+- type: entity
+  parent: RNMCBaseBehemothCluster
+  id: RNMCBehemothEXPC2
+  name: cluster 2
+  components:
+  - type: TimedDespawn
+    lifetime: 0.1
+
 ## Impacts
 
 # Explosive EXP Impact
@@ -253,6 +386,27 @@
     spawn: RMCTileFireHCNapalm
     sound: null
 
+# Explosive EXPC Impact
+
+- type: entity
+  id: RNMCBehemothEXPCImpact
+  name: Behemoth EXPC Impact
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TriggerOnSpawn
+  - type: ExplodeOnTrigger
+  - type: DeleteOnTrigger
+  - type: RMCScorchEffect
+    radius: 1
+    centerRadius: 1
+  - type: Explosive
+    explosionType: RMC
+    maxIntensity: 3000
+    intensitySlope: 21
+    totalIntensity: 50
+    tileBreakScale: 8
+    maxTileBreak: 12
+
 # Tags
 
 - type: Tag
@@ -263,3 +417,6 @@
 
 - type: Tag
   id: RNMCBulletBehemothEXPI
+
+- type: Tag
+  id: RNMCBulletBehemothEXPC

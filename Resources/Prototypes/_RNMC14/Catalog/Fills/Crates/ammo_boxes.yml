@@ -10,6 +10,16 @@
 
 - type: entity
   parent: RMCCrateAmmo
+  id: RNMCCrateF101BehemothEXPCAmmo
+  name: F-101 "«Behemoth»" M483A1 Ammo Crate (x1)
+  components:
+  - type: StorageFill
+    contents:
+    - id: RNMCBoxBulletBehemothEXPC
+      amount: 1
+
+- type: entity
+  parent: RMCCrateAmmo
   id: RNMCCrateF101BehemothEXPAmmo
   name: F-101 "«Behemoth»" APHEBC Ammo Crate (x1)
   components:

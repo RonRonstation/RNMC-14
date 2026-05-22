@@ -17,6 +17,7 @@
       - RNMCBulletElephant
       - RNMCBulletBehemothEXPI
       - RNMCBulletBehemothEXP
+      - RNMCBulletBehemothEXPC
 
 - type: entity
   parent: CMBeltMarine
