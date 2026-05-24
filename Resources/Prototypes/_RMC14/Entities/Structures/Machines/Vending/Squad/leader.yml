@@ -43,7 +43,7 @@
         name: machete pouch (Full)
         points: 4
       - id: CMBeltUtilityCombat
-        points: 15
+        points: 10
     - name: Utilities
       entries:
       - id: RMCWhistle
@@ -68,7 +68,7 @@
         points: 4
         recommended: true
       - id: RMCVisorNightVision
-        points: 25
+        points: 15
         recommended: true
     - name: Engineering Supplies
       entries:
@@ -78,11 +78,11 @@
         points: 3
       - id: CMSheetMetal10
         name: metal x10
-        points: 5
+        points: 2
         recommended: true
       - id: CMSheetPlasteel10
         name: plasteel x10
-        points: 7
+        points: 5
         recommended: true
       - id: RMCExplosivePlastic
         points: 5
@@ -95,7 +95,7 @@
         points: 10
         recommended: true
       - id: RMCPackFlareCAS
-        points: 7
+        points: 5
       - id: RMCPouchToolsFill
         points: 5
       - id: RMCWeldingGoggles
@@ -131,7 +131,7 @@
       - id: CMTraumaKit10
         points: 2
       - id: CMAdvFirstAidKitFilled
-        points: 12
+        points: 5
     #- id: CMMedicalSplints
     #  points: 1
       - id: CMBicaridineAutoInjector
@@ -149,7 +149,7 @@
       - id: CMTricordrazineAutoInjector
         points: 1
       - id: CMHealthAnalyzer
-        points: 4
+        points: 2
       - id: CMRollerBedSpawnFolded
         points: 2
     - name: Primary Ammunition

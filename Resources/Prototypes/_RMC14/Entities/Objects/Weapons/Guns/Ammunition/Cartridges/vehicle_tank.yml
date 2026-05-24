@@ -131,6 +131,8 @@
   - type: CMArmorPiercing
     amount: 30
   - type: IgnorePredictionHide
+  - type: VehicleDamageMultiplier
+    multiplier: 4
 
 - type: entity
   parent: RMCBaseBullet

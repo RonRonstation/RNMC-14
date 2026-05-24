@@ -31,7 +31,6 @@
       choices: { CMHandheldDefenseUpgrade: 1 }
       entries:
       - id: RMCEngineeringUpgrade
-        points: 15
     - name: Engineering Supplies
       entries:
     #- id: CMAirlockCircuitBoard
@@ -188,8 +187,12 @@
         points: 5
     - name: Pamphlets
       entries:
-      - id: CMPamphletJTAC
+      - id: RMCPamphletAdminJtac2
+        name: JTAC Pamphlet
         points: 15
+      - id: RMCPamphletAdminMedical1
+        name: Medical Pamphlet
+        points: 30
     - name: Radio Keys
       entries:
       - id: CMEncryptionKeyIntel

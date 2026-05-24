@@ -767,8 +767,8 @@
     impactEffect: BulletImpactEffect
     damage:
       types:
-        Blunt: 25
-        Piercing: 15
+        Blunt: 50
+        Piercing: 30
     maxFixedRange: 0
   - type: TriggerOnFixedDistanceStop
     delay: 0
@@ -794,6 +794,8 @@
     layers:
     - state: ltb
       shader: unshaded
+  - type: VehicleDamageMultiplier
+    multiplier: 8
 
 - type: entity
   id: BulletRocket

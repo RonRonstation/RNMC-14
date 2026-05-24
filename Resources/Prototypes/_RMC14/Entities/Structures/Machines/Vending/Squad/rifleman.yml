@@ -167,34 +167,28 @@
         points: 30
       - id: CMArmorM4
         points: 20
+    - name: Accessories
+      choices: { CMAccessories: 1 }
+      entries:
+      - id: CMWebbingBlack
+      - id: CMWebbingBrown
+        recommended: true
+      - id: RMCWebbingLegPouch
+      - id: RMCWebbingLegPouchBlack
+      - id: CMWebbing
+      - id: RMCWebbingBlackSmall
+      - id: RMCWebbingDropPouch
+      - id: RMCWebbingDropPouchBlack
+      - id: CMWebbingHolster
+      - id: RMCWebbingHolsterBlack
     - name: Clothing Items
       entries:
-      - id: CMWebbing
-        points: 10
-      - id: RMCWebbingBlackSmall
-        points: 10
-      - id: CMWebbingBrown
-        points: 15
-      - id: CMWebbingBlack
-        points: 15
-      - id: RMCWebbingLegPouch
-        points: 15
-      - id: RMCWebbingLegPouchBlack
-        points: 15
-      - id: RMCWebbingDropPouch
-        points: 15
-      - id: RMCWebbingDropPouchBlack
-        points: 15
-      - id: CMWebbingHolster
-        points: 15
-      - id: RMCWebbingHolsterBlack
-        points: 15
       - id: RMCScabbardMacheteFilled
         name: machete scabbard (Full)
-        points: 15
+        points: 5
       - id: RMCPouchMacheteFilled
         name: machete pouch (Full)
-        points: 15
+        points: 10
       - id: RMCBackpackRTO
         replaceSlot: back
         points: 15
@@ -203,9 +197,9 @@
       - id: RMCWeldingGoggles
         points: 5
       - id: RMCPouchSling
-        points: 15
+        points: 5
       - id: RMCPouchGeneralLarge
-        points: 15
+        points: 10
     - name: Utilities
       entries:
       - id: CMRollerBedSpawnFolded
@@ -234,12 +228,22 @@
         points: 15
       - id: RMCVisorWelding
         points: 5
+      - id: RMCVisorNightVision
+        points: 30
     - name: Pamphlets
       entries:
-      - id: CMPamphletJTAC
+      - id: RMCPamphletAdminJtac2
+        name: JTAC Pamphlet
         points: 15
-      - id: CMPamphletEngineer
+      - id: RMCPamphletAdminEngineer2
+        name: Engineering Pamphlet
         points: 15
+      - id: RMCPamphletAdminConstruction2
+        name: Construction Pamphlet
+        points: 15
+      - id: RMCPamphletAdminMedical1
+        name: Medical Pamphlet
+        points: 30
     - name: Radio Keys
       entries:
       - id: CMEncryptionKeyEngineer

@@ -22,31 +22,31 @@
     - name: Field Supplies
       entries:
       - id: CMBurnKit10
-        points: 2
+        points: 1
         recommended: true
       - id: CMTraumaKit10
-        points: 2
+        points: 1
         recommended: true
     #    CMMedicalSplints: 1P
 #        recommended: true
       - id: CMBloodPackFull # TODO RMC14 O-
         name: blood bag (O-)
-        points: 4
+        points: 2
     - name: Firstaid Kits
       entries:
       - id: CMAdvFirstAidKitFilled
-        points: 12
+        points: 5
         recommended: true
       - id: CMFirstAidKitFilled
-        points: 5
+        points: 2
       - id: CMBurnAidKitFilled
-        points: 6
+        points: 2
       - id: CMToxinAidKitFilled
-        points: 6
+        points: 2
       - id: CMFirstAidO2KitFilled
-        points: 6
+        points: 2
       - id: RMCRadiationAidKitFilled
-        points: 6
+        points: 2
     - name: Pill Bottles
       entries:
       - id: CMPillCanisterBicaridine
@@ -195,7 +195,14 @@
         points: 5
     - name: Pamphlets
       entries:
-      - id: CMPamphletEngineer
+      - id: RMCPamphletAdminJtac2
+        name: JTAC Pamphlet
+        points: 15
+      - id: RMCPamphletAdminEngineer2
+        name: Engineering Pamphlet
+        points: 15
+      - id: RMCPamphletAdminConstruction2
+        name: Construction Pamphlet
         points: 15
     - name: Radio Keys
       entries:

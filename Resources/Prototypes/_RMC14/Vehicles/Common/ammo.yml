@@ -355,6 +355,8 @@
     damage:
       types:
         Piercing: 36
+  - type: VehicleDamageMultiplier
+    multiplier: 0.5
 
 - type: entity
   parent: CMBulletSentry10x50mm
@@ -381,6 +383,8 @@
         Piercing: 50
   - type: CMArmorPiercing
     amount: 15
+  - type: VehicleDamageMultiplier
+    multiplier: 4
 
 - type: entity
   parent: CMBulletSentry10x50mm
