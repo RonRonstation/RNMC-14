@@ -1,6 +1,11 @@
 using System.Linq;
 using Content.Server._RMC14.Ghost.Roles;
 using Content.Server.Administration.Logs;
+using Content.Server.Administration.Managers;
+using Content.Server.GameTicking;
+using Content.Server.GameTicking.Events;
+using Content.Server.Players.JobWhitelist;
+using Content.Server.Preferences.Managers;
 using Content.Server.EUI;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Ghost.Roles.Events;
@@ -40,18 +45,25 @@ namespace Content.Server.Ghost.Roles;
 [UsedImplicitly]
 public sealed class GhostRoleSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly EuiManager _euiManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly FollowerSystem _followerSystem = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly SharedMindSystem _mindSystem = default!;
-    [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private EuiManager _euiManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private FollowerSystem _followerSystem = default!;
+    [Dependency] private TransformSystem _transform = default!;
+    [Dependency] private SharedMindSystem _mindSystem = default!;
+    [Dependency] private SharedRoleSystem _roleSystem = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private PopupSystem _popupSystem = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private GameTicker _gameTicker = default!;
+    [Dependency] private IServerPreferencesManager _preferences = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private IdCardSystem _idCard = default!;
+    [Dependency] private IdentitySystem _identity = default!;
+    [Dependency] private IBanManager _banManager = default!;
+    [Dependency] private JobWhitelistManager _jobWhitelist = default!;
 
     private uint _nextRoleIdentifier;
     private bool _needsUpdateGhostRoleCount = true;
@@ -519,12 +531,29 @@ public sealed class GhostRoleSystem : EntitySystem
         DebugTools.AssertNotNull(player.ContentData());
 
         // After taking a ghost role, the player cannot return to the original body, so wipe the player's current mind
-        // unless it is a visiting mind
-        if(_mindSystem.TryGetMind(player.UserId, out _, out var mind) && !mind.IsVisitingEntity)
-            _mindSystem.WipeMind(player);
+        if (_mindSystem.TryGetMind(player.UserId, out _, out var mind) && !mind.IsVisitingEntity)
+        {
+            if (mind.OwnedEntity is { Valid: true } owned && HasComp<GhostComponent>(owned))
+                QueueDel(owned);
 
-        var newMind = _mindSystem.CreateMind(player.UserId,
-            Comp<MetaDataComponent>(mob).EntityName);
+            _mindSystem.WipeMind(player);
+        }
+
+        string characterName;
+        if (role.JobProto is { } jobId
+                && _prototype.TryIndex(jobId, out JobPrototype? jobProto)
+                && !jobProto.UsePlayerProfile)
+            characterName = Comp<MetaDataComponent>(mob).EntityName;
+        else
+            characterName = GetGhostRoleCharacterName(player, mob);
+        var newMind = _mindSystem.CreateMind(player.UserId, characterName);
+
+        Log.Debug($"GhostRoleInternalCreateMindAndTransfer: created mind {newMind.Owner} for player {player.Name} (user {player.UserId}) targeting mob {mob}");
+
+        // Transfer the mind to the mob first, then set the user id. Setting the user id will attach
+        // the player's session to the mind's CurrentEntity if they have an active session.
+        _mindSystem.TransferTo(newMind, mob);
+        Log.Debug($"GhostRoleInternalCreateMindAndTransfer: transferred mind {newMind.Owner} to mob {mob}. CurrentEntity={newMind.Comp.OwnedEntity}");
 
         _mindSystem.SetUserId(newMind, player.UserId);
         _mindSystem.TransferTo(newMind, mob);

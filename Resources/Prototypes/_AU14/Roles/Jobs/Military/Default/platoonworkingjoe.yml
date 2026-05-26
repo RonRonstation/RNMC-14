@@ -6,6 +6,7 @@
   icon: "AU14JobIconGovSynth"
   spawnMenuRoleName: Working Joe
   supervisors: au14-job-supervisors-workingjoe-military
+  usePlayerProfile: false
   accessGroups:
   - PMCPlatcoAccess
   special:

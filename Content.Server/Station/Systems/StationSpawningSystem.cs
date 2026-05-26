@@ -92,7 +92,6 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
 
         // Need to get the loadout up-front to handle names if we use an entity spawn override.
         var jobLoadout = LoadoutSystem.GetJobPrototype(prototype?.ID);
-
         if (_prototypeManager.TryIndex(jobLoadout, out RoleLoadoutPrototype? roleProto))
         {
             profile?.Loadouts.TryGetValue(jobLoadout, out loadout);
@@ -120,18 +119,26 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             }
         }
 
-        // If we're not spawning a humanoid, we're gonna exit early without doing all the humanoid stuff.
+        // Spawn a custom JobEntity (e.g. Working Joe, rAI), this skips a lot of the humanoid stuff
+        // Only apply player profile when UsePlayerProfile: true (default)
         if (prototype?.JobEntity != null)
         {
             DebugTools.Assert(entity is null);
             var jobEntity = Spawn(prototype.JobEntity, coordinates);
             MakeSentientCommand.MakeSentient(jobEntity, EntityManager);
 
+            if (profile != null && prototype is not { UsePlayerProfile: false } && TryComp(jobEntity, out HumanoidAppearanceComponent? humanoid))
+            {
+                _humanoidSystem.LoadProfile(jobEntity, profile.WithSpecies(humanoid.Species), humanoid);
+                _metaSystem.SetEntityName(jobEntity, profile.Name);
+
+                if (profile.FlavorText != "" && _configurationManager.GetCVar(CCVars.FlavorText))
+                    AddComp<DetailExaminableComponent>(jobEntity).Content = profile.FlavorText;
+            }
+
             // Make sure custom names get handled, what is gameticker control flow whoopy.
             if (loadout != null)
-            {
                 EquipRoleName(jobEntity, loadout, roleProto!);
-            }
 
             DoJobSpecials(job, jobEntity);
             _identity.QueueIdentityUpdate(jobEntity);
@@ -139,7 +146,6 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
         }
 
         string speciesId = profile != null ? profile.Species : SharedHumanoidAppearanceSystem.DefaultSpecies;
-
         if (!_prototypeManager.TryIndex<SpeciesPrototype>(speciesId, out var species))
             throw new ArgumentException($"Invalid species prototype was used: {speciesId}");
 
@@ -151,15 +157,11 @@ public sealed class StationSpawningSystem : SharedStationSpawningSystem
             _metaSystem.SetEntityName(entity.Value, profile.Name);
 
             if (profile.FlavorText != "" && _configurationManager.GetCVar(CCVars.FlavorText))
-            {
                 AddComp<DetailExaminableComponent>(entity.Value).Content = profile.FlavorText;
-            }
         }
 
         if (loadout != null)
-        {
             EquipRoleLoadout(entity.Value, loadout, roleProto!);
-        }
 
         if (prototype?.StartingGear != null)
         {
