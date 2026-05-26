@@ -26,7 +26,6 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Database;
 using Content.Shared.Doors.Components;
 using Content.Shared.Hands.Components;
-using Content.Shared.Humanoid;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
