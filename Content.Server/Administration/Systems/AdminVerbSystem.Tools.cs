@@ -13,6 +13,7 @@ using Content.Server.Stack;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Server.Weapons.Ranged.Systems;
+using Content.Shared._RMC14.Marines.Skills;
 using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
@@ -25,6 +26,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Database;
 using Content.Shared.Doors.Components;
 using Content.Shared.Hands.Components;
+using Content.Shared.Interaction.Components;
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.Stacks;
@@ -709,6 +711,47 @@ public sealed partial class AdminVerbSystem
             args.Verbs.Add(minigunFire);
         }
 
+        // RNMC14 Start //
+
+        if (HasComp<SkillsComponent>(args.Target) && !HasComp<BypassSkillChecksComponent>(args.Target))
+        {
+            Verb grantAllBypass = new()
+            {
+                Text = "Add All Bypass",
+                Category = VerbCategory.Tricks,
+                Icon = new SpriteSpecifier.Rsi(new("_RMC14/Objects/Misc/pamphlets.rsi"), "pamphlet_written"),
+                Act = () =>
+                {
+                    EnsureComp<BypassInteractionChecksComponent>(args.Target);
+                    EnsureComp<BypassSkillChecksComponent>(args.Target);
+                },
+                Impact = LogImpact.Extreme,
+                Message = Loc.GetString("admin-trick-bypass-skills-description"),
+                Priority = (int)TricksVerbPriorities.GrantAllBypass,
+            };
+            args.Verbs.Add(grantAllBypass);
+        }
+        else
+        {
+            Verb removeAllBypass = new()
+            {
+                Text = "Remove All Bypass",
+                Category = VerbCategory.Tricks,
+                Icon = new SpriteSpecifier.Rsi(new("_RMC14/Objects/Misc/pamphlets.rsi"), "pamphlet"),
+                Act = () =>
+                {
+                    RemComp<BypassInteractionChecksComponent>(args.Target);
+                    RemComp<BypassSkillChecksComponent>(args.Target);
+                },
+                Impact = LogImpact.Extreme,
+                Message = Loc.GetString("admin-trick-remove-bypass-description"),
+                Priority = (int)TricksVerbPriorities.RemoveAllBypass,
+            };
+            args.Verbs.Add(removeAllBypass);
+        }
+
+        // RNMC14 End //
+
         if (TryComp<BallisticAmmoProviderComponent>(args.Target, out var ballisticAmmo))
         {
             Verb setCapacity = new()
@@ -878,5 +921,7 @@ public sealed partial class AdminVerbSystem
         SnapJoints = -27,
         MakeMinigun = -28,
         SetBulletAmount = -29,
+        GrantAllBypass = -30,
+        RemoveAllBypass = -31,
     }
 }
