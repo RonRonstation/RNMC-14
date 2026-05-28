@@ -731,7 +731,7 @@ public sealed partial class AdminVerbSystem
             };
             args.Verbs.Add(grantAllBypass);
         }
-        else
+        if (HasComp<SkillsComponent>(args.Target) && HasComp<BypassSkillChecksComponent>(args.Target))
         {
             Verb removeAllBypass = new()
             {
