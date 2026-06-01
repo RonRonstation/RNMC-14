@@ -5,7 +5,17 @@ using Content.Shared._CMU14.Medical.Bones;
 using Content.Shared._CMU14.Medical.Bones.Events;
 using Content.Shared._CMU14.Medical.Items;
 using Content.Shared._CMU14.Medical.Organs;
+using Content.Shared._CMU14.Medical.Organs.Brain;
+using Content.Shared._CMU14.Medical.Organs.Ears;
+using Content.Shared._CMU14.Medical.Organs.Eyes;
 using Content.Shared._CMU14.Medical.Organs.Events;
+using Content.Shared._CMU14.Medical.Organs.Heart;
+using Content.Shared._CMU14.Medical.Organs.Kidneys;
+using Content.Shared._CMU14.Medical.Organs.Liver;
+using Content.Shared._CMU14.Medical.Organs.Lungs;
+using Content.Shared._CMU14.Medical.Organs.Stomach;
+using Content.Shared._CMU14.Medical.Shrapnel;
+using Content.Shared._CMU14.Medical.Stabilizers;
 using Content.Shared._CMU14.Medical.StatusEffects.Events;
 using Content.Shared._CMU14.Medical.Wounds;
 using Content.Shared._CMU14.Medical.Wounds.Events;
@@ -46,6 +56,7 @@ public abstract class SharedPainShockSystem : EntitySystem
     private const float ShockPulseMaxSeconds = 35f;
     private const float PainReliefMinSeconds = 3f;
     private const float PainReliefMaxSeconds = 5f;
+    private const float StabilizedOrganPainMultiplier = 0.35f;
     private const string PainSuppressionStatus = "StatusEffectCMUPainSuppression";
 
     private float _painScanAccumulator;
@@ -498,13 +509,24 @@ public abstract class SharedPainShockSystem : EntitySystem
 
             if (HasComp<InternalBleedingComponent>(partUid))
                 AddPainSource(ref sourceCount, ref highest, ref total, ref riseRate, 35f);
+
+            if (TryComp<CMUShrapnelComponent>(partUid, out var shrapnel))
+                AddPainSource(ref sourceCount, ref highest, ref total, ref riseRate,
+                    SharedCMUShrapnelSystem.GetPainTarget(shrapnel));
         }
 
+        var hasOrganStabilizer = TryComp<CMUOrganStabilizedComponent>(body, out var stabilizer) &&
+                                 stabilizer.ExpiresAt > Timing.CurTime;
         foreach (var organ in Body.GetBodyOrgans(body))
         {
             if (!TryComp<OrganHealthComponent>(organ.Id, out var oh))
                 continue;
-            AddPainSource(ref sourceCount, ref highest, ref total, ref riseRate, OrganPainTarget(oh.Stage));
+
+            var organPain = OrganPainTarget(organ.Id, oh.Stage);
+            if (hasOrganStabilizer && IsStabilizedOrgan(organ.Id, stabilizer!))
+                organPain *= StabilizedOrganPainMultiplier;
+
+            AddPainSource(ref sourceCount, ref highest, ref total, ref riseRate, organPain);
         }
 
         if (sourceCount == 0)
@@ -553,7 +575,70 @@ public abstract class SharedPainShockSystem : EntitySystem
         _ => 0f,
     };
 
-    private static float OrganPainTarget(OrganDamageStage stage) => stage switch
+    private float OrganPainTarget(EntityUid organ, OrganDamageStage stage)
+    {
+        if (HasComp<HeartComponent>(organ) ||
+            HasComp<LungsComponent>(organ) ||
+            HasComp<CMUBrainComponent>(organ))
+        {
+            return VitalOrganPainTarget(stage);
+        }
+
+        if (HasComp<LiverComponent>(organ) ||
+            HasComp<KidneysComponent>(organ))
+        {
+            return MetabolicOrganPainTarget(stage);
+        }
+
+        if (HasComp<CMUStomachComponent>(organ))
+            return StomachPainTarget(stage);
+
+        if (HasComp<EyesComponent>(organ) ||
+            HasComp<EarsComponent>(organ))
+        {
+            return SensoryOrganPainTarget(stage);
+        }
+
+        return FallbackOrganPainTarget(stage);
+    }
+
+    private static float VitalOrganPainTarget(OrganDamageStage stage) => stage switch
+    {
+        OrganDamageStage.Bruised => 10f,
+        OrganDamageStage.Damaged => 32f,
+        OrganDamageStage.Failing => 50f,
+        OrganDamageStage.Dead => 65f,
+        _ => 0f,
+    };
+
+    private static float MetabolicOrganPainTarget(OrganDamageStage stage) => stage switch
+    {
+        OrganDamageStage.Bruised => 6f,
+        OrganDamageStage.Damaged => 20f,
+        OrganDamageStage.Failing => 35f,
+        OrganDamageStage.Dead => 50f,
+        _ => 0f,
+    };
+
+    private static float StomachPainTarget(OrganDamageStage stage) => stage switch
+    {
+        OrganDamageStage.Bruised => 4f,
+        OrganDamageStage.Damaged => 12f,
+        OrganDamageStage.Failing => 24f,
+        OrganDamageStage.Dead => 35f,
+        _ => 0f,
+    };
+
+    private static float SensoryOrganPainTarget(OrganDamageStage stage) => stage switch
+    {
+        OrganDamageStage.Bruised => 2f,
+        OrganDamageStage.Damaged => 8f,
+        OrganDamageStage.Failing => 16f,
+        OrganDamageStage.Dead => 25f,
+        _ => 0f,
+    };
+
+    private static float FallbackOrganPainTarget(OrganDamageStage stage) => stage switch
     {
         OrganDamageStage.Bruised => 10f,
         OrganDamageStage.Damaged => 25f,
@@ -561,6 +646,22 @@ public abstract class SharedPainShockSystem : EntitySystem
         OrganDamageStage.Dead => 65f,
         _ => 0f,
     };
+
+    private bool IsStabilizedOrgan(EntityUid organ, CMUOrganStabilizedComponent stabilizer)
+    {
+        return stabilizer.Target switch
+        {
+            CMUOrganStabilizerTarget.Brain => HasComp<CMUBrainComponent>(organ),
+            CMUOrganStabilizerTarget.Heart => HasComp<HeartComponent>(organ),
+            CMUOrganStabilizerTarget.Lungs => HasComp<LungsComponent>(organ),
+            CMUOrganStabilizerTarget.Liver => HasComp<LiverComponent>(organ),
+            CMUOrganStabilizerTarget.Kidneys => HasComp<KidneysComponent>(organ),
+            CMUOrganStabilizerTarget.Stomach => HasComp<CMUStomachComponent>(organ),
+            CMUOrganStabilizerTarget.Eyes => HasComp<EyesComponent>(organ),
+            CMUOrganStabilizerTarget.Ears => HasComp<EarsComponent>(organ),
+            _ => false,
+        };
+    }
 
     public void AddPainSuppressionProfile(
         EntityUid body,
@@ -589,6 +690,25 @@ public abstract class SharedPainShockSystem : EntitySystem
             decayBonus,
             duration,
             additive: true);
+
+    public void AddPainPulse(EntityUid body, FixedPoint2 amount)
+    {
+        if (Net.IsClient || amount <= FixedPoint2.Zero)
+            return;
+        if (!IsLayerEnabled())
+            return;
+        if (!TryComp<PainShockComponent>(body, out var pain))
+            return;
+        if (TryClearSynthPain(body, pain))
+            return;
+
+        pain.Pain = FixedPoint2.Min(
+            pain.PainMax,
+            pain.Pain + amount * (FixedPoint2)GetAccumulationMultiplier(body));
+        pain.NextUpdate = TimeSpan.Zero;
+        UpdateTier(body, pain, true);
+        Dirty(body, pain);
+    }
 
     private void AddPainSuppressionProfile(
         EntityUid body,

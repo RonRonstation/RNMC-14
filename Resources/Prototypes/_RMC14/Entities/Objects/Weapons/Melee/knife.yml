@@ -46,6 +46,13 @@
     damage:
       types:
         Slash: 18
+  - type: DamageImpactProfile
+    melee:
+      contact: Stab
+      penetration: Low
+    thrown:
+      contact: Stab
+      penetration: Low
   - type: Item
     size: Small
     sprite: _RMC14/Objects/Weapons/Melee/m5_bayonet.rsi
@@ -60,6 +67,10 @@
     - bonusDamage:
         types:
           Slash: 20
+      impact:
+        contact: Stab
+        penetration: Medium
+        energy: Medium
   - type: AttachableWeaponRangedMods
     modifiers:
     - conditions:
@@ -228,7 +239,15 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 50
+        Slash: 34
+  - type: DamageImpactProfile
+    melee:
+      contact: Stab
+      penetration: Low
+    thrown:
+      contact: Stab
+      penetration: Medium
+      energy: Medium
   - type: UsableWhileDevoured
   - type: Item
     size: Small
@@ -299,7 +318,14 @@
   - type: DamageOtherOnHit
     damage:
       types:
-        Slash: 10
+        Slash: 27
+  - type: DamageImpactProfile
+    melee:
+      contact: Slash
+      penetration: Low
+    thrown:
+      contact: Fragment
+      penetration: Low
   - type: UsableWhileDevoured
   - type: Item
     size: Large

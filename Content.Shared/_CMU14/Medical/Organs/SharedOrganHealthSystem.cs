@@ -72,28 +72,42 @@ public abstract class SharedOrganHealthSystem : EntitySystem
         if (args.ContainedOrgans.Count == 0)
             return;
 
-        var passThrough = 1f;
+        var traumaOrganContact = args.Trauma.OrganContact && args.Trauma.OrganPassThrough > 0f;
+        var passThrough = traumaOrganContact ? args.Trauma.OrganPassThrough : 0f;
         var heavyOrganHit = false;
 
         // Bone shielding: while a part's BoneShieldsOrgans flag is on, the
         // rib cage / skull / etc. limits pass-through by fracture severity and
         // part condition. Parts with no BoneComponent (V2 cybernetics, etc.)
-        // skip the shielding step and route damage through unconditionally.
+        // skip the shielding step and use the shared trauma contact result.
         if (ent.Comp.BoneShieldsOrgans && HasComp<BoneComponent>(ent))
         {
             var severity = TryComp<FractureComponent>(ent, out var fracture)
                 ? fracture.Severity
                 : FractureSeverity.None;
             if (!severity.IsAtLeast(FractureSeverity.Compound))
-                return;
+            {
+                if (!traumaOrganContact)
+                    return;
+            }
+            else
+            {
+                var fracturePassThrough = ComputeOrganPassThrough(ent.Comp, severity, args.NewCurrent);
+                passThrough = MathF.Max(passThrough, fracturePassThrough);
+                if (passThrough <= 0f)
+                    return;
 
-            passThrough = ComputeOrganPassThrough(ent.Comp, severity, args.NewCurrent);
-            if (passThrough <= 0f)
-                return;
-
-            heavyOrganHit = severity.IsAtLeast(FractureSeverity.Comminuted) ||
-                            args.NewCurrent < FixedPoint2.Zero;
+                heavyOrganHit = severity.IsAtLeast(FractureSeverity.Comminuted) ||
+                                args.NewCurrent < FixedPoint2.Zero;
+            }
         }
+        else if (!traumaOrganContact)
+        {
+            return;
+        }
+
+        if (args.Trauma.HighEnergy)
+            heavyOrganHit = true;
 
         DistributeOrganDamage(args.Body, args.Delta, args.ContainedOrgans, passThrough, heavyOrganHit);
     }
