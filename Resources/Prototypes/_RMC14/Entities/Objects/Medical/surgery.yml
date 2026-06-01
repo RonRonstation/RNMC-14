@@ -196,6 +196,11 @@
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: CMScalpel
+  - type: CMUShrapnelExtractor
+    removeCount: 3
+    delay: 1.25
+    painPenalty: 3
+    damageOnExtract: 1
   - type: CMUBurnDebridementTool
   - type: Tag
     tags:
