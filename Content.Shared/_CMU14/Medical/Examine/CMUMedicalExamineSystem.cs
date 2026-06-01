@@ -9,19 +9,29 @@ using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.Examine;
 using Robust.Shared.Configuration;
-using Robust.Shared.Timing;
+using Robust.Shared.Containers;
 
 namespace Content.Shared._CMU14.Medical.Examine;
 
 public sealed class CMUMedicalExamineSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private SharedBodySystem _body = default!;
+    [Dependency] private SharedContainerSystem _containers = default!;
 
     private const string UntreatedWoundColor = "#ff4d4d";
     private const string TreatedWoundColor = "#7bd88f";
     private const string FractureColor = "#dca94c";
+    private const string SeveredColor = "#ff4d4d";
+    private const string DetailedPartColor = "#9fc7ff";
+    private const string DetailedWoundColor = "#ffb86c";
+    private const string DetailedBurnColor = "#ff704d";
+    private const string DetailedBleedColor = "#ff5f5f";
+    private const string DetailedUntreatedColor = "#ffd166";
+    private const string DetailedAdequateColor = "#f0c85a";
+    private const string DetailedOptimalColor = "#7bd88f";
+    private const string DetailedCleanupColor = "#d987ff";
+    private const string DetailedHintColor = "#83c9ff";
 
     public override void Initialize()
     {
@@ -47,7 +57,6 @@ public sealed class CMUMedicalExamineSystem : EntitySystem
 
     private void AddBodyPartLines(EntityUid body, ExaminedEvent args, bool includeWounds, bool includeFractures)
     {
-        var now = _timing.CurTime;
         var partSummaries = new List<BodyPartExamineSummary>();
 
         foreach (var (partUid, part) in _body.GetBodyChildren(body))
@@ -62,13 +71,14 @@ public sealed class CMUMedicalExamineSystem : EntitySystem
                 {
                     for (var i = 0; i < wounds.Wounds.Count; i++)
                     {
-                        var wound = wounds.Wounds[i];
-                        var size = i < wounds.Sizes.Count ? wounds.Sizes[i] : WoundSize.Deep;
-                        if (wound.Treated)
-                            treated.Add(DescribeWound(wound, size, now));
+                        if (IsWoundTreatedForExamine(wounds, i))
+                            treated.Add(DescribeVisibleWound(wounds, i));
                         else
-                            untreated.Add(DescribeWound(wound, size, now));
+                            untreated.Add(DescribeVisibleWound(wounds, i));
                     }
+
+                    if (wounds.ExternalBleeding != ExternalBleedTier.None)
+                        untreated.Add("active bleeding");
                 }
 
                 if (HasComp<CMUEscharComponent>(partUid))
@@ -83,10 +93,10 @@ public sealed class CMUMedicalExamineSystem : EntitySystem
 
             if (includeFractures
                 && TryComp<FractureComponent>(partUid, out var fracture)
-                && fracture.Severity != FractureSeverity.None)
+                && fracture.Severity is FractureSeverity.Compound or FractureSeverity.Comminuted)
             {
                 var stabilized = HasComp<CMUSplintedComponent>(partUid) || HasComp<CMUCastComponent>(partUid);
-                sections.Add($"[color={FractureColor}]{DescribeFracture(fracture.Severity, stabilized)}[/color]");
+                sections.Add($"[color={FractureColor}]{DescribeVisibleFracture(fracture.Severity, stabilized)}[/color]");
             }
 
             if (sections.Count == 0)
@@ -109,46 +119,352 @@ public sealed class CMUMedicalExamineSystem : EntitySystem
         }
     }
 
-    private static string DescribeWound(Wound wound, WoundSize size, TimeSpan now)
+    public string GetDetailedExamineText(EntityUid body)
     {
+        var partSummaries = new List<BodyPartExamineSummary>();
+
+        foreach (var (partUid, part) in _body.GetBodyChildren(body))
+        {
+            var sections = new List<string>();
+
+            if (TryComp<BodyPartWoundComponent>(partUid, out var wounds))
+            {
+                for (var i = 0; i < wounds.Wounds.Count; i++)
+                {
+                    sections.Add(DescribeDetailedWound(wounds, i));
+                }
+
+                if (wounds.ExternalBleeding != ExternalBleedTier.None)
+                    sections.Add(Color($"external bleeding: {DescribeBleedTier(wounds.ExternalBleeding)}", DetailedBleedColor));
+            }
+
+            if (HasComp<CMUEscharComponent>(partUid))
+                sections.Add(Color("burn eschar: charred tissue", DetailedBurnColor));
+
+            if (sections.Count == 0)
+                continue;
+
+            partSummaries.Add(new BodyPartExamineSummary(
+                BodyPartSortOrder(part.PartType, part.Symmetry),
+                PartHeader(part.PartType, part.Symmetry),
+                ToDetailedLines(sections)));
+        }
+
+        foreach (var (type, symmetry) in GetMissingPartSlots(body))
+        {
+            partSummaries.Add(new BodyPartExamineSummary(
+                BodyPartSortOrder(type, symmetry),
+                PartHeader(type, symmetry),
+                Color("severed", SeveredColor)));
+        }
+
+        if (partSummaries.Count == 0)
+            return Loc.GetString("cmu-medical-detailed-examine-none");
+
+        partSummaries.Sort((a, b) => a.Order.CompareTo(b.Order));
+
+        var lines = new List<string>(partSummaries.Count);
+        foreach (var summary in partSummaries)
+        {
+            lines.Add($"{summary.Part}:\n  {summary.Conditions}");
+        }
+
+        return string.Join('\n', lines);
+    }
+
+    private List<(BodyPartType Type, BodyPartSymmetry Symmetry)> GetMissingPartSlots(EntityUid body)
+    {
+        var missing = new List<(BodyPartType Type, BodyPartSymmetry Symmetry)>();
+        if (!TryComp<BodyComponent>(body, out var bodyComp))
+            return missing;
+
+        if (_body.GetRootPartOrNull(body, bodyComp) is not { } root)
+            return missing;
+
+        AddMissingChildSlots(root.Entity, root.BodyPart, missing);
+
+        foreach (var (partUid, part) in _body.GetBodyChildren(body, bodyComp))
+        {
+            if (partUid == root.Entity)
+                continue;
+
+            AddMissingChildSlots(partUid, part, missing);
+        }
+
+        return missing;
+    }
+
+    private void AddMissingChildSlots(
+        EntityUid parent,
+        BodyPartComponent parentPart,
+        List<(BodyPartType Type, BodyPartSymmetry Symmetry)> missing)
+    {
+        foreach (var (slotId, slot) in parentPart.Children)
+        {
+            if (!IsReportableMissingPart(slot.Type))
+                continue;
+
+            var containerId = SharedBodySystem.GetPartSlotContainerId(slotId);
+            if (_containers.TryGetContainer(parent, containerId, out var container) &&
+                container.ContainedEntities.Count > 0)
+            {
+                continue;
+            }
+
+            if (TryGetPartSymmetry(slotId, parentPart.Symmetry, out var symmetry))
+                missing.Add((slot.Type, symmetry));
+        }
+    }
+
+    private static bool IsReportableMissingPart(BodyPartType type)
+    {
+        return type is BodyPartType.Arm
+            or BodyPartType.Hand
+            or BodyPartType.Leg
+            or BodyPartType.Foot;
+    }
+
+    private static bool TryGetPartSymmetry(string slotId, BodyPartSymmetry parentSymmetry, out BodyPartSymmetry symmetry)
+    {
+        if (slotId.Contains("left", StringComparison.OrdinalIgnoreCase))
+        {
+            symmetry = BodyPartSymmetry.Left;
+            return true;
+        }
+
+        if (slotId.Contains("right", StringComparison.OrdinalIgnoreCase))
+        {
+            symmetry = BodyPartSymmetry.Right;
+            return true;
+        }
+
+        if (parentSymmetry is BodyPartSymmetry.Left or BodyPartSymmetry.Right)
+        {
+            symmetry = parentSymmetry;
+            return true;
+        }
+
+        symmetry = BodyPartSymmetry.None;
+        return false;
+    }
+
+    private static string DescribeVisibleWound(BodyPartWoundComponent wounds, int index)
+    {
+        var wound = wounds.Wounds[index];
+        var size = index < wounds.Sizes.Count ? wounds.Sizes[index] : WoundSize.Deep;
         var sizeText = size switch
         {
             WoundSize.Small => "small",
-            WoundSize.Deep => "deep",
-            WoundSize.Gaping => "gaping",
+            WoundSize.Deep => "moderate",
+            WoundSize.Gaping => "large",
             WoundSize.Massive => "massive",
-            _ => "deep",
+            _ => "moderate",
         };
 
         var kind = wound.Type switch
         {
             WoundType.Burn => "burn",
-            WoundType.Surgery => "surgical wound",
-            _ => "trauma wound",
+            WoundType.Surgery => "wound",
+            _ => GetVisibleWoundKind(wounds, index),
         };
 
-        var treated = wound.Treated ? "treated " : string.Empty;
-        var bleeding = !wound.Treated
-            && wound.Bloodloss > 0f
-            && (wound.StopBleedAt is null || now < wound.StopBleedAt.Value)
-                ? " (bleeding)"
-                : string.Empty;
-
-        return $"a {treated}{sizeText} {kind}{bleeding}";
+        var treated = IsWoundTreatedForExamine(wounds, index) ? "treated " : string.Empty;
+        return $"a {treated}{sizeText} {kind}";
     }
 
-    private static string DescribeFracture(FractureSeverity severity, bool stabilized)
+    private static string GetVisibleWoundKind(BodyPartWoundComponent wounds, int index)
+    {
+        if (index < wounds.Mechanisms.Count && wounds.Mechanisms[index] == WoundMechanism.Burn)
+            return "burn";
+
+        return "wound";
+    }
+
+    private static string DescribeVisibleFracture(FractureSeverity severity, bool stabilized)
     {
         var prefix = stabilized ? "stabilized " : string.Empty;
         return severity switch
         {
-            FractureSeverity.Hairline => $"a {prefix}hairline fracture",
-            FractureSeverity.Simple => $"a {prefix}broken bone",
             FractureSeverity.Compound => $"a {prefix}compound fracture",
             FractureSeverity.Comminuted => $"a {prefix}shattered bone",
             _ => "a broken bone",
         };
     }
+
+    private static string DescribeDetailedWound(BodyPartWoundComponent wounds, int index)
+    {
+        var wound = wounds.Wounds[index];
+        var size = index < wounds.Sizes.Count ? wounds.Sizes[index] : WoundSize.Deep;
+        var mechanism = index < wounds.Mechanisms.Count ? wounds.Mechanisms[index] : LegacyMechanismFor(wound.Type);
+        var quality = GetTreatmentQuality(wounds, index);
+        var cleanup = index < wounds.Cleanup.Count ? wounds.Cleanup[index] : WoundCleanupFlags.None;
+
+        var details = new List<string>
+        {
+            Color($"{DescribeDetailedSize(size)} {DescribeMechanism(mechanism, wound.Type)}", WoundColorFor(mechanism, wound.Type)),
+            Color(
+                DescribeTreatment(quality, wound.Treated),
+                TreatmentColorFor(quality, wound.Treated)),
+        };
+
+        var cleanupText = quality == WoundTreatmentQuality.Adequate
+            ? DescribeCleanup(cleanup)
+            : string.Empty;
+        if (cleanupText.Length > 0)
+            details.Add(Color(cleanupText, DetailedCleanupColor));
+
+        var optimalHint = DescribeOptimalHint(mechanism, wound.Type, cleanup);
+        if (quality != WoundTreatmentQuality.Optimal && optimalHint.Length > 0)
+            details.Add(Color($"optimal: {optimalHint}", DetailedHintColor));
+
+        return ToDetailedLines(details);
+    }
+
+    private static bool IsWoundTreatedForExamine(BodyPartWoundComponent wounds, int index)
+    {
+        return wounds.Wounds[index].Treated || GetTreatmentQuality(wounds, index) != WoundTreatmentQuality.Untreated;
+    }
+
+    private static WoundTreatmentQuality GetTreatmentQuality(BodyPartWoundComponent wounds, int index)
+    {
+        return index < wounds.TreatmentQualities.Count
+            ? wounds.TreatmentQualities[index]
+            : WoundTreatmentQuality.Untreated;
+    }
+
+    private static string ToDetailedLines(List<string> sections)
+    {
+        return string.Join("\n  ", sections);
+    }
+
+    private static string PartHeader(BodyPartType type, BodyPartSymmetry symmetry)
+    {
+        return $"[bold]{Color(FormatPartName(type, symmetry), DetailedPartColor)}[/bold]";
+    }
+
+    private static string Color(string text, string color)
+    {
+        return $"[color={color}]{text}[/color]";
+    }
+
+    private static string WoundColorFor(WoundMechanism mechanism, WoundType type)
+    {
+        if (mechanism == WoundMechanism.Burn || type == WoundType.Burn)
+            return DetailedBurnColor;
+
+        return DetailedWoundColor;
+    }
+
+    private static string TreatmentColorFor(WoundTreatmentQuality quality, bool treated)
+    {
+        return quality switch
+        {
+            WoundTreatmentQuality.Optimal => DetailedOptimalColor,
+            WoundTreatmentQuality.Adequate => DetailedAdequateColor,
+            _ => treated ? TreatedWoundColor : DetailedUntreatedColor,
+        };
+    }
+
+    private static string DescribeDetailedFracture(FractureSeverity severity, bool stabilized)
+    {
+        var prefix = stabilized ? "stabilized " : string.Empty;
+        return severity switch
+        {
+            FractureSeverity.Hairline => $"{prefix}hairline fracture",
+            FractureSeverity.Simple => $"{prefix}simple fracture",
+            FractureSeverity.Compound => $"{prefix}compound fracture",
+            FractureSeverity.Comminuted => $"{prefix}comminuted fracture",
+            _ => "fracture",
+        };
+    }
+
+    private static string DescribeDetailedSize(WoundSize size) => size switch
+    {
+        WoundSize.Small => "small",
+        WoundSize.Deep => "deep",
+        WoundSize.Gaping => "gaping",
+        WoundSize.Massive => "massive",
+        _ => "deep",
+    };
+
+    private static string DescribeMechanism(WoundMechanism mechanism, WoundType type) => mechanism switch
+    {
+        WoundMechanism.Bullet => "bullet wound",
+        WoundMechanism.Stab => "stab wound",
+        WoundMechanism.Slash => "slash wound",
+        WoundMechanism.Crush => "crush wound",
+        WoundMechanism.Burn => "burn",
+        WoundMechanism.Blast => "blast wound",
+        WoundMechanism.Fragment => "fragment wound",
+        WoundMechanism.Surgical => "surgical wound",
+        _ => type == WoundType.Burn ? "burn" : "wound",
+    };
+
+    private static string DescribeTreatment(WoundTreatmentQuality quality, bool treated) => quality switch
+    {
+        WoundTreatmentQuality.Optimal => "optimal treatment",
+        WoundTreatmentQuality.Adequate => "adequate treatment",
+        _ => treated ? "treated" : "untreated",
+    };
+
+    private static string DescribeCleanup(WoundCleanupFlags cleanup)
+    {
+        if (cleanup == WoundCleanupFlags.None)
+            return string.Empty;
+
+        var entries = new List<string>(4);
+        if ((cleanup & WoundCleanupFlags.RetainedFragment) != WoundCleanupFlags.None)
+            entries.Add("retained fragments");
+        if ((cleanup & WoundCleanupFlags.PoorClosure) != WoundCleanupFlags.None)
+            entries.Add("poor closure");
+        if ((cleanup & WoundCleanupFlags.CharredTissue) != WoundCleanupFlags.None)
+            entries.Add("charred tissue");
+        if ((cleanup & WoundCleanupFlags.CrushDebris) != WoundCleanupFlags.None)
+            entries.Add("crush debris");
+        if ((cleanup & WoundCleanupFlags.DirtyDressing) != WoundCleanupFlags.None)
+            entries.Add("dirty dressing");
+
+        return $"cleanup needed: {ToSentence(entries)}";
+    }
+
+    private static string DescribeOptimalHint(WoundMechanism mechanism, WoundType type, WoundCleanupFlags cleanup)
+    {
+        if ((cleanup & WoundCleanupFlags.RetainedFragment) != WoundCleanupFlags.None)
+            return "remove shrapnel";
+        if ((cleanup & WoundCleanupFlags.PoorClosure) != WoundCleanupFlags.None)
+            return "sealing dressing";
+        if ((cleanup & WoundCleanupFlags.CharredTissue) != WoundCleanupFlags.None)
+            return "burn gel dressing";
+        if ((cleanup & WoundCleanupFlags.CrushDebris) != WoundCleanupFlags.None)
+            return "compression dressing";
+
+        return mechanism switch
+        {
+            WoundMechanism.Bullet or WoundMechanism.Stab or WoundMechanism.Fragment => "hemostatic dressing",
+            WoundMechanism.Slash or WoundMechanism.Surgical => "sealing dressing",
+            WoundMechanism.Crush or WoundMechanism.Blast => "compression dressing",
+            WoundMechanism.Burn => "burn gel dressing",
+            _ when type == WoundType.Burn => "burn gel dressing",
+            _ when (cleanup & WoundCleanupFlags.DirtyDressing) != WoundCleanupFlags.None => "antiseptic dressing",
+            _ => string.Empty,
+        };
+    }
+
+    private static string DescribeBleedTier(ExternalBleedTier tier) => tier switch
+    {
+        ExternalBleedTier.Minor => "minor",
+        ExternalBleedTier.Moderate => "moderate",
+        ExternalBleedTier.Severe => "severe",
+        ExternalBleedTier.Arterial => "arterial",
+        _ => "none",
+    };
+
+    private static WoundMechanism LegacyMechanismFor(WoundType type) => type switch
+    {
+        WoundType.Burn => WoundMechanism.Burn,
+        WoundType.Surgery => WoundMechanism.Surgical,
+        _ => WoundMechanism.Generic,
+    };
 
     private static string FormatPartName(BodyPartType type, BodyPartSymmetry symmetry)
     {
@@ -173,9 +489,9 @@ public sealed class CMUMedicalExamineSystem : EntitySystem
         return type switch
         {
             BodyPartType.Head => 0,
-            BodyPartType.Arm when symmetry == BodyPartSymmetry.Left => 10,
-            BodyPartType.Hand when symmetry == BodyPartSymmetry.Left => 11,
-            BodyPartType.Torso => 20,
+            BodyPartType.Torso => 10,
+            BodyPartType.Arm when symmetry == BodyPartSymmetry.Left => 20,
+            BodyPartType.Hand when symmetry == BodyPartSymmetry.Left => 21,
             BodyPartType.Arm when symmetry == BodyPartSymmetry.Right => 30,
             BodyPartType.Hand when symmetry == BodyPartSymmetry.Right => 31,
             BodyPartType.Leg when symmetry == BodyPartSymmetry.Left => 40,

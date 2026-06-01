@@ -102,6 +102,16 @@ public sealed class MarineOverlay : Overlay
 
         var eyeRot = args.Viewport.Eye?.Rotation ?? default;
 
+        var isSpectator = false;
+        if (_players.LocalEntity != null && _entity.TryGetComponent(_players.LocalEntity.Value, out MetaDataComponent? localMeta))
+        {
+            var protoId = localMeta.EntityPrototype?.ID;
+            if (!string.IsNullOrEmpty(protoId) && (string.Equals(protoId, "MobObserver", StringComparison.InvariantCultureIgnoreCase) || string.Equals(protoId, "RMCAdminObserver", StringComparison.InvariantCultureIgnoreCase)))
+            {
+                isSpectator = true;
+            }
+        }
+
         var xformQuery = _entity.GetEntityQuery<TransformComponent>();
         var statusQuery = _entity.GetEntityQuery<StatusIconComponent>();
         var spriteQuery = _entity.GetEntityQuery<SpriteComponent>();
@@ -148,22 +158,7 @@ public sealed class MarineOverlay : Overlay
             var matrix = Matrix3x2.Multiply(rotationMatrix, scaledWorld);
             handle.SetTransform(matrix);
 
-            var icon = GetCachedMarineIcon(uid);
-            var factionIcons = _marine.GetFactionIcons(uid);
-
-            if (marineHudComp.Factions != null && !_npcFaction.IsMemberOfAny(uid, marineHudComp.Factions) && factionIcons != null)
-            {
-                if (_npcFactionMemberQuery.TryComp(uid, out var factionMember))
-                {
-                    // First faction is the entity's default faction
-                    if (factionMember.Factions.TryFirstOrNull(out var firstFaction) &&
-                        factionIcons.TryGetValue(firstFaction.Value, out var newIcon))
-                    {
-                        icon.Background = null;
-                        icon.Icon = newIcon;
-                    }
-                }
-            }
+            var icon = GetCachedMarineIcon(uid, marineHudComp.Factions, isSpectator);
 
             if (icon.Icon != null)
             {
