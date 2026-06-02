@@ -22,8 +22,8 @@
 - type: entity
   parent: [ RMCAllowSuitStorageClothingMinigun, BaseItem ]
   id: RNMCMinigunBackpack
-  name: minigun backpack test
-  description: A standard-issue backpack worn by UNMC technicians.
+  name: M134 Minigun Ammunition Backpack
+  description: An specialized Backpack designed to store ammunition, and to properly feed a M134 Minigun without jamming.
   components:
   - type: Tag
     tags:
