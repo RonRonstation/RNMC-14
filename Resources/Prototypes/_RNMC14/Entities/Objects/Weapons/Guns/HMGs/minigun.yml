@@ -2,7 +2,7 @@
   name: M134 Minigun
   id: RNMCMinigun
   parent: [ CMBaseWeaponGun, BaseItem, RMCBaseAttachableHolder ]
-  description: An now-ancient electrically driven, six-barrel rotary machine gun chambered in 7.62 times 51mm NATO fed from an external backpack. Despite being over 200 years old, it is still manufactured in reserve specialist sites for when raw firepower is mandatory, even if it requires sacrificing mobility and carrying capacity.
+  description: A now-ancient electrically driven, six-barrel rotary machine gun chambered in 7.62 times 51mm NATO fed from an external backpack. Despite being over 200 years old, it is still manufactured in reserve specialist sites for when raw firepower is mandatory, even if it requires sacrificing mobility and carrying capacity.
   components:
   - type: Tag
     tags:
