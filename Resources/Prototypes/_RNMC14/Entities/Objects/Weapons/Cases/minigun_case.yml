@@ -1,0 +1,49 @@
+- type: entity
+  id: RNMCMinigunCase
+  parent: BaseStorageItem
+  name: M134 six-barrel rotary machine gun case
+  description: A gun case containing the M134 Minigun, and it's dedicated ammunition back harness. Comes with 5 belts.
+  components:
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed }
+  - type: Item
+    size: Huge
+  - type: InteractedBlacklist
+    blacklist:
+      components:
+      - Xeno
+  - type: Storage
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,15,1
+    whitelist:
+      tags:
+      - RNMCMinigun
+      - RNMCMinigunBackpack
+      - RNMCMinigunBelt
+      - RMCSkillPamphlet
+  - type: Sprite
+    noRot: true
+    sprite: _RNMC14/Objects/Storage/minigun_case.rsi
+    layers:
+    - state: closed
+      map: [ base ]
+  - type: Icon
+    sprite: _RNMC14/Objects/Storage/minigun_case.rsi
+    state: closed
+
+  - type: StorageFill
+    contents:
+    - id: RNMCMinigun
+    - id: RNMCMinigunBackpack
+    - id: RNMCMinigunBelt
+    - id: RNMCMinigunBelt
+    - id: RNMCMinigunBelt
+    - id: RNMCMinigunBelt
+    - id: RNMCMinigunBelt
+    - id: RMCPamphletHeavyMachineGunner

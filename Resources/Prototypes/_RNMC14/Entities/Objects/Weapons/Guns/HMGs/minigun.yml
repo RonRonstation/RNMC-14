@@ -1,0 +1,190 @@
+- type: entity
+  name: M134 Minigun
+  id: RNMCMinigun
+  parent: [ CMBaseWeaponGun, BaseItem, RMCBaseAttachableHolder ]
+  description: A now-ancient electrically driven, six-barrel rotary machine gun chambered in 7.62 times 51mm NATO fed from an external backpack. Despite being over 200 years old, it is still manufactured in reserve specialist sites for when raw firepower is mandatory, even if it requires sacrificing mobility and carrying capacity.
+  components:
+  - type: Tag
+    tags:
+    - RNMCMinigun
+  - type: Wieldable
+  - type: AmmoCounter
+  - type: StaticPrice
+    price: 1000
+  - type: Sprite
+    sprite: _RNMC14/Objects/Weapons/Guns/HMGs/minigun/minigun_inhands.rsi
+    layers:
+    - state: base
+      sprite: _RNMC14/Objects/Weapons/Guns/HMGs/minigun/minigun_icon.rsi
+  - type: Clothing
+    sprite: _RNMC14/Objects/Weapons/Guns/HMGs/minigun/minigun_inhands.rsi
+    slots:
+    - suitStorage
+  - type: GunRequiresWield
+  - type: Item
+    size: Ginormous
+  - type: Corrodible
+    isCorrodible: false
+  - type: WieldableSpeedModifiers
+    base: 0.2
+    light: 0.35
+    medium: 0.50
+    heavy: 0.65
+  - type: Gun
+    fireRate: 15
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/minigun.ogg
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+  - type: ClothingSlotAmmoProvider
+  - type: SlotBasedConnectedContainer
+    targetSlot: BACK
+    containerWhitelist:
+      tags:
+      - RNMCMinigunBackpack
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 40
+    attackRate: 0.5
+  - type: GunSpinup
+    baseShotDelay: 0.7
+    baseScatter: 10
+    initialWindupDelay: 0.7
+    spinUpTime: 6
+    graceAfterStop: 2
+    spinDownTime: 3
+    minSpinLevel: 1
+    maxSpinLevel: 14
+    rateTiers: [ 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5 ]
+    startSound:
+      path: /Audio/_RMC14/Vehicle/weapons/minigun_start.ogg
+    loopSound:
+      path: /Audio/Weapons/Guns/Gunshots/minigun.ogg
+    stopSound:
+      path: /Audio/_RMC14/Vehicle/weapons/minigun_stop.ogg
+    selectSound:
+      path: /Audio/_RMC14/Vehicle/weapons/minigun_select.ogg
+  - type: RMCWeaponAccuracy
+    accuracyMultiplier: 1.05
+  - type: WieldedCrosshair
+    rsi:
+      sprite: _RMC14/Interface/MousePointer/smartgun_mouse.rsi
+      state: all
+  - type: Overheat
+    maxHeat: 100
+    heatPerShot: 1
+    cooldownRate: 5
+    emergencyCooldownMultiplier: 0.33
+    emergencyCooldownDelay: 10
+  - type: WieldDelay
+    baseDelay: 3
+  - type: RMCSelectiveFire
+    baseFireModes:
+    - FullAuto
+    recoilWielded: 3
+    scatterWielded: 10
+    baseFireRate: 15
+    burstScatterMult: 4
+    modifiers:
+      FullAuto:
+        maxScatterModifier: 4
+        useBurstScatterMult: true
+        unwieldedScatterMultiplier: 2
+        shotsToMaxScatter: 80
+  - type: ClothingSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
+  - type: HeldSpeedModifier
+    walkModifier: 0.5
+    sprintModifier: 0.5
+  - type: GunRequiresSkills
+    skills:
+      RMCSkillEngineer: 1
+
+## Ammunition
+
+# Ammo Crate (From req)
+
+# Belt
+- type: entity
+  id: RNMCMinigunBelt
+  name: "belt (7.62x51 rifle)"
+  parent: BaseMagazineRifle
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - RNMCCartridgeMinigun
+    fillDelay: 5
+    proto: RNMCCartridgeMinigun
+    capacity: 50
+    cycleable: false
+  - type: Sprite
+    sprite: _RNMC14/Objects/Weapons/Guns/Ammunition/Magazines/minigun.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Tag
+    tags:
+    - RNMCMinigunBelt
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+    zeroOnlyOnEmpty: true
+
+# Cartridge
+
+- type: entity
+  parent: CMCartridge10x20mmAP
+  id: RNMCCartridgeMinigun
+  name: cartridge (7.62x51)
+  components:
+  - type: Tag
+    tags:
+    - Cartridge
+    - RNMCCartridgeMinigun
+  - type: CartridgeAmmo
+    proto: RNMCBulletMinigun
+    deleteOnSpawn: true
+
+
+# Projectile
+
+- type: entity
+  parent: Bullet10x20mmAP
+  id: RNMCBulletMinigun
+  name: bullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 40
+  - type: CMArmorPiercing
+    amount: 30
+  - type: RMCPenetratingProjectile
+    rangeLossPerHit: 1
+  - type: RMCStunOnHit
+    stuns:
+    - whitelist:
+        minMobSize: SmallXeno
+      maxRange: 3
+      stunTime: 0.2
+      slowTime: 2
+
+- type: Tag
+  id: RNMCMinigun
+
+- type: Tag
+  id: RNMCCartridgeMinigun
+
+- type: Tag
+  id: RNMCMinigunBelt
