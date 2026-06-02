@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.Numerics;
 using Content.Client._RMC14.Vehicle.Ui;
+using Content.Shared._RMC14.UserInterface;
 using Content.Shared._RMC14.Vehicle.Supply;
 using Robust.Client.Graphics;
 using Robust.Client.GameObjects;
@@ -10,9 +13,10 @@ using Robust.Shared.Maths;
 
 namespace Content.Client._RMC14.Vehicle.Supply;
 
-public sealed class VehicleSupplyBui : BoundUserInterface
+public sealed class VehicleSupplyBui : BoundUserInterface, IRefreshableBui
 {
     private VehicleSupplyWindow? _window;
+    private VehicleSupplyWindowController? _windowController;
     private string? _selectedVehicleId;
     private bool _suppressEvents;
     private readonly List<string> _availableVehicleIds = new();
@@ -36,26 +40,47 @@ public sealed class VehicleSupplyBui : BoundUserInterface
         if (_window == null)
             return;
 
+        _window.OnClose += Close;
+        _windowController = new VehicleSupplyWindowController(_window);
         _window.Title = string.Empty;
         _window.RaiseButton.OnPressed += _ => SendMessage(new VehicleSupplyLiftMsg(true));
         _window.LowerButton.OnPressed += _ => SendMessage(new VehicleSupplyLiftMsg(false));
+        Refresh();
     }
 
-    protected override void UpdateState(BoundUserInterfaceState state)
+    protected override void Dispose(bool disposing)
     {
-        base.UpdateState(state);
+        base.Dispose(disposing);
 
-        if (state is not VehicleSupplyBuiState uiState || _window == null)
+        if (!disposing)
             return;
 
+        if (_window != null)
+            _window.OnClose -= Close;
+
+        _windowController?.Dispose();
+        _windowController = null;
+        _window?.Dispose();
+        _window = null;
+    }
+
+    public void Refresh()
+    {
+        if (_window == null)
+            return;
+
+        if (!EntMan.TryGetComponent(Owner, out VehicleSupplyConsoleComponent? console))
+            return;
+
+        var uiState = console.Ui;
         _suppressEvents = true;
         UpdateStatus(uiState);
         UpdateLists(uiState);
-        _window.SetPreview(uiState.Preview);
+        _windowController?.RefreshPreview(uiState.Preview, GetSelectedVehicleName(uiState));
         _suppressEvents = false;
     }
 
-    private void UpdateStatus(VehicleSupplyBuiState state)
+    private void UpdateStatus(VehicleSupplyUiState state)
     {
         if (_window == null)
             return;
@@ -70,10 +95,10 @@ public sealed class VehicleSupplyBui : BoundUserInterface
         var lowering = state.LiftMode == VehicleSupplyLiftMode.Lowering;
         _window.RaiseButton.Pulse = raising;
         _window.LowerButton.Pulse = lowering;
-        _window.SetLiftActivity(state.LiftMode, state.Busy);
+        _windowController?.RefreshLiftActivity(state.LiftMode, state.Busy);
     }
 
-    private void UpdateLists(VehicleSupplyBuiState state)
+    private void UpdateLists(VehicleSupplyUiState state)
     {
         if (_window == null)
             return;
@@ -297,5 +322,20 @@ public sealed class VehicleSupplyBui : BoundUserInterface
         button.DisabledTextColor = HardpointButton.DefaultDisabledTextColor;
 
         button.RefreshStyle();
+    }
+
+    private string? GetSelectedVehicleName(VehicleSupplyUiState state)
+    {
+        var selectedId = state.SelectedVehicleId;
+        if (string.IsNullOrWhiteSpace(selectedId))
+            return null;
+
+        foreach (var entry in state.Available)
+        {
+            if (entry.Id == selectedId)
+                return entry.Name;
+        }
+
+        return null;
     }
 }

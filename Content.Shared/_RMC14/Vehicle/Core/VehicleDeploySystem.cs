@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Buckle.Components;
@@ -23,12 +24,17 @@ using Robust.Shared.Timing;
 using Robust.Shared.Containers;
 using Content.Shared.Mobs;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._RMC14.Vehicle;
 
 public sealed class VehicleDeploySystem : EntitySystem
 {
+    private static readonly EntProtoId HardpointTypeCannon = "HardpointTypeCannon";
+
+    private readonly List<VehicleMountedSlot> _mountedSlotsBuffer = new();
+
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedCombatModeSystem _combatMode = default!;
     [Dependency] private readonly SharedGunSystem _guns = default!;
@@ -106,16 +112,33 @@ public sealed class VehicleDeploySystem : EntitySystem
         if (actionComp.Vehicle != vehicle)
             return;
 
-        if (actionComp.Action != null)
-            _actions.RemoveAction(user, actionComp.Action.Value);
+        if (actionComp.Action is { } action)
+        {
+            RemoveAndDeleteDeployAction(user, action);
+            actionComp.Action = null;
+        }
 
         RemCompDeferred<VehicleDeployActionComponent>(user);
     }
 
     private void OnDeployActionShutdown(Entity<VehicleDeployActionComponent> ent, ref ComponentShutdown args)
     {
-        if (ent.Comp.Action != null)
-            _actions.RemoveAction(ent.Owner, ent.Comp.Action.Value);
+        if (ent.Comp.Action is { } action)
+            RemoveAndDeleteDeployAction(ent.Owner, action);
+    }
+
+    private void RemoveAndDeleteDeployAction(EntityUid user, EntityUid action)
+    {
+        if (TerminatingOrDeleted(action))
+            return;
+
+        _actions.RemoveAction(user, action);
+
+        if (_net.IsClient)
+            return;
+
+        if (Exists(action))
+            QueueDel(action);
     }
 
     private void OnDeployAction(Entity<VehicleDeployActionComponent> ent, ref VehicleDeployActionEvent args)
@@ -292,7 +315,7 @@ public sealed class VehicleDeploySystem : EntitySystem
         if (args.Cancelled)
             return;
 
-        if (!string.Equals(ent.Comp.HardpointType, "Cannon", StringComparison.OrdinalIgnoreCase))
+        if (ent.Comp.HardpointType != HardpointTypeCannon)
             return;
 
         if (!TryGetVehicleFromContained(ent.Owner, out var vehicle))
@@ -318,14 +341,14 @@ public sealed class VehicleDeploySystem : EntitySystem
         }
     }
 
-    private static bool IsBlockedHardpoint(VehicleDeployGatedHardpointsComponent gated, string hardpointType)
+    private static bool IsBlockedHardpoint(VehicleDeployGatedHardpointsComponent gated, EntProtoId hardpointType)
     {
-        if (string.IsNullOrWhiteSpace(hardpointType))
+        if (hardpointType == default)
             return false;
 
         foreach (var blocked in gated.BlockedHardpoints)
         {
-            if (string.Equals(blocked, hardpointType, StringComparison.OrdinalIgnoreCase))
+            if (blocked == hardpointType)
                 return true;
         }
 
@@ -456,7 +479,8 @@ public sealed class VehicleDeploySystem : EntitySystem
         EntityUid? fallbackGun = null;
         GunComponent? fallbackComp = null;
 
-        foreach (var mountedSlot in _topology.GetMountedSlots(vehicle))
+        _topology.GetMountedSlots(vehicle, _mountedSlotsBuffer);
+        foreach (var mountedSlot in _mountedSlotsBuffer)
         {
             if (mountedSlot.Item is not { } installed)
                 continue;
@@ -591,7 +615,7 @@ public sealed class VehicleDeploySystem : EntitySystem
         var targetCoords = Transform(target).Coordinates;
         if (TryGetVehicleTurret(vehicle, out var turretUid) &&
             TryComp(turretUid, out VehicleTurretComponent? turret) &&
-            _turret.TryGetTurretOrigin(turretUid, turret, out var originCoords))
+            _turret.TryGetTurretOrigin(turretUid, out var originCoords))
         {
             var originMap = _transform.ToMapCoordinates(originCoords);
             var targetMap = _transform.ToMapCoordinates(targetCoords);

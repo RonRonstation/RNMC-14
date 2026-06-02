@@ -1,11 +1,12 @@
 using System;
+using Content.Shared._RMC14.UserInterface;
 using Content.Shared._RMC14.Vehicle;
 using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 
 namespace Content.Client._RMC14.Vehicle.Ui;
 
-public sealed class VehicleAmmoLoaderBoundUserInterface : BoundUserInterface
+public sealed class VehicleAmmoLoaderBoundUserInterface : BoundUserInterface, IRefreshableBui
 {
     private VehicleAmmoLoaderMenu? _menu;
 
@@ -26,6 +27,7 @@ public sealed class VehicleAmmoLoaderBoundUserInterface : BoundUserInterface
         _menu.OnSlotSelected += (slotPath, ammoSlot, action) =>
             SendMessage(new VehicleAmmoLoaderSelectMessage(slotPath, ammoSlot, action));
         _menu.OpenCentered();
+        Refresh();
     }
 
     protected override void Dispose(bool disposing)
@@ -42,13 +44,15 @@ public sealed class VehicleAmmoLoaderBoundUserInterface : BoundUserInterface
         _menu = null;
     }
 
-    protected override void UpdateState(BoundUserInterfaceState state)
+    public void Refresh()
     {
-        base.UpdateState(state);
-
-        if (state is not VehicleAmmoLoaderUiState ammoState)
+        if (_menu is not { IsOpen: true })
             return;
 
+        if (!EntMan.TryGetComponent(Owner, out VehicleAmmoLoaderComponent? loader))
+            return;
+
+        var ammoState = loader.Ui;
         _menu?.Update(ammoState.Hardpoints, ammoState.AmmoAmount, ammoState.AmmoMax, ammoState.AmmoPrototype);
     }
 }

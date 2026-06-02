@@ -1,11 +1,12 @@
 using System;
+using Content.Shared._RMC14.UserInterface;
 using Content.Shared._RMC14.Vehicle;
 using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 
 namespace Content.Client._RMC14.Vehicle.Ui;
 
-public sealed class HardpointBoundUserInterface : BoundUserInterface
+public sealed class HardpointBoundUserInterface : BoundUserInterface, IRefreshableBui
 {
     private HardpointMenu? _menu;
 
@@ -26,6 +27,7 @@ public sealed class HardpointBoundUserInterface : BoundUserInterface
 
         _menu.OnRemove += slotId => SendMessage(new HardpointRemoveMessage(slotId));
         _menu.OpenCentered();
+        Refresh();
     }
 
     protected override void Dispose(bool disposing)
@@ -42,13 +44,15 @@ public sealed class HardpointBoundUserInterface : BoundUserInterface
         _menu = null;
     }
 
-    protected override void UpdateState(BoundUserInterfaceState state)
+    public void Refresh()
     {
-        base.UpdateState(state);
-
-        if (state is not HardpointBoundUserInterfaceState hardpointState)
+        if (_menu is not { IsOpen: true })
             return;
 
+        if (!EntMan.TryGetComponent(Owner, out HardpointSlotsComponent? hardpoints))
+            return;
+
+        var hardpointState = hardpoints.Ui;
         _menu?.Update(
             hardpointState.Hardpoints,
             hardpointState.FrameIntegrity,

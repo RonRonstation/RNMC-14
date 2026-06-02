@@ -31,6 +31,7 @@ using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Tag;
 using Content.Shared.Whitelist;
+using Content.Shared.Vehicle.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -468,6 +469,7 @@ public abstract class SharedRMCFlammableSystem : EntitySystem
         // Ensure the center tile is ignited as part of the diamond.
         SpawnFire(center, spawn, chain, range, intensity, duration, out _);
         SpawnFires(spawn, center, range, chain, intensity, duration);
+        _onCollide.CleanupChain(chain);
     }
 
     public void SpawnFireLines(EntProtoId spawn, EntityCoordinates center, int cardinalRange, int ordinalRange, int? intensity = null, int? duration = null)
@@ -490,6 +492,8 @@ public abstract class SharedRMCFlammableSystem : EntitySystem
                     break;
             }
         }
+
+        _onCollide.CleanupChain(chain);
     }
 
     public int SpawnFire(EntityCoordinates target, EntProtoId spawn, EntityUid chain, int range, int? intensity, int? duration, out bool cont)
@@ -582,6 +586,8 @@ public abstract class SharedRMCFlammableSystem : EntitySystem
             if (CheckViableTile(ent, ignitionTarget))
                 SpawnFireChain(ent.Comp.Spawn, chain, ignitionTarget, intensity, duration);
         }
+
+        _onCollide.CleanupChain(chain);
     }
 
     private EntityCoordinates ChangeTarget(EntityCoordinates target, Direction direction)
@@ -795,8 +801,19 @@ public abstract class SharedRMCFlammableSystem : EntitySystem
         }
     }
 
+    private bool ShouldIgnoreTileFire(EntityUid uid)
+    {
+        return _blockTileFireQuery.HasComp(uid) || HasComp<VehicleRideSurfaceRiderComponent>(uid);
+    }
+
     private void TryIgnite(Entity<RMCIgniteOnCollideComponent> ent, EntityUid other, bool checkIgnited)
     {
+        if (_tileFireQuery.HasComp(ent.Owner) && ShouldIgnoreTileFire(other))
+        {
+            RemCompDeferred<SteppingOnFireComponent>(other);
+            return;
+        }
+
         EnsureComp<SteppingOnFireComponent>(other);
         var flammableEnt = new Entity<FlammableComponent?>(other, null);
         if (!Resolve(flammableEnt, ref flammableEnt.Comp, false))
@@ -839,6 +856,12 @@ public abstract class SharedRMCFlammableSystem : EntitySystem
 
     private void ApplyTileEffect(Entity<SteppingOnFireComponent> ent, RMCIgniteOnCollideComponent ignite, EntityUid fireEntity)
     {
+        if (ShouldIgnoreTileFire(ent.Owner))
+        {
+            RemCompDeferred<SteppingOnFireComponent>(ent);
+            return;
+        }
+
         var timing = _timing.CurTime;
 
         if (ignite.TileDamage is not { } tile)

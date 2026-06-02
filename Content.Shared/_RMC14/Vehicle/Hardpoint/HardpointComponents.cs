@@ -20,7 +20,7 @@ public sealed partial class HardpointItemComponent : Component
     public const string ComponentId = "HardpointItem";
 
     [DataField(required: true)]
-    public string HardpointType = string.Empty;
+    public EntProtoId HardpointType;
 
     [DataField]
     public EntProtoId? VehicleFamily;
@@ -29,7 +29,7 @@ public sealed partial class HardpointItemComponent : Component
     public EntProtoId? SlotType;
 
     [DataField]
-    public string? CompatibilityId;
+    public EntProtoId? CompatibilityId;
 
     [DataField]
     public float DamageMultiplier = 1f;
@@ -39,7 +39,7 @@ public sealed partial class HardpointItemComponent : Component
 }
 
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 [Access(typeof(HardpointSystem), typeof(HardpointSlotSystem))]
 public sealed partial class HardpointSlotsComponent : Component
 {
@@ -54,6 +54,9 @@ public sealed partial class HardpointSlotsComponent : Component
 
     [DataField]
     public ProtoId<ToolQualityPrototype> RemoveToolQuality = "Prying";
+
+    [AutoNetworkedField]
+    public HardpointUiState Ui = new(new List<HardpointUiEntry>(), 0f, 0f, false, null);
 }
 
 [RegisterComponent]
@@ -61,16 +64,13 @@ public sealed partial class HardpointSlotsComponent : Component
 public sealed partial class HardpointStateComponent : Component
 {
     [NonSerialized]
-    public HashSet<string> PendingInserts = new();
+    public Dictionary<string, EntityUid> PendingInserts = new();
 
     [NonSerialized]
     public HashSet<string> CompletingInserts = new();
 
     [NonSerialized]
     public HashSet<string> PendingRemovals = new();
-
-    [NonSerialized]
-    public HashSet<EntityUid> PendingInsertUsers = new();
 
     [NonSerialized]
     public string? LastUiError;
@@ -83,13 +83,13 @@ public sealed partial class HardpointSlot
     public string Id { get; set; } = string.Empty;
 
     [DataField(required: true)]
-    public string HardpointType { get; set; } = string.Empty;
+    public EntProtoId HardpointType { get; set; }
 
     [DataField]
     public EntProtoId? SlotType { get; set; }
 
     [DataField]
-    public string? CompatibilityId { get; set; }
+    public EntProtoId? CompatibilityId { get; set; }
 
     [DataField]
     public string VisualLayer { get; set; } = string.Empty;

@@ -147,6 +147,9 @@ public sealed partial class VehicleWeaponsSystem
         if (_net.IsClient)
             return;
 
+        if (!TryComp(seat, out VehicleWeaponsSeatComponent? seatComp))
+            return;
+
         if (!Resolve(vehicle, ref weapons, logMissing: false))
             return;
 
@@ -218,14 +221,14 @@ public sealed partial class VehicleWeaponsSystem
             autoEnabled = deployable.AutoTurretEnabled;
         }
 
-        _ui.SetUiState(seat, VehicleWeaponsUiKey.Key,
-            new VehicleWeaponsUiState(
-                GetNetEntity(vehicle),
-                entries,
-                canToggleStabilization,
-                stabilizationEnabled,
-                canToggleAuto,
-                autoEnabled));
+        seatComp.Ui = new VehicleWeaponsUiState(
+            GetNetEntity(vehicle),
+            entries,
+            canToggleStabilization,
+            stabilizationEnabled,
+            canToggleAuto,
+            autoEnabled);
+        Dirty(seat, seatComp);
     }
 
     private VehicleWeaponsUiEntry CreateMountedSlotUiEntry(
@@ -324,7 +327,7 @@ public sealed partial class VehicleWeaponsSystem
 
         return new VehicleWeaponsUiEntry(
             mountedSlot.CompositeId,
-            mountedSlot.HardpointType,
+            mountedSlot.HardpointType.Id,
             installedEntity,
             installedName,
             installedEntity,

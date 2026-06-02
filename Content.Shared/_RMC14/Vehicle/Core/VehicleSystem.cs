@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
@@ -11,8 +12,11 @@ using Content.Shared.DoAfter;
 using Content.Shared.Ghost;
 using Content.Shared.Interaction;
 using Content.Shared.Maps;
+using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Roles;
+using Content.Shared.Roles.Jobs;
 using Content.Shared.Vehicle;
 using Content.Shared.Vehicle.Components;
 using Robust.Shared.GameObjects;
@@ -25,9 +29,9 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Shared.Physics;
-using Content.Shared._RMC14.Map;
 
 namespace Content.Shared._RMC14.Vehicle;
 
@@ -35,14 +39,15 @@ public sealed class VehicleSystem : EntitySystem
 {
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedEyeSystem _eye = default!;
+    [Dependency] private readonly SharedJobSystem _job = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
+    [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly RMCMapSystem _rmcMap = default!;
     [Dependency] private readonly SharedRMCTeleporterSystem _rmcTeleporter = default!;
     [Dependency] private readonly SkillsSystem _skills = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -80,15 +85,13 @@ public sealed class VehicleSystem : EntitySystem
         if (_net.IsClient)
             return;
 
+        if (args.Handled)
+            return;
+
         if (IsEntryBlockedByLock(ent.Owner, args.User))
         {
             _popup.PopupEntity(Loc.GetString("rmc-vehicle-enter-locked"), args.User, args.User, PopupType.SmallCaution);
             args.Handled = true;
-            return;
-        }
-
-        if (args.Handled)
-        {
             return;
         }
 
@@ -159,7 +162,7 @@ public sealed class VehicleSystem : EntitySystem
         {
             if (ent.Comp.MaxPassengers > 0 &&
                 !interior.Passengers.Contains(user) &&
-                CountLivingOccupants(interior.Passengers) >= ent.Comp.MaxPassengers)
+                !CanEnterAsPassenger(ent, interior, user))
             {
                 _popup.PopupEntity(Loc.GetString("rmc-vehicle-enter-passenger-full"), user, user);
                 return false;
@@ -223,6 +226,7 @@ public sealed class VehicleSystem : EntitySystem
 
         var entryCoords = new EntityCoordinates(entryParent, Vector2.Zero);
 
+        var foundExit = false;
         var exitQuery = EntityQueryEnumerator<VehicleExitComponent, TransformComponent>();
         while (exitQuery.MoveNext(out _, out _, out var xform))
         {
@@ -231,8 +235,12 @@ public sealed class VehicleSystem : EntitySystem
 
             entryCoords = xform.Coordinates;
             entryParent = xform.ParentUid.IsValid() ? xform.ParentUid : entryParent;
+            foundExit = true;
             break;
         }
+
+        if (!foundExit)
+            Log.Warning($"[VehicleEnter] No VehicleExitComponent found in interior for {ToPrettyString(ent.Owner)} at {ent.Comp.InteriorPath}, using grid origin as fallback entry coordinates.");
 
         interior.Map = mapUid;
         interior.MapId = mapId;
@@ -244,6 +252,7 @@ public sealed class VehicleSystem : EntitySystem
 
         var link = EnsureComp<VehicleInteriorLinkComponent>(mapUid);
         link.Vehicle = ent.Owner;
+        Dirty(mapUid, link);
 
         SpawnVehicleInteriorKey(ent.Owner, mapId);
 
@@ -348,7 +357,7 @@ public sealed class VehicleSystem : EntitySystem
         if (!TryComp(vehicleUid, out VehicleEnterComponent? enter))
             return;
 
-        if (IsExitBlockedByLock(vehicleUid, args.User))
+        if (IsEntryBlockedByLock(vehicleUid, args.User))
         {
             _popup.PopupEntity(Loc.GetString("rmc-vehicle-enter-locked"), args.User, args.User, PopupType.SmallCaution);
             args.Handled = true;
@@ -458,7 +467,7 @@ public sealed class VehicleSystem : EntitySystem
         if (!TryComp(vehicleUid, out VehicleEnterComponent? enter))
             return false;
 
-        if (IsExitBlockedByLock(vehicleUid, user))
+        if (IsEntryBlockedByLock(vehicleUid, user))
         {
             _popup.PopupEntity(Loc.GetString("rmc-vehicle-enter-locked"), user, user, PopupType.SmallCaution);
             return false;
@@ -628,6 +637,7 @@ public sealed class VehicleSystem : EntitySystem
 
         occupant.Vehicle = vehicle;
         occupant.IsXeno = isXeno;
+        Dirty(user, occupant);
         RegisterTrackedOccupant(vehicle, user, isXeno);
     }
 
@@ -716,6 +726,62 @@ public sealed class VehicleSystem : EntitySystem
         return count;
     }
 
+    private bool CanEnterAsPassenger(Entity<VehicleEnterComponent> ent, VehicleInteriorComponent interior, EntityUid user)
+    {
+        var passengers = CountLivingOccupants(interior.Passengers);
+        if (passengers >= ent.Comp.MaxPassengers)
+            return false;
+
+        if (ent.Comp.ReservedPassengerPools.Count == 0)
+            return true;
+
+        TryGetJobId(user, out var userJob);
+
+        var reservedForOtherJobs = 0;
+        foreach (var pool in ent.Comp.ReservedPassengerPools)
+        {
+            if (userJob is { } job && pool.EligibleJobs.Contains(job))
+                continue;
+
+            reservedForOtherJobs += GetUnfilledReservedPoolSlots(pool, interior.Passengers);
+        }
+
+        return passengers < ent.Comp.MaxPassengers - reservedForOtherJobs;
+    }
+
+    private int GetUnfilledReservedPoolSlots(VehicleReservedPassengerPool pool, HashSet<EntityUid> passengers)
+    {
+        var occupied = 0;
+        foreach (var passenger in passengers)
+        {
+            if (_mobState.IsDead(passenger) ||
+                !TryGetJobId(passenger, out var jobId) ||
+                !pool.EligibleJobs.Contains(jobId))
+            {
+                continue;
+            }
+
+            occupied++;
+        }
+
+        return Math.Max(0, pool.Slots - occupied);
+    }
+
+    private bool TryGetJobId(EntityUid entity, out ProtoId<JobPrototype> jobId)
+    {
+        jobId = default;
+
+        if (!_mind.TryGetMind(entity, out var mindId, out _) ||
+            !_job.MindTryGetJobId(mindId, out var job) ||
+            job is not { } resolvedJob)
+        {
+            return false;
+        }
+
+        jobId = resolvedJob;
+        return true;
+    }
+
     private void SpawnVehicleInteriorKey(EntityUid vehicle, MapId mapId)
     {
         var keyId = _vehicleLock.EnsureVehicleKeyId(vehicle);
@@ -744,7 +810,7 @@ public sealed class VehicleSystem : EntitySystem
         if (args.Popup)
             _popup.PopupClient(Loc.GetString("rmc-skills-cant-operate", ("target", ent)), args.Buckle, args.User);
 
-        //args.Cancelled = true;
+        args.Cancelled = true;
     }
 
     private void OnDriverSeatStrapped(Entity<VehicleDriverSeatComponent> ent, ref StrappedEvent args)
@@ -859,17 +925,6 @@ public sealed class VehicleSystem : EntitySystem
         return !CanBypassLockWithDestroyedFrame(vehicle, user);
     }
 
-    private bool IsExitBlockedByLock(EntityUid vehicle, EntityUid user)
-    {
-        if (HasComp<GhostComponent>(user))
-            return false;
-
-        if (!TryComp(vehicle, out VehicleLockComponent? vehicleLock) || !vehicleLock.Locked)
-            return false;
-
-        return !CanBypassLockWithDestroyedFrame(vehicle, user);
-    }
-
     private bool CanBypassLockWithDestroyedFrame(EntityUid vehicle, EntityUid user)
     {
         if (!HasComp<XenoComponent>(user))
@@ -957,8 +1012,10 @@ public sealed class VehicleSystem : EntitySystem
         target = EntityUid.Invalid;
 
         if (_net.IsClient ||
-            !TryComp(vehicle, out VehicleEnterComponent? enter) ||
-            !EnsureInterior((vehicle, enter), out var interior))
+            !TryComp(vehicle, out VehicleEnterComponent? _) ||
+            !TryComp(vehicle, out VehicleInteriorComponent? interior) ||
+            interior.MapId == MapId.Nullspace ||
+            !_mapManager.MapExists(interior.MapId))
         {
             return false;
         }

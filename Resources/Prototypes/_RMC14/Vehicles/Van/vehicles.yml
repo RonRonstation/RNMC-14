@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: VehicleVanBase
   abstract: true
   name: van
@@ -6,6 +6,7 @@
   components:
   - type: Vehicle
     movementKind: Grid
+  - type: LagCompensation
   - type: Clickable
   - type: RMCIgnoreGhostInteractionLimits
   - type: RequireProjectileTarget
@@ -27,7 +28,7 @@
     runningSoundCooldown: 2
     hornSound: /Audio/Effects/Vehicle/carhorn.ogg
     hornCooldown: 1
-    collisionSound: /Audio/_RMC14/Structures/metalhit.ogg
+    #collisionSound: /Audio/_RMC14/Structures/metalhit.ogg
     collisionSoundCooldown: 0.5
     mobCollisionSound: /Audio/_RMC14/Xeno/alien_claw_block.ogg
   - type: VehicleSpotlight
@@ -48,8 +49,10 @@
         - HighImpassable
         - LowImpassable
         - LargeMobLayer
+        - Vehicle
         layer:
         - LargeMobLayer
+        - Vehicle
       mob:
         shape:
           !type:PhysShapeAabb
@@ -112,7 +115,7 @@
     vehicleFamily: HardpointVehicleFamilyVan
     slots:
     - id: wheel-1
-      hardpointType: Wheel
+      hardpointType: HardpointTypeWheel
       slotType: HardpointSlotTypeWheel
       insertDelay: 1.5
       whitelist:
@@ -172,7 +175,7 @@
   - type: VehicleSound
     collisionSoundCooldown: 0.4
   - type: VehicleEnter
-    interiorPath: /Maps/_RMC14/Vehicles/van_interior.yml #TODO ACTUAL CLF INTERIOR
+    interiorPath: /Maps/_RMC14/Vehicles/van_interior.yml #TODO RMC14 add a dedicated CLF interior
     enterDoAfter: 1.0
     exitDoAfter: 1.0
     maxPassengers: 10
@@ -235,8 +238,10 @@
         - HighImpassable
         - LowImpassable
         - LargeMobLayer
+        - Vehicle
         layer:
         - LargeMobLayer
+        - Vehicle
       mob:
         shape:
           !type:PhysShapeAabb
@@ -300,7 +305,7 @@
     vehicleFamily: HardpointVehicleFamilyVan
     slots:
     - id: wheel-1
-      hardpointType: Wheel
+      hardpointType: HardpointTypeWheel
       slotType: HardpointSlotTypeWheel
       insertDelay: 1.5
       whitelist:
@@ -409,9 +414,9 @@
     vehicleFamily: HardpointVehicleFamilyVan
     slots:
     - id: wheel-1
-      hardpointType: Wheel
+      hardpointType: HardpointTypeWheel
       slotType: HardpointSlotTypeWheel
-      compatibilityId: SPPVan
+      compatibilityId: HardpointCompatibilitySPPVan
       insertDelay: 1.5
 
 - type: entity
@@ -444,16 +449,16 @@
     vehicleFamily: HardpointVehicleFamilyVan
     slots:
     - id: secondary
-      hardpointType: Secondary
+      hardpointType: HardpointTypeSecondary
       slotType: HardpointSlotTypeLauncher
-      compatibilityId: SPPVan
+      compatibilityId: HardpointCompatibilitySPPVan
       visualLayer: secondary
       insertDelay: 2.0
       required: false
     - id: wheel-1
-      hardpointType: Wheel
+      hardpointType: HardpointTypeWheel
       slotType: HardpointSlotTypeWheel
-      compatibilityId: SPPVan
+      compatibilityId: HardpointCompatibilitySPPVan
       insertDelay: 1.5
   - type: VehicleEnter
     interiorPath: /Maps/_RMC14/Vehicles/spp_van_armed_interior.yml
@@ -572,7 +577,7 @@
     vehicleFamily: HardpointVehicleFamilyVan
     slots:
     - id: wheel-1
-      hardpointType: Wheel
+      hardpointType: HardpointTypeWheel
       slotType: HardpointSlotTypeWheel
-      compatibilityId: SPPVan
+      compatibilityId: HardpointCompatibilitySPPVan
       insertDelay: 1.5

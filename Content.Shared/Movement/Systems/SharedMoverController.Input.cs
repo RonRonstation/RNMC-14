@@ -307,15 +307,16 @@ namespace Content.Shared.Movement.Systems
 
             // TODO: Should move this into HandleMobMovement itself.
             // RMC14
-            if (hasMover && entity.Comp != null && entity.Comp.CanMove && RelayQuery.TryComp(entity, out var relayMover))
+            if (RelayQuery.TryComp(entity, out var relayMover))
             {
                 DebugTools.Assert(relayMover.RelayEntity != entity.Owner);
                 DebugTools.AssertNotNull(relayMover.RelayEntity);
 
-                if (MoverQuery.TryGetComponent(entity, out var mover))
-                    SetMoveInput((entity.Owner, mover), MoveButtons.None);
+                if (hasMover && entity.Comp != null)
+                    SetMoveInput((entity.Owner, entity.Comp), MoveButtons.None);
 
-                HandleDirChange(relayMover.RelayEntity, dir, subTick, state);
+                if (hasMover && entity.Comp != null && entity.Comp.CanMove)
+                    HandleDirChange(relayMover.RelayEntity, dir, subTick, state);
                 return;
             }
             // RMC14
@@ -331,10 +332,12 @@ namespace Content.Shared.Movement.Systems
                 RaiseLocalEvent(xform.ParentUid, ref relayMoveEvent);
             }
 
+            // RMC14
             if (!hasMover || entity.Comp == null)
                 return;
 
             SetVelocityDirection(new Entity<InputMoverComponent>(entity.Owner, entity.Comp), dir, subTick, state);
+            // RMC14
         }
 
         private void OnInputInit(Entity<InputMoverComponent> entity, ref ComponentInit args)

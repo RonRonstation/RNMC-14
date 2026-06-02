@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: VehicleTankBase
   abstract: true
   name: tank
@@ -6,6 +6,7 @@
   components:
   - type: Vehicle
     movementKind: Grid
+  - type: LagCompensation
   - type: Clickable
   - type: RMCIgnoreGhostInteractionLimits
   - type: RequireProjectileTarget
@@ -58,8 +59,10 @@
         - HighImpassable
         - LowImpassable
         - LargeMobLayer
+        - Vehicle
         layer:
         - LargeMobLayer
+        - Vehicle
       mob:
         shape:
           !type:PhysShapeAabb
@@ -153,30 +156,30 @@
     vehicleFamily: HardpointVehicleFamilyTank
     slots:
     - id: armor
-      hardpointType: Armor
+      hardpointType: HardpointTypeArmor
       slotType: HardpointSlotTypeArmor
       visualLayer: armor
       insertDelay: 2.5
       required: false
     - id: primary
-      hardpointType: Turret
+      hardpointType: HardpointTypeTurret
       slotType: HardpointSlotTypeTurret
       visualLayer: primary
       insertDelay: 3.0
       required: false
     - id: secondary
-      hardpointType: Secondary
+      hardpointType: HardpointTypeSecondary
       visualLayer: secondary
       insertDelay: 2.5
       required: false
     - id: support
-      hardpointType: Support
+      hardpointType: HardpointTypeSupport
       slotType: HardpointSlotTypeSupportAttachment
       visualLayer: support
       insertDelay: 2.0
       required: false
     - id: wheel-1
-      hardpointType: Wheel
+      hardpointType: HardpointTypeWheel
       slotType: HardpointSlotTypeTreads
       insertDelay: 2.0
   - type: VehicleWheelSlots
@@ -200,6 +203,21 @@
 - type: entity
   parent: VehicleTankBase
   id: VehicleTank
+  components:
+  - type: VehicleEnter
+    interiorPath: /Maps/_RMC14/Vehicles/tank_interior.yml
+    enterDoAfter: 1.0
+    exitDoAfter: 1.0
+    maxPassengers: 3
+    maxXenos: 2
+    reservedPassengerPools:
+    - slots: 2
+      eligibleJobs:
+      - CMVehicleCrewman
+    entryPoints:
+    - offset: 0,2
+      radius: 1
+      interiorCoords: 0.5,-1
 
 - type: entity
   parent: VehicleTankBase
@@ -268,34 +286,34 @@
     vehicleFamily: HardpointVehicleFamilyTank
     slots:
     - id: armor
-      hardpointType: Armor
+      hardpointType: HardpointTypeArmor
       slotType: HardpointSlotTypeArmor
-      compatibilityId: SPPTank
+      compatibilityId: HardpointCompatibilitySPPTank
       visualLayer: armor
       insertDelay: 2.5
       required: false
     - id: primary
-      hardpointType: Turret
+      hardpointType: HardpointTypeTurret
       slotType: HardpointSlotTypeTurret
-      compatibilityId: SPPTank
+      compatibilityId: HardpointCompatibilitySPPTank
       visualLayer: primary
       insertDelay: 3.0
       required: false
     - id: secondary
-      hardpointType: Secondary
-      compatibilityId: SPPTank
+      hardpointType: HardpointTypeSecondary
+      compatibilityId: HardpointCompatibilitySPPTank
       visualLayer: secondary
       insertDelay: 2.5
       required: false
     - id: support
-      hardpointType: Support
+      hardpointType: HardpointTypeSupport
       slotType: HardpointSlotTypeSupportAttachment
-      compatibilityId: SPPTank
+      compatibilityId: HardpointCompatibilitySPPTank
       visualLayer: support
       insertDelay: 2.0
       required: false
     - id: wheel-1
-      hardpointType: Wheel
+      hardpointType: HardpointTypeWheel
       slotType: HardpointSlotTypeTreads
       insertDelay: 2.0
 
