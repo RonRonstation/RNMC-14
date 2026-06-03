@@ -119,7 +119,7 @@
       - RNMCCartridgeMinigun
     fillDelay: 5
     proto: RNMCCartridgeMinigun
-    capacity: 50
+    capacity: 80
     cycleable: false
   - type: Sprite
     sprite: _RNMC14/Objects/Weapons/Guns/Ammunition/Magazines/minigun.rsi
@@ -139,6 +139,8 @@
     steps: 2
     zeroVisible: false
     zeroOnlyOnEmpty: true
+  - type: Item
+    size: Normal
 
 # Cartridge
 

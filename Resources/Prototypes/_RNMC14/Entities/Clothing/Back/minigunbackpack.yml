@@ -43,7 +43,7 @@
     whitelist:
       tags:
       - RNMCCartridgeMinigun
-    capacity: 250
+    capacity: 240
     mayTransfer: true
     insertDelay: 0
     cycleDelay: 0
@@ -53,7 +53,8 @@
     containers:
       ballistic-ammo: !type:Container
   - type: Appearance
-
+  - type: Item
+    size: Large
 
 
 - type: Tag
