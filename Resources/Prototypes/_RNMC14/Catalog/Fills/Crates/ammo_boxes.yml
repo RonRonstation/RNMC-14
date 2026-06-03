@@ -45,3 +45,17 @@
   - type: StorageFill
     contents:
     - id: RMCBoxBulletsPistolAP
+
+- type: entity
+  parent: RMCCrateAmmo
+  id: RNMCCrateBoxMinigunBelt
+  name: Belt box (7.62x51 rifle) x6
+  components:
+  - type: StorageFill
+    contents:
+    - id: RNMCMinigunBelt
+    - id: RNMCMinigunBelt
+    - id: RNMCMinigunBelt
+    - id: RNMCMinigunBelt
+    - id: RNMCMinigunBelt
+    - id: RNMCMinigunBelt

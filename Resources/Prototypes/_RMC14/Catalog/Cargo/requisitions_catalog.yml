@@ -38,6 +38,10 @@
         crate: RMCCrateBoxMagazineRifleM4SPR
       - cost: 4000
         crate: RMCCrateBoxMagazineRifleM4SPRAP
+      #RNMC Start
+      - cost: 4000
+        crate: RNMCCrateBoxMinigunBelt
+      #RNMC End
       - cost: 2000
         crate: RMCCrateBoxMagazineSMGM63
       - cost: 4000
