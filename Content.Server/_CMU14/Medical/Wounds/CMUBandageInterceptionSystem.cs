@@ -72,9 +72,6 @@ public sealed class CMUBandageInterceptionSystem : EntitySystem
             return;
         }
 
-        if (ShouldYieldToArmedSurgeryTool(args.User, patient, used))
-            return;
-
         var woundTarget = PickBandageTarget(args.User, patient, treater);
         if (woundTarget is not { } targetPart)
         {
@@ -82,6 +79,12 @@ public sealed class CMUBandageInterceptionSystem : EntitySystem
                                  PickDamageOnlyTarget(args.User, patient, treater);
             if (fallbackTarget is not { } fallbackPart)
             {
+                if (TryHandleArmedSurgeryTool(args.User, patient, used, out var surgeryHandled))
+                {
+                    args.Handled = surgeryHandled;
+                    return;
+                }
+
                 _popup.PopupEntity(Loc.GetString("cmu-medical-bandage-no-wounds"), patient, args.User, PopupType.SmallCaution);
                 args.Handled = true;
                 return;
