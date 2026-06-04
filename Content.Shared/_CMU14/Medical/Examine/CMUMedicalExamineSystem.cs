@@ -24,6 +24,7 @@ public sealed class CMUMedicalExamineSystem : EntitySystem
     private const string FractureColor = "#dca94c";
     private const string SeveredColor = "#ff4d4d";
     private const string DetailedPartColor = "#9fc7ff";
+    private const string DetailedInjurySiteColor = "#ff9f43";
     private const string DetailedWoundColor = "#ffb86c";
     private const string DetailedBurnColor = "#ff704d";
     private const string DetailedBleedColor = "#ff5f5f";
@@ -170,6 +171,150 @@ public sealed class CMUMedicalExamineSystem : EntitySystem
         }
 
         return string.Join('\n', lines);
+    }
+
+    public string GetInspectInjuriesText(EntityUid body)
+    {
+        var groups = new Dictionary<string, InspectInjuryGroup>();
+
+        foreach (var (partUid, part) in _body.GetBodyChildren(body))
+        {
+            var partName = FormatPartName(part.PartType, part.Symmetry);
+            var partOrder = BodyPartSortOrder(part.PartType, part.Symmetry);
+
+            if (TryComp<BodyPartWoundComponent>(partUid, out var wounds))
+            {
+                for (var i = 0; i < wounds.Wounds.Count; i++)
+                {
+                    if (IsOptimallyTreatedForDetailedExamine(wounds, i))
+                        continue;
+
+                    var wound = wounds.Wounds[i];
+                    var size = i < wounds.Sizes.Count ? wounds.Sizes[i] : WoundSize.Deep;
+                    var mechanism = i < wounds.Mechanisms.Count ? wounds.Mechanisms[i] : LegacyMechanismFor(wound.Type);
+                    var quality = GetTreatmentQuality(wounds, i);
+                    var cleanup = i < wounds.Cleanup.Count ? wounds.Cleanup[i] : WoundCleanupFlags.None;
+                    var header = GetInspectWoundHeader(mechanism, wound.Type);
+                    var key = header;
+
+                    if (!groups.TryGetValue(key, out var group))
+                    {
+                        group = new InspectInjuryGroup(partOrder, header);
+                        groups.Add(key, group);
+                    }
+                    else if (partOrder < group.Order)
+                    {
+                        group.Order = partOrder;
+                    }
+
+                    group.AddWound(partName, size, quality, wound.Treated, cleanup, DescribeOptimalHint(mechanism, wound.Type, cleanup));
+                }
+
+                if (wounds.ExternalBleeding == ExternalBleedTier.Arterial)
+                    AddArterialBleedingSite(groups, partName, partOrder);
+            }
+
+            if (HasComp<CMUEscharComponent>(partUid))
+            {
+                const string header = "[color=#ff704d]Burn Eschar[/color]";
+                const string key = header;
+
+                if (!groups.TryGetValue(key, out var group))
+                {
+                    group = new InspectInjuryGroup(partOrder, header);
+                    groups.Add(key, group);
+                }
+                else if (partOrder < group.Order)
+                {
+                    group.Order = partOrder;
+                }
+
+                group.AddCleanup("Charred Tissue Cleanup Required");
+            }
+        }
+
+        foreach (var (type, symmetry) in GetMissingPartSlots(body))
+        {
+            var partName = FormatPartName(type, symmetry);
+            var partOrder = BodyPartSortOrder(type, symmetry);
+            var header = Color("severed", SeveredColor);
+            var key = header;
+
+            if (!groups.TryGetValue(key, out var group))
+            {
+                group = new InspectInjuryGroup(partOrder, header);
+                groups.Add(key, group);
+            }
+            else if (partOrder < group.Order)
+            {
+                group.Order = partOrder;
+            }
+
+            group.AddSite(partName);
+        }
+
+        if (groups.Count == 0)
+            return Loc.GetString("cmu-medical-detailed-examine-none");
+
+        var ordered = new List<InspectInjuryGroup>(groups.Values);
+        ordered.Sort((a, b) =>
+        {
+            var order = a.Order.CompareTo(b.Order);
+            return order != 0
+                ? order
+                : string.Compare(a.Header, b.Header, StringComparison.Ordinal);
+        });
+
+        var lines = new List<string>(ordered.Count);
+        foreach (var group in ordered)
+        {
+            lines.Add(group.Render());
+        }
+
+        return string.Join('\n', lines);
+    }
+
+    public ExternalBleedTier GetWorstExternalBleeding(EntityUid body)
+    {
+        var bleeding = ExternalBleedTier.None;
+
+        foreach (var (partUid, _) in _body.GetBodyChildren(body))
+        {
+            if (!TryComp<BodyPartWoundComponent>(partUid, out var wounds) ||
+                wounds.ExternalBleeding <= bleeding)
+            {
+                continue;
+            }
+
+            bleeding = wounds.ExternalBleeding;
+        }
+
+        return bleeding;
+    }
+
+    private static void AddArterialBleedingSite(Dictionary<string, InspectInjuryGroup> groups, string partName, int partOrder)
+    {
+        const string key = "arterial bleeding";
+        var header = Color("Arterial Bleeding", DetailedBleedColor);
+
+        if (!groups.TryGetValue(key, out var group))
+        {
+            group = new InspectInjuryGroup(partOrder, header, DetailedBleedColor);
+            groups.Add(key, group);
+        }
+        else if (partOrder < group.Order)
+        {
+            group.Order = partOrder;
+        }
+
+        group.AddSite(partName);
+    }
+
+    private static bool IsOptimallyTreatedForDetailedExamine(BodyPartWoundComponent wounds, int index)
+    {
+        var cleanup = index < wounds.Cleanup.Count ? wounds.Cleanup[index] : WoundCleanupFlags.None;
+        return GetTreatmentQuality(wounds, index) == WoundTreatmentQuality.Optimal &&
+               cleanup == WoundCleanupFlags.None;
     }
 
     private List<(BodyPartType Type, BodyPartSymmetry Symmetry)> GetMissingPartSlots(EntityUid body)
@@ -530,4 +675,82 @@ public sealed class CMUMedicalExamineSystem : EntitySystem
     }
 
     private readonly record struct BodyPartExamineSummary(int Order, string Part, string Conditions);
+
+    private readonly record struct DetailedWoundDetails(string Header, string Body);
+
+    private sealed class InspectInjuryGroup
+    {
+        private readonly HashSet<string> _cleanupLines = new();
+        private readonly HashSet<string> _optimalLines = new();
+        private readonly HashSet<string> _siteLines = new();
+
+        public int Order;
+        public readonly string Header;
+        public readonly List<string> CleanupLines = new();
+        public readonly List<string> OptimalLines = new();
+        public readonly List<string> SiteLines = new();
+        private readonly string _siteColor;
+
+        public InspectInjuryGroup(int order, string header, string siteColor = DetailedInjurySiteColor)
+        {
+            Order = order;
+            Header = header;
+            _siteColor = siteColor;
+        }
+
+        public void AddWound(
+            string part,
+            WoundSize size,
+            WoundTreatmentQuality quality,
+            bool treated,
+            WoundCleanupFlags cleanup,
+            string optimalTreatment)
+        {
+            if (quality == WoundTreatmentQuality.Adequate)
+                AddCleanup(DescribeInspectCleanupRequired(cleanup));
+
+            if (optimalTreatment.Length > 0)
+                AddOptimal($"Optimal Treatment: {optimalTreatment}");
+
+            if (quality == WoundTreatmentQuality.Untreated && !treated)
+                AddSite($"{InspectSeverity(size)} {part}");
+        }
+
+        public void AddCleanup(string cleanup)
+        {
+            if (_cleanupLines.Add(cleanup))
+                CleanupLines.Add(cleanup);
+        }
+
+        public void AddOptimal(string treatment)
+        {
+            if (_optimalLines.Add(treatment))
+                OptimalLines.Add(treatment);
+        }
+
+        public void AddSite(string site)
+        {
+            if (_siteLines.Add(site))
+                SiteLines.Add(site);
+        }
+
+        public string Render()
+        {
+            var lines = new List<string>
+            {
+                $"[bold]{Header}[/bold]",
+            };
+
+            foreach (var cleanup in CleanupLines)
+                lines.Add($"  {Color(cleanup, DetailedCleanupColor)}");
+
+            foreach (var treatment in OptimalLines)
+                lines.Add($"  {Color(treatment, DetailedHintColor)}");
+
+            if (SiteLines.Count > 0)
+                lines.Add($"  {Color(string.Join(", ", SiteLines), _siteColor)}");
+
+            return string.Join('\n', lines);
+        }
+    }
 }

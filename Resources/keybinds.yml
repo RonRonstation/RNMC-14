@@ -648,6 +648,16 @@ binds:
   type: State
   key: Space
   mod1: Control
+- function: CMUInspectInjuries
+  type: State
+  key: MouseLeft
+  canFocus: true
+  mod1: Alt
+  priority: 1
+- function: CMUOpenMedicalCraftingMenu
+  type: State
+  key: C
+  mod1: Alt
 - function: CMUniqueAction
   type: State
   key: Space
