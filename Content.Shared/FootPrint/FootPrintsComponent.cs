@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared.Decals;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Shared.Decals;
@@ -42,18 +43,6 @@ public sealed partial class FootPrintsComponent : Component
         "FootprintDragging4",
         "FootprintDragging5",
     };
-
-    [ViewVariables(VVAccess.ReadOnly), DataField]
-    public ProtoId<DecalPrototype> LeftBareDecal = "FootprintBareLeft";
-
-    [ViewVariables(VVAccess.ReadOnly), DataField]
-    public ProtoId<DecalPrototype> RightBareDecal = "FootprintBareRight";
-
-    [ViewVariables(VVAccess.ReadOnly), DataField]
-    public ProtoId<DecalPrototype> ShoesDecal = "FootprintShoes";
-
-    [ViewVariables(VVAccess.ReadOnly), DataField]
-    public ProtoId<DecalPrototype> SuitDecal = "FootprintSuit";
 
     [ViewVariables(VVAccess.ReadOnly), DataField]
     public EntProtoId<FootPrintComponent> StepProtoId = "Footstep";
