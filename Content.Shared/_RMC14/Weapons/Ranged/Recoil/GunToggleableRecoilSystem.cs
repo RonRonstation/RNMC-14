@@ -1,4 +1,4 @@
-﻿using Content.Shared._RMC14.Weapons.Ranged.Battery;
+using Content.Shared._RMC14.Weapons.Ranged.Battery;
 using Content.Shared.Actions;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Ranged.Events;
@@ -51,7 +51,7 @@ public sealed class GunToggleableRecoilSystem : EntitySystem
             return;
 
         args.MinAngle = Angle.Zero;
-        args.MaxAngle = Angle.Zero;
+        args.MaxAngle = Angle.FromDegrees(20); // rnmc
         args.CameraRecoilScalar = 0;
     }
 

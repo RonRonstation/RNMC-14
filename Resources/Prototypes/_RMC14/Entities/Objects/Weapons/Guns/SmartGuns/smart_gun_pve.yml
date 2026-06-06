@@ -55,6 +55,8 @@
     - FullAuto
     soundGunshot:
       collection: RNMCSmartgunShoot
+      params:
+        volume: -3
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
   - type: RMCSelectiveFire
