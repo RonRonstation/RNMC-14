@@ -1,0 +1,4 @@
+- type: npcFaction
+  id: RMCXenoFriendly
+  hostile:
+  - RMCXeno

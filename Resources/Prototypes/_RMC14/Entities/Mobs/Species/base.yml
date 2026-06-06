@@ -379,3 +379,7 @@
     hideLayersOnEquip:
     - UndergarmentTop
     - Hair
+  - type: SlowOnDamage # RNMC
+    speedModifierThresholds:
+      100: 0.7
+      150: 0.5

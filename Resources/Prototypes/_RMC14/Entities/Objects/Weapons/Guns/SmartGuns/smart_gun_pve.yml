@@ -62,7 +62,7 @@
     - FullAuto
     recoilWielded: 3
     scatterWielded: 10
-    baseFireRate: 7 # rnmc change - used to be 5
+    baseFireRate: 8 # rnmc change - used to be 5
     burstScatterMult: 4
     modifiers:
       FullAuto:
@@ -158,6 +158,8 @@
     rsi:
       sprite: _RMC14/Interface/MousePointer/smartgun_mouse.rsi
       state: all
+  - type: GunAttachableIFF # RNMC
+    preventFriendlyFire: true # RNMC
 
 - type: entity
   parent: RMCSmartGunPVENoCamo

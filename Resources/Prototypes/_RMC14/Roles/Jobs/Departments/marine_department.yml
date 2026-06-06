@@ -26,11 +26,5 @@
   - CMRoyalMarinesScoutSniperPVE
   - CMRoyalMarinesMedicPVE
   - CMRoyalMarinesRiflemanPVE
-  - RMCFORECONPVESquadLead # PVE FORECON
-  - RMCFORECONPVEAssistantSL
-  - RMCFORECONPVERadioTelephoneOperator
-  - RMCFORECONPVECorpsman
-  - RMCFORECONPVESmartgunner
-  - RMCFORECONPVERifleman
   departmentRadio: null
   headOfDepartment: CMSquadLeader
