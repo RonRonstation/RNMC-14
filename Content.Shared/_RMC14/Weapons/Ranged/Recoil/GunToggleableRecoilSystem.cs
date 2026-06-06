@@ -51,7 +51,7 @@ public sealed class GunToggleableRecoilSystem : EntitySystem
             return;
 
         args.MinAngle = Angle.Zero;
-        args.MaxAngle = Angle.FromDegrees(20); // rnmc
+        args.MaxAngle = Angle.FromDegrees(10); // rnmc
         args.CameraRecoilScalar = 0;
     }
 
