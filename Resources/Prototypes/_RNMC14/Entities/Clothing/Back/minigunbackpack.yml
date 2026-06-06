@@ -1,0 +1,62 @@
+- type: entity
+  abstract: true
+  id: RMCAllowSuitStorageClothingMinigun
+  components:
+  - type: AllowSuitStorage
+    whitelist:
+      components:
+      - GunSpinup
+      - CassettePlayer
+      tags:
+      - RNMCMinigun
+      #TODO mines
+      - RMCDetector
+      #Note should get all magazines and ignore guns
+      - CMMagazineSmg
+      - CMMagazinePistol
+      - CMMagazineRifle
+      - RMCMagazineShotgun
+      - CMMagazineSniper
+
+
+- type: entity
+  parent: [ RMCAllowSuitStorageClothingMinigun, BaseItem ]
+  id: RNMCMinigunBackpack
+  name: M134 Minigun Ammunition Backpack
+  description: An specialized Backpack designed to store ammunition, and to properly feed a M134 Minigun without jamming.
+  components:
+  - type: Tag
+    tags:
+    - RNMCMinigunBackpack
+  - type: Clothing
+    slots:
+    - Back
+  - type: Sprite
+    sprite: _RNMC14/Objects/Clothing/Back/minigunbackpack.rsi
+    layers:
+    - state: icon
+    - state: open
+      map: [ "openLayer" ]
+    - state: closed
+      map: [ "closedLayer" ]
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - RNMCCartridgeMinigun
+    capacity: 240
+    mayTransfer: true
+    insertDelay: 0
+    cycleDelay: 0
+    proto: RNMCCartridgeMinigun
+    cycleable: false
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Appearance
+  - type: Item
+    size: Large
+
+
+- type: Tag
+  id: RNMCMinigunBackpack
+
