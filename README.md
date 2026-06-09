@@ -35,7 +35,7 @@ All RMC-14 specific code for the content repository is licensed under [MIT](http
 
 All [upstream code](https://github.com/space-wizards/space-station-14) is licensed under [MIT](https://github.com/space-wizards/space-station-14/blob/master/LICENSE-UPSTREAM.TXT).
 
-All RNMC-14 specific code for the content repository after 10.06.2026 (June 10th 2026) is licensed under [AGPL-3.0](https://github.com/GitHubUser53123/RNMC-14/blob/master/LICENSE.TXT) unless specified otherwise.
+All RNMC-14 specific code for the content repository implemented after 10.06.2026 (June 10th 2026) is licensed under [AGPL-3.0](https://github.com/GitHubUser53123/RNMC-14/blob/master/LICENSE.TXT) unless specified otherwise. Any RNMC-14 specific code implemented before that date is licensed under [MIT](https://github.com/space-wizards/space-station-14/blob/master/LICENSE-UPSTREAM.TXT) unless specified otherwise.
 
 Most assets are licensed under [CC-BY-SA-3.0](https://creativecommons.org/licenses/by-sa/3.0/) unless stated otherwise. Assets have their license and the copyright in the metadata file. [Example](https://github.com/space-wizards/space-station-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
 
