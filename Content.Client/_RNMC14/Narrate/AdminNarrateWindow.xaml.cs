@@ -22,9 +22,9 @@ public sealed partial class AdminNarrateWindow : DefaultWindow
         IoCManager.InjectDependencies(this);
 
         Narrate.Placeholder = new Rope.Leaf(_localization.GetString("admin-announce-announcement-placeholder"));
-        NarrateMethod.AddItem(_localization.GetString("rnmc-narrate-type-ghosts"));
-        NarrateMethod.SetItemMetadata(0, AdminNarrateType.All);
         NarrateMethod.AddItem(_localization.GetString("rnmc-narrate-type-all"));
+        NarrateMethod.SetItemMetadata(0, AdminNarrateType.All);
+        NarrateMethod.AddItem(_localization.GetString("rnmc-narrate-type-ghosts"));
         NarrateMethod.SetItemMetadata(1, AdminNarrateType.Ghosts);
         NarrateMethod.OnItemSelected += AnnounceMethodOnOnItemSelected;
         Narrate.OnKeyBindUp += AnnouncementOnOnTextChanged;

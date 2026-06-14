@@ -1,6 +1,6 @@
 <DefaultWindow
     xmlns="https://spacestation14.io"
-    Title="{Loc rnmc-14-narration-window}"
+    Title="{Loc rnmc-narration-window}"
     MinWidth="500">
     <GridContainer Columns="1">
         <BoxContainer Orientation="Horizontal" HorizontalExpand="True">

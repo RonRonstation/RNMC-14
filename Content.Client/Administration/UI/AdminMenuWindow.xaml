@@ -10,6 +10,7 @@
     xmlns:rnmc="clr-namespace:Content.Client._RNMC14.RNMCTab">
     <TabContainer Name="MasterTabContainer">
         <adminTab:AdminTab />
+        <rnmc:RNMCTab />
         <adminbusTab:AdminbusTab />
         <atmosTab:AtmosTab />
         <tabs:RoundTab />
@@ -17,6 +18,5 @@
         <panic:PanicBunkerTab Name="PanicBunkerControl" Access="Public" />
         <playerTab:PlayerTab Name="PlayerTabControl" Access="Public" />
         <objectsTab:ObjectsTab Name="ObjectsTabControl" Access="Public" />
-        <rnmc:RNMCTab />
     </TabContainer>
 </DefaultWindow>
