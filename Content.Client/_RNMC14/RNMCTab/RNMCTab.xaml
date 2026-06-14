@@ -1,0 +1,11 @@
+<Control
+    xmlns="https://spacestation14.io"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
+    xmlns:narrate="clr-namespace:Content.Client._RNMC14.Narrate"
+    Margin="4"
+    MinSize="50 50">
+    <GridContainer Columns="3">
+        <cc:UICommandButton Name="NarrateButton" Command="narrateui" Text="{Loc 'rnmc-narrate'}" WindowType="{x:Type narrate:AdminNarrateWindow}"/>
+    </GridContainer>
+</Control>
