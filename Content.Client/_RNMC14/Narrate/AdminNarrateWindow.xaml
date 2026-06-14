@@ -4,15 +4,13 @@
     MinWidth="500">
     <GridContainer Columns="1">
         <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
-            <LineEdit Name="Player" Access="Public" HorizontalExpand="True" SizeFlagsStretchRatio="2"/>
             <Control HorizontalExpand="True" SizeFlagsStretchRatio="1" />
             <OptionButton Name="NarrateMethod" Access="Public" HorizontalExpand="True" SizeFlagsStretchRatio="2"/>
         </BoxContainer>
         <TextEdit Name="Narrate" Access="Public" VerticalExpand="True" MinHeight="100" />
-
         <GridContainer Rows="1">
             <CheckBox Name="OOC" Access="Public" Text="{Loc 'rnmc14-ooc'}" />
-            <Button Name="NarrateButton" Access="Public" Disabled="True" Text="{Loc rnmc14-narrate}" HorizontalAlignment="Center"/>
+            <Button Name="NarrateButton" Access="Public" Disabled="True" Text="{Loc rnmc-narrate}" HorizontalAlignment="Center"/>
         </GridContainer>
     </GridContainer>
 </DefaultWindow>

@@ -1,4 +1,4 @@
-﻿using Content.Server._RMC14.TacticalMap;
+using Content.Server._RMC14.TacticalMap;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
@@ -12,6 +12,7 @@ using Content.Server.Roles.Jobs;
 using Content.Server.Station.Systems;
 using Content.Shared._RMC14.Admin;
 using Content.Shared._RMC14.CCVar;
+using Content.Shared._RMC14.Dialog;
 using Content.Shared._RMC14.TacticalMap;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
@@ -45,10 +46,13 @@ public sealed class RMCAdminSystem : SharedRMCAdminSystem
     [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IConsoleHost _consoleHost = default!;
+    [Dependency] private readonly DialogSystem _dialog = default!; // rnmc14
 
     public readonly Queue<(Guid Id, List<TacticalMapLine> Lines, string Actor, int Round)> LinesDrawn = new();
 
     private int _tacticalMapAdminHistorySize;
+
+    public sealed record RandomizeCharacterOptionSelectionEvent(EntityUid user, EntityUid target, ProtoId<JobPrototype> job, bool randomize); // rnmc14
 
     public override void Initialize()
     {
@@ -56,6 +60,7 @@ public sealed class RMCAdminSystem : SharedRMCAdminSystem
 
         SubscribeLocalEvent<TacticalMapUpdatedEvent>(OnTacticalMapUpdated);
         SubscribeLocalEvent<SpawnAsJobDialogEvent>(OnSpawnAsJobDialog);
+        SubscribeLocalEvent<RandomizeCharacterOptionSelectionEvent>(OnRandomizeCharacterSelection);
         _consoleHost.AnyCommandExecuted += ConsoleHostOnAnyCommandExecuted;
 
         Subs.CVar(_config, RMCCVars.RMCTacticalMapAdminHistorySize, v => _tacticalMapAdminHistorySize = v, true);
@@ -112,10 +117,26 @@ public sealed class RMCAdminSystem : SharedRMCAdminSystem
             return;
         }
 
-        SpawnAsJob(user, target, ev.JobId);
+        // rnmc14 start
+        var randomizeOption = new List<DialogOption>();
+
+        var yes = new RandomizeCharacterOptionSelectionEvent(user, target, ev.JobId, true);
+        randomizeOption.Add(new DialogOption("Yes", yes));
+
+        var no = new RandomizeCharacterOptionSelectionEvent(user, target, ev.JobId, false);
+        randomizeOption.Add(new DialogOption("No", no));
+
+        _dialog.OpenOptions(user, "Randomize character?", randomizeOption);
+        // rnmc14 end
     }
 
-    public void SpawnAsJob(EntityUid user, EntityUid target, ProtoId<JobPrototype> job)
+    // rnmc14 start
+    public void OnRandomizeCharacterSelection(RandomizeCharacterOptionSelectionEvent ev)
+    {
+        SpawnAsJob(ev.user, ev.target, ev.job, ev.randomize);
+    }
+    // rnmc14 end
+    public void SpawnAsJob(EntityUid user, EntityUid target, ProtoId<JobPrototype> job, bool randomize = false) // rnmc14
     {
         if (!_adminManager.IsAdmin(user))
             return;
@@ -130,6 +151,9 @@ public sealed class RMCAdminSystem : SharedRMCAdminSystem
         var player = actor.PlayerSession;
         var stationUid = _station.GetOwningStation(target);
         var profile = _gameTicker.GetPlayerProfile(actor.PlayerSession);
+
+        if (randomize) // rnmc14
+            profile = HumanoidCharacterProfile.Random(); // rnmc14
 
         var newMind = _mind.CreateMind(player.UserId, profile.Name);
         _mind.SetUserId(newMind, player.UserId);

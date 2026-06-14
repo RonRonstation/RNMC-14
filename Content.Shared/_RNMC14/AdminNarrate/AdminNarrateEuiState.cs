@@ -6,7 +6,7 @@ namespace Content.Shared._RNMC14.AdminNarrate;
 public enum AdminNarrateType
 {
     Ghosts,
-    All,
+    All
 }
 
 [Serializable, NetSerializable]

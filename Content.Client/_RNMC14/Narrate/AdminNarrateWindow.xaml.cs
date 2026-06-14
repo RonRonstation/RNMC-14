@@ -5,6 +5,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Client.UserInterface.XAML;
+using Content.Client.Eui;
 using Robust.Shared.Utility;
 
 namespace Content.Client._RNMC14.Narrate;
@@ -13,6 +14,7 @@ namespace Content.Client._RNMC14.Narrate;
 public sealed partial class AdminNarrateWindow : DefaultWindow
 {
     [Dependency] private readonly ILocalizationManager _localization = default!;
+    [Dependency] private readonly EuiManager _euiManager = default!;
 
     public AdminNarrateWindow()
     {
@@ -21,12 +23,11 @@ public sealed partial class AdminNarrateWindow : DefaultWindow
 
         Narrate.Placeholder = new Rope.Leaf(_localization.GetString("admin-announce-announcement-placeholder"));
         NarrateMethod.AddItem(_localization.GetString("rnmc-narrate-type-ghosts"));
-        NarrateMethod.SetItemMetadata(0, AdminNarrateType.Ghosts);
+        NarrateMethod.SetItemMetadata(0, AdminNarrateType.All);
         NarrateMethod.AddItem(_localization.GetString("rnmc-narrate-type-all"));
-        NarrateMethod.SetItemMetadata(1, AdminNarrateType.All);
+        NarrateMethod.SetItemMetadata(1, AdminNarrateType.Ghosts);
         NarrateMethod.OnItemSelected += AnnounceMethodOnOnItemSelected;
         Narrate.OnKeyBindUp += AnnouncementOnOnTextChanged;
-
     }
 
     private void AnnouncementOnOnTextChanged(GUIBoundKeyEventArgs args)
@@ -37,6 +38,5 @@ public sealed partial class AdminNarrateWindow : DefaultWindow
     private void AnnounceMethodOnOnItemSelected(OptionButton.ItemSelectedEventArgs args)
     {
         NarrateMethod.SelectId(args.Id);
-        Player.Editable = ((AdminNarrateType?)args.Button.SelectedMetadata ?? AdminNarrateType.Ghosts) == AdminNarrateType.Ghosts;
     }
 }

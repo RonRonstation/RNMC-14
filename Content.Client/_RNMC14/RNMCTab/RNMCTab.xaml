@@ -6,6 +6,6 @@
     Margin="4"
     MinSize="50 50">
     <GridContainer Columns="3">
-        <cc:UICommandButton Name="NarrateButton" Command="narrateui" Text="{Loc 'rnmc-narrate'}" WindowType="{x:Type narrate:AdminNarrateWindow}"/>
+        <cc:CommandButton Command="narrateui" Text="{Loc rnmc-narrate}" />
     </GridContainer>
 </Control>
