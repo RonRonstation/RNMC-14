@@ -21,9 +21,48 @@
     hideLayersOnEquip:
     - UndergarmentTop
     - HeadTop
-  - type: Icon
-    sprite: _AU14/Mobs/WorkingJoe/parts.rsi
-    state: full
+  - type: Speech
+    speechVerb: WorkingJoe
+    speechSounds: null
+  - type: Vocal
+    sounds:
+      Male: AU14WorkingJoeSounds
+      Female: AU14WorkingJoeSounds
+      Unsexed: AU14WorkingJoeSounds
+  - type: TypingIndicator
+    proto: joe
+  - type: Deathgasp
+    prototype: AU14WorkingJoeDeathGasp
+  - type: RMCInnateSlowdown
+    slowdown: 1.25
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/_RMC14/Weapons/synthpunch1.ogg
+      params:
+        variation: 0.15
+        volume: -1
+    angle: 30
+    animation: WeaponArcFist
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 60
+  - type: Bloodstream
+    bloodReagent: RMCSynthBlood
+  - type: Synth
+    generation: "rmc-species-synth-generation-first"
+    critThreshold: 299
+    deadThreshold: 300
+    newDamageModifier: AU14WorkingJoe
+  - type: Skills
+    preset: AU14SkillPresetPlatoonWorkingJoe
+  - type: RMCRandomName
+    baseName: au14-species-name-working-joe
+    postFix: au14-species-name-working-joe-postfix
+    maxNumber: 5000
+  - type: RMCIntentsEyeColor
+  - type: RMCSetGenderOnMapInit
+    gender: Neuter
   - type: WorkingJoeVoice
   - type: UserInterface
     interfaces:
