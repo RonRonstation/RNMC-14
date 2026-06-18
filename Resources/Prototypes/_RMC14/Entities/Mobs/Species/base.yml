@@ -120,7 +120,7 @@
       types:
         Heat: 1
   - type: RMCRevivable
-    unrevivableDelay: 0 # RNMC
+    unrevivableDelay: 60 # RNMC - Make Those Seconds Count.
   - type: RMCMedicalExamine
   - type: FireVisuals
     sprite: _RMC14/Mobs/Effects/on_fire.rsi
@@ -391,4 +391,4 @@
       100: 0.7
       150: 0.5
   - type: CriticalGraceTime # RNMC
-    graceDuration: 2
+    graceDuration: 1
