@@ -40,7 +40,7 @@ namespace Content.Server._RNMC14.AdminToggles
 
                         _cfg.SetCVar("rnmc.defibs_enabled", !cvar);
                         _chat.SendAdminAlert($"rnmc.defibs_enabled = {cvar}");
-                            break;
+                        break;
                     }
                 case AdminToggleEuiMsg.ToggleHardcore ToggleHardcore:
                     {
@@ -48,7 +48,7 @@ namespace Content.Server._RNMC14.AdminToggles
 
                         _cfg.SetCVar("rnmc.defibs_hardcore", !cvar);
                         _chat.SendAdminAlert($"rnmc.defibs_hardcore = {cvar}");
-                            break;
+                        break;
                     }
             }
         }
