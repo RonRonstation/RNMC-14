@@ -21,6 +21,17 @@
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - Russian
+      - Chinese
+      - English
+      understoodLanguages:
+      - Russian
+      - Chinese
+      - English
+      currentLanguage: Russian
+      defaultLanguage: Russian
     - type: NpcFactionMember
       factions:
       - SPP

@@ -23,6 +23,15 @@
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - English
+      - Russian
+      understoodLanguages:
+      - English
+      - Russian
+      currentLanguage: English
+      defaultLanguage: English
     - type: DemoSpecWhitelist
     - type: GrenadeSpecWhitelist
     - type: ScoutWhitelist

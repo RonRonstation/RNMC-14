@@ -21,6 +21,15 @@
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - English
+      - Russian
+      understoodLanguages:
+      - English
+      - Russian
+      currentLanguage: English
+      defaultLanguage: English
     - type: Skills
       skills:
         RMCSkillConstruction: 2
