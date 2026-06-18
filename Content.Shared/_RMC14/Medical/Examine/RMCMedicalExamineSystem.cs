@@ -1,4 +1,4 @@
-﻿using Content.Shared._RMC14.Medical.Unrevivable;
+using Content.Shared._RMC14.Medical.Unrevivable;
 using Content.Shared._RMC14.Stun;
 using Content.Shared.Body.Components;
 using Content.Shared.Examine;

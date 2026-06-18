@@ -383,3 +383,5 @@
     speedModifierThresholds:
       100: 0.7
       150: 0.5
+  - type: CriticalGraceTime # RNMC
+    graceDuration: 2
