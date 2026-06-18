@@ -552,7 +552,7 @@ public sealed partial class RMCCVars : CVars
     /// Whether the new to job popup is enabled.
     /// </summary>
     public static readonly CVarDef<bool> RMCNewToJobPopup =
-        CVarDef.Create("game.new_to_job_popup_enabled", true, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("game.new_to_job_popup_enabled", false, CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
     /// How long to display the new to job popup for.
@@ -591,4 +591,10 @@ public sealed partial class RMCCVars : CVars
 
     public static readonly CVarDef<string> RMCChemMasterPresets =
         CVarDef.Create("rmc.chemmaster_presets", "", CVar.CLIENT | CVar.ARCHIVE);
+    // rnmc14 start
+    public static readonly CVarDef<bool> RNMCDefibs =
+    CVarDef.Create("rnmc.defibs_enabled", false, CVar.REPLICATED | CVar.SERVER);
+
+    public static readonly CVarDef<bool> RNMCDefibsHardcore =
+CVarDef.Create("rnmc.defibs_hardcore", false, CVar.REPLICATED | CVar.SERVER);
 }

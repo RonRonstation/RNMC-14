@@ -2,10 +2,10 @@
     xmlns="https://spacestation14.io"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
-    xmlns:narrate="clr-namespace:Content.Client._RNMC14.Narrate"
     Margin="4"
     MinSize="50 50">
     <GridContainer Columns="3">
         <cc:CommandButton Command="narrateui" Text="{Loc rnmc-narrate}" />
+        <cc:CommandButton Command="togglesui" Text="{Loc rnmc-toggles}" />
     </GridContainer>
 </Control>

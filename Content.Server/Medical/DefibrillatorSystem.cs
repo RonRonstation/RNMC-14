@@ -24,6 +24,7 @@ using Content.Shared.Timing;
 using Content.Shared.Traits.Assorted;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
+using Robust.Shared.Configuration; // RNMC14
 
 namespace Content.Server.Medical;
 
@@ -53,6 +54,9 @@ public sealed class DefibrillatorSystem : EntitySystem
     // RMC14
     [Dependency] private readonly RMCDefibrillatorSystem _rmcDefibrillator = default!;
     [Dependency] private readonly SkillsSystem _skills = default!;
+
+    // RNMC14
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -105,6 +109,13 @@ public sealed class DefibrillatorSystem : EntitySystem
     /// </returns>
     public bool CanZap(EntityUid uid, EntityUid target, EntityUid? user = null, DefibrillatorComponent? component = null, bool targetCanBeAlive = false)
     {
+        if (!_cfg.GetCVar<bool>("rnmc.defibs_enabled"))
+        {
+            if (user != null)
+                _popup.PopupEntity(Loc.GetString("rnmc-defibrillator-not-working"), uid, user.Value);
+            return false;
+        }
+
         if (!Resolve(uid, ref component))
             return false;
 
@@ -142,7 +153,7 @@ public sealed class DefibrillatorSystem : EntitySystem
         {
             if (TryComp(slot.ContainedEntity, out RMCDefibrillatorBlockedComponent? comp))
             {
-                if (user != null)
+                if (user != null && _cfg.GetCVar<bool>("rnmc.defibs_hardcore"))
                     _popup.PopupEntity(Loc.GetString(comp.Popup, ("target", target)), uid, user.Value);
                 return false;
             }
