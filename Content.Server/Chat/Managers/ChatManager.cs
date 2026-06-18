@@ -176,7 +176,7 @@ internal sealed partial class ChatManager : IChatManager
     public void SendAdminAlert(string message)
     {
         var clients = _adminManager.ActiveAdmins
-            .Where(p => _adminManager.HasAdminFlag(p, AdminFlags.EditNotes)) // RMC14
+            .Where(p => _adminManager.HasAdminFlag(p, AdminFlags.Adminchat)) // RNMC14
             .Select(p => p.Channel);
 
         var wrappedMessage = Loc.GetString("chat-manager-send-admin-announcement-wrap-message",
