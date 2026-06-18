@@ -49,6 +49,7 @@
       params:
         volume: 8
   - type: BlockWeeds
+  - type: BlockXenoConstruction
   - type: MinimapColor
     color: "#94b0d59c"
   - type: RMCWater
@@ -100,4 +101,4 @@
   suffix: Muddy
   components:
   - type: Sprite
-    color: "#A37E51"
+    drawdepth: LowFloors

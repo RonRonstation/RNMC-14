@@ -6,6 +6,7 @@ using Content.Shared._RMC14.Emote;
 using Content.Shared._RMC14.Explosion;
 using Content.Shared._RMC14.Map;
 using Content.Shared._RMC14.OnCollide;
+using Content.Shared._RMC14.Vehicle;
 using Content.Shared._RMC14.Weapons.Melee;
 using Content.Shared._RMC14.Xenonids.Plasma;
 using Content.Shared.Alert;
@@ -808,6 +809,10 @@ public abstract class SharedRMCFlammableSystem : EntitySystem
 
     private void TryIgnite(Entity<RMCIgniteOnCollideComponent> ent, EntityUid other, bool checkIgnited)
     {
+        // This will ignite too much during hijack otherwise, including fires
+        if (!HasComp<DamageableComponent>(other))
+            return;
+
         if (_tileFireQuery.HasComp(ent.Owner) && ShouldIgnoreTileFire(other))
         {
             RemCompDeferred<SteppingOnFireComponent>(other);
@@ -988,11 +993,6 @@ public abstract class SharedRMCFlammableSystem : EntitySystem
             var applyQuery = EntityQueryEnumerator<RMCIgniteOnCollideComponent>();
             while (applyQuery.MoveNext(out var uid, out var apply))
             {
-                foreach (var contact in _physics.GetEntitiesIntersectingBody(uid, (int)apply.Collision))
-                {
-                    TryIgnite((uid, apply), contact, true);
-                }
-
                 var enumerator = _rmcMap.GetAnchoredEntitiesEnumerator(uid);
                 while (enumerator.MoveNext(out var contact))
                 {
@@ -1004,6 +1004,11 @@ public abstract class SharedRMCFlammableSystem : EntitySystem
 
                 apply.InitDamaged = true;
                 Dirty(uid, apply);
+
+                foreach (var contact in _physics.GetEntitiesIntersectingBody(uid, (int)apply.Collision))
+                {
+                    TryIgnite((uid, apply), contact, true);
+                }
 
                 RemCompDeferred<DamageOnCollideComponent>(uid);
             }

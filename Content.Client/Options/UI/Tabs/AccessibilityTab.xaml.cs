@@ -31,6 +31,7 @@ public sealed partial class AccessibilityTab : Control
         Control.AddOptionCheckBox(RMCCVars.RMCChatSquadColorMode, RMCChatSquadColorModeCheckBox); // RMC14
         RegisterAnnouncementOptions();
         Control.AddOptionCheckBox(RMCCVars.RMCXenoAbilityPreviews, XenoAbilityPreviewsCheckBox); // RMC14
+        Control.AddOptionCheckBox(RMCCVars.RMCMarineEquipmentPreviews, MarineEquipmentPreviewsCheckBox); // RMC14
 
         Control.AddOptionCheckBox(CCVars.AccessibilityClientCensorNudity, CensorNudityCheckBox);
 

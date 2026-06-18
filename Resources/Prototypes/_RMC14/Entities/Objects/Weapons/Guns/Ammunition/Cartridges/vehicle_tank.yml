@@ -131,8 +131,6 @@
   - type: CMArmorPiercing
     amount: 30
   - type: IgnorePredictionHide
-  - type: VehicleDamageMultiplier
-    multiplier: 4
 
 - type: entity
   parent: RMCBaseBullet
@@ -145,7 +143,6 @@
     fixtureID: projectile
     ignoreOtherNonHard: false
   - type: IgniteOnProjectileHit
-  - type: RMCFireProjectile
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/Guns/Ammunition/Projectiles/firesentry_projectile.rsi
     drawdepth: Effects
@@ -165,7 +162,6 @@
   - type: DeleteOnTrigger
   - type: SpawnOnTerminate
     spawn: VehicleDragonFlameImpact
-    projectileAdjust: false
   - type: IgnoreArc
   - type: IgnorePredictionHide
   - type: Fixtures
@@ -213,7 +209,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: IgniteOnProjectileHit
-  - type: RMCFireProjectile
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/Guns/Ammunition/Projectiles/firesentry_projectile.rsi
     drawdepth: Effects
@@ -253,7 +248,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: IgniteOnProjectileHit
-  - type: RMCFireProjectile
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/Guns/Ammunition/Projectiles/firesentry_projectile.rsi
     drawdepth: Effects
