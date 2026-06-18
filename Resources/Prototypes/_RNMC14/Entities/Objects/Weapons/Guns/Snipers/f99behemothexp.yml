@@ -162,7 +162,10 @@
     fixtureID: projectile
     ignoreOtherNonHard: false
   - type: IgniteOnProjectileHit
-  - type: RMCFireProjectile
+  - type: TileFireOnTrigger
+    spawn: RMCTileFire
+    sound:
+      path: /Audio/_RMC14/Weapons/Guns/Flamer/gun_flamethrower3.ogg
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/Guns/Ammunition/Projectiles/firesentry_projectile.rsi
     layers:

@@ -188,44 +188,4 @@ public sealed class TechSystem : EntitySystem
 
         return false;
     }
-
-    public bool SetVehicleUnlockOptionDisabled(EntProtoId unlockId, bool disabled)
-    {
-        var tree = _intel.EnsureTechTree();
-        var changed = false;
-
-        foreach (var tier in tree.Comp.Tree.Options)
-        {
-            for (var i = 0; i < tier.Count; i++)
-            {
-                var option = tier[i];
-                if (!OptionUnlocksVehicle(option, unlockId) || option.Disabled == disabled)
-                    continue;
-
-                tier[i] = option with { Disabled = disabled };
-                changed = true;
-            }
-        }
-
-        if (!changed)
-            return false;
-
-        Dirty(tree);
-        _intel.UpdateTree(tree);
-        return true;
-    }
-
-    private static bool OptionUnlocksVehicle(TechOption option, EntProtoId unlockId)
-    {
-        foreach (var ev in option.Events)
-        {
-            if (ev is TechUnlockVehicleEvent unlock &&
-                unlock.Unlock == unlockId)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
 }

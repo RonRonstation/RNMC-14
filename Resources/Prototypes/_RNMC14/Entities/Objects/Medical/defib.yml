@@ -1,0 +1,43 @@
+
+- type: entity
+  id: RNMCDefibrillatorNerfed
+  parent: [CMDefibrillator]
+  suffix: Nerfed
+  components:
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 30
+  - type: Defibrillator
+    zapDelay: 0
+    doAfterDuration: 3.5
+    allowDoAfterMovement: false
+    canDefibCrit: false
+    rmcZapHeal:
+    - Burn: 12
+    zapHeal:
+      groups:
+        Airloss: -400
+    zapSound:
+      path: /Audio/_RMC14/Medical/defib_release.ogg
+      params:
+        volume: -6
+    chargeSound:
+      path: /Audio/_RNMC14/Medical/defib_charge.ogg
+      params:
+        volume: -8
+    failureSound:
+      path: /Audio/_RMC14/Medical/defib_failed.ogg
+      params:
+        volume: -6
+    successSound:
+      path: /Audio/_RMC14/Medical/defib_success.ogg
+      params:
+        volume: -6
+    readySound:
+      path: /Audio/_RMC14/Medical/defib_ready.ogg
+      params:
+        volume: -6
+    zapDamage: 0
+  - type: PowerCellDraw
+    enabled: false
+    useRate: 500

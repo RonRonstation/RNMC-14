@@ -14,6 +14,7 @@ using Content.Shared._RMC14.Marines;
 using Content.Shared._RMC14.Marines.Announce;
 using Content.Shared._RMC14.Marines.Squads;
 using Content.Shared._RMC14.Rules;
+using Content.Shared._RMC14.Survivor; // rnmc14
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Ghost;

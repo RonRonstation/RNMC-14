@@ -1,4 +1,4 @@
-using Content.Server._RMC14.TacticalMap;
+﻿using Content.Server._RMC14.TacticalMap;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
@@ -12,7 +12,6 @@ using Content.Server.Roles.Jobs;
 using Content.Server.Station.Systems;
 using Content.Shared._RMC14.Admin;
 using Content.Shared._RMC14.CCVar;
-using Content.Shared._RMC14.Dialog;
 using Content.Shared._RMC14.TacticalMap;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
@@ -112,6 +111,8 @@ public sealed class RMCAdminSystem : SharedRMCAdminSystem
         {
             return;
         }
+
+        SpawnAsJob(user, target, ev.JobId);
     }
 
     public void SpawnAsJob(EntityUid user, EntityUid target, ProtoId<JobPrototype> job)
