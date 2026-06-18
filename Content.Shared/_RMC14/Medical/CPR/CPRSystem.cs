@@ -177,8 +177,8 @@ public sealed class CPRSystem : EntitySystem
         if (args.Cancelled)
             return;
 
-        if (_mobState.IsAlive(ent) ||
-            (_mobState.IsDead(ent) && _unrevivable.IsUnrevivable(ent)))
+        if (_mobState.IsAlive(ent) /* || RNMC14
+            (_mobState.IsDead(ent) && _unrevivable.IsUnrevivable(ent)) */)
         {
             args.Cancelled = true;
         }

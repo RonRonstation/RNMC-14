@@ -1,0 +1,1 @@
+rnmc-defibrillator-not-working = The defibrillator doesn't work.

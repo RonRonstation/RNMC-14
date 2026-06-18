@@ -33,4 +33,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Content.Analyzers\Content.Analyzers.csproj" Condition="'$(SkipRobustAnalyzer)' != 'true'" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="_RNMC14\AdminToggles\" />
+  </ItemGroup>
 </Project>

@@ -97,7 +97,7 @@
       - ActionCritSuccumb
       - ActionCritFakeDeath
       - ActionCritLastWords
-  - type: Deathgasp
+  # - type: Deathgasp # RNMC14
 #  - type: HealthExaminable # RMC14
 #    examinableTypes:
 #    - Blunt
