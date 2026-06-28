@@ -1,0 +1,152 @@
+- type: entity
+  parent: [ CMBaseWeaponGun, BaseItem ]
+  id: RNMCSmartGunM41
+  name: M-41 "Mauler" integrated autocannon
+  description: M-41 "Mauler" is a heavy, single-barrel automatic cannon rigidly mounted to the outer side of the exoskeleton's right gauntlet.
+  components:
+  - type: Item
+    size: Ginormous
+  - type: AmmoCounter
+  - type: StaticPrice
+    price: 500
+  - type: MagazineAmmoProvider
+    autoEject: true
+  - type: RMCAmmoEject
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: RMCNameItemOnVend
+    item: PrimaryGun
+  - type: Corrodible
+    isCorrodible: false
+  - type: GunIFF
+    enabled: true
+  - type: Sprite
+    sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/m41.rsi
+    layers:
+    - state: base
+      sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/m41.rsi
+    - state: mag-0
+      sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/m41.rsi
+      map: [ "enum.GunVisualLayers.Mag" ]
+  - type: Clothing
+    sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/m41.rsi
+    slots:
+    - belt
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 10
+  - type: Gun
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_RMC14/Weapons/Guns/Gunshots/gun_ml66a_2.ogg
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
+  - type: RMCSelectiveFire
+    baseFireModes:
+    - FullAuto
+    recoilWielded: 3
+    scatterWielded: 10
+    baseFireRate: 4
+    burstScatterMult: 4
+    modifiers:
+      FullAuto:
+        maxScatterModifier: 4
+        useBurstScatterMult: true
+        unwieldedScatterMultiplier: 2
+        shotsToMaxScatter: 80
+  - type: RMCWeaponAccuracy
+    accuracyMultiplier: 1.05
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+      cell_slot: !type:ContainerSlot { }
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: RNMCMagazineSmartGunM41
+        insertSound: /Audio/_RMC14/Weapons/Guns/Reload/gun_sg_reload.ogg
+        ejectSound: /Audio/_RMC14/Weapons/Guns/Reload/gun_sg_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - RNMCMagazineSmartGunM41
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: RMCPowerCellSmartgun
+        whitelist:
+          components:
+          - SmartGunBattery
+  - type: GunDamageModifier
+    multiplier: 1
+  - type: GunToggleableAmmo
+    settings:
+    - damage:
+        types:
+          Piercing: 40
+      armorPiercing: 0
+      name: rmc-toggleable-ammo-highly-precise
+      icon:
+        sprite: _RMC14/Actions/marine_smart_gun_actions.rsi
+        state: ammo_swap_normal
+    - damage:
+        types:
+          Piercing: 25
+      armorPiercing: 45
+      name: rmc-toggleable-ammo-armor-shredding
+      icon:
+        sprite: _RMC14/Actions/marine_smart_gun_actions.rsi
+        state: ammo_swap_ap
+  - type: GunRequiresSkills
+    skills:
+      RMCSkillSmartGun: 1
+  - type: GunSkilledRecoil
+    skills:
+      RMCSkillFirearms: 100
+  - type: GunDrainBatteryOnShoot
+  - type: GunToggleableRecoil
+  - type: GunToggleableAutoFire
+  - type: ToggleableMotionDetector
+  - type: IFFToggle
+  - type: MotionDetector
+    handToggleable: false
+    deactivateOnDrop: false
+    toggleSound: null
+  - type: SmartGun
+
+- type: entity
+  parent: CMMagazineRifleBase
+  id: RNMCMagazineSmartGunM41
+  name: "M41 drum magazine (10x30mm)"
+  description: A smaller drum specially designed for the M-41 smart gun.
+  components:
+  - type: Tag
+    tags:
+    - RNMCMagazineSmartGunM41
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - CMCartridgeSmartGun10x30mm
+    proto: CMCartridgeSmartGun10x30mm
+    capacity: 300
+  - type: Sprite
+    sprite: _RNMC14/Objects/Weapons/Guns/Ammunition/Magazines/m41.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    slots:
+    - suitStorage
+  - type: RefillableByBulletBox
+    bulletType: RMCBoxBulletsSmartGun

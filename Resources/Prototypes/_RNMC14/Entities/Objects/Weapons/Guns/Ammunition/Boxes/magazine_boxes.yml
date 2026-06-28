@@ -182,8 +182,8 @@
 
 - type: entity
   parent: RMCBoxMagazineShellBase
-  id: RNMCBoxBulletElephantEmpty
-  name: bullet box (50x .600 Nitro Express)
+  id: RNMCBoxBulletBehemothEmpty
+  name: bullet box (30x .600 Nitro Express)
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/Guns/Ammunition/Boxes/modular_boxes.rsi
@@ -201,29 +201,29 @@
       map: [ "lid" ]
       color: "#696969"
   - type: CMItemSlots
-    count: 20
+    count: 10
     slot:
       whitelist:
         tags:
-        - RNMCBulletElephant
+        - RNMCBulletBehemoth
 
 - type: entity
-  parent: RNMCBoxBulletElephantEmpty
-  id: RNMCBoxBulletElephant
+  parent: RNMCBoxBulletBehemothEmpty
+  id: RNMCBoxBulletBehemoth
   suffix: Full
   components:
   - type: CMItemSlots
-    startingItem: RNMCBulletElephant
-    count: 20
+    startingItem: RNMCBulletBehemoth
+    count: 10
     slot:
       whitelist:
         tags:
-        - RNMCBulletElephant
+        - RNMCBulletBehemoth
 
 - type: entity
   parent: RMCBoxMagazineShellBase
-  id: RNMCBoxBulletBehemothEXPEmpty
-  name: bullet box (15x APHEBC F-101)
+  id: RNMCBoxBulletBehemothAPHEBCEmpty
+  name: bullet box (15x .600 Nitro Express APHEBC)
   description: A heavy container containing gigantic rounds.
   components:
   - type: Sprite
@@ -242,29 +242,29 @@
       map: [ "lid" ]
       color: "#696969"
   - type: CMItemSlots
-    count: 15
+    count: 5
     slot:
       whitelist:
         tags:
-        - RNMCBulletElephantEXP
+        - RNMCBulletBehemothAPHEBC
 
 - type: entity
-  parent: RNMCBoxBulletBehemothEXPEmpty
-  id: RNMCBoxBulletBehemothEXP
+  parent: RNMCBoxBulletBehemothAPHEBCEmpty
+  id: RNMCBoxBulletBehemothAPHEBC
   suffix: Full
   components:
   - type: CMItemSlots
-    startingItem: RNMCBulletBehemothEXP
-    count: 15
+    startingItem: RNMCBulletBehemothAPHEBC
+    count: 5
     slot:
       whitelist:
         tags:
-        - RNMCBulletBehemothEXP
+        - RNMCBulletBehemothAPHEBC
 
 - type: entity
   parent: RMCBoxMagazineShellBase
-  id: RNMCBoxBulletBehemothEXPIEmpty
-  name: bullet box (15x SAPCBCI F-101)
+  id: RNMCBoxBulletBehemothSAPCBCIEmpty
+  name: bullet box (15x .600 Nitro Express SAPCBCI)
   description: A heavy container containing gigantic rounds.
   components:
   - type: Sprite
@@ -283,24 +283,24 @@
       map: [ "lid" ]
       color: "#696969"
   - type: CMItemSlots
-    count: 15
+    count: 5
     slot:
       whitelist:
         tags:
-        - RNMCBulletBehemothEXPI
+        - RNMCBulletBehemothSAPCBCI
 
 - type: entity
-  parent: RNMCBoxBulletBehemothEXPIEmpty
-  id: RNMCBoxBulletBehemothEXPI
+  parent: RNMCBoxBulletBehemothSAPCBCIEmpty
+  id: RNMCBoxBulletBehemothSAPCBCI
   suffix: Full
   components:
   - type: CMItemSlots
-    startingItem: RNMCBulletBehemothEXPI
-    count: 15
+    startingItem: RNMCBulletBehemothSAPCBCI
+    count: 5
     slot:
       whitelist:
         tags:
-        - RNMCBulletBehemothEXPI
+        - RNMCBulletBehemothSAPCBCI
 
 - type: entity
   parent: RMCBoxShellsBuckshotEmpty

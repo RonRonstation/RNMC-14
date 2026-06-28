@@ -3,8 +3,11 @@ CMJobPlatoonCommander = Platoon Commander
 
 CMJobSectionSergeant = Section Sergeant
 
-rmc-job-name-weapons-specialist-hunter = Hunter
-rmc-job-prefix-weapons-specialist-hunter = HNTR
+rnmc-job-name-weapons-specialist-hunter = Hunter
+rnmc-job-prefix-weapons-specialist-hunter = HNTR
+
+rnmc-job-name-exosuit-smart-gunner = Exosuit Operator
+rnmc-job-prefix-exosuit-smart-gunner = ESO
 
 # SOF
 

@@ -1,0 +1,51 @@
+- type: entity
+  parent: BaseAction
+  id: RNMCActionRetractableItemM41Minigun
+  name: Activate M41 "Mauler" integrated autocannon
+  description: Turn on or off the built-in integrated autocannon
+  components:
+  - type: Action
+    useDelay: 0.8
+    raiseOnAction: true
+    itemIconStyle: NoItem
+    icon:
+      sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/m41.rsi
+      state: icon
+  - type: InstantAction
+    event: !type:OnRetractableItemActionEvent
+  - type: RetractableItemAction
+    spawnedPrototype: RNMCSmartGunM41
+    summonSounds:
+      collection: RMCEquipGun
+      params:
+        volume: -6
+    retractSounds:
+      collection: RMCRustleGun
+      params:
+        volume: -4
+
+- type: entity
+  parent: BaseAction
+  id: RNMCActionRetractableItemThermicBlade
+  name: Thermic blade
+  description: Turn on or off the built-in thermic blade
+  components:
+  - type: Action
+    useDelay: 0.8
+    raiseOnAction: true
+    itemIconStyle: NoItem
+    icon:
+      sprite: _RNMC14/Objects/Weapons/Melee/thermic_blade.rsi
+      state: icon
+  - type: InstantAction
+    event: !type:OnRetractableItemActionEvent
+  - type: RetractableItemAction
+    spawnedPrototype: RNMCThermicBlade
+    summonSounds:
+      collection: RMCFlamerShoot
+      params:
+        volume: -6
+    retractSounds:
+      collection: RMCFlamerShoot
+      params:
+        volume: -6

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Hunter Cartridges Made by Ghostovish",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "base"
+    },
+    {
+      "name": "cartridge_hunter_1"
+    },
+    {
+      "name": "cartridge_hunter_2"
+    },
+    {
+      "name": "cartridge_hunter_3"
+    },
+    {
+      "name": "aphebc_cartridge_hunter_1"
+    },
+    {
+      "name": "aphebc_cartridge_hunter_2"
+    },
+    {
+      "name": "aphebc_cartridge_hunter_3"
+    },
+    {
+      "name": "sapcbci_cartridge_hunter_1"
+    },
+    {
+      "name": "sapcbci_cartridge_hunter_2"
+    },
+    {
+      "name": "sapcbci_cartridge_hunter_3"
+    }
+  ]
+}

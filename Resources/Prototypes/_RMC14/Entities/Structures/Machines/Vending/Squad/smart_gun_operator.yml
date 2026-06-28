@@ -15,10 +15,38 @@
     jobs:
     - CMSmartGunOperator
     sections:
+# RNMC Start | New Smart Gun Operator
+   # - name: Smart Gun Set (Mandatory)
+   #   takeAll: CMSmartGunSet
+   #   entries:
+   #   - id: CMSmartGunOperatorEquipmentCase
     - name: Smart Gun Set (Mandatory)
-      takeAll: CMSmartGunSet
+      takeOne: CMSmartGunSet
+      sharedSpecLimit: 1
       entries:
       - id: CMSmartGunOperatorEquipmentCase
+        giveSquadRoleName: cm-job-name-smart-gun-operator
+        isAppendSquadRoleName: false
+        givePrefix: cm-job-prefix-gun-operator
+        isAppendPrefix: true
+        giveIcon:
+          sprite: _RMC14/Interface/cm_job_icons.rsi
+          state: hudsquad_gun
+        giveMapBlip:
+          sprite: /Textures/_RMC14/Interface/map_blips.rsi
+          state: smartgunner
+      - id: RNMCIntegratedSmartGunOperatorEquipmentCase
+        giveSquadRoleName: rnmc-job-name-exosuit-smart-gunner
+        isAppendSquadRoleName: false
+        givePrefix: rnmc-job-prefix-exosuit-smart-gunner
+        isAppendPrefix: true
+        giveIcon:
+          sprite: _RNMC14/Interface/cm_job_icons.rsi
+          state: hudsquad_int_smart_gun
+        giveMapBlip:
+          sprite: Textures/_RNMC14/Interface/map_blips.rsi
+          state: int_smart_gun
+# RNMC End | New Smart Gun Operator
     - name: Gun Attachments
       choices: { CMGunAttachments: 1 }
       entries:
@@ -147,6 +175,7 @@
       entries:
       - id: CMBeltSmartGunOperatorFilled
       - id: RMCBeltSmartGunOperatorPistolFilled
+      - id: RNMCBeltSmartGunOperatorM41Filled # RNMC Edit | New Smart Gun Operator
     - name: Pouches
       choices: { RMCPouch: 2 }
       entries:

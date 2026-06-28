@@ -26,6 +26,9 @@
             "name": "spec_hunter"
         },
         {
+            "name": "int_smart_gun"
+        },
+        {
             "name": "platco"
         }
     ]

@@ -68,6 +68,10 @@
         crate: RMCCrateBatterySmartGun
       - cost: 3000
         crate: RMCCrateMagazineSmartGun
+      #RNMC Start
+      - cost: 2700
+        crate: RNMCCrateM41MaulerAmmo
+      #RNMC End
       - cost: 4000
         crate: RMCCrateBoxMagazineSmartPistol
       - cost: 2000
@@ -422,6 +426,10 @@
       # Start of RNMC-14 modifications
       - cost: 3500
         crate: RNMCCrateF99BehemothAmmo
+      - cost: 6500
+        crate: RNMCCrateF99BehemothAPHEBCAmmo
+      - cost: 6500
+        crate: RNMCCrateF99BehemothSAPCHBIAmmo
       # End of RNMC-14 modifications
       - cost: 6000
         crate: RMCCratePyroTankMixed
