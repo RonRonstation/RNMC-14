@@ -33,7 +33,7 @@
           sprite: _RMC14/Interface/cm_job_icons.rsi
           state: hudsquad_gun
         giveMapBlip:
-          sprite: /Textures/_RMC14/Interface/map_blips.rsi
+          sprite: _RMC14/Interface/map_blips.rsi
           state: smartgunner
       - id: RNMCIntegratedSmartGunOperatorEquipmentCase
         giveSquadRoleName: rnmc-job-name-exosuit-smart-gunner
