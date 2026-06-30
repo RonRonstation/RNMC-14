@@ -2,7 +2,7 @@
   parent: [ RMCBaseMeleeWeapon, BaseKnife ]
   id: RNMCThermicBlade
   name: thermic blade
-  description: Thermic blade is a compact forearm-mounted device that projects a blade of superheated plasma.
+  description: A compact forearm-mounted device that projects a blade of superheated plasma.
   components:
   - type: Sprite
     sprite: _RNMC14/Objects/Weapons/Melee/thermic_blade.rsi

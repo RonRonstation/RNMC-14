@@ -27,7 +27,7 @@
 - type: entity
   parent: BaseAction
   id: RNMCActionRetractableItemThermicBlade
-  name: Thermic blade
+  name: Activate Thermic blade
   description: Turn on or off the built-in thermic blade
   components:
   - type: Action

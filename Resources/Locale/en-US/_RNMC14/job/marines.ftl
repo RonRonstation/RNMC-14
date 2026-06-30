@@ -7,7 +7,7 @@ rnmc-job-name-weapons-specialist-hunter = Hunter
 rnmc-job-prefix-weapons-specialist-hunter = HNTR
 
 rnmc-job-name-exosuit-smart-gunner = Exosuit Operator
-rnmc-job-prefix-exosuit-smart-gunner = ESO
+rnmc-job-prefix-exosuit-smart-gunner = EXO
 
 # SOF
 

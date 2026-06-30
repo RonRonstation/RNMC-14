@@ -2,7 +2,7 @@
   parent: [ CMBaseWeaponGun, BaseItem ]
   id: RNMCSmartGunM41
   name: M-41 "Mauler" integrated autocannon
-  description: M-41 "Mauler" is a heavy, single-barrel automatic cannon rigidly mounted to the outer side of the exoskeleton's right gauntlet.
+  description: The M-41 autocannon is a heavy single-barrel weapon rigidly mounted to the outer side of the exoskeleton's right gauntlet.
   components:
   - type: Item
     size: Ginormous

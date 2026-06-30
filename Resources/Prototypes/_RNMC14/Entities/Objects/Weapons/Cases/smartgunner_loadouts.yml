@@ -2,7 +2,7 @@
   parent: RMCBaseEquipmentCase
   id: RNMCIntegratedSmartGunOperatorEquipmentCase
   name: M41 smart gun system case
-  description: "A large case containing an M-90 «Colossus» exosuit, with integrated M41 smart gun and thermic blade, head mounted sight and powerpack.\n\nNOTE: You cannot put items back inside this case."
+  description: "A large case containing an M-90 «Colossus» exosuit, with integrated M41 smart gun and thermic blade, head mounted sight and a powerpack.\n\nNOTE: You cannot put items back inside this case."
   components:
   - type: Sprite
     layers:
