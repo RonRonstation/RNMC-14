@@ -39,7 +39,7 @@
   parent: CMBeltBaseStorage
   id: RNMCBeltSmartGunOperatorM41
   name: M281 pattern drum belt
-  description: Despite the fact that drum mags are clumy and require precise and expensive machining in order to fit universally, the USCM had produced a modified mag-belt with hooks and dust covers for the M41 exosuit system's drum munitions.
+  description: Despite the fact that drum mags are clumsy and require precise and expensive machining in order to fit universally, the USCM had produced a modified mag-belt with hooks and dust covers for the M41 system's drum munitions.
   components:
   - type: Sprite
     sprite: _RNMC14/Objects/Clothing/Belt/smart_gun_operator.rsi
