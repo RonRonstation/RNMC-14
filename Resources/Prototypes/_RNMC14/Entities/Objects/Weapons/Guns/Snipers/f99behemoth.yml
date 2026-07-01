@@ -39,7 +39,7 @@
   - type: RMCWeaponAccuracy
     accuracyMultiplier: 2.5
   - type: WieldDelay
-    baseDelay: 1
+    baseDelay: 0.5
   - type: BallisticAmmoProvider
     capacity: 1
     cycleable: false
@@ -228,7 +228,7 @@
         Piercing: 300
         Structural: 1275
   - type: CMArmorPiercing
-    amount: 10
+    amount: 15
   - type: RMCStunOnHit
     stuns:
     - whitelist:

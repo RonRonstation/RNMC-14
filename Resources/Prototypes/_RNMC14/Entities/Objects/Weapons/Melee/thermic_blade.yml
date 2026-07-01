@@ -17,7 +17,7 @@
     attackRate: 2
     damage:
       types:
-        Heat: 55
+        Heat: 70
     soundHit:
       path: /Audio/Weapons/eblade1.ogg
       params:

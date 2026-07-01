@@ -52,7 +52,7 @@
     - FullAuto
     recoilWielded: 3
     scatterWielded: 10
-    baseFireRate: 4
+    baseFireRate: 4.5
     burstScatterMult: 4
     modifiers:
       FullAuto:
@@ -92,7 +92,7 @@
     settings:
     - damage:
         types:
-          Piercing: 40
+          Piercing: 45
       armorPiercing: 0
       name: rmc-toggleable-ammo-highly-precise
       icon:
@@ -150,3 +150,6 @@
     - suitStorage
   - type: RefillableByBulletBox
     bulletType: RMCBoxBulletsSmartGun
+
+- type: Tag
+  id: RNMCMagazineSmartGunM41
