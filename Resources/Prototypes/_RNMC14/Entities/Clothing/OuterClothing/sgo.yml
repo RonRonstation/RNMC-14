@@ -1,0 +1,36 @@
+# Smart Gun
+- type: entity
+  parent: [ RMCAllowSuitStorageClothingSmartgunner, RMCBaseMarineArmorLight ]
+  id: RNMCArmorSmartGunM90Colossus
+  name: M-90 "Colossus" Exosuit
+  description: Developed alongside the main smart gun system, the M-90, coloquially known as the "Colossus", is an alternative choice for operators who wanted to get more armor along with extra bells and whistles.
+  components:
+  - type: Sprite
+    sprite: _RNMC14/Objects/Clothing/OuterClothing/Armor/exosuit_sgo.rsi
+    state: icon
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,1,1 # 1 slot
+  - type: CMArmor
+    melee: 25
+    bullet: 35
+    bio: 25
+    explosionArmor: 35
+  - type: RMCArmorSpeedTier
+    speedTier: heavy
+  - type: ClothingSpeedModifier
+    walkModifier: .55
+    sprintModifier: .55
+  - type: Corrodible
+    isCorrodible: false
+  - type: ClothingBlockBackpack
+  - type: ActionGrant
+    actions:
+    - RNMCActionRetractableItemM41Minigun
+    - RNMCActionRetractableItemThermicBlade
+  - type: ItemActionGrant
+    actions:
+    - RNMCActionRetractableItemM41Minigun
+    - RNMCActionRetractableItemThermicBlade
+    activeIfWorn: true

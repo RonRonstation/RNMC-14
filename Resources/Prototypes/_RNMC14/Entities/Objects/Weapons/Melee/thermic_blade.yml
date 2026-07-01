@@ -1,0 +1,25 @@
+- type: entity
+  parent: [ RMCBaseMeleeWeapon, BaseKnife ]
+  id: RNMCThermicBlade
+  name: thermic blade
+  description: A compact forearm-mounted device that projects a blade of superheated plasma.
+  components:
+  - type: Sprite
+    sprite: _RNMC14/Objects/Weapons/Melee/thermic_blade.rsi
+    state: icon
+  - type: PointLight
+    enabled: true
+    radius: 1.5
+    energy: 2
+    color: "#FFF000"
+  - type: MeleeWeapon
+    wideAnimationRotation: 60
+    attackRate: 2
+    damage:
+      types:
+        Heat: 55
+    soundHit:
+      path: /Audio/Weapons/eblade1.ogg
+      params:
+        variation: 0.250
+        volume: 3

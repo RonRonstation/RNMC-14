@@ -1,5 +1,5 @@
 - type: entity
-  parent: RMCBaseWeaponSniperRifle
+  parent: CMBaseWeaponRifle
   id: RNMCF99BehemothSniperRifle
   name: F-99 «Behemoth»
   description: A formidable weapon designed for large individuals. Accepts cartridges of the largest and heaviest caliber in order to neutralize them. It is used in situations where you know for sure that the enemy is strong. The reloading of weapons and their rate of fire are extremely slow.
@@ -19,26 +19,35 @@
   - type: MeleeWeapon
     damage:
       types:
-        Blunt: 8
+        Blunt: 10
   - type: Gun
     shotsPerBurst: 1
     soundGunshot:
       path: /Audio/_RMC14/Weapons/Guns/Gunshots/gun_sniper_heavy.ogg
+  - type: WieldableSpeedModifiers
+    base: 0.5
+    light: 0.69
+    medium: 0.75
+    heavy: 0.806
   - type: RMCSelectiveFire
     recoilWielded: 1
     scatterWielded: 0
     baseFireRate: 0.185
+  - type: GunDualWielding
+    weaponGroup: Rifle
+  - type: GunPointBlank
   - type: RMCWeaponAccuracy
     accuracyMultiplier: 2.5
   - type: WieldDelay
     baseDelay: 1
   - type: BallisticAmmoProvider
+    capacity: 1
     cycleable: false
     whitelist:
       tags:
-      - RNMCBulletElephant
-    proto: RNMCBulletElephant
-    capacity: 1
+      - RNMCBulletBehemoth
+      - RNMCBulletBehemothAPHEBC
+      - RNMCBulletBehemothSAPCBCI
   - type: GunUserWhitelist
     whitelist:
       components:
@@ -48,7 +57,7 @@
       rmc-aslot-rail:
         whitelist:
           tags:
-          - RMCAttachmentS42xTelescopicMiniscope
+          - RMCAttachmentHuntingScope
   - type: AttachableHolderVisuals
     offsets:
       rmc-aslot-rail: 0.0100, 0.100
@@ -57,9 +66,6 @@
     isCorrodible: false
   - type: RMCNameItemOnVend
     item: PrimaryGun
-  - type: AimedShot
-    aimDuration: 2
-    aimedShotCooldown: 5
   - type: RMCFocusedShooting
   - type: UniqueAction
   - type: BreechLoaded
@@ -68,25 +74,150 @@
       path: "/Audio/_RMC14/Weapons/Guns/Breech/pkd_open_chamber.ogg"
     closeSound:
       path: "/Audio/_RMC14/Weapons/Guns/Breech/pkd_close_chamber.ogg"
+  - type: WieldedCrosshair
+    rsi:
+      sprite: _RMC14/Interface/MousePointer/sniper_mouse.rsi
+      state: all
   - type: MagazineAmmoProvider
     autoEject: false
     soundAutoEject: null
 
 - type: entity
-  parent: CMCartridgeSniper10x28mm
-  id: RNMCBulletElephant
+  parent: RNMCF99BehemothSniperRifle
+  id: RNMCF99BehemothSniperRifleFilled
+  suffix: Filled
+  components:
+  - type: BallisticAmmoProvider
+    proto: RNMCBulletBehemoth
+
+## Cartridges
+
+#Base Bullet
+- type: entity
+  parent: CMShellShotgunBase
+  id: RNMCBulletBehemoth
   name: cartridge (15,2×76 mm)
   components:
+  - type: Sprite
+    sprite: _RNMC14/Objects/Weapons/Guns/Ammunition/Handfuls/cartridges.rsi
+    layers:
+    - state: cartridge_hunter_1
+      map: [ "base" ]
+  - type: CartridgeAmmo
+    proto: RNMCBulletSniperBehemoth15,2×76mm
+    soundInsert:
+      collection: CMShotgunLoad
+  - type: Item
+    size: Small
+  - type: Stack
+    count: 3
+    stackType: RNMCCartridgeHunter
+    baseLayer: base
+    layerStates:
+    - cartridge_hunter_1
+    - cartridge_hunter_1
+    - cartridge_hunter_2
+    - cartridge_hunter_3
+  - type: Appearance
   - type: Tag
     tags:
+    - RMCHandful
     - Cartridge
-    - RNMCBulletElephant
-  - type: CartridgeAmmo
-    proto: RNMCBulletSniperElephant15,2×76mm
+    - RNMCBulletBehemoth
 
+- type: stack
+  id: RNMCCartridgeHunter
+  name: handful of elephant cartridges
+  icon: { sprite: _RNMC14/Objects/Weapons/Guns/Ammunition/Handfuls/cartridges.rsi, state: cartridge_hunter_1 }
+  spawn: RNMCBulletBehemoth
+  maxCount: 3
+
+#Explosive APHEBC
 - type: entity
-  parent: CMBulletSniper10x28mm
-  id: RNMCBulletSniperElephant15,2×76mm
+  parent: CMShellShotgunBase
+  id: RNMCBulletBehemothAPHEBC
+  name: cartridge (15,2×76 mm APHEBC)
+  components:
+  - type: Sprite
+    sprite: _RNMC14/Objects/Weapons/Guns/Ammunition/Handfuls/cartridges.rsi
+    layers:
+    - state: aphebc_cartridge_hunter_1
+      map: [ "base" ]
+  - type: CartridgeAmmo
+    proto: RNMCProjectileBehemothAPHEBC
+    soundInsert:
+      collection: CMShotgunLoad
+  - type: Item
+    size: Small
+  - type: Stack
+    count: 3
+    stackType: RNMCCartridgeHunterAPHEBC
+    baseLayer: base
+    layerStates:
+    - aphebc_cartridge_hunter_1
+    - aphebc_cartridge_hunter_1
+    - aphebc_cartridge_hunter_2
+    - aphebc_cartridge_hunter_3
+  - type: Appearance
+  - type: Tag
+    tags:
+    - RMCHandful
+    - Cartridge
+    - RNMCBulletBehemothAPHEBC
+
+- type: stack
+  id: RNMCCartridgeHunterAPHEBC
+  name: handful of elephant APHEBC cartridges
+  icon: { sprite: _RNMC14/Objects/Weapons/Guns/Ammunition/Handfuls/cartridges.rsi, state: aphebc_cartridge_hunter_1 }
+  spawn: RNMCBulletBehemothAPHEBC
+  maxCount: 3
+
+#Incendiary SAPCBCI
+- type: entity
+  parent: CMShellShotgunBase
+  id: RNMCBulletBehemothSAPCBCI
+  name: cartridge (15,2×76 mm SAPCBCI)
+  components:
+  - type: Sprite
+    sprite: _RNMC14/Objects/Weapons/Guns/Ammunition/Handfuls/cartridges.rsi
+    layers:
+    - state: sapcbci_cartridge_hunter_1
+      map: [ "base" ]
+  - type: CartridgeAmmo
+    proto: RNMCProjectileBehemothSAPCBCI
+    soundInsert:
+      collection: CMShotgunLoad
+  - type: Item
+    size: Small
+  - type: Stack
+    count: 3
+    stackType: RNMCCartridgeHunterSAPCBCI
+    baseLayer: base
+    layerStates:
+    - sapcbci_cartridge_hunter_1
+    - sapcbci_cartridge_hunter_1
+    - sapcbci_cartridge_hunter_2
+    - sapcbci_cartridge_hunter_3
+  - type: Appearance
+  - type: Tag
+    tags:
+    - RMCHandful
+    - Cartridge
+    - RNMCBulletBehemothSAPCBCI
+
+- type: stack
+  id: RNMCCartridgeHunterSAPCBCI
+  name: handful of elephant SAPCBCI cartridges
+  icon: { sprite: _RNMC14/Objects/Weapons/Guns/Ammunition/Handfuls/cartridges.rsi, state: sapcbci_cartridge_hunter_1 }
+  spawn: RNMCBulletBehemothSAPCBCI
+  maxCount: 3
+
+## Projectiles
+
+#Base Bullet Projectile
+- type: entity
+  parent: RMCBaseBullet
+  id: RNMCBulletSniperBehemoth15,2×76mm
   name: .600 Nitro Express (15,2×76 mm)
   categories: [ HideSpawnMenu ]
   components:
@@ -94,20 +225,176 @@
     deleteOnCollide: true
     damage:
       types:
-        Piercing: 230
+        Piercing: 300
         Structural: 1275
   - type: CMArmorPiercing
-    amount: 65
+    amount: 10
   - type: RMCStunOnHit
-    maxRange: 4
-    stunTime: 0.6
+    stuns:
+    - whitelist:
+        minMobSize: SmallXeno
+      maxRange: 3.5
+      stunTime: 0.75
+      slowTime: 1.2
+      superSlowTime: 0.6
   - type: RMCPenetratingProjectile
   - type: RMCStoppingPower
-  - type: AimedShotEffect
-    extraHits: 0.65
+
+#Explosive APHEBC Projectile
+- type: entity
+  parent: RMCProjectileRocket84mm
+  id: RNMCProjectileBehemothAPHEBC
+  name: .600 Nitro Express (15,2×76 mm APHEBC)
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: DeleteOnFixedDistanceStop
+  - type: TriggerOnCollide
+    fixtureID: projectile
+    ignoreOtherNonHard: false
+  - type: Projectile
+    impactEffect: BulletImpactEffect
+    damage:
+      types:
+        Blunt: 25
+        Piercing: 15
+      maxFixedRange: 0
+  - type: TriggerOnFixedDistanceStop
+    delay: 0
+  - type: DeleteOnTrigger
+  - type: SpawnOnTerminate
+    spawn: RNMCBehemothEXPImpact
+  - type: ProjectileGrenade
+    evenSpread: true
+    minVelocity: 0.5
+    maxVelocity: 1.5
+    fillPrototype: RMCShrapnelJagged
+    rebounds: true
+    capacity: 8
+    spreadAngle: 25
+  - type: RMCProjectileAccuracy
+    accuracy: 110
+    thresholds:
+    - range: 8
+      falloff: 10
+  - type: Sprite
+    sprite: _RMC14/Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    scale: "1.2, 1.2"
+    layers:
+    - state: ltb
+      shader: unshaded
+
+  #Incendiary SAPCBCI
+- type: entity
+  parent: RMCBaseBullet
+  id: RNMCProjectileBehemothSAPCBCI
+  name: .600 Nitro Express (15,2×76 mm SAPCBCI)
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: DeleteOnFixedDistanceStop
+  - type: TriggerOnCollide
+    fixtureID: projectile
+    ignoreOtherNonHard: false
+  - type: IgniteOnProjectileHit
+  - type: Sprite
+    sprite: _RMC14/Objects/Weapons/Guns/Ammunition/Projectiles/firesentry_projectile.rsi
+    layers:
+    - state: pulse0
+      shader: unshaded
+  - type: Projectile
+    deleteOnCollide: true
+    impactEffect: null
+    forceSound: true
+    damage:
+      types:
+        Blunt: 15
+        Heat: 30
+    soundHit: null
+  - type: TriggerOnFixedDistanceStop
+    delay: 0
+  - type: DeleteOnTrigger
+  - type: SpawnOnTerminate
+    spawn: RNMCBehemothEXPIImpact
+    projectileAdjust: false
+  - type: IgnoreArc
+  - type: IgnorePredictionHide
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.15,-0.45,0.15,0.15"
+        hard: false
+        mask:
+        - Impassable
+        - BulletImpassable
+
+## Impacts
+
+# Explosive APHEBC Impact
+- type: entity
+  id: RNMCBehemothEXPImpact
+  name: Behemoth EXP Impact
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TriggerOnSpawn
+  - type: ExplodeOnTrigger
+  - type: DeleteOnTrigger
+  - type: CMExplosionEffect
+    minShrapnel: 25
+    maxShrapnel: 50
+    shrapnelSpeed: 8
+  - type: RMCScorchEffect
+    radius: 3
+    centerRadius: 1
+  - type: Explosive
+    explosionType: RMCLTBCannon
+    maxIntensity: 35
+    intensitySlope: 18
+    totalIntensity: 600
+    tileBreakScale: 4
+    maxTileBreak: 12
+
+# Incendiary SAPCBCI Impact
+- type: entity
+  id: RNMCBehemothEXPIImpact
+  name: DRGN flame impact
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TriggerOnSpawn
+  - type: ExplodeOnTrigger
+  - type: DeleteOnTrigger
+  - type: CMExplosionEffect
+    minShrapnel: 20
+    maxShrapnel: 40
+    shrapnelSpeed: 8
+  - type: RMCScorchEffect
+    radius: 4
+    centerRadius: 1
+  - type: Explosive
+    explosionType: RMCLTBCannon
+    maxIntensity: 1
+    intensitySlope: 10
+    totalIntensity: 26
+    tileBreakScale: 1
+    maxTileBreak: 4
+  - type: SpawnOnTrigger
+    proto: RMCSmokeFireSentry
+    mapCoords: true
+  - type: TileFireOnTrigger
+    range: 2
+    spawn: RMCTileFireHCNapalm
+    sound: null
+
+# Tags
 
 - type: Tag
   id: RNMCF99BehemothSniperRifle
 
 - type: Tag
-  id: RNMCBulletElephant
+  id: RNMCBulletBehemoth
+
+- type: Tag
+  id: RNMCBulletBehemothAPHEBC
+
+- type: Tag
+  id: RNMCBulletBehemothSAPCBCI

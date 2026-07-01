@@ -9,7 +9,7 @@
     - id: RNMCHeadHunter
     - id: RNMCArmorHunterLight
     - id: RNMCBeltHunter
-    - id: RNMCBoxBulletElephant
+    - id: RNMCBoxBulletBehemoth
       amount: 1
     - id: CMBackpackSniper
     - id: RMCMK80
@@ -17,6 +17,8 @@
       amount: 2
     - id: RNMCF99BehemothSniperRifle
     - id: RMCBinoculars
+    - id: RMCAttachmentHuntingScope
+    - id: RMCSunglassesBigFake
   - type: CMChangeUserOnVend
     addComponents:
     - type: SniperWhitelist

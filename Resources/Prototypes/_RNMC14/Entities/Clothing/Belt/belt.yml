@@ -11,12 +11,19 @@
   - type: Storage
     maxItemSize: Normal
     grid:
-    - 0,0,20,1
+    - 0,0,19,1 # 10 slots
     whitelist:
       tags:
-      - RNMCBulletElephant
-      - RNMCBulletBehemothEXPI
-      - RNMCBulletBehemothEXP
+      - RNMCBulletBehemoth
+      - RNMCBulletBehemothAPHEBC
+      - RNMCBulletBehemothSAPCBCI
+  - type: FixedItemSizeStorage
+  - type: IgnoreContentsSize
+    items:
+      tags:
+      - RNMCBulletBehemoth
+      - RNMCBulletBehemothAPHEBC
+      - RNMCBulletBehemothSAPCBCI
 
 - type: entity
   parent: CMBeltMarine
@@ -26,4 +33,38 @@
   - type: StorageFill
     contents:
     - id: CMMagazineRifleM54CMK1
+      amount: 3
+
+- type: entity
+  parent: CMBeltBaseStorage
+  id: RNMCBeltSmartGunOperatorM41
+  name: M281 pattern drum belt
+  description: Despite the fact that drum mags are clumsy and require precise and expensive machining in order to fit universally, the USCM had produced a modified mag-belt with hooks and dust covers for the M41 system's drum munitions.
+  components:
+  - type: Sprite
+    sprite: _RNMC14/Objects/Clothing/Belt/smart_gun_operator.rsi
+    state: icon
+  - type: Clothing
+    sprite: _RNMC14/Objects/Clothing/Belt/smart_gun_operator.rsi
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,15,1 # 8 slots
+    whitelist:
+      tags:
+      - RNMCMagazineSmartGunM41
+  - type: FixedItemSizeStorage
+  - type: IgnoreContentsSize
+    items:
+      tags:
+      - RNMCMagazineSmartGunM41
+
+- type: entity
+  parent: RNMCBeltSmartGunOperatorM41
+  id: RNMCBeltSmartGunOperatorM41Filled
+  suffix: Filled, M41
+  components:
+  - type: StorageFill
+    contents:
+    - id: RNMCMagazineSmartGunM41
       amount: 3

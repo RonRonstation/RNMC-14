@@ -5,27 +5,27 @@
   components:
   - type: StorageFill
     contents:
-    - id: RNMCBoxBulletElephant
+    - id: RNMCBoxBulletBehemoth
       amount: 1
 
 - type: entity
   parent: RMCCrateAmmo
-  id: RNMCCrateF101BehemothEXPAmmo
-  name: F-101 "«Behemoth»" APHEBC Ammo Crate (x1)
+  id: RNMCCrateF99BehemothAPHEBCAmmo
+  name: F-99 "«Behemoth»" APHEBC Ammo Crate (x1)
   components:
   - type: StorageFill
     contents:
-    - id: RNMCBoxBulletBehemothEXP
+    - id: RNMCBoxBulletBehemothAPHEBC
       amount: 1
 
 - type: entity
   parent: RMCCrateAmmo
-  id: RNMCCrateF101BehemothEXPIAmmo
-  name: F-101 "«Behemoth»" SAPCBCI Ammo Crate (x1)
+  id: RNMCCrateF99BehemothSAPCHBIAmmo
+  name: F-99 "«Behemoth»" SAPCBCI Ammo Crate (x1)
   components:
   - type: StorageFill
     contents:
-    - id: RNMCBoxBulletBehemothEXPI
+    - id: RNMCBoxBulletBehemothSAPCBCI
       amount: 1
 
 - type: entity
@@ -59,3 +59,13 @@
     - id: RNMCMinigunBelt
     - id: RNMCMinigunBelt
     - id: RNMCMinigunBelt
+
+- type: entity
+  parent: RMCCrateAmmo
+  id: RNMCCrateM41MaulerAmmo
+  name: M-41 "Mauler" Ammo Crate (x1)
+  components:
+  - type: StorageFill
+    contents:
+    - id: RNMCMagazineSmartGunM41
+      amount: 3

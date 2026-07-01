@@ -79,9 +79,9 @@
         - CMSniperEquipmentCase
       # Start of RNMC-14 modifications
       - id: RNMCHunterEquipmentCase
-        giveSquadRoleName: rmc-job-name-weapons-specialist-hunter
+        giveSquadRoleName: rnmc-job-name-weapons-specialist-hunter
         isAppendSquadRoleName: false
-        givePrefix: rmc-job-prefix-weapons-specialist-hunter
+        givePrefix: rnmc-job-prefix-weapons-specialist-hunter
         isAppendPrefix: true
         giveIcon:
           sprite: _RNMC14/Interface/cm_job_icons.rsi
