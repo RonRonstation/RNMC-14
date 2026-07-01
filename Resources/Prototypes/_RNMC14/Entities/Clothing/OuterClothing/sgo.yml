@@ -3,7 +3,7 @@
   parent: [ RMCAllowSuitStorageClothingSmartgunner, RMCBaseMarineArmorLight ]
   id: RNMCArmorSmartGunM90Colossus
   name: M-90 "Colossus" Exosuit
-  description: Developed alongside the main smart gun system, the M-90, coloquially known as the "Colossus", was an alternative choice for operators who wanted to get more armor along with extra bells and whistles.
+  description: Developed alongside the main smart gun system, the M-90, coloquially known as the "Colossus", is an alternative choice for operators who wanted to get more armor along with extra bells and whistles.
   components:
   - type: Sprite
     sprite: _RNMC14/Objects/Clothing/OuterClothing/Armor/exosuit_sgo.rsi
