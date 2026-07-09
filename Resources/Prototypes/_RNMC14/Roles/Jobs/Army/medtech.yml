@@ -12,7 +12,7 @@
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-sl
   accessGroups:
-  - Colony
+  - ArmyAccessMedicalPVE
   spawnMenuRoleName: Army Combat Medical Technician
   special:
   - !type:AddComponentSpecial
@@ -32,7 +32,7 @@
         RMCSkillIntel: 2
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-medtech
-  hidden: true
+  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmyMedtech
@@ -107,3 +107,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmyMedicalTechnician
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointMedtechArmy
+  name: Army Combat Medical Technician Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmyMedicalTechnician
+  - type: Sprite
+    state: marine_spawn

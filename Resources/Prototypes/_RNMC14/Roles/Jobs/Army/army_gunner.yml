@@ -12,7 +12,7 @@
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-sl
   accessGroups:
-  - Colony
+  - ArmyAccessPVE
   spawnMenuRoleName: Army Gunner (M41AE2)
   special:
   - !type:AddComponentSpecial
@@ -29,7 +29,7 @@
         RMCSkillVehicles: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-gunner
-  hidden: true
+  hidden: false
 
 - type: job
   parent: CMJobBase
@@ -126,3 +126,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmyGunner
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointGunnerArmy
+  name: Army Gunner Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmyGunner
+  - type: Sprite
+    state: marine_spawn

@@ -1,0 +1,12 @@
+- type: accessGroup
+  id: ArmyAccessPVE
+  tags:
+  - CMAccessArmy
+  - CMAccessMarinePrep 
+  
+- type: accessGroup
+  id: ArmyAccessMedicalPVE
+  tags:
+  - CMAccessArmy
+  - CMAccessArmyMedical
+  - CMAccessMarinePrep

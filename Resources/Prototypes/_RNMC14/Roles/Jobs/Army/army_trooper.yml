@@ -12,11 +12,20 @@
   supervisors: cm-job-supervisors-sl
   joinNotifyCrew: false
   accessGroups:
-  - Colony
+  - ArmyAccessPVE
   spawnMenuRoleName: Army Trooper
+  hasIcon: true
+  roleWeight: 1  
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
     - type: NpcFactionMember
       factions:
       - UNMC
@@ -30,7 +39,7 @@
     - type: DemoSpecWhitelist
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-trooper
-  hidden: true
+  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmyTrooper
@@ -93,3 +102,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmyTrooper
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointTrooperArmy
+  name: Army Trooper Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmyTrooper
+  - type: Sprite
+    state: marine_spawn

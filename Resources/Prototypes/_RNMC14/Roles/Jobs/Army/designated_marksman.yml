@@ -12,7 +12,7 @@
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-sl
   accessGroups:
-  - Colony
+  - ArmyAccessPVE
   spawnMenuRoleName: Army Designated Marksman
   special:
   - !type:AddComponentSpecial
@@ -60,7 +60,7 @@
         RMCSkillVehicles: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-marksman
-  hidden: true
+  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmyMarksman
@@ -136,3 +136,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmyDesignatedMarksman
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointDesignatedMarksmanArmy
+  name: Army Designated Marksman Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmyDesignatedMarksman
+  - type: Sprite
+    state: marine_spawn

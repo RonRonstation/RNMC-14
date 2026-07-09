@@ -12,7 +12,7 @@
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-sl
   accessGroups:
-  - Colony
+  - ArmyAccessPVE
   spawnMenuRoleName: Army Technical Engineer
   special:
   - !type:AddComponentSpecial
@@ -32,7 +32,7 @@
         RMCSkillJtac: 2
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-tech-engi
-  hidden: true
+  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmyTechEngi
@@ -96,3 +96,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmyTechnicalEngineer
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointTechnicalEngineer
+  name: Army Technical Engineer Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmyTechnicalEngineer
+  - type: Sprite
+    state: marine_spawn

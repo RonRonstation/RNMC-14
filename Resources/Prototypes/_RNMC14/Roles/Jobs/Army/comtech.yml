@@ -12,7 +12,7 @@
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-sl
   accessGroups:
-  - Colony
+  - ArmyAccessPVE
   spawnMenuRoleName: Army Combat Engineering Technician
   special:
   - !type:AddComponentSpecial
@@ -31,7 +31,7 @@
         RMCSkillVehicles: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-comtech
-  hidden: true
+  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmyComtech
@@ -97,3 +97,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmyCombatTechnician
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointComtechArmy
+  name: Army Combat Engineer Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmyCombatTechnician
+  - type: Sprite
+    state: marine_spawn

@@ -1,0 +1,167 @@
+- type: entity
+  parent: ColMarTechSurplus
+  id: RNMCColMarTechArmy
+  suffix: PVE, Army
+  components:
+  - type: Sprite
+    sprite: _RNMC14/Structures/Machines/Army.rsi
+  - type: CMAutomatedVendor
+    access:
+    - "CMAccessArmy"
+    hackable: true
+    sections:
+    - name: Standard Equipment
+      entries:
+      - id: CMBootsArmyBlack
+        name: US Army Combat Boots
+        amount: 15
+      - id: RNMCJumpsuitArmy
+        name: Army Combat Uniform
+        amount: 15
+      - id: RNMCHandsBrownFingerless
+        name: Army Combat Gloves
+        amount: 15
+      - id: CMHeadsetUSArmy
+        name: Army Radio Headset
+        amount: 15
+      - id: RMCM5CameraGear
+        name: M5 Pattern Camera Headset
+        amount: 15
+      - id: RMCHeadCapFlippable
+        name: Utility Cap
+        amount: 15
+      - id: RMCBoonie
+        name: Boonie Hat
+        amount: 15
+    - name: Armor
+      entries:
+      - id: RNMCArmorPBASLight
+        name: Light Personal Body Armor System
+        amount: 15
+      - id:  RNMCArmorPBAS
+        name: Heavy Personal Body Armor System
+        amount: 15
+      - id: RNMCArmorHelmetPHAS
+        name: Personal Head Armor System helmet
+        amount: 15
+    - name: Backpack
+      entries:
+      - id: CMBackpackMarine
+        amount: 15
+      - id: CMBackpackMarineTech
+        amount: 15
+      - id: RMCSatchelMarineChestrigPVE
+        amount: 15
+      - id: CMSatchelMarine
+        amount: 15
+      - id: RMCSatchelWelder
+        amount: 15
+      - id: RMCSatchelWelderChestrig
+        amount: 15
+    - name: Restricted Backpack
+      entries:
+      - id: RMCBackpackRTO
+        amount: 1
+      - id: RNMCBackpackArmyMedic
+        name: Army combat medic backpack
+        amount: 1
+      - id: CMSatchelArmyIntel
+        name: Army expedition chestrig  
+        amount: 1
+    - name: Belts
+      entries:
+      - id: CMBeltMarine
+        amount: 15
+      - id: RMCBeltGrenade
+        amount: 10
+      - id: RMCBeltHolsterPistol
+        amount: 15
+      - id: RMCBeltHolsterRevolver
+        amount: 15
+      - id: RMCM82FHolster
+        amount: 5
+      - id: RMCBeltUtilityGeneral
+        amount: 5
+    - name: Restricted Belts
+      entries:
+      - id: RMCScabbardShotgunWaist
+        amount: 1
+    - name: Pouches
+      entries:
+      - id: RMCPouchFirstAid
+        amount: 15
+      - id: RMCPouchFlareFilled
+        name: flare pouch (Full)
+        amount: 15
+      - id: RMCPouchMagazine
+        amount: 15
+      - id: RMCPouchGeneralMedium
+        amount: 15
+      - id: RMCPouchMagazinePistol
+        amount: 15
+      - id: RMCPouchPistol
+        amount: 15
+    - name: Restricted Pouches
+      entries:
+      - id: RMCPouchConstruction
+        amount: 1
+      - id: RMCPouchExplosive
+        amount: 1
+      - id: RMCPouchFirstResponder
+        amount: 2
+      - id: RMCPouchMagazinePistolLarge
+        amount: 2
+      - id: RMCPouchToolsFill
+        amount: 1
+      - id: RMCPouchFuelTank
+        amount: 1
+      - id: RMCPouchShotgun
+        amount: 1
+    - name: Mask
+      entries:
+      - id: CMMaskGas
+        amount: 15
+      - id: RMCMaskScarfGray
+        amount: 10
+      - id: RMCMaskScarfGreen
+        amount: 10
+      - id: RMCMaskScarfTan
+        amount: 10
+      - id: RMCMaskScarfRed
+        amount: 10
+      - id: CMMaskCoif
+        amount: 10
+      - id: RMCMaskKeffiyehBlack
+        amount: 10
+    - name: Miscellaneous
+      entries:
+      - id: RMCGogglesBallistic
+        name: Ballistic Goggles
+        amount: 10
+      - id: RMCGogglesBallisticBlack
+        name: Ballistic Goggles, sun shaded
+        amount: 10
+      - id: RMCGogglesM1A1Ballistic
+        name: Ballistic Goggles, laser-shaded (brown)
+        amount: 10
+      - id: RNMCGlassesBiMex
+        name: BiMex tactical shades
+        amount: 10
+      - id: RNMCGlassesBiMexBlack
+        name: BiMex polarized shades
+        amount: 10
+      - id: RMCHelmetGarbNettingJungle
+        amount: 15
+      - id: RMCHelmetGarbNettingDesert
+        amount: 15
+      - id: RMCWeldingGoggles
+        amount: 10
+      - id: RNMCPatchUSArmy
+        name: US Army patch
+        amount: 15
+      - id: RNMCPatchInfantry
+        name: Army Infantry patch
+        amount: 15
+      - id: RNMCPatchArmyIntelligence
+        name: Army Intelligence patch
+        amount: 15

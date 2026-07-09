@@ -11,7 +11,7 @@
   icon: RNMCJobIconArmyPlatoonOfficer
   joinNotifyCrew: false
   accessGroups:
-  - Colony
+  - ArmyAccessPVE
   spawnMenuRoleName: Army Platoon Officer
   special:
   - !type:AddComponentSpecial
@@ -47,7 +47,7 @@
     RMCRankSecondLT: []
   startingGear: RNMCJobArmyPlatoonOfficer
   icon: RNMCJobIconArmyPlatoonOfficer
-  joinNotifyCrew: false
+  joinNotifyCrew: true
   accessGroups:
   - Colony
   spawnMenuRoleName: Army Platoon Officer (Lesser Rank)
@@ -72,7 +72,7 @@
         RMCSkillConstruction: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-platoon-officer
-  hidden: true
+  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmyPlatoonOfficer
@@ -149,3 +149,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmyPlatoonOfficer
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointPlatoonOfficerArmy
+  name: Army Platoon Officer Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmyPlatoonOfficer
+  - type: Sprite
+    state: marine_spawn

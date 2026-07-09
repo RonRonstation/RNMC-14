@@ -1,0 +1,189 @@
+- type: entity
+  parent: ColMarTechBaseAnchorable
+  id: CMVendorMedicalArmy
+  name: Army-Med Plus Plus
+  description: Medical pharmaceutical dispenser. Provided by the US Army. Specifically designed to hold way more than the normal version, just for you.
+  suffix: Army, no item limits
+  components:
+  - type: Sprite
+    sprite: _RMC14/Structures/Machines/VendingMachines/med.rsi
+    layers:
+    - state: "off"
+    - state: "normal-unshaded"
+  - type: CMSolutionRefiller
+    randomizeReagentsPlanetside: true
+    current: 1200
+    max: 1200
+    recharge: 125
+    rechargeCooldown: 4
+    reagents:
+    - CMBicaridine
+    - CMKelotane
+    - CMDylovene
+    - CMDexalin
+    - CMDexalinPlus
+    - CMTricordrazine
+    - CMEpinephrine
+    - CMInaprovaline
+    whitelist:
+      components:
+      - Hypospray
+      - Vial
+      tags:
+      - Bottle
+  - type: CMAutomatedVendor
+    hackable: true
+    sections:
+    - name: Field supplies
+      entries:
+      - id: CMBurnKit10
+      - id: CMTraumaKit10
+      - id: CMOintment10
+      - id: CMGauze10
+    - name: Autoinjectors
+      entries:
+      - id: CMBicaridineAutoInjector
+      - id: CMDexalinPlusAutoInjector
+      - id: CMEpinephrineAutoInjector
+      - id: CMInaprovalineAutoInjector
+      - id: CMKelotaneAutoInjector
+      - id: CMTricordrazineAutoInjector
+    - name: Liquid bottles
+      entries:
+      - id: CMBottleBicaridine
+      - id: CMBottleDylovene
+      - id: CMBottleDexalin
+      - id: CMBottleInaprovaline
+      - id: CMBottleKelotane
+    - name: Pill bottles
+      entries:
+      - id: CMPillCanisterBicaridine
+      - id: CMPillCanisterDexalin
+      - id: CMPillCanisterDylovene
+      - id: CMPillCanisterInaprovaline
+      - id: CMPillCanisterKelotane
+    - name: Medical utilities
+      entries:
+      - id: CMDefibrillator
+      - id: CMSurgicalLine
+      - id: CMSynthGraft
+      - id: CMHyposprayFilledTricord
+      - id: CMHealthAnalyzer
+      - id: CMBeltMedical
+      - id: RMCGlassesMedicalHUDGlasses
+      - id: CMStasisBagFolded
+      - id: CMSyringe
+  - type: AccessReader
+    access: [["CMAccessArmyMedical"]]
+
+# Army Corpsman
+
+- type: entity
+  parent: ColMarTechBase
+  id: ColMarTechMedicalGearArmyPVE
+  name: ColMarTech Army squad medical gear rack
+  description: An automated rack hooked up to a colossal storage of hospital corpsman standard-issue equipment.
+  suffix: PVE
+  components:
+  - type: AccessReader
+    access:
+    - [ "CMAccessArmyMedical" ]
+  - type: Sprite
+    sprite: _RMC14/Structures/Machines/VendingMachines/ColMarTech/medical_equipment.rsi
+    layers:
+    - state: alt
+  - type: CMAutomatedVendor
+    sections:
+    - name: Pill Bottles
+      entries:
+      - id: RMCPillCanisterBicaridineMeralyne
+        name: Bicaridine & Meralyne, 15\15 (16 pills)
+        points: 22
+        recommended: true
+      - id: RMCPillCanisterKelotaneDermaline
+        name: Kelotane & Dermaline, 15\15 (16 pills)
+        points: 22
+        recommended: true
+      - id: RMCPillCanisterNitrogenWater
+        name: Nitrogen & Water, 15\15 (16 pills)
+        points: 15
+      - id: RMCPillCanisterDexalinPlus
+        name: Dexalin+, 15 (16 pills)
+        points: 15
+      - id: RMCPillCanisterIron
+        name: Iron & Sugar, 15\7.5 (16 pills)
+        points: 15
+    - name: Liquid Bottles
+      entries:
+      - id: CMBottleBicaridineMeralyne
+        name: Bicaridine & Meralyne, 70\70
+        points: 15
+      - id: CMBottleKelotaneDermaline
+        name: Kelotane & Dermaline, 70\70
+        points: 15
+      - id: CMBottleDexalinPlus
+        name: Dexalin+, 140
+        points: 11
+
+- type: entity
+  parent: ColMarTechBase
+  id: ColMarTechMedicalEquipmentArmyPVE
+  name: ColMarTech Army squad medical equipment rack
+  description: An automated rack hooked up to a colossal storage of hospital corpsman standard-issue equipment.
+  suffix: PVE
+  components:
+  - type: AccessReader
+    access:
+    - [ "CMAccessArmyMedical" ]
+  - type: Sprite
+    sprite: _RMC14/Structures/Machines/VendingMachines/ColMarTech/clothing.rsi
+  - type: CMAutomatedVendor
+    sections:
+    - name: Helmet
+      choices: { CMHelmet: 1 }
+      entries:
+      - id: CMArmorHelmetM10Medic
+      - id: RMCArmorHelmetM10MedicWhite
+        recommended: true
+    - name: Backpack
+      choices: { CMBackpack: 1 }
+      entries:
+      - id: CMBackpackMarineMedic
+      - id: CMSatchelMarineMedic
+        recommended: true
+    - name: Belt
+      choices: { CMBelt: 1 }
+      entries:
+      - id: CMBeltMedicBagFilled
+        name: M276 lifesaver bag (Full)
+      - id: CMBeltMedicalFilled
+        name: M276 medical storage rig (Full)
+    - name: Pouches
+      choices: { RMCPouch: 2 }
+      entries:
+      - id: RMCPouchReagentCanisterTricordrazineRevival
+        name: Pressurized Reagent Canister Pouch\n(Revival Mix - Tricordrazine)
+        recommended: true
+      - id: RMCPouchMedkit
+        recommended: true
+      - id: RMCPouchAutoinjector
+      - id: RMCPouchReagentCanisterBicaridine
+        name: Pressurized Reagent Canister Pouch\n(Bicaridine)
+      - id: RMCPouchReagentCanisterKelotane
+        name: Pressurized Reagent Canister Pouch\n(Kelotane)
+      - id: RMCPouchReagentCanisterTricordrazine
+        name: Pressurized Reagent Canister Pouch\n(Tricordrazine)
+      - id: RMCPouchVial
+      - id: RMCPouchMedkit
+    - name: Accessories
+      choices: { CMAccessories: 1 }
+      entries:
+      - id: CMWebbingBrown
+        recommended: true
+      - id: CMWebbingBlack
+        recommended: true
+      - id: RMCWebbingLegPouch
+      - id: RMCWebbingLegPouchBlack
+      - id: CMWebbing
+      - id: RMCWebbingDropPouch
+      - id: CMWebbingHolster

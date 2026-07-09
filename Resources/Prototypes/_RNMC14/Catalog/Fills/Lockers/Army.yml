@@ -1,0 +1,76 @@
+- type: entityTable
+  parent: CMLockerBase
+  id: RMCClosetArmyGearFill
+  table: !type:AllSelector
+    children:
+    - id: CMBootsArmyBlack
+    - id: RNMCJumpsuitArmy
+    - id: CMHeadsetUSArmy
+
+- type: entityTable
+  parent: CMLockerBase
+  id: RMCClosetArmySLFill
+  table: !type:AllSelector
+    children:
+    - id: CMHeadCap
+    - id: RNMCJumpsuitArmy
+    - id: RMCLaserDesignator
+    - id: RMCWhistle
+    - id: CMBootsArmyBlack
+    - id: RMCBackpackRTO
+    - id: CMHeadsetUSArmy
+
+- type: entityTable
+  parent: CMLockerBase
+  id: RMCClosetArmyLMGFill
+  table: !type:AllSelector
+    children:
+    - id: RMCWeaponLMGM60
+    - id: RMCMagazineLMGM60
+      amount: 5
+
+- type: entityTable
+  parent: CMLockerBase
+  id: RMCClosetArmyPlatcoFill
+  table: !type:AllSelector
+    children:
+    - id: CMHeadCap
+    - id: CMBootsArmyBlack
+    - id: RNMCGlassesBiMex
+    - id: RNMCJumpsuitArmy
+    - id: RMCBeltHolsterPistol
+    - id: RNMCArmorPBASMk2
+    - id: CMHeadsetUSArmyCommand
+
+- type: entityTable
+  parent: CMLockerBase
+  id: RMCClosetArmyMarksmanFill
+  table: !type:AllSelector
+    children:
+    - id: RNMCWeaponRifleM49A
+    - id: CMMagazineRifleM4SPRAP
+      amount: 4
+    - id: RNMCMagazineRifleM4SPRIncendiary
+      amount: 4
+
+- type: entityTable
+  parent: CMLockerBase
+  id: RMCClosetArmyEngineerFill
+  table: !type:AllSelector
+    children:
+    - id: CMHandsInsulated
+    - id: RMCSatchelWelderChestrig
+    - id: RMCPouchConstructionFillFull
+    - id: RMCSentryPVE
+
+- type: entityTable
+  parent: CMLockerBase
+  id: RMCClosetArmyATGunnerFill
+  table: !type:AllSelector
+    children:
+    - id: RMCWeaponLauncherM5ATL
+    - id: RMCSatchelDemoSpec
+    - id: RMCRocket84mm
+      amount: 3
+    - id: RMCRocket84mmAntiArmor
+      amount: 3

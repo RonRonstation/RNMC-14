@@ -12,7 +12,7 @@
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-sl
   accessGroups:
-  - Colony
+  - ArmyAccessPVE
   spawnMenuRoleName: Army Squad Leader
   special:
   - !type:AddComponentSpecial
@@ -67,7 +67,7 @@
         RMCSkillJTAC: 3
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-sl
-  hidden: true
+  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmySL
@@ -137,3 +137,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmySquadLeader
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointSquadLeaderArmy
+  name: Army Squad Leader Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmySquadLeader
+  - type: Sprite
+    state: marine_spawn
