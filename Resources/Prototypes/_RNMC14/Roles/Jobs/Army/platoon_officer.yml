@@ -34,8 +34,6 @@
         RMCSkillConstruction: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-platoon-officer
-  hidden: true
-
 
 - type: job
   parent: CMJobBase
@@ -102,32 +100,6 @@
   id: RNMCJobArmyPlatoonOfficer
   equipment:
     id: RNMCDogtagArmyPlatoonOfficer
-    ears: CMHeadsetUSArmyCommand
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBASMk2
-    gloves: RNMCHandsBrownFingerless
-    head: CMHeadCap
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMex
-    belt: RMCBeltHolsterPistol
-    suitstorage: RNMCWeaponRifleM41AMK1Army
-    pocket1: RMCPouchFirstAidSplintsGauzeOintment
-    pocket2: RMCPouchMagazine
-  storage:
-    belt:
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS # yes i know i can define an amount of 1 specific id no im not gonna do that fuck you
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS
-    - RMCWeaponPistolB92FS
-    pocket2:
-    - CMMagazineRifleM54CMK1
-    - CMMagazineRifleM54CMK1
-    - CMMagazineRifleM54CMK1
-    outerClothing:
-    - RMCLaserDesignator
 
 - type: playTimeTracker
   id: RNMCJobArmyPlatoonOfficer

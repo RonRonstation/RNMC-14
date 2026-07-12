@@ -1,0 +1,125 @@
+- type: roleLoadout
+  id: JobRNMCArmyPlatoonOfficer
+  points: 20
+  groups:
+  - MarineBackpack
+  - HeadwearRMCPVE
+  - EyewearRMCPVE
+  - MasksRMCPVE
+  - HelmetGarbsRMCPVE
+  - AccessoriesRMCPVE
+  - PlushiesRMC
+  - WeaponsRMC
+  - RMCLoadoutGroupPins
+
+- type: roleLoadout
+  id: JobRNMCArmySquadLeader
+  points: 20
+  groups:
+  - MarineBackpack
+  - HeadwearRMCPVE
+  - EyewearRMCPVE
+  - MasksRMCPVE
+  - HelmetGarbsRMCPVE
+  - AccessoriesRMCPVE
+  - PlushiesRMC
+  - WeaponsRMC
+  - RMCLoadoutGroupPins
+
+- type: roleLoadout
+  id: JobRNMCArmyFireteamLead
+  points: 20
+  groups:
+  - MarineBackpack
+  - HeadwearRMCPVE
+  - EyewearRMCPVE
+  - MasksRMCPVE
+  - HelmetGarbsRMCPVE
+  - AccessoriesRMCPVE
+  - PlushiesRMC
+  - WeaponsRMC
+  - RMCLoadoutGroupPins
+
+- type: roleLoadout
+  id: JobRNMCArmyGunner
+  points: 20
+  groups:
+  - MarineBackpack
+  - HeadwearRMCPVE
+  - EyewearRMCPVE
+  - MasksRMCPVE
+  - HelmetGarbsRMCPVE
+  - AccessoriesRMCPVE
+  - PlushiesRMC
+  - WeaponsRMC
+  - RMCLoadoutGroupPins
+
+- type: roleLoadout
+  id: JobRNMCArmyMedicalTechnician
+  points: 20
+  groups:
+  - MarineBackpack
+  - HeadwearRMCPVE
+  - EyewearRMCPVE
+  - MasksRMCPVE
+  - HelmetGarbsRMCPVE
+  - AccessoriesRMCPVE
+  - PlushiesRMC
+  - WeaponsRMC
+  - RMCLoadoutGroupPins
+
+- type: roleLoadout
+  id: JobRNMCArmyTrooper
+  points: 20
+  groups:
+  - MarineBackpack
+  - HeadwearRMCPVE
+  - EyewearRMCPVE
+  - MasksRMCPVE
+  - HelmetGarbsRMCPVE
+  - AccessoriesRMCPVE
+  - PlushiesRMC
+  - WeaponsRMC
+  - RMCLoadoutGroupPins
+  
+- type: roleLoadout
+  id: JobRNMCAntiTankGunner
+  points: 20
+  groups:
+  - MarineBackpack
+  - HeadwearRMCPVE
+  - EyewearRMCPVE
+  - MasksRMCPVE
+  - HelmetGarbsRMCPVE
+  - AccessoriesRMCPVE
+  - PlushiesRMC
+  - WeaponsRMC
+  - RMCLoadoutGroupPins
+  
+- type: roleLoadout
+  id: JobRNMCArmyDesignatedMarksman
+  points: 20
+  groups:
+  - MarineBackpack
+  - HeadwearRMCPVE
+  - EyewearRMCPVE
+  - MasksRMCPVE
+  - HelmetGarbsRMCPVE
+  - AccessoriesRMCPVE
+  - PlushiesRMC
+  - WeaponsRMC
+  - RMCLoadoutGroupPins
+    
+- type: roleLoadout
+  id: JobRNMCArmyCombatTechnician
+  points: 20
+  groups:
+  - MarineBackpack
+  - HeadwearRMCPVE
+  - EyewearRMCPVE
+  - MasksRMCPVE
+  - HelmetGarbsRMCPVE
+  - AccessoriesRMCPVE
+  - PlushiesRMC
+  - WeaponsRMC
+  - RMCLoadoutGroupPins

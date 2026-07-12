@@ -14,18 +14,11 @@
   accessGroups:
   - ArmyAccessPVE
   spawnMenuRoleName: Army Trooper
-  hasIcon: true
+  hasIcon: false
   roleWeight: 1  
   special:
   - !type:AddComponentSpecial
     components:
-    - type: Language
-      spokenLanguages:
-      - English
-      understoodLanguages:
-      - English
-      currentLanguage: English
-      defaultLanguage: English
     - type: NpcFactionMember
       factions:
       - UNMC
@@ -39,7 +32,14 @@
     - type: DemoSpecWhitelist
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-trooper
-  hidden: false
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: private
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadArmy
 
 - type: entity
   id: RMCRandomHumanoidArmyTrooper
@@ -69,24 +69,10 @@
   id: RNMCJobArmyTrooper
   equipment:
     id: RNMCDogtagArmyTrooper
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBAS
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMex
-    back: CMBackpackMarine
-    belt: RMCBeltMarineMK1
-    suitstorage: RNMCWeaponRifleM41AMK1Army
-    pocket1: RMCPouchFirstAidSplintsGauzeOintment
-    pocket2: RMCPouchExplosiveFilledHEDP
-  storage:
-    back:
-    - CMPackFlare
 
 - type: playTimeTracker
   id: RNMCJobArmyTrooper
+  isHumanoid: true
 
 - type: jobIcon
   parent: CMJobIconBase

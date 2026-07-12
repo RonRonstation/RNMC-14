@@ -29,7 +29,6 @@
         RMCSkillVehicles: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-gunner
-  hidden: false
 
 - type: job
   parent: CMJobBase
@@ -90,21 +89,6 @@
   id: RNMCJobArmyGunner
   equipment:
     id: RNMCDogtagArmyGunner
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBAS
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMex
-    belt: RMCBeltUtilityGeneral
-    suitstorage: RNMCWeaponRifleM41AE2
-    pocket1: RMCPouchFirstAidSplintsGauzeOintment
-    pocket2: RMCPouchFlareFilled
-  storage:
-    belt:
-    - CMMagazineRifleM54CE2AP
-    - CMMagazineRifleM54CE2AP
 
 - type: playTimeTracker
   id: RNMCJobArmyGunner

@@ -32,7 +32,6 @@
         RMCSkillJtac: 3
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-sl
-  hidden: true
 
 - type: job
   parent: CMJobBase
@@ -97,25 +96,6 @@
   id: RNMCJobArmySL
   equipment:
     id: RNMCDogtagArmySL
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBAS
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMexBlack
-    back: RMCBackpackRTO
-    belt: RNMCMK1BeltFilled
-    suitstorage: RNMCWeaponRifleM41AMK1Army
-    pocket1: RMCPouchAutoinjectorFill
-    pocket2: RMCPouchFirstResponderFill
-  storage:
-    outerClothing:
-    - RMCLaserDesignator
-    back:
-    - CMPackFlare
-    - RMCPackFlareCAS
-    - CMPacketGrenadeHighExplosiveFilled
 
 - type: playTimeTracker
   id: RNMCJobArmySL

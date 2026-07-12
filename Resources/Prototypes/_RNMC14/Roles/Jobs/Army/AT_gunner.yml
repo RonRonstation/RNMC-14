@@ -30,7 +30,6 @@
     - type: DemoSpecWhitelist
     - type: JobPrefix
       prefix: rnmc-job-prefix-at-gunner
-  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmyATGunner
@@ -60,24 +59,6 @@
   id: RNMCJobAntiTankGunner
   equipment:
     id: RNMCDogtagArmyATGunner
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBAS
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMex
-    back: RNMCWeaponRifleM41AMK1Army
-    belt: RMCBeltMarineMK1
-    suitstorage: RMCWeaponLauncherM5ATL
-    pocket1: RMCPouchFirstAidSplintsGauzeOintment
-    pocket2: RMCPouchFlareFilled
-  storage:
-    back:
-    - RMCRocket84mm
-    - RMCRocket84mm
-    - RMCRocket84mmAntiArmor
-    - RMCRocket84mmAntiArmor
 
 - type: playTimeTracker
   id: RNMCJobAntiTankGunner

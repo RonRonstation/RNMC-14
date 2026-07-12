@@ -32,7 +32,6 @@
         RMCSkillIntel: 2
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-medtech
-  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmyMedtech
@@ -62,33 +61,6 @@
   id: RNMCJobArmyMedtech
   equipment:
     id: RNMCDogtagArmyMedTech
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBASMk2
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMex
-    back: RNMCBackpackArmyMedic
-    belt: CMBeltMedicBagFilled
-    suitstorage: RNMCWeaponRifleM41AMK1Army
-    pocket1: RMCPouchAutoinjectorFill
-    pocket2: RMCPouchMedkit
-  storage:
-    back:
-    - CMCanteen
-    - CMMRE
-    - CMPackFlare
-    - CMFirstAidKitFilled
-    - CMAdvFirstAidKitFilled
-    - CMHealthAnalyzer
-    pocket2:
-    - RMCSyringeCaseFilled
-    - CMRollerBedSpawnFolded
-    - CMSynthGraft
-    - CMSurgicalLine
-    - CMStasisBagFolded
-    - CMBloodPackFull
 
 - type: playTimeTracker
   id: RNMCJobArmyMedtech

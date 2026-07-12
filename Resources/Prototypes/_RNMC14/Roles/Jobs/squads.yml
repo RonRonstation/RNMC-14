@@ -47,3 +47,34 @@
   - type: Tag
     tags:
     - RNMCSquadRedDawn
+
+- type: entity
+  id: SquadArmy
+  name: Army
+  components:
+  - type: SquadTeam
+    color: "#5D6532"
+    background:
+      sprite: _RMC14/Interface/cm_job_icons.rsi
+      state: hudsquad
+    radio: US Army
+    blacklistedSquadArmor:
+    - Helmet
+    - Goggles
+    - Armor
+    - Gloves
+    maxRoles:
+      RNMCArmyPlatoonOfficer: 1
+      RNMCArmySquadLeader: 1
+      RNMCArmyFireteamLead: 1
+      RNMCArmyGunner: 1
+      RNMCArmyMedicalTechnician: 1
+      RNMCArmyTrooper: 4
+      RNMCAntiTankGunner: 1
+      RNMCArmyDesignatedMarksman: 1
+      RNMCArmyCombatTechnician: 1
+    group: Army
+  - type: Tag
+    tags:
+    - RNMCSquadArmy
+    

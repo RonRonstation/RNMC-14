@@ -29,7 +29,6 @@
         RMCSkillVehicles: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-marksman
-  hidden: true
 
 - type: job
   parent: CMJobBase
@@ -90,31 +89,6 @@
   id: RNMCJobArmyMarksman
   equipment:
     id: RNMCDogtagArmyMarksman
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBASLight
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMex
-    belt: RMCBeltHolsterPistol
-    suitstorage: RNMCWeaponRifleM49A
-    pocket1: RMCPouchFirstAidSplintsGauzeOintment
-    pocket2: RMCPouchMagazineLarge
-  storage:
-    belt:
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS # yes i know i can define an amount of 1 specific id no im not gonna do that fuck you
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS
-    - RMCWeaponPistolB92FS
-    pocket2:
-    - CMMagazineRifleM4SPRAP
-    - CMMagazineRifleM4SPRAP
-    - CMMagazineRifleM4SPRAP
-    - RNMCMagazineRifleM4SPRIncendiary
 
 - type: playTimeTracker
   id: RNMCJobArmyMarksman

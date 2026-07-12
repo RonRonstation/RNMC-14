@@ -31,7 +31,6 @@
         RMCSkillVehicles: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-comtech
-  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmyComtech
@@ -61,24 +60,6 @@
   id: RNMCJobArmyComtech
   equipment:
     id: RNMCDogtagArmyCombatTech
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmyWebbing
-    outerClothing: RNMCArmorPBAS
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMex
-    back: RMCSatchelWelderChestrig
-    belt: RNMCMK1BeltFilled
-    suitstorage: RNMCWeaponRifleM41AMK1Army
-    pocket1: RMCPouchConstructionFillFull
-    pocket2: RMCPouchFirstAidSplintsGauzeOintment
-  storage:
-    back:
-    - CMPackFlare
-    - RMCEngineerKit
-    outerClothing:
-    - RMCExplosiveBreachingCharge
 
 - type: playTimeTracker
   id: RNMCJobArmyComtech

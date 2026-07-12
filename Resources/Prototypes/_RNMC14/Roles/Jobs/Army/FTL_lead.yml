@@ -32,7 +32,6 @@
         RMCSkillJtac: 3
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-ftl-lead
-  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmyFireteamLead
@@ -62,29 +61,6 @@
   id: RNMCJobArmyFTLLead
   equipment:
     id: RNMCDogtagArmyFTLLead
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBAS
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMexBlack
-    back: RNMCBreachingHammer
-    belt: RNMCMK1BeltFilled
-    suitstorage: RNMCWeaponRifleM41AMK1ArmyShotgun
-    pocket1: RMCPouchFirstAidSplintsGauzeOintment
-    pocket2: RMCPouchShotgunLarge
-  storage:
-    outerClothing:
-    - RMCLaserDesignator
-    pocket2:
-    - CMShellShotgunBuckshot
-    - CMShellShotgunBuckshot
-    - CMShellShotgunBuckshot
-    - CMShellShotgunBuckshot
-    - CMShellShotgunBuckshot
-    - CMShellShotgunBuckshot
-    - CMShellShotgunBuckshot
 
 - type: playTimeTracker
   id: RNMCJobArmyFireteamLead

@@ -1,0 +1,18 @@
+- type: department
+  parent: CMDepartmentBase
+  id: CMArmy
+  name: US Army
+  description: cm-department-US-Army
+  color: "#5D6532"
+  roles:
+  - RNMCArmyPlatoonOfficer
+  - RNMCArmySquadLeader
+  - RNMCArmyFireteamLead
+  - RNMCArmyGunner
+  - RNMCArmyMedicalTechnician
+  - RNMCArmyTrooper
+  - RNMCAntiTankGunner
+  - RNMCArmyDesignatedMarksman
+  - RNMCArmyCombatTechnician
+  departmentRadio: US Army
+  headOfDepartment: RNMCArmyPlatoonOfficer
