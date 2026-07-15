@@ -1,4 +1,5 @@
 using Content.Shared.CCVar;
+using Content.Shared.Chat;
 using Content.Shared.Chat.TypingIndicator;
 using Robust.Client.Player;
 using Robust.Shared.Configuration;
@@ -17,6 +18,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
     private TimeSpan _lastTextChange;
     private bool _isClientTyping;
     private bool _isClientChatFocused;
+    private ChatSelectChannel _selectedChannel; // RNMC14
 
     public override void Initialize()
     {
@@ -59,6 +61,16 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
         ClientUpdateTyping();
     }
 
+    public void ClientChangedChatChannel(ChatSelectChannel channel) // RNMC14
+    {
+        // don't update it if player don't want to show typing
+        if (!_cfg.GetCVar(CCVars.ChatShowTypingIndicator))
+            return;
+
+        _selectedChannel = channel;
+        ClientUpdateTyping();
+    }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -86,7 +98,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
             return;
 
         var state = TypingIndicatorState.None;
-        if (_isClientChatFocused)
+        if (_isClientChatFocused && _selectedChannel != ChatSelectChannel.LOOC || _selectedChannel != ChatSelectChannel.OOC)
             state = _isClientTyping ? TypingIndicatorState.Typing : TypingIndicatorState.Idle;
 
         // send a networked event to server

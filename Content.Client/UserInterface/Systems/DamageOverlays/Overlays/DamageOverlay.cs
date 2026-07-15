@@ -205,7 +205,7 @@ public sealed class DamageOverlay : Overlay
                 outerDarkness = MathF.Min(0.98f, 0.3f * MathF.Log(level) + 1f);
             }
 
-            _oxygenShader.SetParameter("time", 0.0f);
+            /* _oxygenShader.SetParameter("time", 0.0f);
             _oxygenShader.SetParameter("color", new Vector3(0f, 0f, 0f));
             _oxygenShader.SetParameter("darknessAlphaOuter", outerDarkness);
             _oxygenShader.SetParameter("innerCircleRadius", innerRadius);
@@ -213,7 +213,7 @@ public sealed class DamageOverlay : Overlay
             _oxygenShader.SetParameter("outerCircleRadius", outerRadius);
             _oxygenShader.SetParameter("outerCircleMaxRadius", outerRadius + 0.2f * distance);
             handle.UseShader(_oxygenShader);
-            handle.DrawRect(viewport, Color.White);
+            handle.DrawRect(viewport, Color.White); */ // RNMC14
         }
 
         level = State != MobState.Dead ? _oldCritLevel : DeadLevel;

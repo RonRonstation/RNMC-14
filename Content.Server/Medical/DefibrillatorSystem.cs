@@ -109,7 +109,7 @@ public sealed class DefibrillatorSystem : EntitySystem
     /// </returns>
     public bool CanZap(EntityUid uid, EntityUid target, EntityUid? user = null, DefibrillatorComponent? component = null, bool targetCanBeAlive = false)
     {
-        if (!_cfg.GetCVar<bool>("rnmc.defibs_enabled"))
+        if (_cfg.GetCVar<bool>("rnmc.defibs_enabled") == false)
         {
             if (user != null)
                 _popup.PopupEntity(Loc.GetString("rnmc-defibrillator-not-working"), uid, user.Value);

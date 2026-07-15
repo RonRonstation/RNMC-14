@@ -6,6 +6,8 @@ namespace Content.Client.UserInterface.Systems.Chat.Controls;
 
 public sealed class ChannelSelectorButton : ChatPopupButton<ChannelSelectorPopup>
 {
+    [Dependency] private readonly SharedChatSystem _chat = default!; // RNMC14
+
     public event Action<ChatSelectChannel>? OnChannelSelect;
 
     public ChatSelectChannel SelectedChannel { get; private set; }
