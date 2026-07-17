@@ -63,12 +63,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
 
     public void ClientChangedChatChannel(ChatSelectChannel channel) // RNMC14
     {
-        // don't update it if player don't want to show typing
-        if (!_cfg.GetCVar(CCVars.ChatShowTypingIndicator))
-            return;
-
         _selectedChannel = channel;
-        ClientUpdateTyping();
     }
 
     public override void Update(float frameTime)
