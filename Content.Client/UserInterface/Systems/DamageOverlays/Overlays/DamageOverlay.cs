@@ -18,6 +18,7 @@ public sealed class DamageOverlay : Overlay
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
+    private readonly ShaderInstance _blackShader; // RNMC14. used for the black vignette when damaged
     private readonly ShaderInstance _critShader;
     private readonly ShaderInstance _oxygenShader;
     private readonly ShaderInstance _bruteShader;
@@ -51,6 +52,7 @@ public sealed class DamageOverlay : Overlay
     {
         // TODO: Replace
         IoCManager.InjectDependencies(this);
+        _blackShader = _prototypeManager.Index(CircleMaskShader).InstanceUnique(); // RNMC14
         _oxygenShader = _prototypeManager.Index(CircleMaskShader).InstanceUnique();
         _critShader = _prototypeManager.Index(CircleMaskShader).InstanceUnique();
         _bruteShader = _prototypeManager.Index(CircleMaskShader).InstanceUnique();
@@ -146,17 +148,17 @@ public sealed class DamageOverlay : Overlay
             var adjustedTime = time * pulseRate;
             float outerMaxLevel = 2.0f * distance;
             float outerMinLevel = 0.8f * distance;
-            float innerMaxLevel = 0.6f * distance;
-            float innerMinLevel = 0.2f * distance;
+            float innerMaxLevel = 0.8f * distance; // RNMC14
+            float innerMinLevel = 0.2f * distance; // RNMC14
 
             var outerRadius = outerMaxLevel - level * (outerMaxLevel - outerMinLevel);
             var innerRadius = innerMaxLevel - level * (innerMaxLevel - innerMinLevel);
 
             var pulse = MathF.Max(0f, MathF.Sin(adjustedTime));
 
-            _bruteShader.SetParameter("time", pulse);
+            //_bruteShader.SetParameter("time", pulse); // RNMC14
             _bruteShader.SetParameter("color", new Vector3(1f, 0f, 0f));
-            _bruteShader.SetParameter("darknessAlphaOuter", 0.8f);
+            _bruteShader.SetParameter("darknessAlphaOuter", 0.5f);
 
             _bruteShader.SetParameter("outerCircleRadius", outerRadius);
             _bruteShader.SetParameter("outerCircleMaxRadius", outerRadius + 0.2f * distance);
@@ -164,6 +166,19 @@ public sealed class DamageOverlay : Overlay
             _bruteShader.SetParameter("innerCircleMaxRadius", innerRadius + 0.02f * distance);
             handle.UseShader(_bruteShader);
             handle.DrawRect(viewport, Color.White);
+
+
+            // RNMC14 start
+            _blackShader.SetParameter("color", new Vector3(0f, 0f, 0f));
+            _blackShader.SetParameter("darknessAlphaOuter", 0.6f);
+
+            _blackShader.SetParameter("outerCircleRadius", outerRadius / 3);
+            _blackShader.SetParameter("outerCircleMaxRadius", outerRadius / 3 + 0.2f * distance);
+            _blackShader.SetParameter("innerCircleRadius", innerRadius / 3);
+            _blackShader.SetParameter("innerCircleMaxRadius", innerRadius / 3 + 0.02f * distance);
+            handle.UseShader(_blackShader);
+            handle.DrawRect(viewport, Color.White);
+            // RNMC14 end
         }
         else
         {

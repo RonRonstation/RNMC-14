@@ -30,7 +30,7 @@ namespace Content.Client._RNMC14.Toggles
 
         private void ToggleDropshipWeedkillersOnPressed(BaseButton.ButtonEventArgs obj)
         {
-            SendMessage(new AdminToggleEuiMsg.ToggleHardcore { });
+            SendMessage(new AdminToggleEuiMsg.ToggleDropshipWeedkillers { });
         }
 
         public override void Opened()
