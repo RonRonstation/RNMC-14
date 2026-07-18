@@ -36,6 +36,17 @@
 		},
     {
       "name": "queen_bed"
+    },
+	  {
+	  "name": "alien_bed"
+	  },
+    {
+        "name": "prisonbed",
+        "directions": 4
+    },
+    {
+        "name": "bunk_brown",
+        "directions": 4
     }
   ]
 }
