@@ -1,0 +1,88 @@
+- type: job
+  parent: CMJobBase
+  id: RNMCMedicalSpecialistAzurePVE
+  name: cm-job-name-medical-specialist
+  description: cm-job-description-hospital-corpsman
+  playTimeTracker: RNMCMedicalSpecialistAzurePVE
+  ranks:
+    RNMCRankWeYaMedSpec: []
+  startingGear: RMCGearAzureMedSpec
+  dummyStartingGear: RMCGearAzureMedSpec
+  icon: "CMJobIconHospitalCorpsman"
+  joinNotifyCrew: false
+  supervisors: cm-job-supervisors-sl
+  accessGroups:
+  - PMCHospitalCorpsman
+  spawnMenuRoleName: Medical Specialist (AZURE 15 PVE)
+  overwatchSortPriority: -2
+  overwatchRoleName: Medical Specialist
+  roleWeight: 1
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
+    - type: DemoSpecWhitelist
+    - type: GrenadeSpecWhitelist
+    - type: ScoutWhitelist
+    - type: SniperWhitelist
+    - type: PyroWhitelist
+    - type: Skills
+      skills:
+        RMCSkillEndurance: 2
+        RMCSkillSpecialistWeapons: 7
+        RMCSkillPowerLoader: 1
+        RMCSkillConstruction: 2
+        RMCSkillEngineer: 2
+        RMCSkillFirearms: 1
+        RMCSkillFireman: 3
+        RMCSkillJtac: 1
+        RMCSkillMedical: 3
+        RMCSkillSurgery: 1
+        RMCSkillPilot: 1
+        RMCSkillVehicles: 2
+    - type: CMVendorUser
+      points: 45
+    - type: SquadArmorWearer
+    - type: JobPrefix
+      prefix: cm-job-prefix-medical-specialist
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: medic
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadAzure15
+
+- type: playTimeTracker
+  id: RNMCMedicalSpecialistAzurePVE
+  isHumanoid: true
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointMedspecAzure
+  name: azure 15 medical specialist spawn point
+  components:
+  - type: SpawnPoint
+    job_id: RMCHospitalCorpsmanPVE
+  - type: Sprite
+    state: marine_spawn
+
+- type: entity
+  parent: CMIDCardStandardDogtag
+  id: CMDogtagMedSpecAzure
+  name: Medical Specialist's dogtags
+  components:
+  - type: PresetIdCard
+    job: RMCMedicalSpecialistAzurePVE
+
+- type: startingGear
+  id: RMCGearAzureMedSpec
+  equipment:
+    id: CMDogtagMedSpecAzure

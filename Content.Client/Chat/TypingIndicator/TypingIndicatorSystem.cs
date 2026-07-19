@@ -93,7 +93,7 @@ public sealed class TypingIndicatorSystem : SharedTypingIndicatorSystem
             return;
 
         var state = TypingIndicatorState.None;
-        if (_isClientChatFocused && _selectedChannel != ChatSelectChannel.LOOC || _selectedChannel != ChatSelectChannel.OOC)
+        if (_isClientChatFocused && _selectedChannel != ChatSelectChannel.LOOC && _selectedChannel != ChatSelectChannel.OOC)
             state = _isClientTyping ? TypingIndicatorState.Typing : TypingIndicatorState.Idle;
 
         // send a networked event to server

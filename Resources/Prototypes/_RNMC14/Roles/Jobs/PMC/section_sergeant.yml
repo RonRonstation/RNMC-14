@@ -1,0 +1,89 @@
+- type: job
+  parent: CMJobBase
+  id: RNMCOperationsLeaderPVE
+  name: cm-job-name-operations-leader
+  description: cm-job-description-section-sergeant
+  playTimeTracker: RNMCJobOperationsLeaderPVE
+  ranks:
+    RNMCRankWeYaOperationsLeader: []
+  startingGear: RMCGearAzureOpLead
+  dummyStartingGear: RMCGearAzureOpLead
+  icon: "CMJobIconSquadLeader"
+  joinNotifyCrew: false
+  supervisors: cm-job-supervisors-platco
+  accessGroups:
+  - PMCSquadLeader
+  spawnMenuRoleName: Operations Leader (AZURE 15 PVE)
+  overwatchSortPriority: -6
+  overwatchShowName: true
+  overwatchRoleName: Operations Leader
+  roleWeight: 1
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
+    - type: Skills
+      skills:
+        RMCSkillConstruction: 2
+        RMCSkillEndurance: 3
+        RMCSkillEngineer: 2
+        RMCSkillFirearms: 1
+        RMCSkillFireman: 3
+        RMCSkillIntel: 1
+        RMCSkillJtac: 2
+        RMCSkillLeadership: 2
+        RMCSkillMedical: 2
+        RMCSkillVehicles: 1
+        RMCSkillSpecialistWeapons: 7
+        RMCSkillPowerLoader: 1
+        RMCSkillPilot: 2
+        RMCSkillSurgery: 1
+        RMCSkillCqc: 1
+    - type: MarineOrders
+    - type: SquadArmorWearer
+      leader: true
+    - type: SquadLeader
+    - type: RMCPointing
+    - type: JobPrefix
+      prefix: cm-job-prefix-operations-leader
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: leader
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadAzure15
+
+- type: playTimeTracker
+  id: RNMCJobOperationsLeaderPVE
+  isHumanoid: true
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointOperationsLeaderAzure15
+  name: azure 15 operations leader spawn point
+  components:
+  - type: SpawnPoint
+    job_id: CMOperationsLeaderPVE
+  - type: Sprite
+    state: marine_spawn
+
+- type: entity
+  parent: CMIDCardStandardDogtag
+  id: CMDogtagOpLeadAzure
+  name: Operation Leader's dogtags
+  components:
+  - type: PresetIdCard
+    job: CMOperationsLeaderPVE
+
+- type: startingGear
+  id: RMCGearAzureOpLead
+  equipment:
+    id: CMDogtagOpLeadAzure

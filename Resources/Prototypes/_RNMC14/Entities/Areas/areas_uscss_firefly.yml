@@ -1,0 +1,64 @@
+- type: entity
+  parent: RMCAreaGA
+  id: RMCAreaFirefly
+  name: USCSS Firefly
+
+- type: entity
+  parent: RMCAreaFirefly
+  id: RMCAreaFireflyHangar
+  name: Hangar
+
+- type: entity
+  parent: RMCAreaFirefly
+  id: RMCAreaFireflyOverwatch
+  name: OVERWATCH Center
+
+- type: entity
+  parent: RMCAreaFirefly
+  id: RMCAreaFireflyBriefing
+  name: Briefing
+
+- type: entity
+  parent: RMCAreaFirefly
+  id: RMCAreaFireflyOpleadRoom
+  name: Operation Leaders' Room
+
+- type: entity
+  parent: RMCAreaFirefly
+  id: RMCAreaFireflyUnknown
+  name: Unknown
+
+- type: entity
+  parent: RMCAreaFirefly
+  id: RMCAreaFireflyEngineering
+  name: Engineering
+
+- type: entity
+  parent: RMCAreaFirefly
+  id: RMCAreaFireflySupply
+  name: Supply
+
+- type: entity
+  parent: RMCAreaFirefly
+  id: RMCAreaFireflyThetaSquadPrep
+  name: Theta Squad Prep
+
+- type: entity
+  parent: RMCAreaFirefly
+  id: RMCAreaFireflyCryoCell
+  name: Cryo Cell
+
+- type: entity
+  parent: RMCAreaFirefly
+  id: RMCAreaFireflyMedical
+  name: Medical
+
+- type: entity
+  parent: RMCAreaFirefly
+  id: RMCAreaFireflyOmegaSquadPrep
+  name: Omega Squad Prep
+
+- type: entity
+  parent: RMCAreaFirefly
+  id: RMCAreaFireflyCafeteria
+  name: Cafeteria

@@ -1,7 +1,7 @@
 - type: rank
   id: RMCRankWeYaOperator
   name: Operator
-  prefix: OPR.
+  prefix: PMC. OP. # RNMC14
   paygrade: PMC-OP
 
 - type: rank

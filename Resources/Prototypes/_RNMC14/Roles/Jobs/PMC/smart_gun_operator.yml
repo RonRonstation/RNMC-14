@@ -1,0 +1,83 @@
+- type: job
+  parent: CMJobBase
+  id: RNMCPMCHeavyWeaponsSpecialistPVE
+  name: cm-job-name-heavy-weapons-specialist
+  description: cm-job-description-smart-gun-operator
+  playTimeTracker: RNMCPMCHeavyWeaponsSpecialistPVE
+  ranks:
+    RMCRankLanceCorporal: []
+  startingGear: RMCGearAzureSGO
+  dummyStartingGear: RMCGearAzureSGO
+  icon: "CMJobIconSmartGunOperator"
+  joinNotifyCrew: false
+  supervisors: cm-job-supervisors-sl
+  accessGroups:
+  - PMCSmartGunOperator
+  spawnMenuRoleName: Heavy Weapons Specialist (SGO) (AZURE 15 PVE)
+  overwatchSortPriority: -3
+  overwatchShowName: true
+  overwatchRoleName: Heavy Weapons Specialist
+  roleWeight: 1
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
+    - type: DemoSpecWhitelist
+    - type: GrenadeSpecWhitelist
+    - type: ScoutWhitelist
+    - type: SniperWhitelist
+    - type: PyroWhitelist
+    - type: Skills
+      skills:
+        RMCSkillFirearms: 1
+        RMCSkillEndurance: 2
+        RMCSkillEngineer: 2
+        RMCSkillConstruction: 2
+        RMCSkillSpecialistWeapons: 7
+        RMCSkillFireman: 1
+        RMCSkillJtac: 1
+        RMCSkillSmartGun: 1
+    - type: SquadArmorWearer
+    - type: JobPrefix
+      prefix: cm-job-prefix-weapons-specialist
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: smartgunner
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadAzure15
+
+- type: playTimeTracker
+  id: RNMCPMCHeavyWeaponsSpecialistPVE
+  isHumanoid: true
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointSGOAzure
+  name: azure 15 smart gun operator spawn point
+  components:
+  - type: SpawnPoint
+    job_id: CMPMCHeavyWeaponsSpecialistPVE
+  - type: Sprite
+    state: marine_spawn
+
+- type: entity
+  parent: CMIDCardStandardDogtag
+  id: CMDogtagSGOAzure
+  name: Heavy Weapon Specialist's dogtags
+  components:
+  - type: PresetIdCard
+    job: CMPMCHeavyWeaponsSpecialistPVE
+
+- type: startingGear
+  id: RMCGearAzureSGO
+  equipment:
+    id: CMDogtagSGOAzure

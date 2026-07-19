@@ -1,0 +1,11 @@
+cm-job-name-tactical-unit = Tactical Unit
+cm-job-prefix-tacunit = TU
+cm-job-name-operations-leader = Operations Leader
+cm-job-prefix-operations-leader = OpLd
+cm-job-name-overwatch-operator = Overwatch Operator
+cm-job-prefix-overwatch-operator = OW
+cm-job-name-team-leader = Team Leader
+cm-job-prefix-team-leader = TL
+cm-job-name-heavy-weapons-specialist = Heavy Weapons Specialist
+cm-job-name-medical-specialist = Medical Specialist
+cm-job-prefix-medical-specialist = MdSpc

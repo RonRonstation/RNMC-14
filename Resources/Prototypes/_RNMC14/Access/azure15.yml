@@ -1,0 +1,28 @@
+- type: accessLevel
+  id: RNMCAccessPMC
+  name: PMC
+
+- type: accessLevel
+  id: RNMCAccessPMCOpLead
+  name: PMC Operation Lead
+
+- type: accessLevel
+  id: RNMCAccessPMCTeamLeader
+  name: PMC Team Leader
+
+- type: accessLevel
+  id: RNMCAccessPMCHeavyWeaponsGuy
+  name: PMC Heavy Weapons Specialist
+
+- type: accessLevel
+  id: RNMCAccessPMCMedicalSpecialist
+  name: PMC Medical Specialist
+
+
+- type: accessLevel
+  id: RNMCAccessPMCSquadTheta
+  name: PMC Theta Squad
+
+- type: accessLevel
+  id: RNMCAccessPMCSquadOmega
+  name: PMC Omega Squad

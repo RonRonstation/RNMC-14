@@ -1,0 +1,29 @@
+- type: rank
+  id: RNMCRankWeYaOperationsLeader
+  name: Operations Leader
+  prefix: PMC. OPL
+  paygrade: PMC-OPL
+
+- type: rank
+  id: RNMCRankWeYaTeamLeader
+  name: Team Leader
+  prefix: PMC. TML
+  paygrade: PMC-TML
+
+- type: rank
+  id: RNMCRankWeYaWeaponSpecialist
+  name: Weapon Specialist
+  prefix: PMC. SPW
+  paygrade: PMC-SPW
+  
+- type: rank
+  id: RNMCRankWeYaOverwatch
+  name: Overwatch
+  prefix: PMC. OW
+  paygrade: PMC-OW
+
+- type: rank
+  id: RNMCRankWeYaMedSpec
+  name: Medical Specialist
+  prefix: PMC. SPM
+  paygrade: PMC-SPM

@@ -45,3 +45,21 @@
   components:
   - type: AccessReader
     access: [["RMCAccessSPPSeniorLead"]]
+
+- type: entity
+  parent: RMCDoubleDoorGenericGlass
+  id: RMCAirlockPMCTheta
+  name: airlock
+  suffix: Azure 15, Theta, Locked
+  components:
+  - type: AccessReader
+    access: [["RNMCAccessPMCSquadTheta"]]
+
+- type: entity
+  parent: RMCDoubleDoorGenericGlass
+  id: RMCAirlockPMCOmega
+  name: airlock
+  suffix: Azure 15, Omega, Locked
+  components:
+  - type: AccessReader
+    access: [["RNMCAccessPMCSquadOmega"]]
