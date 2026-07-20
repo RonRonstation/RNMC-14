@@ -47,7 +47,7 @@ public sealed class SynthSystem : SharedSynthSystem
         repOverrideComp.Age = ent.Comp.Generation;
         Dirty(ent, repOverrideComp);
 
-        if (!HasComp<BodyComponent>(ent.Owner))
+        if (!TryComp<BodyComponent>(ent.Owner, out var body))
             return;
 
         var organComps = _body.GetBodyOrganEntityComps<OrganComponent>((ent.Owner, body));
