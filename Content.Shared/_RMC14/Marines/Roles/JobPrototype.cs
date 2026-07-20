@@ -94,11 +94,5 @@ public sealed partial class JobPrototype : IInheritingPrototype, ICMSpecific
     /// Starting gear that is given when the map has a certain camoflage enabled.
     /// </summary>
     [DataField]
-    public Dictionary<CamouflageType, ProtoId<StartingGearPrototype>>? CamouflageStartingGear;
-
-    /// <summary>
-    /// If the mob (e.g. working-joe) should not receive a name change and appearance from the loadout.
-    /// </summary>
-    [DataField]
-    public bool UsePlayerProfile = true;
+    public readonly Dictionary<CamouflageType, ProtoId<StartingGearPrototype>>? CamouflageStartingGear;
 }
