@@ -48,7 +48,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: CMMagazineSMGM63AP
+        startingItem: RNMCMagazineSMGM39Duplex  
         insertSound: /Audio/_RMC14/Weapons/Guns/Reload/smg_reload.ogg
         ejectSound: /Audio/_RMC14/Weapons/Guns/Reload/smg_unload.ogg
         priority: 2
@@ -106,7 +106,7 @@
   - type: Tag
     tags:
     - RMCWeaponSMG
-    - RMCWeaponSMGM63B3
+    - RNMCWeaponSMGM63B3
   - type: ItemCamouflage
     camouflageVariations: { }
 

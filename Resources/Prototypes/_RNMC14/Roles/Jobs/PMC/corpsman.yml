@@ -59,6 +59,9 @@
       whitelist:
         tags:
         - RNMCSquadAzure15
+    - type: NpcFactionMember
+      factions:
+      - WeYa
 
 - type: playTimeTracker
   id: RNMCMedicalSpecialistAzurePVE

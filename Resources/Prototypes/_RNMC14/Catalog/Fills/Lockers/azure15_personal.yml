@@ -17,7 +17,7 @@
     - id: RMCMagazineSmartGun
     - id: CMBeltSmartGunOperator
     - id: CMArmorM4PMCSmartGunHarness
-    - id: RMCArmorHelmetPMCTactical
+    - id: ArmorHelmetPMCGunner
     - id: RMCPowerCellSmartgun
     - id: RMCSmartGunPMCPVE
 

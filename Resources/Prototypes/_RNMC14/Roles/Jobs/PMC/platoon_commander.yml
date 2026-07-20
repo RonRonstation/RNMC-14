@@ -60,6 +60,9 @@
       icon:
         sprite: /Textures/_RNMC14/Interface/map_blips.rsi
         state: platco_azure
+    - type: NpcFactionMember
+      factions:
+      - WeYa
 
 - type: playTimeTracker
   id: RNMCOverwatchOperatorPVE
@@ -71,7 +74,7 @@
   name: azure 15 overwatch operator spawn point
   components:
   - type: SpawnPoint
-    job_id: CMPlatoonCommanderPVE
+    job_id: RNMCOverwatchOperatorPVE
   - type: Sprite
     state: marine_spawn
 
@@ -86,7 +89,7 @@
 - type: startingGear
   id: RMCGearAzureOverwatch
   equipment:
-    id: RNMCOverwatchOperatorPVE
+    id: CMDogtagOverwatchAzure
     jumpsuit: CMJumpsuitLiaisonFormal
     back: CMSatchel
     pocket1: RMCPouchGeneralLarge

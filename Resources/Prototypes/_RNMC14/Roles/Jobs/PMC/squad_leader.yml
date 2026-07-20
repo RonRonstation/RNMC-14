@@ -6,8 +6,8 @@
   playTimeTracker: RNMCTeamLeadPVE
   ranks:
     RNMCRankWeYaTeamLeader: []
-  startingGear: RNMCTeamLeadPVE
-  dummyStartingGear: CMGearSquadLeaderEquipped
+  startingGear: RMCGearAzureTeamLead
+  dummyStartingGear: RMCGearAzureTeamLead
   icon: "CMJobIconFireteamLeader"
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-section-sergeant
@@ -61,6 +61,9 @@
       whitelist:
         tags:
         - RNMCSquadAzure15
+    - type: NpcFactionMember
+      factions:
+      - WeYa
 
 - type: playTimeTracker
   id: RNMCTeamLeadPVE
@@ -75,3 +78,16 @@
     job_id: RNMCTeamLeadPVE
   - type: Sprite
     state: marine_spawn
+
+- type: entity
+  parent: CMIDCardStandardDogtag
+  id: CMDogtagTeamLeaderAzure
+  name: Team Leader's dogtags
+  components:
+  - type: PresetIdCard
+    job: RNMCTeamLeadPVE
+
+- type: startingGear
+  id: RMCGearAzureTeamLead
+  equipment:
+    id: CMDogtagTeamLeaderAzure
