@@ -1,24 +1,13 @@
 - type: job
   parent: AU14JobWorkingJoeBase
   id: AU14JobGOVFORWorkingJoe
-  requirements:
-  - !type:RoleTimeRequirement
-    role: AU14JobGOVFORAuxSupportSynth
-    time: 9000 # 2.5 hours
-  - !type:TraitsRequirement
-    inverted: true
-    traits:
-    - SocialAnxietyHeavy
-    - FrontalLisp
-    - NonResuscitable
-    - Epilepsy
   startingGear: AU14GearGOVFORWorkingJoe
   dummyStartingGear: AU14GearGOVFORWorkingJoeDummy
   icon: "AU14JobIconGovSynth"
-  spawnMenuRoleName: Working Joe (GOVFOR)
+  spawnMenuRoleName: Working Joe
   supervisors: au14-job-supervisors-workingjoe-military
   accessGroups:
-  - AU14GovforCommand
+  - PMCPlatcoAccess
   special:
   - !type:AddComponentSpecial
     components:
@@ -55,12 +44,11 @@
       state: full
     - type: NpcFactionMember
       factions:
-      - GOVFOR
+      - WeYa
     - type: Marine
-      Faction: govfor
     - type: UserIFF
       factions:
-      - GOVFOR
+      - WeYa
     - type: WorkingJoeVoice
     - type: UserInterface
       interfaces:
@@ -77,21 +65,9 @@
     - type: IntrinsicRadioTransmitter
       channels:
       - AI
-      - MarineCommand
-      - MarineJTAC
-      - MarineAlpha
-      - GovforCharlie
-      - GovforBravo
-      - GovforIntel
     - type: ActiveRadio
       channels:
       - AI
-      - MarineCommand
-      - MarineJTAC
-      - MarineAlpha
-      - GovforCharlie
-      - GovforBravo
-      - GovforIntel
     - type: Tag
       tags:
       - WorkingJoe
@@ -109,7 +85,7 @@
 - type: entity
   parent: CMSpawnPointJobBase
   id: AU14SpawnPointGOVFORWorkingJoe
-  name: Spawn Point Working Joe (GOVFOR)
+  name: Spawn Point Working Joe
   components:
   - type: SpawnPoint
     job_id: AU14JobGOVFORWorkingJoe

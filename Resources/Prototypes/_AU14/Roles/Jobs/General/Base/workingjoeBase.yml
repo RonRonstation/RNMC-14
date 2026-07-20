@@ -23,8 +23,6 @@
     pocket1: RMCPouchElectronicsFill
     pocket2: RMCPouchConstructionFillFull
   storage:
-      belt:
-      - AU14MaintenanceJack
       back:
       - SprayBottleSpaceCleaner
       - SprayBottleSpaceCleaner

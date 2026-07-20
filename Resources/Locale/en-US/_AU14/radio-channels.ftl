@@ -1,14 +1,2 @@
-chat-radio-opfor = Sierra
-chat-radio-opforcommand =  Command
-chat-radio-opforjtac =  ATC
-chat-radio-opforintel =  Auxiliary
-chat-radio-opforbravo =  Tango
-chat-radio-opforcharlie =  Uniform
-chat-radio-govforintel =  Auxiliary
-chat-radio-govforbravo =  Bravo
-chat-radio-govforcharlie =  Charlie
-chat-radio-mob = Family
-chat-radio-alert = Colony Alerts
-chat-radio-uppsof = UPP SOF
-chat-radio-uasof = UA SOF
+
 chat-radio-ai = AI
