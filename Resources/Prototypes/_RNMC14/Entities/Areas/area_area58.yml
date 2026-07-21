@@ -62,6 +62,11 @@
   id: RMCAreaArea58Hangar
   name: Area58 - Hangar
 
+- type : entity
+  parent: RMCAreaArea58Interior
+  id: RMCAreaArea58Hangar2
+  name: Area58 - Hangar 2
+
 - type: entity
   parent: RMCAreaArea58Interior
   id: RMCAreaArea58Platco
@@ -86,6 +91,31 @@
   parent: RMCAreaArea58Interior
   id: RMCAreaArea58Medical
   name: Area58 - Medical
+
+- type : entity
+  parent: RMCAreaArea58Interior
+  id: RMCAreaArea58Bunker
+  name: Area58 - Bunker
+
+- type : entity
+  parent: RMCAreaArea58Interior
+  id: RMCAreaArea58Headquarters
+  name: Area58 - Headquarters
+
+- type : entity
+  parent: RMCAreaArea58Interior
+  id: RMCAreaArea58Requisition
+  name: Area58 - Requisition
+
+- type : entity
+  parent: RMCAreaArea58Interior
+  id: RMCAreaArea58Checkpoint
+  name: Area58 - Checkpoint
+
+- type : entity
+  parent: RMCAreaArea58Interior
+  id: RMCAreaArea58Entrance
+  name: Area58 - Entrance
 
 - type: entity
   parent: RMCAreaArea58Exterior
