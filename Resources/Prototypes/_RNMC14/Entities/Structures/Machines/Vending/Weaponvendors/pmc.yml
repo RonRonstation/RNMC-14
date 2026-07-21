@@ -78,4 +78,4 @@
     - name: Utilities
       entries:
       - id: RMCM5Bayonet
-      - id: CMPackFlare
+      - id: RMCPackFlareC18
