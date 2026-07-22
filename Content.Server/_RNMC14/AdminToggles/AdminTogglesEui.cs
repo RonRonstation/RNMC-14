@@ -50,6 +50,14 @@ namespace Content.Server._RNMC14.AdminToggles
                         _chat.SendAdminAlert($"rnmc.defibs_hardcore = {cvar}");
                         break;
                     }
+                case AdminToggleEuiMsg.ToggleDropshipWeedkillers ToggleWeedkillers:
+                    {
+                        var cvar = _cfg.GetCVar<bool>("rnmc.dropship_weedkiller");
+
+                        _cfg.SetCVar("rnmc.dropship_weedkiller", !cvar);
+                        _chat.SendAdminAlert($"rnmc.dropship_weedkiller = {cvar}");
+                        break;
+                    }
             }
         }
     }

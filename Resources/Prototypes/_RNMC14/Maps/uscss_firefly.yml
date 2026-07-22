@@ -1,0 +1,25 @@
+
+- type: gameMap
+  id: Firefly
+  mapName: USCSS Firefly
+  mapPath: /Maps/_RNMC14/firefly.yml
+  minPlayers: 200 # enforce admin-only
+  maxRandomOffset: 0
+  randomRotation: false
+  stations:
+    USCSS_Firefly:
+      stationProto: StandardUNMCWarship
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'USCSS Firefly'
+      - type: StationJobs
+        availableJobs:
+          #Command
+          RNMCOverwatchOperatorPVE: [1, 1]
+
+          #Marines
+          RNMCTeamLeadPVE: [2, 2]
+          RNMCPMCHeavyWeaponsSpecialistPVE: [2, 2]
+          RNMCMedicalSpecialistAzurePVE: [1, 1]
+          RNMCTacticalUnitPVE: [ 4, 4 ]
+          RNMCOperationsLeaderPVE: [1, 1]

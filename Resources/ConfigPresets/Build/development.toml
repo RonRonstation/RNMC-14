@@ -48,6 +48,9 @@ automatic_commander_promotion = false
 planet_map_vote = false
 dropship_initial_delay_minutes = 0
 
+[rmc]
+lobby_min_players = 1
+
 [ic]
 # random_characters = true
 random_species_weights = ""

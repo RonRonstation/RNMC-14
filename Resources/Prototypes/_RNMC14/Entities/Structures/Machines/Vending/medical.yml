@@ -121,6 +121,7 @@
   - type: CMAutomatedVendor
     jobs:
     - CMHospitalCorpsmanPVE
+    - RNMCMedicalSpecialistAzurePVE
     sections:
     - name: Pill Bottles
       entries:

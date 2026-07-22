@@ -19,4 +19,9 @@ public static class AdminToggleEuiMsg
     public sealed class ToggleHardcore : EuiMessageBase
     {
     }
+
+    [Serializable, NetSerializable]
+    public sealed class ToggleDropshipWeedkillers : EuiMessageBase
+    {
+    }
 }

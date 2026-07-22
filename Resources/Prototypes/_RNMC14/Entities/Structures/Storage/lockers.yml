@@ -45,3 +45,39 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: RNMCFORECONPersonalFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RNMCClosetAzurePersonalGear
+  name: personal locker
+  description: An immobile storage unit.
+  suffix: PvE, Azure 15
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RNMCPMCPersonalFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RMCClosetAzureSGOGear
+  name: heavy weapons specialist locker
+  description: An immobile storage unit.
+  suffix: PvE, Azure 15
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RNMCPMCPMachinegunnerFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RMCClosetAzureTeamLeaderGear
+  name: team leader locker
+  description: An immobile storage unit.
+  suffix: PvE, Azure 15
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RNMCPMCTeamLeaderFill

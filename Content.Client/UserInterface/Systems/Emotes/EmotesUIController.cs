@@ -31,6 +31,23 @@ public sealed class EmotesUIController : UIController, IOnStateChanged<GameplayS
         [EmoteCategory.General] = ("emote-menu-category-general", new SpriteSpecifier.Texture(new ResPath("/Textures/Clothing/Head/Soft/mimesoft.rsi/icon.png"))),
         [EmoteCategory.Hands] = ("emote-menu-category-hands", new SpriteSpecifier.Texture(new ResPath("/Textures/Clothing/Hands/Gloves/latex.rsi/icon.png"))),
         [EmoteCategory.Vocal] = ("emote-menu-category-vocal", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Greeting] = ("emote-menu-category-greeting", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Farewell] = ("emote-menu-category-farewell", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.APOLLO] = ("emote-menu-category-apollo", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Propaganda] = ("emote-menu-category-propaganda", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Positive] = ("emote-menu-category-positive", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Negative] = ("emote-menu-category-negative", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Curious] = ("emote-menu-category-curious", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Interrogation] = ("emote-menu-category-interrogation", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Identification] = ("emote-menu-category-identification", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Concern] = ("emote-menu-category-concern", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Search] = ("emote-menu-category-search", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Warning] = ("emote-menu-category-warning", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Alert] = ("emote-menu-category-alert", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Observation] = ("emote-menu-category-observation", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Threat] = ("emote-menu-category-threat", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Accusation] = ("emote-menu-category-accusation", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
+        [EmoteCategory.Statement] = ("emote-menu-category-statement", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Emotes/vocal.png"))),
     };
 
     public void OnStateEntered(GameplayState state)

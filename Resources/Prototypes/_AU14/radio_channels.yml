@@ -1,0 +1,8 @@
+
+- type: radioChannel
+  id: AI
+  name: chat-radio-ai
+  keycode: "$"
+  frequency: 7676
+  color: "#d39d22"
+  longRange: true

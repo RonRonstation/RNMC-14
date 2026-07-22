@@ -1,0 +1,15 @@
+- type: department
+  parent: CMDepartmentBase
+  id: CMAzure15
+  name: department-CMAzure15
+  description: cm-department-azure-15
+  color: "#ccffe9"
+  roles:
+  - RNMCTacticalUnitPVE
+  - RNMCPMCHeavyWeaponsSpecialistPVE
+  - RNMCOperationsLeaderPVE
+  - RNMCTeamLeadPVE
+  - RNMCMedicalSpecialistAzurePVE
+  - RNMCOverwatchOperatorPVE
+  departmentRadio: SunRiders
+  headOfDepartment: RNMCOverwatchOperatorPVE

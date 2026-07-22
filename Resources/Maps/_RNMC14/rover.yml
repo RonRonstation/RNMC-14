@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.2
   forkId: ""
   forkVersion: ""
-  time: 03/11/2026 14:19:22
-  entityCount: 1461
+  time: 07/17/2026 18:43:19
+  entityCount: 1383
 maps:
 - 1
 grids:
@@ -94,7 +94,7 @@ entities:
           version: 7
         -1,-1:
           ind: -1,-1
-          tiles: AQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAYAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAAACAAAAAAAAAgAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAACAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAHAAAAAAAACAAAAAAAAAgAAAAAAAAJAAAAAAAABAAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAUAAAAAAAACAAAAAAAABQAAAAAAAAUAAAAAAAACAAAAAAAACgAAAAAAAAUAAAAAAAAFAAAAAAAACwAAAAAAAAUAAAAAAAACAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAAAgAAAAAAAAwAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAoAAAAAAAAFAAAAAAAABQAAAAAAAAsAAAAAAAAFAAAAAAAAAgAAAAAAAA0AAAAAAAAGAAAAAAAADgAAAAAAAAIAAAAAAAAMAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAPAAAAAAAABQAAAAAAAAUAAAAAAAALAAAAAAAABQAAAAAAABAAAAAAAAARAAAAAAAACAAAAAAAABIAAAAAAAACAAAAAAAAAgAAAAAAAAUAAAAAAAACAAAAAAAABQAAAAAAAAUAAAAAAAACAAAAAAAAEwAAAAAAAAYAAAAAAAAGAAAAAAAAFAAAAAAAAAUAAAAAAAACAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAAAgAAAAAAAAIAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAIAAAAAAAAQAAAAAAAAEAAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAAQAAAAAAAAAQAAAAAAAAIAAAAAAAACAAAAAAAAEAAAAAAAABAAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAFQAAAAAAABUAAAAAAAAVAAAAAAAAFQAAAAAAABUAAAAAAAAVAAAAAAAACQAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAAAwAAAAAAAA==
+          tiles: AQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAYAAAAAAAAGAAAAAAAABgAAAAAAAAYAAAAAAAACAAAAAAAAAgAAAAAAAAEAAAAAAAABAAAAAAAAAQAAAAAAAAEAAAAAAAACAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAHAAAAAAAACAAAAAAAAAgAAAAAAAAJAAAAAAAABAAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAUAAAAAAAACAAAAAAAABQAAAAAAAAUAAAAAAAACAAAAAAAACgAAAAAAAAUAAAAAAAAFAAAAAAAACwAAAAAAAAUAAAAAAAACAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAAAgAAAAAAAAwAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAoAAAAAAAAFAAAAAAAABQAAAAAAAAsAAAAAAAAFAAAAAAAAAgAAAAAAAA0AAAAAAAAGAAAAAAAADgAAAAAAAAIAAAAAAAAMAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAPAAAAAAAABQAAAAAAAAUAAAAAAAALAAAAAAAABQAAAAAAABAAAAAAAAARAAAAAAAACAAAAAAAABIAAAAAAAACAAAAAAAAAgAAAAAAAAUAAAAAAAACAAAAAAAABQAAAAAAAAUAAAAAAAACAAAAAAAAEwAAAAAAAAYAAAAAAAAGAAAAAAAAFAAAAAAAAAUAAAAAAAACAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAAAgAAAAAAAAIAAAAAAAAFAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAABQAAAAAAAAIAAAAAAAAQAAAAAAAAEAAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAAQAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAEAAAAAAAABAAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAADAAAAAAAAAwAAAAAAAAMAAAAAAAADAAAAAAAAFQAAAAAAABUAAAAAAAAVAAAAAAAAFQAAAAAAABUAAAAAAAAVAAAAAAAACQAAAAAAAAIAAAAAAAACAAAAAAAAAgAAAAAAAAIAAAAAAAACAAAAAAAABQAAAAAAAAUAAAAAAAAFAAAAAAAAAwAAAAAAAA==
           version: 7
         -1,0:
           ind: -1,0
@@ -2818,19 +2818,16 @@ entities:
   - uid: 63
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -7.5,0.5
+      pos: -4.5,-0.5
       parent: 1
   - uid: 64
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -7.5,6.5
+      pos: -4.5,7.5
       parent: 1
   - uid: 65
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: 0.5,11.5
       parent: 1
   - uid: 66
@@ -2842,13 +2839,11 @@ entities:
   - uid: 67
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -7.5,-0.5
+      pos: -5.5,-0.5
       parent: 1
   - uid: 68
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: 0.5,12.5
       parent: 1
   - uid: 69
@@ -2865,134 +2860,112 @@ entities:
   - uid: 71
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -4.5,7.5
+      pos: -7.5,6.5
       parent: 1
   - uid: 72
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: 0.5,10.5
       parent: 1
   - uid: 73
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -6.5,7.5
       parent: 1
   - uid: 74
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -7.5,7.5
+      pos: -5.5,7.5
       parent: 1
   - uid: 75
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,7.5
+      pos: -7.5,7.5
       parent: 1
   - uid: 76
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -6.5,-0.5
       parent: 1
   - uid: 77
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,-0.5
+      pos: -7.5,-0.5
       parent: 1
   - uid: 78
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -4.5,-0.5
+      pos: -7.5,0.5
       parent: 1
   - uid: 79
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 0.5,0.5
+      pos: 1.5,0.5
       parent: 1
   - uid: 80
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 1.5,0.5
+      pos: 0.5,0.5
       parent: 1
   - uid: 81
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 1.5,3.5
+      pos: 0.5,3.5
       parent: 1
   - uid: 82
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 0.5,3.5
+      pos: 1.5,3.5
       parent: 1
   - uid: 83
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 1.5,6.5
+      pos: 0.5,6.5
       parent: 1
   - uid: 84
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 0.5,6.5
+      pos: 1.5,6.5
       parent: 1
   - uid: 85
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -0.5,-7.5
+      pos: -3.5,-7.5
       parent: 1
   - uid: 86
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: 0.5,-7.5
       parent: 1
   - uid: 87
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 0.5,-4.5
+      pos: -5.5,-5.5
       parent: 1
   - uid: 88
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -0.5,-4.5
+      pos: -5.5,-6.5
       parent: 1
   - uid: 89
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -3.5,-4.5
       parent: 1
   - uid: 90
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -3.5,-7.5
+      pos: -0.5,-7.5
       parent: 1
   - uid: 91
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,-5.5
+      pos: -0.5,-4.5
       parent: 1
   - uid: 92
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,-6.5
+      pos: 0.5,-4.5
       parent: 1
   - uid: 93
     components:
@@ -3022,67 +2995,51 @@ entities:
   - uid: 98
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -17.5,1.5
+      pos: -10.5,0.5
       parent: 1
   - uid: 99
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -17.5,0.5
+      pos: -11.5,0.5
       parent: 1
   - uid: 100
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -16.5,0.5
+      pos: -12.5,0.5
       parent: 1
   - uid: 101
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -15.5,0.5
+      pos: -10.5,1.5
       parent: 1
   - uid: 102
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -14.5,0.5
+      pos: -13.5,0.5
       parent: 1
   - uid: 103
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -13.5,0.5
+      pos: -14.5,0.5
       parent: 1
   - uid: 104
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -12.5,0.5
+      pos: -15.5,0.5
       parent: 1
   - uid: 105
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -11.5,0.5
+      pos: -16.5,0.5
       parent: 1
   - uid: 106
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -10.5,0.5
-      parent: 1
-  - uid: 107
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -10.5,1.5
+      pos: -17.5,1.5
       parent: 1
   - uid: 108
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -25.5,20.5
       parent: 1
   - uid: 109
@@ -3172,6 +3129,11 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -28.5,24.5
+      parent: 1
+  - uid: 899
+    components:
+    - type: Transform
+      pos: -17.5,0.5
       parent: 1
 - proto: CMChair
   entities:
@@ -3570,573 +3532,171 @@ entities:
     - type: Transform
       pos: -41.5,29.5
       parent: 1
-- proto: CMMagazineRifleM54CMK1
-  entities:
-  - uid: 183
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 184
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 185
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 186
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 187
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 188
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 189
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 190
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 191
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 192
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 193
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 194
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 195
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 196
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 197
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 198
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 199
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 200
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 201
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 202
-    components:
-    - type: Transform
-      pos: -21.790533,6.621883
-      parent: 1
-  - uid: 203
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 204
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 205
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 206
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 207
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 208
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 209
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 210
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 211
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 212
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 213
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 214
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 215
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 216
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 217
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 218
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 219
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 220
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 221
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 222
-    components:
-    - type: Transform
-      pos: -21.665533,6.621883
-      parent: 1
-  - uid: 223
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 224
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 225
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 226
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 227
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 228
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 229
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 230
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 231
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 232
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 233
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 234
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 235
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 236
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 237
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 238
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 239
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 240
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 241
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 242
-    components:
-    - type: Transform
-      pos: -21.524908,6.621883
-      parent: 1
-  - uid: 243
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 244
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 245
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 246
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 247
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 248
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 249
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 250
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 251
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 252
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 253
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 254
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 255
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 256
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 257
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 258
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 259
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 260
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 261
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
-  - uid: 262
-    components:
-    - type: Transform
-      pos: -21.399908,6.621883
-      parent: 1
 - proto: CMMicrowave
   entities:
-  - uid: 263
+  - uid: 185
     components:
     - type: Transform
       pos: -10.533065,7.794193
       parent: 1
 - proto: CMMop
   entities:
-  - uid: 264
+  - uid: 186
     components:
     - type: Transform
       pos: -9.226507,-0.47139418
       parent: 1
 - proto: CMOperatingTable
   entities:
-  - uid: 265
+  - uid: 187
     components:
     - type: Transform
       pos: -27.5,-1.5
       parent: 1
 - proto: CMPaperBin30
   entities:
-  - uid: 266
+  - uid: 188
     components:
     - type: Transform
       pos: -7.2319403,-3.3342953
       parent: 1
-  - uid: 267
+  - uid: 189
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -31.5,-2.5
       parent: 1
-  - uid: 268
+  - uid: 190
     components:
     - type: Transform
       pos: -18.763454,50.757458
       parent: 1
-  - uid: 269
+  - uid: 191
     components:
     - type: Transform
       pos: -39.429947,31.658285
       parent: 1
-  - uid: 270
+  - uid: 192
     components:
     - type: Transform
       pos: -26.613653,30.681906
       parent: 1
 - proto: CMPen
   entities:
-  - uid: 271
+  - uid: 193
     components:
     - type: Transform
       pos: -7.2319403,-3.3655453
       parent: 1
-  - uid: 272
+  - uid: 194
     components:
     - type: Transform
       pos: -31.520205,-2.5121317
       parent: 1
-  - uid: 273
+  - uid: 195
     components:
     - type: Transform
       pos: -39.398697,31.61141
       parent: 1
-  - uid: 274
+  - uid: 196
     components:
     - type: Transform
       pos: -26.676153,30.60378
       parent: 1
 - proto: CMPenFountain
   entities:
-  - uid: 275
+  - uid: 197
     components:
     - type: Transform
       pos: -18.700954,50.710583
       parent: 1
 - proto: CMPlatform
   entities:
-  - uid: 276
+  - uid: 198
     components:
     - type: Transform
       pos: -14.5,1.5
       parent: 1
-  - uid: 277
+  - uid: 199
     components:
     - type: Transform
       pos: -16.5,1.5
       parent: 1
-  - uid: 278
+  - uid: 200
     components:
     - type: Transform
       pos: -15.5,1.5
       parent: 1
-  - uid: 279
+  - uid: 201
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -16.5,5.5
       parent: 1
-  - uid: 280
+  - uid: 202
     components:
     - type: Transform
       pos: -17.5,6.5
       parent: 1
-  - uid: 281
+  - uid: 203
     components:
     - type: Transform
       pos: -18.5,6.5
       parent: 1
-  - uid: 282
+  - uid: 204
     components:
     - type: Transform
       pos: -10.5,6.5
       parent: 1
-  - uid: 283
+  - uid: 205
     components:
     - type: Transform
       pos: -9.5,6.5
       parent: 1
-  - uid: 284
+  - uid: 206
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.5,5.5
       parent: 1
-  - uid: 285
+  - uid: 207
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -10.5,4.5
       parent: 1
-  - uid: 286
+  - uid: 208
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -17.5,4.5
       parent: 1
-  - uid: 287
+  - uid: 209
     components:
     - type: Transform
       pos: -11.5,1.5
       parent: 1
-  - uid: 288
+  - uid: 210
     components:
     - type: Transform
       pos: -12.5,1.5
       parent: 1
-  - uid: 289
+  - uid: 211
     components:
     - type: Transform
       pos: -13.5,1.5
       parent: 1
-  - uid: 290
+  - uid: 212
     components:
     - type: Transform
       pos: -13.5,23.5
       parent: 1
-  - uid: 291
+  - uid: 213
     components:
     - type: Transform
       pos: -14.5,23.5
       parent: 1
-  - uid: 292
+  - uid: 214
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -4144,139 +3704,139 @@ entities:
       parent: 1
 - proto: CMPosterPresident
   entities:
-  - uid: 293
+  - uid: 215
     components:
     - type: Transform
       pos: -1.5,-2.5
       parent: 1
 - proto: CMPottedPlant1
   entities:
-  - uid: 294
+  - uid: 216
     components:
     - type: Transform
       pos: -16.5,52.5
       parent: 1
-  - uid: 295
+  - uid: 217
     components:
     - type: Transform
       pos: -16.461054,-7.821389
       parent: 1
-  - uid: 296
+  - uid: 218
     components:
     - type: Transform
       pos: -7.492304,-4.727639
       parent: 1
-  - uid: 297
+  - uid: 219
     components:
     - type: Transform
       pos: -28.379261,0.23401141
       parent: 1
 - proto: CMRack
   entities:
-  - uid: 298
+  - uid: 220
     components:
     - type: Transform
       pos: -40.51797,29.514072
       parent: 1
 - proto: CMSandbagEmpty50
   entities:
-  - uid: 299
+  - uid: 221
     components:
     - type: Transform
       pos: -17.724434,24.470774
       parent: 1
-  - uid: 300
+  - uid: 222
     components:
     - type: Transform
       pos: -17.302559,24.439524
       parent: 1
 - proto: CMSemioticAmmunition
   entities:
-  - uid: 301
+  - uid: 223
     components:
     - type: Transform
       pos: -17.09077,5.4749312
       parent: 1
-  - uid: 302
+  - uid: 224
     components:
     - type: Transform
       pos: -23.291563,-0.14902711
       parent: 1
-  - uid: 303
+  - uid: 225
     components:
     - type: Transform
       pos: -26.541563,7.304098
       parent: 1
 - proto: CMSemioticAutodoc
   entities:
-  - uid: 304
+  - uid: 226
     components:
     - type: Transform
       pos: -26.62958,-4.5433817
       parent: 1
-  - uid: 305
+  - uid: 227
     components:
     - type: Transform
       pos: -31.97333,-4.5121317
       parent: 1
 - proto: CMSemioticBathunisex
   entities:
-  - uid: 306
+  - uid: 228
     components:
     - type: Transform
       pos: -3.029106,9.53811
       parent: 1
 - proto: CMSemioticBulkhead_door
   entities:
-  - uid: 307
+  - uid: 229
     components:
     - type: Transform
       pos: -33.56637,5.2496367
       parent: 1
-  - uid: 308
+  - uid: 230
     components:
     - type: Transform
       pos: -37.934208,34.338375
       parent: 1
-  - uid: 309
+  - uid: 231
     components:
     - type: Transform
       pos: -37.934208,41.4165
       parent: 1
-  - uid: 310
+  - uid: 232
     components:
     - type: Transform
       pos: -20.450138,38.3787
       parent: 1
 - proto: CMSemioticCryo
   entities:
-  - uid: 311
+  - uid: 233
     components:
     - type: Transform
       pos: -10.450145,5.4905562
       parent: 1
-  - uid: 312
+  - uid: 234
     components:
     - type: Transform
       pos: -29.043411,20.78368
       parent: 1
 - proto: CMSemioticEast
   entities:
-  - uid: 313
+  - uid: 235
     components:
     - type: Transform
       pos: -9.99702,5.5061812
       parent: 1
 - proto: CMSemioticElevator
   entities:
-  - uid: 314
+  - uid: 236
     components:
     - type: Transform
       pos: -17.939386,29.370037
       parent: 1
 - proto: CMSemioticFridge
   entities:
-  - uid: 315
+  - uid: 237
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -4284,7 +3844,7 @@ entities:
       parent: 1
 - proto: CMSemioticGalley
   entities:
-  - uid: 316
+  - uid: 238
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -4292,7 +3852,7 @@ entities:
       parent: 1
 - proto: CMSemioticHazard
   entities:
-  - uid: 317
+  - uid: 239
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -4300,7 +3860,7 @@ entities:
       parent: 1
 - proto: CMSemioticHigh_voltage
   entities:
-  - uid: 318
+  - uid: 240
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -4308,12 +3868,12 @@ entities:
       parent: 1
 - proto: CMSemioticHvac
   entities:
-  - uid: 319
+  - uid: 241
     components:
     - type: Transform
       pos: -4.907958,-7.998147
       parent: 1
-  - uid: 320
+  - uid: 242
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -4321,146 +3881,146 @@ entities:
       parent: 1
 - proto: CMSemioticLadder
   entities:
-  - uid: 321
+  - uid: 243
     components:
     - type: Transform
       pos: -29.628868,7.3433867
       parent: 1
-  - uid: 322
+  - uid: 244
     components:
     - type: Transform
       pos: -29.871536,20.78368
       parent: 1
 - proto: CMSemioticMaint
   entities:
-  - uid: 323
+  - uid: 245
     components:
     - type: Transform
       pos: -19.26131,30.296555
       parent: 1
 - proto: CMSemioticMedical
   entities:
-  - uid: 324
+  - uid: 246
     components:
     - type: Transform
       pos: -30.06708,-0.16838181
       parent: 1
-  - uid: 325
+  - uid: 247
     components:
     - type: Transform
       pos: -29.449661,20.78368
       parent: 1
 - proto: CMSemioticNorth
   entities:
-  - uid: 326
+  - uid: 248
     components:
     - type: Transform
       pos: -28.621536,20.799305
       parent: 1
 - proto: CMSemioticOne
   entities:
-  - uid: 327
+  - uid: 249
     components:
     - type: Transform
       pos: -37.934208,41.798008
       parent: 1
 - proto: CMSemioticOpens_up
   entities:
-  - uid: 328
+  - uid: 250
     components:
     - type: Transform
       pos: -33.12887,5.2652617
       parent: 1
 - proto: CMSemioticSilicon_storage
   entities:
-  - uid: 329
+  - uid: 251
     components:
     - type: Transform
       pos: -37.984505,29.690228
       parent: 1
 - proto: CMSemioticSouth
   entities:
-  - uid: 330
+  - uid: 252
     components:
     - type: Transform
       pos: -29.097618,7.3590117
       parent: 1
 - proto: CMSemioticTerminal
   entities:
-  - uid: 331
+  - uid: 253
     components:
     - type: Transform
       pos: -19.329203,-1.7358961
       parent: 1
-  - uid: 332
+  - uid: 254
     components:
     - type: Transform
       pos: -23.22333,-4.1840067
       parent: 1
 - proto: CMSemioticThree
   entities:
-  - uid: 333
+  - uid: 255
     components:
     - type: Transform
       pos: -20.465763,38.78495
       parent: 1
 - proto: CMSemioticTwo
   entities:
-  - uid: 334
+  - uid: 256
     components:
     - type: Transform
       pos: -37.949833,34.744625
       parent: 1
 - proto: CMSemioticWater
   entities:
-  - uid: 335
+  - uid: 257
     components:
     - type: Transform
       pos: -7.138481,1.31936
       parent: 1
-  - uid: 336
+  - uid: 258
     components:
     - type: Transform
       pos: -6.747856,8.22561
       parent: 1
 - proto: CMSemioticWest
   entities:
-  - uid: 337
+  - uid: 259
     components:
     - type: Transform
       pos: -17.512646,5.4749312
       parent: 1
 - proto: CMShower
   entities:
-  - uid: 338
+  - uid: 260
     components:
     - type: Transform
       pos: -7.4866986,7.7420273
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 339
+  - uid: 261
     components:
     - type: Transform
       pos: -6.4710736,7.7264023
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 340
+  - uid: 262
     components:
     - type: Transform
       pos: -5.4866986,7.7576523
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 341
+  - uid: 263
     components:
     - type: Transform
       pos: -4.4710736,7.7576523
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 342
+  - uid: 264
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -4468,7 +4028,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 343
+  - uid: 265
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -4476,7 +4036,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 344
+  - uid: 266
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -4484,7 +4044,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 345
+  - uid: 267
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -4494,168 +4054,168 @@ entities:
       fixtures: {}
 - proto: CMSink
   entities:
-  - uid: 346
+  - uid: 268
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 0.7512665,11.621121
       parent: 1
-  - uid: 347
+  - uid: 269
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 0.7512665,10.605496
       parent: 1
-  - uid: 348
+  - uid: 270
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 0.7512665,12.589871
       parent: 1
-  - uid: 349
+  - uid: 271
     components:
     - type: Transform
       pos: -11.492132,6.950481
       parent: 1
-  - uid: 350
+  - uid: 272
     components:
     - type: Transform
       pos: -13.462295,51.101097
       parent: 1
 - proto: CMSMESBasic
   entities:
-  - uid: 351
+  - uid: 273
     components:
     - type: Transform
       pos: -25.5,21.5
       parent: 1
-  - uid: 352
+  - uid: 274
     components:
     - type: Transform
       pos: -23.5,21.5
       parent: 1
 - proto: CMTableAlmayer
   entities:
-  - uid: 353
+  - uid: 275
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -0.5,13.5
       parent: 1
-  - uid: 354
+  - uid: 276
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -4.5,-4.5
       parent: 1
-  - uid: 355
+  - uid: 277
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -4.5,-3.5
       parent: 1
-  - uid: 356
+  - uid: 278
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -3.5,-3.5
       parent: 1
-  - uid: 357
+  - uid: 279
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -4.5,-7.5
       parent: 1
-  - uid: 358
+  - uid: 280
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -4.5,-8.5
       parent: 1
-  - uid: 359
+  - uid: 281
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -3.5,-8.5
       parent: 1
-  - uid: 360
+  - uid: 282
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -0.5,-5.5
       parent: 1
-  - uid: 361
+  - uid: 283
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -0.5,-6.5
       parent: 1
-  - uid: 362
+  - uid: 284
     components:
     - type: Transform
       pos: -25.5,-4.5
       parent: 1
-  - uid: 363
+  - uid: 285
     components:
     - type: Transform
       pos: -23.5,-3.5
       parent: 1
-  - uid: 364
+  - uid: 286
     components:
     - type: Transform
       pos: -23.5,-2.5
       parent: 1
-  - uid: 365
+  - uid: 287
     components:
     - type: Transform
       pos: -23.5,-1.5
       parent: 1
-  - uid: 366
+  - uid: 288
     components:
     - type: Transform
       pos: -30.5,-1.5
       parent: 1
-  - uid: 367
+  - uid: 289
     components:
     - type: Transform
       pos: -31.5,-1.5
       parent: 1
-  - uid: 368
+  - uid: 290
     components:
     - type: Transform
       pos: -31.5,-2.5
       parent: 1
-  - uid: 369
+  - uid: 291
     components:
     - type: Transform
       pos: -24.5,18.5
       parent: 1
-  - uid: 370
+  - uid: 292
     components:
     - type: Transform
       pos: -22.5,18.5
       parent: 1
-  - uid: 371
+  - uid: 293
     components:
     - type: Transform
       pos: -19.5,42.5
       parent: 1
-  - uid: 372
+  - uid: 294
     components:
     - type: Transform
       pos: -27.5,30.5
       parent: 1
-  - uid: 373
+  - uid: 295
     components:
     - type: Transform
       pos: -26.5,30.5
       parent: 1
-  - uid: 374
+  - uid: 296
     components:
     - type: Transform
       pos: -25.5,30.5
       parent: 1
-  - uid: 375
+  - uid: 297
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -4663,209 +4223,209 @@ entities:
       parent: 1
 - proto: CMTableReinforcedRequisition
   entities:
-  - uid: 376
+  - uid: 298
     components:
     - type: Transform
       pos: -13.5,4.5
       parent: 1
-  - uid: 377
+  - uid: 299
     components:
     - type: Transform
       pos: -19.5,-2.5
       parent: 1
-  - uid: 378
+  - uid: 300
     components:
     - type: Transform
       pos: -18.5,-2.5
       parent: 1
-  - uid: 379
+  - uid: 301
     components:
     - type: Transform
       pos: -20.5,-7.5
       parent: 1
-  - uid: 380
+  - uid: 302
     components:
     - type: Transform
       pos: -19.5,-7.5
       parent: 1
-  - uid: 381
+  - uid: 303
     components:
     - type: Transform
       pos: -9.5,-3.5
       parent: 1
-  - uid: 382
+  - uid: 304
     components:
     - type: Transform
       pos: -8.5,-3.5
       parent: 1
-  - uid: 383
+  - uid: 305
     components:
     - type: Transform
       pos: -7.5,-3.5
       parent: 1
-  - uid: 384
+  - uid: 306
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -8.5,-6.5
       parent: 1
-  - uid: 385
+  - uid: 307
     components:
     - type: Transform
       pos: -19.5,-4.5
       parent: 1
-  - uid: 386
+  - uid: 308
     components:
     - type: Transform
       pos: -13.5,3.5
       parent: 1
-  - uid: 387
+  - uid: 309
     components:
     - type: Transform
       pos: -14.5,4.5
       parent: 1
-  - uid: 388
+  - uid: 310
     components:
     - type: Transform
       pos: -14.5,3.5
       parent: 1
-  - uid: 389
+  - uid: 311
     components:
     - type: Transform
       pos: -14.5,2.5
       parent: 1
-  - uid: 390
+  - uid: 312
     components:
     - type: Transform
       pos: -13.5,2.5
       parent: 1
-  - uid: 391
+  - uid: 313
     components:
     - type: Transform
       pos: -10.5,7.5
       parent: 1
-  - uid: 392
+  - uid: 314
     components:
     - type: Transform
       pos: -9.5,7.5
       parent: 1
-  - uid: 393
+  - uid: 315
     components:
     - type: Transform
       pos: -17.5,7.5
       parent: 1
-  - uid: 394
+  - uid: 316
     components:
     - type: Transform
       pos: -18.5,7.5
       parent: 1
-  - uid: 395
+  - uid: 317
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -25.5,0.5
       parent: 1
-  - uid: 396
+  - uid: 318
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -24.5,0.5
       parent: 1
-  - uid: 397
+  - uid: 319
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -23.5,0.5
       parent: 1
-  - uid: 398
+  - uid: 320
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -22.5,0.5
       parent: 1
-  - uid: 399
+  - uid: 321
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,0.5
       parent: 1
-  - uid: 400
+  - uid: 322
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -21.5,0.5
       parent: 1
-  - uid: 401
+  - uid: 323
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,6.5
       parent: 1
-  - uid: 402
+  - uid: 324
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -21.5,6.5
       parent: 1
-  - uid: 403
+  - uid: 325
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -26.5,6.5
       parent: 1
-  - uid: 404
+  - uid: 326
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -18.5,52.5
       parent: 1
-  - uid: 405
+  - uid: 327
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -19.5,52.5
       parent: 1
-  - uid: 406
+  - uid: 328
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -19.5,51.5
       parent: 1
-  - uid: 407
+  - uid: 329
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -19.5,50.5
       parent: 1
-  - uid: 408
+  - uid: 330
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -18.5,50.5
       parent: 1
-  - uid: 409
+  - uid: 331
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -17.5,50.5
       parent: 1
-  - uid: 410
+  - uid: 332
     components:
     - type: Transform
       pos: -14.5,48.5
       parent: 1
-  - uid: 411
+  - uid: 333
     components:
     - type: Transform
       pos: -13.5,48.5
       parent: 1
-  - uid: 412
+  - uid: 334
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -40.5,31.5
       parent: 1
-  - uid: 413
+  - uid: 335
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -4873,13 +4433,13 @@ entities:
       parent: 1
 - proto: CMToiletEmpty
   entities:
-  - uid: 414
+  - uid: 336
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -4.5,10.5
       parent: 1
-  - uid: 415
+  - uid: 337
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -4887,28 +4447,28 @@ entities:
       parent: 1
 - proto: CMVendorBlood
   entities:
-  - uid: 416
+  - uid: 338
     components:
     - type: Transform
       pos: -24.5,-1.5
       parent: 1
 - proto: CMVendorCoffee
   entities:
-  - uid: 417
+  - uid: 339
     components:
     - type: Transform
       pos: -32.043076,5.903133
       parent: 1
 - proto: CMVendorElectronics
   entities:
-  - uid: 418
+  - uid: 340
     components:
     - type: Transform
       pos: -23.5,24.5
       parent: 1
 - proto: CMVendorTool
   entities:
-  - uid: 419
+  - uid: 341
     components:
     - type: Transform
       pos: -22.5,24.5
@@ -4917,7 +4477,7 @@ entities:
     - AccessReader
 - proto: CMVentPump
   entities:
-  - uid: 420
+  - uid: 342
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -4929,7 +4489,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 421
+  - uid: 343
     components:
     - type: Transform
       pos: -9.5,-4.5
@@ -4940,7 +4500,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 422
+  - uid: 344
     components:
     - type: Transform
       pos: -11.5,-5.5
@@ -4951,7 +4511,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 423
+  - uid: 345
     components:
     - type: Transform
       pos: -16.5,-5.5
@@ -4962,7 +4522,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 424
+  - uid: 346
     components:
     - type: Transform
       pos: -18.5,-3.5
@@ -4973,7 +4533,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 425
+  - uid: 347
     components:
     - type: Transform
       pos: -18.5,-6.5
@@ -4984,7 +4544,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 426
+  - uid: 348
     components:
     - type: Transform
       pos: -18.5,-0.5
@@ -4995,7 +4555,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 427
+  - uid: 349
     components:
     - type: Transform
       pos: -1.5,12.5
@@ -5006,7 +4566,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 428
+  - uid: 350
     components:
     - type: Transform
       pos: -18.5,4.5
@@ -5017,7 +4577,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 429
+  - uid: 351
     components:
     - type: Transform
       pos: -9.5,4.5
@@ -5028,7 +4588,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 430
+  - uid: 352
     components:
     - type: Transform
       pos: -9.5,-0.5
@@ -5039,7 +4599,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 431
+  - uid: 353
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5051,7 +4611,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 432
+  - uid: 354
     components:
     - type: Transform
       pos: -24.5,-3.5
@@ -5062,7 +4622,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 433
+  - uid: 355
     components:
     - type: Transform
       pos: -30.5,2.5
@@ -5073,7 +4633,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 434
+  - uid: 356
     components:
     - type: Transform
       pos: -30.5,4.5
@@ -5084,7 +4644,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 435
+  - uid: 357
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5096,7 +4656,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 436
+  - uid: 358
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5108,7 +4668,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 437
+  - uid: 359
     components:
     - type: Transform
       pos: -26.5,21.5
@@ -5119,7 +4679,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 438
+  - uid: 360
     components:
     - type: Transform
       pos: -22.5,21.5
@@ -5130,7 +4690,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 439
+  - uid: 361
     components:
     - type: Transform
       pos: -19.5,23.5
@@ -5141,7 +4701,7 @@ entities:
           showEnts: False
           occludes: True
           ents: []
-  - uid: 440
+  - uid: 362
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -5155,2504 +4715,2502 @@ entities:
           ents: []
 - proto: CMWallReinforcedHeavyAlmayer
   entities:
-  - uid: 441
+  - uid: 363
     components:
     - type: Transform
       pos: -11.5,-8.5
       parent: 1
-  - uid: 442
+  - uid: 364
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 0.5,-2.5
       parent: 1
-  - uid: 443
+  - uid: 365
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,-0.5
       parent: 1
-  - uid: 444
+  - uid: 366
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,9.5
       parent: 1
-  - uid: 445
+  - uid: 367
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,7.5
       parent: 1
-  - uid: 446
+  - uid: 368
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,6.5
       parent: 1
-  - uid: 447
+  - uid: 369
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,8.5
       parent: 1
-  - uid: 448
+  - uid: 370
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,3.5
       parent: 1
-  - uid: 449
+  - uid: 371
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,0.5
       parent: 1
-  - uid: 450
+  - uid: 372
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,2.5
       parent: 1
-  - uid: 451
+  - uid: 373
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,1.5
       parent: 1
-  - uid: 452
+  - uid: 374
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -0.5,-2.5
       parent: 1
-  - uid: 453
+  - uid: 375
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,-2.5
       parent: 1
-  - uid: 454
+  - uid: 376
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,-2.5
       parent: 1
-  - uid: 455
+  - uid: 377
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,-1.5
       parent: 1
-  - uid: 456
+  - uid: 378
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,4.5
       parent: 1
-  - uid: 457
+  - uid: 379
     components:
     - type: Transform
       pos: -2.5,-9.5
       parent: 1
-  - uid: 458
+  - uid: 380
     components:
     - type: Transform
       pos: -11.5,-9.5
       parent: 1
-  - uid: 459
+  - uid: 381
     components:
     - type: Transform
       pos: -10.5,-8.5
       parent: 1
-  - uid: 460
+  - uid: 382
     components:
     - type: Transform
-      anchored: False
       pos: -1.5,-2.5
       parent: 1
-  - uid: 461
+  - uid: 383
     components:
     - type: Transform
       pos: -4.5,-2.5
       parent: 1
-  - uid: 462
+  - uid: 384
     components:
     - type: Transform
       pos: -5.5,-2.5
       parent: 1
-  - uid: 463
+  - uid: 385
     components:
     - type: Transform
       pos: -4.5,-1.5
       parent: 1
-  - uid: 464
+  - uid: 386
     components:
     - type: Transform
       pos: -7.5,-1.5
       parent: 1
-  - uid: 465
+  - uid: 387
     components:
     - type: Transform
       pos: -5.5,-1.5
       parent: 1
-  - uid: 466
+  - uid: 388
     components:
     - type: Transform
       pos: -6.5,-1.5
       parent: 1
-  - uid: 467
+  - uid: 389
     components:
     - type: Transform
       pos: -12.5,-1.5
       parent: 1
-  - uid: 468
+  - uid: 390
     components:
     - type: Transform
       pos: -8.5,0.5
       parent: 1
-  - uid: 469
+  - uid: 391
     components:
     - type: Transform
       pos: -8.5,1.5
       parent: 1
-  - uid: 470
+  - uid: 392
     components:
     - type: Transform
       pos: -7.5,1.5
       parent: 1
-  - uid: 471
+  - uid: 393
     components:
     - type: Transform
       pos: -8.5,-0.5
       parent: 1
-  - uid: 472
+  - uid: 394
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -5.5,2.5
       parent: 1
-  - uid: 473
+  - uid: 395
     components:
     - type: Transform
       pos: -6.5,-3.5
       parent: 1
-  - uid: 474
+  - uid: 396
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -5.5,3.5
       parent: 1
-  - uid: 475
+  - uid: 397
     components:
     - type: Transform
       pos: -6.5,-7.5
       parent: 1
-  - uid: 476
+  - uid: 398
     components:
     - type: Transform
       pos: -3.5,3.5
       parent: 1
-  - uid: 477
+  - uid: 399
     components:
     - type: Transform
       pos: -2.5,3.5
       parent: 1
-  - uid: 478
+  - uid: 400
     components:
     - type: Transform
       pos: -1.5,3.5
       parent: 1
-  - uid: 479
+  - uid: 401
     components:
     - type: Transform
       pos: -1.5,4.5
       parent: 1
-  - uid: 480
+  - uid: 402
     components:
     - type: Transform
       pos: -1.5,2.5
       parent: 1
-  - uid: 481
+  - uid: 403
     components:
     - type: Transform
       pos: -9.5,-7.5
       parent: 1
-  - uid: 482
+  - uid: 404
     components:
     - type: Transform
       pos: -10.5,-7.5
       parent: 1
-  - uid: 483
+  - uid: 405
     components:
     - type: Transform
       pos: -6.5,-6.5
       parent: 1
-  - uid: 484
+  - uid: 406
     components:
     - type: Transform
       pos: -7.5,-7.5
       parent: 1
-  - uid: 485
+  - uid: 407
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -5.5,4.5
       parent: 1
-  - uid: 486
+  - uid: 408
     components:
     - type: Transform
       pos: -6.5,-4.5
       parent: 1
-  - uid: 487
+  - uid: 409
     components:
     - type: Transform
       pos: -6.5,-2.5
       parent: 1
-  - uid: 488
+  - uid: 410
     components:
     - type: Transform
       pos: -8.5,-7.5
       parent: 1
-  - uid: 489
+  - uid: 411
     components:
     - type: Transform
       pos: -6.5,-5.5
       parent: 1
-  - uid: 490
+  - uid: 412
     components:
     - type: Transform
       pos: 0.5,9.5
       parent: 1
-  - uid: 491
+  - uid: 413
     components:
     - type: Transform
       pos: -0.5,9.5
       parent: 1
-  - uid: 492
+  - uid: 414
     components:
     - type: Transform
       pos: -1.5,9.5
       parent: 1
-  - uid: 493
+  - uid: 415
     components:
     - type: Transform
       pos: -2.5,14.5
       parent: 1
-  - uid: 494
+  - uid: 416
     components:
     - type: Transform
       pos: -3.5,14.5
       parent: 1
-  - uid: 495
+  - uid: 417
     components:
     - type: Transform
       pos: -6.5,8.5
       parent: 1
-  - uid: 496
+  - uid: 418
     components:
     - type: Transform
       pos: -4.5,8.5
       parent: 1
-  - uid: 497
+  - uid: 419
     components:
     - type: Transform
       pos: -5.5,8.5
       parent: 1
-  - uid: 498
+  - uid: 420
     components:
     - type: Transform
       pos: -7.5,8.5
       parent: 1
-  - uid: 499
+  - uid: 421
     components:
     - type: Transform
       pos: -8.5,5.5
       parent: 1
-  - uid: 500
+  - uid: 422
     components:
     - type: Transform
       pos: -8.5,8.5
       parent: 1
-  - uid: 501
+  - uid: 423
     components:
     - type: Transform
       pos: -8.5,7.5
       parent: 1
-  - uid: 502
+  - uid: 424
     components:
     - type: Transform
       pos: -8.5,6.5
       parent: 1
-  - uid: 503
+  - uid: 425
     components:
     - type: Transform
       pos: -7.5,5.5
       parent: 1
-  - uid: 504
+  - uid: 426
     components:
     - type: Transform
       pos: -3.5,13.5
       parent: 1
-  - uid: 505
+  - uid: 427
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,12.5
       parent: 1
-  - uid: 506
+  - uid: 428
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,13.5
       parent: 1
-  - uid: 507
+  - uid: 429
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,11.5
       parent: 1
-  - uid: 508
+  - uid: 430
     components:
     - type: Transform
       pos: -3.5,11.5
       parent: 1
-  - uid: 509
+  - uid: 431
     components:
     - type: Transform
       pos: -3.5,9.5
       parent: 1
-  - uid: 510
+  - uid: 432
     components:
     - type: Transform
       pos: -4.5,11.5
       parent: 1
-  - uid: 511
+  - uid: 433
     components:
     - type: Transform
       pos: -4.5,9.5
       parent: 1
-  - uid: 512
+  - uid: 434
     components:
     - type: Transform
       pos: -5.5,9.5
       parent: 1
-  - uid: 513
+  - uid: 435
     components:
     - type: Transform
       pos: -1.5,14.5
       parent: 1
-  - uid: 514
+  - uid: 436
     components:
     - type: Transform
       pos: -0.5,14.5
       parent: 1
-  - uid: 515
+  - uid: 437
     components:
     - type: Transform
       pos: 0.5,14.5
       parent: 1
-  - uid: 516
+  - uid: 438
     components:
     - type: Transform
       pos: -5.5,11.5
       parent: 1
-  - uid: 517
+  - uid: 439
     components:
     - type: Transform
       pos: -4.5,-9.5
       parent: 1
-  - uid: 518
+  - uid: 440
     components:
     - type: Transform
       pos: -4.5,13.5
       parent: 1
-  - uid: 519
+  - uid: 441
     components:
     - type: Transform
       pos: -3.5,-9.5
       parent: 1
-  - uid: 520
+  - uid: 442
     components:
     - type: Transform
       pos: -5.5,13.5
       parent: 1
-  - uid: 521
+  - uid: 443
     components:
     - type: Transform
       pos: -5.5,12.5
       parent: 1
-  - uid: 522
+  - uid: 444
     components:
     - type: Transform
       pos: -5.5,10.5
       parent: 1
-  - uid: 523
+  - uid: 445
     components:
     - type: Transform
       pos: -5.5,-9.5
       parent: 1
-  - uid: 524
+  - uid: 446
     components:
     - type: Transform
       pos: -1.5,-9.5
       parent: 1
-  - uid: 525
+  - uid: 447
     components:
     - type: Transform
       pos: -0.5,-9.5
       parent: 1
-  - uid: 526
+  - uid: 448
     components:
     - type: Transform
       pos: 1.5,-6.5
       parent: 1
-  - uid: 527
+  - uid: 449
     components:
     - type: Transform
       pos: 1.5,-8.5
       parent: 1
-  - uid: 528
+  - uid: 450
     components:
     - type: Transform
       pos: 1.5,-5.5
       parent: 1
-  - uid: 529
+  - uid: 451
     components:
     - type: Transform
       pos: -12.5,-9.5
       parent: 1
-  - uid: 530
+  - uid: 452
     components:
     - type: Transform
       pos: 0.5,-9.5
       parent: 1
-  - uid: 531
+  - uid: 453
     components:
     - type: Transform
       pos: 1.5,-9.5
       parent: 1
-  - uid: 532
+  - uid: 454
     components:
     - type: Transform
       pos: 1.5,-3.5
       parent: 1
-  - uid: 533
+  - uid: 455
     components:
     - type: Transform
       pos: 1.5,-4.5
       parent: 1
-  - uid: 534
+  - uid: 456
     components:
     - type: Transform
       pos: 1.5,-7.5
       parent: 1
-  - uid: 535
+  - uid: 457
     components:
     - type: Transform
       pos: -13.5,-9.5
       parent: 1
-  - uid: 536
+  - uid: 458
     components:
     - type: Transform
       pos: -15.5,-9.5
       parent: 1
-  - uid: 537
+  - uid: 459
     components:
     - type: Transform
       pos: -14.5,-9.5
       parent: 1
-  - uid: 538
+  - uid: 460
     components:
     - type: Transform
       pos: -5.5,-4.5
       parent: 1
-  - uid: 539
+  - uid: 461
     components:
     - type: Transform
       pos: -5.5,-7.5
       parent: 1
-  - uid: 540
+  - uid: 462
     components:
     - type: Transform
       pos: -5.5,-8.5
       parent: 1
-  - uid: 541
+  - uid: 463
     components:
     - type: Transform
       pos: -8.5,-2.5
       parent: 1
-  - uid: 542
+  - uid: 464
     components:
     - type: Transform
       pos: -16.5,-9.5
       parent: 1
-  - uid: 543
+  - uid: 465
     components:
     - type: Transform
       pos: -15.5,8.5
       parent: 1
-  - uid: 544
+  - uid: 466
     components:
     - type: Transform
       pos: -12.5,8.5
       parent: 1
-  - uid: 545
+  - uid: 467
     components:
     - type: Transform
       pos: -10.5,8.5
       parent: 1
-  - uid: 546
+  - uid: 468
     components:
     - type: Transform
       pos: -11.5,7.5
       parent: 1
-  - uid: 547
+  - uid: 469
     components:
     - type: Transform
       pos: -11.5,8.5
       parent: 1
-  - uid: 548
+  - uid: 470
     components:
     - type: Transform
       pos: -19.5,8.5
       parent: 1
-  - uid: 549
+  - uid: 471
     components:
     - type: Transform
       pos: -17.5,8.5
       parent: 1
-  - uid: 550
+  - uid: 472
     components:
     - type: Transform
       pos: -18.5,8.5
       parent: 1
-  - uid: 551
+  - uid: 473
     components:
     - type: Transform
       pos: -14.5,8.5
       parent: 1
-  - uid: 552
+  - uid: 474
     components:
     - type: Transform
       pos: -17.5,5.5
       parent: 1
-  - uid: 553
+  - uid: 475
     components:
     - type: Transform
       pos: -16.5,8.5
       parent: 1
-  - uid: 554
+  - uid: 476
     components:
     - type: Transform
       pos: -9.5,8.5
       parent: 1
-  - uid: 555
+  - uid: 477
     components:
     - type: Transform
       pos: -13.5,8.5
       parent: 1
-  - uid: 556
+  - uid: 478
     components:
     - type: Transform
       pos: -27.5,0.5
       parent: 1
-  - uid: 557
+  - uid: 479
     components:
     - type: Transform
       pos: -10.5,-1.5
       parent: 1
-  - uid: 558
+  - uid: 480
     components:
     - type: Transform
       pos: -11.5,-1.5
       parent: 1
-  - uid: 559
+  - uid: 481
     components:
     - type: Transform
       pos: -9.5,-1.5
       parent: 1
-  - uid: 560
+  - uid: 482
     components:
     - type: Transform
       pos: -8.5,-1.5
       parent: 1
-  - uid: 561
+  - uid: 483
     components:
     - type: Transform
       pos: -10.5,-6.5
       parent: 1
-  - uid: 562
+  - uid: 484
     components:
     - type: Transform
       pos: -19.5,-1.5
       parent: 1
-  - uid: 563
+  - uid: 485
     components:
     - type: Transform
       pos: -18.5,-1.5
       parent: 1
-  - uid: 564
+  - uid: 486
     components:
     - type: Transform
       pos: -15.5,-1.5
       parent: 1
-  - uid: 565
+  - uid: 487
     components:
     - type: Transform
       pos: -21.5,-0.5
       parent: 1
-  - uid: 566
+  - uid: 488
     components:
     - type: Transform
       pos: -23.5,-0.5
       parent: 1
-  - uid: 567
+  - uid: 489
     components:
     - type: Transform
       pos: -22.5,-0.5
       parent: 1
-  - uid: 568
+  - uid: 490
     components:
     - type: Transform
       pos: -10.5,5.5
       parent: 1
-  - uid: 569
+  - uid: 491
     components:
     - type: Transform
       pos: -16.5,7.5
       parent: 1
-  - uid: 570
+  - uid: 492
     components:
     - type: Transform
       pos: -27.5,1.5
       parent: 1
-  - uid: 571
+  - uid: 493
     components:
     - type: Transform
       pos: -7.5,-2.5
       parent: 1
-  - uid: 572
+  - uid: 494
     components:
     - type: Transform
       pos: -10.5,-5.5
       parent: 1
-  - uid: 573
+  - uid: 495
     components:
     - type: Transform
       pos: -9.5,-2.5
       parent: 1
-  - uid: 574
+  - uid: 496
     components:
     - type: Transform
       pos: -10.5,-3.5
       parent: 1
-  - uid: 575
+  - uid: 497
     components:
     - type: Transform
       pos: -10.5,-2.5
       parent: 1
-  - uid: 576
+  - uid: 498
     components:
     - type: Transform
       pos: -20.5,-8.5
       parent: 1
-  - uid: 577
+  - uid: 499
     components:
     - type: Transform
       pos: -21.5,-8.5
       parent: 1
-  - uid: 578
+  - uid: 500
     components:
     - type: Transform
       pos: -20.5,-3.5
       parent: 1
-  - uid: 579
+  - uid: 501
     components:
     - type: Transform
       pos: -20.5,-5.5
       parent: 1
-  - uid: 580
+  - uid: 502
     components:
     - type: Transform
       pos: -20.5,-4.5
       parent: 1
-  - uid: 581
+  - uid: 503
     components:
     - type: Transform
       pos: -20.5,-2.5
       parent: 1
-  - uid: 582
+  - uid: 504
     components:
     - type: Transform
       pos: -17.5,-1.5
       parent: 1
-  - uid: 583
+  - uid: 505
     components:
     - type: Transform
       pos: -17.5,-7.5
       parent: 1
-  - uid: 584
+  - uid: 506
     components:
     - type: Transform
       pos: -17.5,-5.5
       parent: 1
-  - uid: 585
+  - uid: 507
     components:
     - type: Transform
       pos: -17.5,-2.5
       parent: 1
-  - uid: 586
+  - uid: 508
     components:
     - type: Transform
       pos: -19.5,-5.5
       parent: 1
-  - uid: 587
+  - uid: 509
     components:
     - type: Transform
       pos: -18.5,-5.5
       parent: 1
-  - uid: 588
+  - uid: 510
     components:
     - type: Transform
       pos: -18.5,-8.5
       parent: 1
-  - uid: 589
+  - uid: 511
     components:
     - type: Transform
       pos: -21.5,-6.5
       parent: 1
-  - uid: 590
+  - uid: 512
     components:
     - type: Transform
       pos: -21.5,-7.5
       parent: 1
-  - uid: 591
+  - uid: 513
     components:
     - type: Transform
       pos: -21.5,-5.5
       parent: 1
-  - uid: 592
+  - uid: 514
     components:
     - type: Transform
       pos: -19.5,-8.5
       parent: 1
-  - uid: 593
+  - uid: 515
     components:
     - type: Transform
       pos: -16.5,-8.5
       parent: 1
-  - uid: 594
+  - uid: 516
     components:
     - type: Transform
       pos: -17.5,-8.5
       parent: 1
-  - uid: 595
+  - uid: 517
     components:
     - type: Transform
       pos: -22.5,-4.5
       parent: 1
-  - uid: 596
+  - uid: 518
     components:
     - type: Transform
       pos: -22.5,-5.5
       parent: 1
-  - uid: 597
+  - uid: 519
     components:
     - type: Transform
       pos: -22.5,-1.5
       parent: 1
-  - uid: 598
+  - uid: 520
     components:
     - type: Transform
       pos: -22.5,-2.5
       parent: 1
-  - uid: 599
+  - uid: 521
     components:
     - type: Transform
       pos: -22.5,-3.5
       parent: 1
-  - uid: 600
+  - uid: 522
     components:
     - type: Transform
       pos: -20.5,-0.5
       parent: 1
-  - uid: 601
+  - uid: 523
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -19.5,0.5
       parent: 1
-  - uid: 602
+  - uid: 524
     components:
     - type: Transform
       pos: -19.5,-0.5
       parent: 1
-  - uid: 603
+  - uid: 525
     components:
     - type: Transform
       pos: -23.5,-4.5
       parent: 1
-  - uid: 604
+  - uid: 526
     components:
     - type: Transform
       pos: -24.5,-5.5
       parent: 1
-  - uid: 605
+  - uid: 527
     components:
     - type: Transform
       pos: -25.5,-5.5
       parent: 1
-  - uid: 606
+  - uid: 528
     components:
     - type: Transform
       pos: -23.5,-5.5
       parent: 1
-  - uid: 607
+  - uid: 529
     components:
     - type: Transform
       pos: -26.5,7.5
       parent: 1
-  - uid: 608
+  - uid: 530
     components:
     - type: Transform
       pos: -24.5,7.5
       parent: 1
-  - uid: 609
+  - uid: 531
     components:
     - type: Transform
       pos: -19.5,1.5
       parent: 1
-  - uid: 610
+  - uid: 532
     components:
     - type: Transform
       pos: -22.5,7.5
       parent: 1
-  - uid: 611
+  - uid: 533
     components:
     - type: Transform
       pos: -19.5,5.5
       parent: 1
-  - uid: 612
+  - uid: 534
     components:
     - type: Transform
       pos: -19.5,7.5
       parent: 1
-  - uid: 613
+  - uid: 535
     components:
     - type: Transform
       pos: -27.5,7.5
       parent: 1
-  - uid: 614
+  - uid: 536
     components:
     - type: Transform
       pos: -25.5,7.5
       parent: 1
-  - uid: 615
+  - uid: 537
     components:
     - type: Transform
       pos: -31.5,7.5
       parent: 1
-  - uid: 616
+  - uid: 538
     components:
     - type: Transform
       pos: -28.5,7.5
       parent: 1
-  - uid: 617
+  - uid: 539
     components:
     - type: Transform
       pos: -30.5,7.5
       parent: 1
-  - uid: 618
+  - uid: 540
     components:
     - type: Transform
       pos: -29.5,7.5
       parent: 1
-  - uid: 619
+  - uid: 541
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -36.5,1.5
       parent: 1
-  - uid: 620
+  - uid: 542
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -33.5,6.5
       parent: 1
-  - uid: 621
+  - uid: 543
     components:
     - type: Transform
       pos: -32.5,6.5
       parent: 1
-  - uid: 622
+  - uid: 544
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -35.5,5.5
       parent: 1
-  - uid: 623
+  - uid: 545
     components:
     - type: Transform
       pos: -31.5,6.5
       parent: 1
-  - uid: 624
+  - uid: 546
     components:
     - type: Transform
       pos: -27.5,5.5
       parent: 1
-  - uid: 625
+  - uid: 547
     components:
     - type: Transform
       pos: -19.5,6.5
       parent: 1
-  - uid: 626
+  - uid: 548
     components:
     - type: Transform
       pos: -31.5,-5.5
       parent: 1
-  - uid: 627
+  - uid: 549
     components:
     - type: Transform
       pos: -29.5,-5.5
       parent: 1
-  - uid: 628
+  - uid: 550
     components:
     - type: Transform
       pos: -29.5,-4.5
       parent: 1
-  - uid: 629
+  - uid: 551
     components:
     - type: Transform
       pos: -27.5,-5.5
       parent: 1
-  - uid: 630
+  - uid: 552
     components:
     - type: Transform
       pos: -30.5,-5.5
       parent: 1
-  - uid: 631
+  - uid: 553
     components:
     - type: Transform
       pos: -28.5,-5.5
       parent: 1
-  - uid: 632
+  - uid: 554
     components:
     - type: Transform
       pos: -26.5,-1.5
       parent: 1
-  - uid: 633
+  - uid: 555
     components:
     - type: Transform
       pos: -26.5,-5.5
       parent: 1
-  - uid: 634
+  - uid: 556
     components:
     - type: Transform
       pos: -32.5,-5.5
       parent: 1
-  - uid: 635
+  - uid: 557
     components:
     - type: Transform
       pos: -29.5,-5.5
       parent: 1
-  - uid: 636
+  - uid: 558
     components:
     - type: Transform
       pos: -23.5,7.5
       parent: 1
-  - uid: 637
+  - uid: 559
     components:
     - type: Transform
       pos: -20.5,7.5
       parent: 1
-  - uid: 638
+  - uid: 560
     components:
     - type: Transform
       pos: -21.5,7.5
       parent: 1
-  - uid: 639
+  - uid: 561
     components:
     - type: Transform
       pos: -26.5,-0.5
       parent: 1
-  - uid: 640
+  - uid: 562
     components:
     - type: Transform
       pos: -26.5,0.5
       parent: 1
-  - uid: 641
+  - uid: 563
     components:
     - type: Transform
       pos: -27.5,-0.5
       parent: 1
-  - uid: 642
+  - uid: 564
     components:
     - type: Transform
       pos: -25.5,-0.5
       parent: 1
-  - uid: 643
+  - uid: 565
     components:
     - type: Transform
       pos: -32.5,-3.5
       parent: 1
-  - uid: 644
+  - uid: 566
     components:
     - type: Transform
       pos: -27.5,6.5
       parent: 1
-  - uid: 645
+  - uid: 567
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -36.5,5.5
       parent: 1
-  - uid: 646
+  - uid: 568
     components:
     - type: Transform
       pos: -33.5,1.5
       parent: 1
-  - uid: 647
+  - uid: 569
     components:
     - type: Transform
       pos: -33.5,0.5
       parent: 1
-  - uid: 648
+  - uid: 570
     components:
     - type: Transform
       pos: -31.5,0.5
       parent: 1
-  - uid: 649
+  - uid: 571
     components:
     - type: Transform
       pos: -32.5,-2.5
       parent: 1
-  - uid: 650
+  - uid: 572
     components:
     - type: Transform
       pos: -32.5,-4.5
       parent: 1
-  - uid: 651
+  - uid: 573
     components:
     - type: Transform
       pos: -30.5,-0.5
       parent: 1
-  - uid: 652
+  - uid: 574
     components:
     - type: Transform
       pos: -32.5,-1.5
       parent: 1
-  - uid: 653
+  - uid: 575
     components:
     - type: Transform
       pos: -32.5,-0.5
       parent: 1
-  - uid: 654
+  - uid: 576
     components:
     - type: Transform
       pos: -32.5,0.5
       parent: 1
-  - uid: 655
+  - uid: 577
     components:
     - type: Transform
       pos: -31.5,-0.5
       parent: 1
-  - uid: 656
+  - uid: 578
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -4.5,3.5
       parent: 1
-  - uid: 657
+  - uid: 579
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,5.5
       parent: 1
-  - uid: 658
+  - uid: 580
     components:
     - type: Transform
       pos: -3.5,-2.5
       parent: 1
-  - uid: 659
+  - uid: 581
     components:
     - type: Transform
       pos: -5.5,-3.5
       parent: 1
-  - uid: 660
+  - uid: 582
     components:
     - type: Transform
       pos: -20.5,-1.5
       parent: 1
-  - uid: 661
+  - uid: 583
     components:
     - type: Transform
       pos: -21.5,-1.5
       parent: 1
-  - uid: 662
+  - uid: 584
     components:
     - type: Transform
       pos: -21.5,-4.5
       parent: 1
-  - uid: 663
+  - uid: 585
     components:
     - type: Transform
       pos: -21.5,-3.5
       parent: 1
-  - uid: 664
+  - uid: 586
     components:
     - type: Transform
       pos: -21.5,-2.5
       parent: 1
-  - uid: 665
+  - uid: 587
     components:
     - type: Transform
       pos: -16.5,-1.5
       parent: 1
-  - uid: 666
+  - uid: 588
     components:
     - type: Transform
       pos: -17.5,-4.5
       parent: 1
-  - uid: 667
+  - uid: 589
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 2.5,9.5
       parent: 1
-  - uid: 668
+  - uid: 590
     components:
     - type: Transform
       pos: 0.5,13.5
       parent: 1
-  - uid: 669
+  - uid: 591
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,10.5
       parent: 1
-  - uid: 670
+  - uid: 592
     components:
     - type: Transform
       pos: -26.5,-4.5
       parent: 1
-  - uid: 671
+  - uid: 593
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -34.5,5.5
       parent: 1
-  - uid: 672
+  - uid: 594
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -34.5,1.5
       parent: 1
-  - uid: 673
+  - uid: 595
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -33.5,5.5
       parent: 1
-  - uid: 674
+  - uid: 596
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -35.5,1.5
       parent: 1
-  - uid: 675
+  - uid: 597
     components:
     - type: Transform
       pos: -27.5,25.5
       parent: 1
-  - uid: 676
+  - uid: 598
     components:
     - type: Transform
       pos: -26.5,25.5
       parent: 1
-  - uid: 677
+  - uid: 599
     components:
     - type: Transform
       pos: -27.5,24.5
       parent: 1
-  - uid: 678
+  - uid: 600
     components:
     - type: Transform
       pos: -27.5,22.5
       parent: 1
-  - uid: 679
+  - uid: 601
     components:
     - type: Transform
       pos: -27.5,21.5
       parent: 1
-  - uid: 680
+  - uid: 602
     components:
     - type: Transform
       pos: -27.5,20.5
       parent: 1
-  - uid: 681
+  - uid: 603
     components:
     - type: Transform
       pos: -27.5,19.5
       parent: 1
-  - uid: 682
+  - uid: 604
     components:
     - type: Transform
       pos: -27.5,18.5
       parent: 1
-  - uid: 683
+  - uid: 605
     components:
     - type: Transform
       pos: -27.5,17.5
       parent: 1
-  - uid: 684
+  - uid: 606
     components:
     - type: Transform
       pos: -27.5,23.5
       parent: 1
-  - uid: 685
+  - uid: 607
     components:
     - type: Transform
       pos: -26.5,17.5
       parent: 1
-  - uid: 686
+  - uid: 608
     components:
     - type: Transform
       pos: -25.5,17.5
       parent: 1
-  - uid: 687
+  - uid: 609
     components:
     - type: Transform
       pos: -24.5,17.5
       parent: 1
-  - uid: 688
+  - uid: 610
     components:
     - type: Transform
       pos: -23.5,17.5
       parent: 1
-  - uid: 689
+  - uid: 611
     components:
     - type: Transform
       pos: -22.5,17.5
       parent: 1
-  - uid: 690
+  - uid: 612
     components:
     - type: Transform
       pos: -21.5,17.5
       parent: 1
-  - uid: 691
+  - uid: 613
     components:
     - type: Transform
       pos: -21.5,18.5
       parent: 1
-  - uid: 692
+  - uid: 614
     components:
     - type: Transform
       pos: -21.5,19.5
       parent: 1
-  - uid: 693
+  - uid: 615
     components:
     - type: Transform
       pos: -21.5,20.5
       parent: 1
-  - uid: 694
+  - uid: 616
     components:
     - type: Transform
       pos: -21.5,21.5
       parent: 1
-  - uid: 695
+  - uid: 617
     components:
     - type: Transform
       pos: -21.5,22.5
       parent: 1
-  - uid: 696
+  - uid: 618
     components:
     - type: Transform
       pos: -21.5,23.5
       parent: 1
-  - uid: 697
+  - uid: 619
     components:
     - type: Transform
       pos: -21.5,24.5
       parent: 1
-  - uid: 698
+  - uid: 620
     components:
     - type: Transform
       pos: -21.5,25.5
       parent: 1
-  - uid: 699
+  - uid: 621
     components:
     - type: Transform
       pos: -22.5,25.5
       parent: 1
-  - uid: 700
+  - uid: 622
     components:
     - type: Transform
       pos: -19.5,20.5
       parent: 1
-  - uid: 701
+  - uid: 623
     components:
     - type: Transform
       pos: -18.5,20.5
       parent: 1
-  - uid: 702
+  - uid: 624
     components:
     - type: Transform
       pos: -17.5,20.5
       parent: 1
-  - uid: 703
+  - uid: 625
     components:
     - type: Transform
       pos: -16.5,20.5
       parent: 1
-  - uid: 704
+  - uid: 626
     components:
     - type: Transform
       pos: -15.5,20.5
       parent: 1
-  - uid: 705
+  - uid: 627
     components:
     - type: Transform
       pos: -13.5,20.5
       parent: 1
-  - uid: 706
+  - uid: 628
     components:
     - type: Transform
       pos: -12.5,20.5
       parent: 1
-  - uid: 707
+  - uid: 629
     components:
     - type: Transform
       pos: -14.5,20.5
       parent: 1
-  - uid: 708
+  - uid: 630
     components:
     - type: Transform
       pos: -20.5,20.5
       parent: 1
-  - uid: 709
+  - uid: 631
     components:
     - type: Transform
       pos: -12.5,21.5
       parent: 1
-  - uid: 710
+  - uid: 632
     components:
     - type: Transform
       pos: -12.5,22.5
       parent: 1
-  - uid: 711
+  - uid: 633
     components:
     - type: Transform
       pos: -12.5,23.5
       parent: 1
-  - uid: 712
+  - uid: 634
     components:
     - type: Transform
       pos: -12.5,24.5
       parent: 1
-  - uid: 713
+  - uid: 635
     components:
     - type: Transform
       pos: -12.5,25.5
       parent: 1
-  - uid: 714
+  - uid: 636
     components:
     - type: Transform
       pos: -14.5,25.5
       parent: 1
-  - uid: 715
+  - uid: 637
     components:
     - type: Transform
       pos: -15.5,25.5
       parent: 1
-  - uid: 716
+  - uid: 638
     components:
     - type: Transform
       pos: -16.5,25.5
       parent: 1
-  - uid: 717
+  - uid: 639
     components:
     - type: Transform
       pos: -17.5,25.5
       parent: 1
-  - uid: 718
+  - uid: 640
     components:
     - type: Transform
       pos: -18.5,25.5
       parent: 1
-  - uid: 719
+  - uid: 641
     components:
     - type: Transform
       pos: -13.5,25.5
       parent: 1
-  - uid: 720
+  - uid: 642
     components:
     - type: Transform
       pos: -11.5,25.5
       parent: 1
-  - uid: 721
+  - uid: 643
     components:
     - type: Transform
       pos: -10.5,25.5
       parent: 1
-  - uid: 722
+  - uid: 644
     components:
     - type: Transform
       pos: -9.5,25.5
       parent: 1
-  - uid: 723
+  - uid: 645
     components:
     - type: Transform
       pos: -9.5,29.5
       parent: 1
-  - uid: 724
+  - uid: 646
     components:
     - type: Transform
       pos: -10.5,29.5
       parent: 1
-  - uid: 725
+  - uid: 647
     components:
     - type: Transform
       pos: -11.5,29.5
       parent: 1
-  - uid: 726
+  - uid: 648
     components:
     - type: Transform
       pos: -13.5,29.5
       parent: 1
-  - uid: 727
+  - uid: 649
     components:
     - type: Transform
       pos: -13.5,30.5
       parent: 1
-  - uid: 728
+  - uid: 650
     components:
     - type: Transform
       pos: -12.5,30.5
       parent: 1
-  - uid: 729
+  - uid: 651
     components:
     - type: Transform
       pos: -11.5,30.5
       parent: 1
-  - uid: 730
+  - uid: 652
     components:
     - type: Transform
       pos: -18.5,29.5
       parent: 1
-  - uid: 731
+  - uid: 653
     components:
     - type: Transform
       pos: -18.5,30.5
       parent: 1
-  - uid: 732
+  - uid: 654
     components:
     - type: Transform
       pos: -19.5,30.5
       parent: 1
-  - uid: 733
+  - uid: 655
     components:
     - type: Transform
       pos: -20.5,30.5
       parent: 1
-  - uid: 734
+  - uid: 656
     components:
     - type: Transform
       pos: -20.5,29.5
       parent: 1
-  - uid: 735
+  - uid: 657
     components:
     - type: Transform
       pos: -20.5,31.5
       parent: 1
-  - uid: 736
+  - uid: 658
     components:
     - type: Transform
       pos: -20.5,32.5
       parent: 1
-  - uid: 737
+  - uid: 659
     components:
     - type: Transform
       pos: -20.5,33.5
       parent: 1
-  - uid: 738
+  - uid: 660
     components:
     - type: Transform
       pos: -20.5,34.5
       parent: 1
-  - uid: 739
+  - uid: 661
     components:
     - type: Transform
       pos: -20.5,35.5
       parent: 1
-  - uid: 740
+  - uid: 662
     components:
     - type: Transform
       pos: -20.5,37.5
       parent: 1
-  - uid: 741
+  - uid: 663
     components:
     - type: Transform
       pos: -20.5,38.5
       parent: 1
-  - uid: 742
+  - uid: 664
     components:
     - type: Transform
       pos: -20.5,36.5
       parent: 1
-  - uid: 743
+  - uid: 665
     components:
     - type: Transform
       pos: -19.5,37.5
       parent: 1
-  - uid: 744
+  - uid: 666
     components:
     - type: Transform
       pos: -19.5,36.5
       parent: 1
-  - uid: 745
+  - uid: 667
     components:
     - type: Transform
       pos: -18.5,37.5
       parent: 1
-  - uid: 746
+  - uid: 668
     components:
     - type: Transform
       pos: -18.5,36.5
       parent: 1
-  - uid: 747
+  - uid: 669
     components:
     - type: Transform
       pos: -17.5,37.5
       parent: 1
-  - uid: 748
+  - uid: 670
     components:
     - type: Transform
       pos: -17.5,36.5
       parent: 1
-  - uid: 749
+  - uid: 671
     components:
     - type: Transform
       pos: -16.5,37.5
       parent: 1
-  - uid: 750
+  - uid: 672
     components:
     - type: Transform
       pos: -16.5,36.5
       parent: 1
-  - uid: 751
+  - uid: 673
     components:
     - type: Transform
       pos: -15.5,37.5
       parent: 1
-  - uid: 752
+  - uid: 674
     components:
     - type: Transform
       pos: -15.5,36.5
       parent: 1
-  - uid: 753
+  - uid: 675
     components:
     - type: Transform
       pos: -14.5,37.5
       parent: 1
-  - uid: 754
+  - uid: 676
     components:
     - type: Transform
       pos: -14.5,36.5
       parent: 1
-  - uid: 755
+  - uid: 677
     components:
     - type: Transform
       pos: -13.5,37.5
       parent: 1
-  - uid: 756
+  - uid: 678
     components:
     - type: Transform
       pos: -13.5,36.5
       parent: 1
-  - uid: 757
+  - uid: 679
     components:
     - type: Transform
       pos: -12.5,37.5
       parent: 1
-  - uid: 758
+  - uid: 680
     components:
     - type: Transform
       pos: -12.5,36.5
       parent: 1
-  - uid: 759
+  - uid: 681
     components:
     - type: Transform
       pos: -11.5,36.5
       parent: 1
-  - uid: 760
+  - uid: 682
     components:
     - type: Transform
       pos: -11.5,35.5
       parent: 1
-  - uid: 761
+  - uid: 683
     components:
     - type: Transform
       pos: -11.5,34.5
       parent: 1
-  - uid: 762
+  - uid: 684
     components:
     - type: Transform
       pos: -11.5,33.5
       parent: 1
-  - uid: 763
+  - uid: 685
     components:
     - type: Transform
       pos: -11.5,32.5
       parent: 1
-  - uid: 764
+  - uid: 686
     components:
     - type: Transform
       pos: -11.5,31.5
       parent: 1
-  - uid: 765
+  - uid: 687
     components:
     - type: Transform
       pos: -12.5,38.5
       parent: 1
-  - uid: 766
+  - uid: 688
     components:
     - type: Transform
       pos: -12.5,39.5
       parent: 1
-  - uid: 767
+  - uid: 689
     components:
     - type: Transform
       pos: -12.5,40.5
       parent: 1
-  - uid: 768
+  - uid: 690
     components:
     - type: Transform
       pos: -12.5,41.5
       parent: 1
-  - uid: 769
+  - uid: 691
     components:
     - type: Transform
       pos: -12.5,42.5
       parent: 1
-  - uid: 770
+  - uid: 692
     components:
     - type: Transform
       pos: -20.5,42.5
       parent: 1
-  - uid: 771
+  - uid: 693
     components:
     - type: Transform
       pos: -20.5,43.5
       parent: 1
-  - uid: 772
+  - uid: 694
     components:
     - type: Transform
       pos: -19.5,43.5
       parent: 1
-  - uid: 773
+  - uid: 695
     components:
     - type: Transform
       pos: -18.5,43.5
       parent: 1
-  - uid: 774
+  - uid: 696
     components:
     - type: Transform
       pos: -17.5,43.5
       parent: 1
-  - uid: 775
+  - uid: 697
     components:
     - type: Transform
       pos: -16.5,43.5
       parent: 1
-  - uid: 776
+  - uid: 698
     components:
     - type: Transform
       pos: -15.5,43.5
       parent: 1
-  - uid: 777
+  - uid: 699
     components:
     - type: Transform
       pos: -14.5,43.5
       parent: 1
-  - uid: 778
+  - uid: 700
     components:
     - type: Transform
       pos: -13.5,43.5
       parent: 1
-  - uid: 779
+  - uid: 701
     components:
     - type: Transform
       pos: -12.5,43.5
       parent: 1
-  - uid: 780
+  - uid: 702
     components:
     - type: Transform
       pos: -11.5,43.5
       parent: 1
-  - uid: 781
+  - uid: 703
     components:
     - type: Transform
       pos: -10.5,43.5
       parent: 1
-  - uid: 782
+  - uid: 704
     components:
     - type: Transform
       pos: -9.5,43.5
       parent: 1
-  - uid: 783
+  - uid: 705
     components:
     - type: Transform
       pos: -8.5,43.5
       parent: 1
-  - uid: 784
+  - uid: 706
     components:
     - type: Transform
       pos: -7.5,43.5
       parent: 1
-  - uid: 785
+  - uid: 707
     components:
     - type: Transform
       pos: -6.5,43.5
       parent: 1
-  - uid: 786
+  - uid: 708
     components:
     - type: Transform
       pos: -5.5,43.5
       parent: 1
-  - uid: 787
+  - uid: 709
     components:
     - type: Transform
       pos: -5.5,47.5
       parent: 1
-  - uid: 788
+  - uid: 710
     components:
     - type: Transform
       pos: -6.5,47.5
       parent: 1
-  - uid: 789
+  - uid: 711
     components:
     - type: Transform
       pos: -7.5,47.5
       parent: 1
-  - uid: 790
+  - uid: 712
     components:
     - type: Transform
       pos: -8.5,47.5
       parent: 1
-  - uid: 791
+  - uid: 713
     components:
     - type: Transform
       pos: -9.5,47.5
       parent: 1
-  - uid: 792
+  - uid: 714
     components:
     - type: Transform
       pos: -10.5,47.5
       parent: 1
-  - uid: 793
+  - uid: 715
     components:
     - type: Transform
       pos: -11.5,47.5
       parent: 1
-  - uid: 794
+  - uid: 716
     components:
     - type: Transform
       pos: -12.5,47.5
       parent: 1
-  - uid: 795
+  - uid: 717
     components:
     - type: Transform
       pos: -13.5,47.5
       parent: 1
-  - uid: 796
+  - uid: 718
     components:
     - type: Transform
       pos: -15.5,47.5
       parent: 1
-  - uid: 797
+  - uid: 719
     components:
     - type: Transform
       pos: -16.5,47.5
       parent: 1
-  - uid: 798
+  - uid: 720
     components:
     - type: Transform
       pos: -17.5,47.5
       parent: 1
-  - uid: 799
+  - uid: 721
     components:
     - type: Transform
       pos: -14.5,47.5
       parent: 1
-  - uid: 800
+  - uid: 722
     components:
     - type: Transform
       pos: -19.5,47.5
       parent: 1
-  - uid: 801
+  - uid: 723
     components:
     - type: Transform
       pos: -20.5,47.5
       parent: 1
-  - uid: 802
+  - uid: 724
     components:
     - type: Transform
       pos: -20.5,48.5
       parent: 1
-  - uid: 803
+  - uid: 725
     components:
     - type: Transform
       pos: -20.5,49.5
       parent: 1
-  - uid: 804
+  - uid: 726
     components:
     - type: Transform
       pos: -20.5,51.5
       parent: 1
-  - uid: 805
+  - uid: 727
     components:
     - type: Transform
       pos: -20.5,52.5
       parent: 1
-  - uid: 806
+  - uid: 728
     components:
     - type: Transform
       pos: -20.5,53.5
       parent: 1
-  - uid: 807
+  - uid: 729
     components:
     - type: Transform
       pos: -20.5,50.5
       parent: 1
-  - uid: 808
+  - uid: 730
     components:
     - type: Transform
       pos: -19.5,53.5
       parent: 1
-  - uid: 809
+  - uid: 731
     components:
     - type: Transform
       pos: -17.5,53.5
       parent: 1
-  - uid: 810
+  - uid: 732
     components:
     - type: Transform
       pos: -18.5,53.5
       parent: 1
-  - uid: 811
+  - uid: 733
     components:
     - type: Transform
       pos: -15.5,53.5
       parent: 1
-  - uid: 812
+  - uid: 734
     components:
     - type: Transform
       pos: -16.5,53.5
       parent: 1
-  - uid: 813
+  - uid: 735
     components:
     - type: Transform
       pos: -15.5,52.5
       parent: 1
-  - uid: 814
+  - uid: 736
     components:
     - type: Transform
       pos: -15.5,50.5
       parent: 1
-  - uid: 815
+  - uid: 737
     components:
     - type: Transform
       pos: -15.5,51.5
       parent: 1
-  - uid: 816
+  - uid: 738
     components:
     - type: Transform
       pos: -15.5,48.5
       parent: 1
-  - uid: 817
+  - uid: 739
     components:
     - type: Transform
       pos: -11.5,51.5
       parent: 1
-  - uid: 818
+  - uid: 740
     components:
     - type: Transform
       pos: -14.5,51.5
       parent: 1
-  - uid: 819
+  - uid: 741
     components:
     - type: Transform
       pos: -13.5,51.5
       parent: 1
-  - uid: 820
+  - uid: 742
     components:
     - type: Transform
       pos: -12.5,51.5
       parent: 1
-  - uid: 821
+  - uid: 743
     components:
     - type: Transform
       pos: -11.5,50.5
       parent: 1
-  - uid: 822
+  - uid: 744
     components:
     - type: Transform
       pos: -11.5,49.5
       parent: 1
-  - uid: 823
+  - uid: 745
     components:
     - type: Transform
       pos: -11.5,48.5
       parent: 1
-  - uid: 824
+  - uid: 746
     components:
     - type: Transform
       pos: -21.5,53.5
       parent: 1
-  - uid: 825
+  - uid: 747
     components:
     - type: Transform
       pos: -23.5,53.5
       parent: 1
-  - uid: 826
+  - uid: 748
     components:
     - type: Transform
       pos: -24.5,53.5
       parent: 1
-  - uid: 827
+  - uid: 749
     components:
     - type: Transform
       pos: -25.5,53.5
       parent: 1
-  - uid: 828
+  - uid: 750
     components:
     - type: Transform
       pos: -22.5,53.5
       parent: 1
-  - uid: 829
+  - uid: 751
     components:
     - type: Transform
       pos: -25.5,54.5
       parent: 1
-  - uid: 830
+  - uid: 752
     components:
     - type: Transform
       pos: -25.5,55.5
       parent: 1
-  - uid: 831
+  - uid: 753
     components:
     - type: Transform
       pos: -26.5,54.5
       parent: 1
-  - uid: 832
+  - uid: 754
     components:
     - type: Transform
       pos: -27.5,54.5
       parent: 1
-  - uid: 833
+  - uid: 755
     components:
     - type: Transform
       pos: -31.5,54.5
       parent: 1
-  - uid: 834
+  - uid: 756
     components:
     - type: Transform
       pos: -32.5,54.5
       parent: 1
-  - uid: 835
+  - uid: 757
     components:
     - type: Transform
       pos: -33.5,55.5
       parent: 1
-  - uid: 836
+  - uid: 758
     components:
     - type: Transform
       pos: -33.5,54.5
       parent: 1
-  - uid: 837
+  - uid: 759
     components:
     - type: Transform
       pos: -33.5,53.5
       parent: 1
-  - uid: 838
+  - uid: 760
     components:
     - type: Transform
       pos: -34.5,53.5
       parent: 1
-  - uid: 839
+  - uid: 761
     components:
     - type: Transform
       pos: -36.5,53.5
       parent: 1
-  - uid: 840
+  - uid: 762
     components:
     - type: Transform
       pos: -37.5,53.5
       parent: 1
-  - uid: 841
+  - uid: 763
     components:
     - type: Transform
       pos: -38.5,53.5
       parent: 1
-  - uid: 842
+  - uid: 764
     components:
     - type: Transform
       pos: -35.5,53.5
       parent: 1
-  - uid: 843
+  - uid: 765
     components:
     - type: Transform
       pos: -38.5,52.5
       parent: 1
-  - uid: 844
+  - uid: 766
     components:
     - type: Transform
       pos: -38.5,51.5
       parent: 1
-  - uid: 845
+  - uid: 767
     components:
     - type: Transform
       pos: -38.5,50.5
       parent: 1
-  - uid: 846
+  - uid: 768
     components:
     - type: Transform
       pos: -38.5,49.5
       parent: 1
-  - uid: 847
+  - uid: 769
     components:
     - type: Transform
       pos: -38.5,48.5
       parent: 1
-  - uid: 848
+  - uid: 770
     components:
     - type: Transform
       pos: -38.5,47.5
       parent: 1
-  - uid: 849
+  - uid: 771
     components:
     - type: Transform
       pos: -38.5,46.5
       parent: 1
-  - uid: 850
+  - uid: 772
     components:
     - type: Transform
       pos: -39.5,47.5
       parent: 1
-  - uid: 851
+  - uid: 773
     components:
     - type: Transform
       pos: -40.5,47.5
       parent: 1
-  - uid: 852
+  - uid: 774
     components:
     - type: Transform
       pos: -41.5,47.5
       parent: 1
-  - uid: 853
+  - uid: 775
     components:
     - type: Transform
       pos: -42.5,47.5
       parent: 1
-  - uid: 854
+  - uid: 776
     components:
     - type: Transform
       pos: -43.5,47.5
       parent: 1
-  - uid: 855
+  - uid: 777
     components:
     - type: Transform
       pos: -45.5,47.5
       parent: 1
-  - uid: 856
+  - uid: 778
     components:
     - type: Transform
       pos: -46.5,47.5
       parent: 1
-  - uid: 857
+  - uid: 779
     components:
     - type: Transform
       pos: -44.5,47.5
       parent: 1
-  - uid: 858
+  - uid: 780
     components:
     - type: Transform
       pos: -46.5,46.5
       parent: 1
-  - uid: 859
+  - uid: 781
     components:
     - type: Transform
       pos: -46.5,45.5
       parent: 1
-  - uid: 860
+  - uid: 782
     components:
     - type: Transform
       pos: -47.5,45.5
       parent: 1
-  - uid: 861
+  - uid: 783
     components:
     - type: Transform
       pos: -47.5,43.5
       parent: 1
-  - uid: 862
+  - uid: 784
     components:
     - type: Transform
       pos: -47.5,42.5
       parent: 1
-  - uid: 863
+  - uid: 785
     components:
     - type: Transform
       pos: -47.5,44.5
       parent: 1
-  - uid: 864
+  - uid: 786
     components:
     - type: Transform
       pos: -46.5,42.5
       parent: 1
-  - uid: 865
+  - uid: 787
     components:
     - type: Transform
       pos: -46.5,41.5
       parent: 1
-  - uid: 866
+  - uid: 788
     components:
     - type: Transform
       pos: -46.5,40.5
       parent: 1
-  - uid: 867
+  - uid: 789
     components:
     - type: Transform
       pos: -45.5,40.5
       parent: 1
-  - uid: 868
+  - uid: 790
     components:
     - type: Transform
       pos: -44.5,40.5
       parent: 1
-  - uid: 869
+  - uid: 791
     components:
     - type: Transform
       pos: -43.5,40.5
       parent: 1
-  - uid: 870
+  - uid: 792
     components:
     - type: Transform
       pos: -42.5,40.5
       parent: 1
-  - uid: 871
+  - uid: 793
     components:
     - type: Transform
       pos: -41.5,40.5
       parent: 1
-  - uid: 872
+  - uid: 794
     components:
     - type: Transform
       pos: -40.5,40.5
       parent: 1
-  - uid: 873
+  - uid: 795
     components:
     - type: Transform
       pos: -39.5,40.5
       parent: 1
-  - uid: 874
+  - uid: 796
     components:
     - type: Transform
       pos: -38.5,41.5
       parent: 1
-  - uid: 875
+  - uid: 797
     components:
     - type: Transform
       pos: -38.5,40.5
       parent: 1
-  - uid: 876
+  - uid: 798
     components:
     - type: Transform
       pos: -38.5,39.5
       parent: 1
-  - uid: 877
+  - uid: 799
     components:
     - type: Transform
       pos: -46.5,39.5
       parent: 1
-  - uid: 878
+  - uid: 800
     components:
     - type: Transform
       pos: -46.5,38.5
       parent: 1
-  - uid: 879
+  - uid: 801
     components:
     - type: Transform
       pos: -47.5,38.5
       parent: 1
-  - uid: 880
+  - uid: 802
     components:
     - type: Transform
       pos: -47.5,37.5
       parent: 1
-  - uid: 881
+  - uid: 803
     components:
     - type: Transform
       pos: -47.5,36.5
       parent: 1
-  - uid: 882
+  - uid: 804
     components:
     - type: Transform
       pos: -47.5,35.5
       parent: 1
-  - uid: 883
+  - uid: 805
     components:
     - type: Transform
       pos: -46.5,35.5
       parent: 1
-  - uid: 884
+  - uid: 806
     components:
     - type: Transform
       pos: -46.5,34.5
       parent: 1
-  - uid: 885
+  - uid: 807
     components:
     - type: Transform
       pos: -46.5,33.5
       parent: 1
-  - uid: 886
+  - uid: 808
     components:
     - type: Transform
       pos: -45.5,33.5
       parent: 1
-  - uid: 887
+  - uid: 809
     components:
     - type: Transform
       pos: -44.5,33.5
       parent: 1
-  - uid: 888
+  - uid: 810
     components:
     - type: Transform
       pos: -43.5,33.5
       parent: 1
-  - uid: 889
+  - uid: 811
     components:
     - type: Transform
       pos: -43.5,32.5
       parent: 1
-  - uid: 890
+  - uid: 812
     components:
     - type: Transform
       pos: -43.5,31.5
       parent: 1
-  - uid: 891
+  - uid: 813
     components:
     - type: Transform
       pos: -43.5,30.5
       parent: 1
-  - uid: 892
+  - uid: 814
     components:
     - type: Transform
       pos: -43.5,29.5
       parent: 1
-  - uid: 893
+  - uid: 815
     components:
     - type: Transform
       pos: -43.5,28.5
       parent: 1
-  - uid: 894
+  - uid: 816
     components:
     - type: Transform
       pos: -42.5,28.5
       parent: 1
-  - uid: 895
+  - uid: 817
     components:
     - type: Transform
       pos: -40.5,28.5
       parent: 1
-  - uid: 896
+  - uid: 818
     components:
     - type: Transform
       pos: -39.5,28.5
       parent: 1
-  - uid: 897
+  - uid: 819
     components:
     - type: Transform
       pos: -38.5,28.5
       parent: 1
-  - uid: 898
+  - uid: 820
     components:
     - type: Transform
       pos: -41.5,28.5
       parent: 1
-  - uid: 899
+  - uid: 821
     components:
     - type: Transform
       pos: -38.5,29.5
       parent: 1
-  - uid: 900
+  - uid: 822
     components:
     - type: Transform
       pos: -38.5,31.5
       parent: 1
-  - uid: 901
+  - uid: 823
     components:
     - type: Transform
       pos: -38.5,32.5
       parent: 1
-  - uid: 902
+  - uid: 824
     components:
     - type: Transform
       pos: -38.5,33.5
       parent: 1
-  - uid: 903
+  - uid: 825
     components:
     - type: Transform
       pos: -38.5,34.5
       parent: 1
-  - uid: 904
+  - uid: 826
     components:
     - type: Transform
       pos: -39.5,33.5
       parent: 1
-  - uid: 905
+  - uid: 827
     components:
     - type: Transform
       pos: -40.5,32.5
       parent: 1
-  - uid: 906
+  - uid: 828
     components:
     - type: Transform
       pos: -40.5,33.5
       parent: 1
-  - uid: 907
+  - uid: 829
     components:
     - type: Transform
       pos: -39.5,32.5
       parent: 1
-  - uid: 908
+  - uid: 830
     components:
     - type: Transform
       pos: -41.5,33.5
       parent: 1
-  - uid: 909
+  - uid: 831
     components:
     - type: Transform
       pos: -42.5,33.5
       parent: 1
-  - uid: 910
+  - uid: 832
     components:
     - type: Transform
       pos: -38.5,27.5
       parent: 1
-  - uid: 911
+  - uid: 833
     components:
     - type: Transform
       pos: -38.5,26.5
       parent: 1
-  - uid: 912
+  - uid: 834
     components:
     - type: Transform
       pos: -38.5,25.5
       parent: 1
-  - uid: 913
+  - uid: 835
     components:
     - type: Transform
       pos: -38.5,24.5
       parent: 1
-  - uid: 914
+  - uid: 836
     components:
     - type: Transform
       pos: -38.5,23.5
       parent: 1
-  - uid: 915
+  - uid: 837
     components:
     - type: Transform
       pos: -38.5,22.5
       parent: 1
-  - uid: 916
+  - uid: 838
     components:
     - type: Transform
       pos: -38.5,21.5
       parent: 1
-  - uid: 917
+  - uid: 839
     components:
     - type: Transform
       pos: -38.5,20.5
       parent: 1
-  - uid: 918
+  - uid: 840
     components:
     - type: Transform
       pos: -37.5,20.5
       parent: 1
-  - uid: 919
+  - uid: 841
     components:
     - type: Transform
       pos: -37.5,23.5
       parent: 1
-  - uid: 920
+  - uid: 842
     components:
     - type: Transform
       pos: -33.5,23.5
       parent: 1
-  - uid: 921
+  - uid: 843
     components:
     - type: Transform
       pos: -32.5,23.5
       parent: 1
-  - uid: 922
+  - uid: 844
     components:
     - type: Transform
       pos: -31.5,23.5
       parent: 1
-  - uid: 923
+  - uid: 845
     components:
     - type: Transform
       pos: -32.5,22.5
       parent: 1
-  - uid: 924
+  - uid: 846
     components:
     - type: Transform
       pos: -32.5,21.5
       parent: 1
-  - uid: 925
+  - uid: 847
     components:
     - type: Transform
       pos: -32.5,20.5
       parent: 1
-  - uid: 926
+  - uid: 848
     components:
     - type: Transform
       pos: -31.5,22.5
       parent: 1
-  - uid: 927
+  - uid: 849
     components:
     - type: Transform
       pos: -31.5,21.5
       parent: 1
-  - uid: 928
+  - uid: 850
     components:
     - type: Transform
       pos: -31.5,20.5
       parent: 1
-  - uid: 929
+  - uid: 851
     components:
     - type: Transform
       pos: -33.5,20.5
       parent: 1
-  - uid: 930
+  - uid: 852
     components:
     - type: Transform
       pos: -30.5,20.5
       parent: 1
-  - uid: 931
+  - uid: 853
     components:
     - type: Transform
       pos: -29.5,20.5
       parent: 1
-  - uid: 932
+  - uid: 854
     components:
     - type: Transform
       pos: -28.5,20.5
       parent: 1
 - proto: CMWashingMachineDouble
   entities:
-  - uid: 933
+  - uid: 855
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -7660,7 +7218,7 @@ entities:
       parent: 1
     - type: Openable
       opened: True
-  - uid: 934
+  - uid: 856
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -7670,197 +7228,197 @@ entities:
       opened: True
 - proto: CMWindowReinforcedAlmayer
   entities:
-  - uid: 935
+  - uid: 857
     components:
     - type: Transform
       pos: -8.5,3.5
       parent: 1
-  - uid: 936
+  - uid: 858
     components:
     - type: Transform
       pos: -18.5,5.5
       parent: 1
-  - uid: 937
+  - uid: 859
     components:
     - type: Transform
       pos: -9.5,5.5
       parent: 1
-  - uid: 938
+  - uid: 860
     components:
     - type: Transform
       pos: -19.5,3.5
       parent: 1
-  - uid: 939
+  - uid: 861
     components:
     - type: Transform
       pos: -24.5,-0.5
       parent: 1
-  - uid: 940
+  - uid: 862
     components:
     - type: Transform
       pos: -28.5,-0.5
       parent: 1
-  - uid: 941
+  - uid: 863
     components:
     - type: Transform
       pos: -26.5,-2.5
       parent: 1
-  - uid: 942
+  - uid: 864
     components:
     - type: Transform
       pos: -27.5,3.5
       parent: 1
-  - uid: 943
+  - uid: 865
     components:
     - type: Transform
       pos: -25.5,25.5
       parent: 1
-  - uid: 944
+  - uid: 866
     components:
     - type: Transform
       pos: -23.5,25.5
       parent: 1
 - proto: CMWindowReinforcedAlmayerHull
   entities:
-  - uid: 945
+  - uid: 867
     components:
     - type: Transform
       pos: -30.5,54.5
       parent: 1
-  - uid: 946
+  - uid: 868
     components:
     - type: Transform
       pos: -29.5,54.5
       parent: 1
-  - uid: 947
+  - uid: 869
     components:
     - type: Transform
       pos: -28.5,54.5
       parent: 1
 - proto: ColMarTechCrewSynthetic
   entities:
-  - uid: 948
+  - uid: 870
     components:
     - type: Transform
       pos: -42.5,32.5
       parent: 1
 - proto: ColMarTechCrewSyntheticGear
   entities:
-  - uid: 949
+  - uid: 871
     components:
     - type: Transform
       pos: -41.5,32.5
       parent: 1
 - proto: PlasticBanana
   entities:
-  - uid: 950
+  - uid: 872
     components:
     - type: Transform
       pos: -13.555056,4.677457
       parent: 1
-  - uid: 951
+  - uid: 873
     components:
     - type: Transform
       pos: -13.367556,4.458707
       parent: 1
 - proto: PlushieSlime
   entities:
-  - uid: 952
+  - uid: 874
     components:
     - type: Transform
       pos: -0.5173328,-6.185647
       parent: 1
 - proto: RagItem
   entities:
-  - uid: 953
+  - uid: 875
     components:
     - type: Transform
       pos: -4.361083,-3.310647
       parent: 1
 - proto: ReagentContainerFlour
   entities:
-  - uid: 954
+  - uid: 876
     components:
     - type: Transform
       pos: -9.900353,7.899216
       parent: 1
 - proto: ReagentContainerSugar
   entities:
-  - uid: 955
+  - uid: 877
     components:
     - type: Transform
       pos: -9.822228,7.727341
       parent: 1
 - proto: RMCActionTelephone
   entities:
-  - uid: 957
+  - uid: 879
     mapInit: true
     paused: true
     components:
     - type: Transform
-      parent: 956
+      parent: 878
     - type: Action
       originalIconColor: '#FFFFFFFF'
-      container: 956
+      container: 878
 - proto: RMCActionWhistle
   entities:
-  - uid: 959
+  - uid: 881
     mapInit: true
     paused: true
     components:
     - type: Transform
-      parent: 958
+      parent: 880
     - type: Action
       originalIconColor: '#FFFFFFFF'
-      container: 958
+      container: 880
 - proto: RMCAshtray
   entities:
-  - uid: 960
+  - uid: 882
     components:
     - type: Transform
       pos: -4.251708,-8.466897
       parent: 1
-  - uid: 961
+  - uid: 883
     components:
     - type: Transform
       pos: -14.539431,3.943082
       parent: 1
-  - uid: 962
+  - uid: 884
     components:
     - type: Transform
       pos: -31.176455,-1.4496318
       parent: 1
-  - uid: 963
+  - uid: 885
     components:
     - type: Transform
       pos: -19.357204,50.694958
       parent: 1
-  - uid: 964
+  - uid: 886
     components:
     - type: Transform
       pos: -37.75935,22.027288
       parent: 1
-  - uid: 965
+  - uid: 887
     components:
     - type: Transform
       pos: -29.450525,53.468407
       parent: 1
 - proto: RMCAttachmentU7UnderbarrelShotgun
   entities:
-  - uid: 966
+  - uid: 888
     components:
     - type: Transform
       pos: -19.410023,-7.6211123
       parent: 1
 - proto: RMCBackpackRTO
   entities:
-  - uid: 956
+  - uid: 878
     components:
     - type: Transform
       pos: -19.719471,-4.3476696
       parent: 1
     - type: RotaryPhoneBackpack
-      action: 957
+      action: 879
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
@@ -7871,84 +7429,84 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 957
+          - 879
     - type: ActionsContainer
 - proto: RMCBannerCMWorn
   entities:
-  - uid: 967
+  - uid: 889
     components:
     - type: Transform
       pos: -3.5,-2.5
       parent: 1
 - proto: RMCBannerUN
   entities:
-  - uid: 968
+  - uid: 890
     components:
     - type: Transform
       pos: -15.209514,-1.6134799
       parent: 1
 - proto: RMCBarrelRed
   entities:
-  - uid: 969
+  - uid: 891
     components:
     - type: Transform
       pos: -13.28996,42.82951
       parent: 1
-  - uid: 970
+  - uid: 892
     components:
     - type: Transform
       pos: -13.305585,42.45451
       parent: 1
-  - uid: 971
+  - uid: 893
     components:
     - type: Transform
       pos: -13.69621,42.626385
       parent: 1
 - proto: RMCBarricadeHandrail
   entities:
-  - uid: 972
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -16.5,0.5
-      parent: 1
-  - uid: 973
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -15.5,0.5
-      parent: 1
-  - uid: 974
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -14.5,0.5
-      parent: 1
-  - uid: 975
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -13.5,0.5
-      parent: 1
-  - uid: 976
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -12.5,0.5
-      parent: 1
-  - uid: 977
+  - uid: 107
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -11.5,0.5
       parent: 1
-  - uid: 978
+  - uid: 894
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -16.5,0.5
+      parent: 1
+  - uid: 895
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -15.5,0.5
+      parent: 1
+  - uid: 896
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -14.5,0.5
+      parent: 1
+  - uid: 897
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -13.5,0.5
+      parent: 1
+  - uid: 898
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -12.5,0.5
+      parent: 1
+  - uid: 900
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -10.5,1.5
       parent: 1
-  - uid: 979
+  - uid: 901
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -7956,76 +7514,88 @@ entities:
       parent: 1
 - proto: RMCBarricadeHybrisaCenterRoadDouble
   entities:
-  - uid: 980
+  - uid: 902
     components:
     - type: Transform
       pos: -17.5,31.5
       parent: 1
-  - uid: 981
+  - uid: 903
     components:
     - type: Transform
       pos: -16.5,31.5
       parent: 1
-  - uid: 982
+  - uid: 904
     components:
     - type: Transform
       pos: -15.5,31.5
       parent: 1
-  - uid: 983
+  - uid: 905
     components:
     - type: Transform
       pos: -14.5,31.5
       parent: 1
 - proto: RMCBootsCorporate
   entities:
-  - uid: 984
+  - uid: 906
     components:
     - type: Transform
       pos: -0.5329578,-5.232522
       parent: 1
 - proto: RMCBoxBodyBag
   entities:
-  - uid: 985
+  - uid: 907
     components:
     - type: Transform
       pos: -31.66083,-1.1527568
       parent: 1
-  - uid: 986
+  - uid: 908
     components:
     - type: Transform
       pos: -31.66083,-1.4340068
       parent: 1
 - proto: RMCBoxHEDP
   entities:
-  - uid: 987
+  - uid: 909
     components:
     - type: Transform
       pos: -21.734007,0.6634729
       parent: 1
+- proto: RMCBoxLargeMagazineRifleM54CMK1
+  entities:
+  - uid: 183
+    components:
+    - type: Transform
+      pos: -21.5,6.5
+      parent: 1
+  - uid: 184
+    components:
+    - type: Transform
+      pos: -21.5,6.5
+      parent: 1
 - proto: RMCBoxMagazinePistolM1984
   entities:
-  - uid: 988
+  - uid: 910
     components:
     - type: Transform
       pos: -24.780882,0.7884729
       parent: 1
 - proto: RMCBoxMagazinePistolM77AP
   entities:
-  - uid: 989
+  - uid: 911
     components:
     - type: Transform
       pos: -24.780882,0.5072229
       parent: 1
 - proto: RMCBoxShellsBuckshot
   entities:
-  - uid: 990
+  - uid: 912
     components:
     - type: Transform
       pos: -25.546507,0.4447229
       parent: 1
 - proto: RMCBoxShellsSlugs
   entities:
-  - uid: 991
+  - uid: 913
     components:
     - type: Transform
       pos: -25.530882,0.7884729
@@ -8040,174 +7610,174 @@ entities:
       canCollide: False
 - proto: RMCCabinetBase
   entities:
-  - uid: 992
+  - uid: 914
     components:
     - type: Transform
       pos: -12.5,50.5
       parent: 1
 - proto: RMCCableTerminal
   entities:
-  - uid: 993
+  - uid: 915
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -25.5,20.5
       parent: 1
-  - uid: 994
+  - uid: 916
     components:
     - type: Transform
       pos: -23.5,22.5
       parent: 1
-  - uid: 995
+  - uid: 917
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -23.5,20.5
       parent: 1
-  - uid: 996
+  - uid: 918
     components:
     - type: Transform
       pos: -25.5,22.5
       parent: 1
 - proto: RMCCassetteTapeCustom
   entities:
-  - uid: 997
+  - uid: 919
     components:
     - type: Transform
       pos: -13.94667,48.741722
       parent: 1
 - proto: RMCCoffeeCup
   entities:
-  - uid: 998
+  - uid: 920
     components:
     - type: Transform
       pos: -4.501708,-8.138772
       parent: 1
 - proto: RMCColMarTechMedicalEquipmentPVE
   entities:
-  - uid: 999
+  - uid: 921
     components:
     - type: Transform
       pos: -24.5,-4.5
       parent: 1
 - proto: RMCColMarTechSurplusFORECONPVE
   entities:
-  - uid: 1000
+  - uid: 922
     components:
     - type: Transform
       pos: -7.5,-6.5
       parent: 1
-  - uid: 1001
+  - uid: 923
     components:
     - type: Transform
       pos: -24.5,3.5
       parent: 1
-  - uid: 1002
+  - uid: 924
     components:
     - type: Transform
       pos: -22.5,3.5
       parent: 1
 - proto: RMCColMarTechUtilitiesPVE
   entities:
-  - uid: 1003
+  - uid: 925
     components:
     - type: Transform
       pos: -23.5,3.5
       parent: 1
 - proto: RMCCondimentHotsauceCholula
   entities:
-  - uid: 1004
+  - uid: 926
     components:
     - type: Transform
       pos: -17.185246,7.591068
       parent: 1
 - proto: RMCCondimentHotsauceTabasco
   entities:
-  - uid: 1005
+  - uid: 927
     components:
     - type: Transform
       pos: -17.41962,7.559818
       parent: 1
 - proto: RMCCondimentSmallPepper
   entities:
-  - uid: 1006
+  - uid: 928
     components:
     - type: Transform
       pos: -17.92369,7.809818
       parent: 1
 - proto: RMCCondimentSmallSalt
   entities:
-  - uid: 1007
+  - uid: 929
     components:
     - type: Transform
       pos: -17.63837,7.856693
       parent: 1
 - proto: RMCContainerAegisLeft
   entities:
-  - uid: 1008
+  - uid: 930
     components:
     - type: Transform
       pos: -37.5,24.5
       parent: 1
 - proto: RMCContainerAegisMiddle
   entities:
-  - uid: 1009
+  - uid: 931
     components:
     - type: Transform
       pos: -36.5,24.5
       parent: 1
 - proto: RMCContainerAegisRight
   entities:
-  - uid: 1010
+  - uid: 932
     components:
     - type: Transform
       pos: -35.5,24.5
       parent: 1
 - proto: RMCContainerApocraphyMiddle
   entities:
-  - uid: 1011
+  - uid: 933
     components:
     - type: Transform
       pos: -32.5,24.5
       parent: 1
 - proto: RMCContainerBlueLeft
   entities:
-  - uid: 1012
+  - uid: 934
     components:
     - type: Transform
       pos: -37.5,25.5
       parent: 1
 - proto: RMCContainerBlueMiddle
   entities:
-  - uid: 1013
+  - uid: 935
     components:
     - type: Transform
       pos: -36.5,25.5
       parent: 1
 - proto: RMCContainerBlueRight
   entities:
-  - uid: 1014
+  - uid: 936
     components:
     - type: Transform
       pos: -35.5,25.5
       parent: 1
 - proto: RMCContainerRedLeft
   entities:
-  - uid: 1015
+  - uid: 937
     components:
     - type: Transform
       pos: -33.5,24.5
       parent: 1
 - proto: RMCContainerRedRight
   entities:
-  - uid: 1016
+  - uid: 938
     components:
     - type: Transform
       pos: -31.5,24.5
       parent: 1
 - proto: RMCCrateAttachmentSuppressor
   entities:
-  - uid: 1017
+  - uid: 939
     components:
     - type: Transform
       pos: -19.5,21.5
@@ -8251,80 +7821,80 @@ entities:
           ent: null
 - proto: RMCCrateGearFulton
   entities:
-  - uid: 1018
+  - uid: 940
     components:
     - type: Transform
       pos: -14.5,21.5
       parent: 1
 - proto: RMCCrateGearParachute
   entities:
-  - uid: 1019
+  - uid: 941
     components:
     - type: Transform
       pos: -41.501354,38.612816
       parent: 1
 - proto: RMCCrateGrenadesSmoke
   entities:
-  - uid: 1020
+  - uid: 942
     components:
     - type: Transform
       pos: -16.5,21.5
       parent: 1
 - proto: RMCCrateLarge
   entities:
-  - uid: 1021
+  - uid: 943
     components:
     - type: Transform
       pos: -33.5,22.5
       parent: 1
-  - uid: 1022
+  - uid: 944
     components:
     - type: Transform
       pos: -33.511562,22.10501
       parent: 1
 - proto: RMCCrateMechanicalMaintenance
   entities:
-  - uid: 1023
+  - uid: 945
     components:
     - type: Transform
       pos: -25.5,24.5
       parent: 1
 - proto: RMCCrateMini
   entities:
-  - uid: 1024
+  - uid: 946
     components:
     - type: Transform
       pos: -15.599433,21.642649
       parent: 1
-  - uid: 1025
+  - uid: 947
     components:
     - type: Transform
       pos: -15.318183,21.392649
       parent: 1
 - proto: RMCCratePlasteelSheets
   entities:
-  - uid: 1026
+  - uid: 948
     components:
     - type: Transform
       pos: -17.5,24.5
       parent: 1
 - proto: RMCCrateReplacementLights
   entities:
-  - uid: 1027
+  - uid: 949
     components:
     - type: Transform
       pos: -26.5,24.5
       parent: 1
 - proto: RMCCurtainRed
   entities:
-  - uid: 1028
+  - uid: 950
     components:
     - type: Transform
       pos: -34.5,24.5
       parent: 1
 - proto: RMCDeskFlag
   entities:
-  - uid: 1029
+  - uid: 951
     components:
     - type: Transform
       pos: -17.18533,50.866833
@@ -8403,263 +7973,263 @@ entities:
     - type: InsideEntityStorage
 - proto: RMCDropshipAttachmentParaDrop
   entities:
-  - uid: 1030
+  - uid: 952
     components:
     - type: Transform
       pos: -41.5,39.5
       parent: 1
 - proto: RMCExtinguisherCabinetAltFilled
   entities:
-  - uid: 1031
+  - uid: 953
     components:
     - type: Transform
       pos: -7.5,5.5
       parent: 1
-  - uid: 1032
+  - uid: 954
     components:
     - type: Transform
       pos: -16.5,-1.5
       parent: 1
 - proto: RMCFireAxeCabinetFilled
   entities:
-  - uid: 1033
+  - uid: 955
     components:
     - type: Transform
       pos: -40.408596,32.389072
       parent: 1
 - proto: RMCFlightRecorderProp
   entities:
-  - uid: 1034
+  - uid: 956
     components:
     - type: Transform
       pos: -25.191778,30.66628
       parent: 1
-  - uid: 1035
+  - uid: 957
     components:
     - type: Transform
       pos: -25.676153,30.556906
       parent: 1
 - proto: RMCFoodPacketBarcaridineTrash
   entities:
-  - uid: 1036
+  - uid: 958
     components:
     - type: Transform
       pos: -36.137836,22.817663
       parent: 1
 - proto: RMCFork
   entities:
-  - uid: 1037
+  - uid: 959
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1038
+  - uid: 960
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1039
+  - uid: 961
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1040
+  - uid: 962
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1041
+  - uid: 963
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1042
+  - uid: 964
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1043
+  - uid: 965
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1044
+  - uid: 966
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1045
+  - uid: 967
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1046
+  - uid: 968
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1047
+  - uid: 969
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1048
+  - uid: 970
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1049
+  - uid: 971
     components:
     - type: Transform
       pos: -18.73212,7.544193
       parent: 1
-  - uid: 1050
+  - uid: 972
     components:
     - type: Transform
       pos: -18.747746,7.528568
       parent: 1
-  - uid: 1051
+  - uid: 973
     components:
     - type: Transform
       pos: -18.747746,7.528568
       parent: 1
 - proto: RMCGeneratorFusion
   entities:
-  - uid: 1052
+  - uid: 974
     components:
     - type: Transform
       pos: -26.5,15.5
       parent: 1
-  - uid: 1053
+  - uid: 975
     components:
     - type: Transform
       pos: -25.5,15.5
       parent: 1
-  - uid: 1054
+  - uid: 976
     components:
     - type: Transform
       pos: -24.5,15.5
       parent: 1
-  - uid: 1055
+  - uid: 977
     components:
     - type: Transform
       pos: -23.5,15.5
       parent: 1
-  - uid: 1056
+  - uid: 978
     components:
     - type: Transform
       pos: -22.5,15.5
       parent: 1
-  - uid: 1057
+  - uid: 979
     components:
     - type: Transform
       pos: -26.5,14.5
       parent: 1
-  - uid: 1058
+  - uid: 980
     components:
     - type: Transform
       pos: -25.5,14.5
       parent: 1
-  - uid: 1059
+  - uid: 981
     components:
     - type: Transform
       pos: -24.5,14.5
       parent: 1
-  - uid: 1060
+  - uid: 982
     components:
     - type: Transform
       pos: -23.5,14.5
       parent: 1
-  - uid: 1061
+  - uid: 983
     components:
     - type: Transform
       pos: -22.5,14.5
       parent: 1
-  - uid: 1062
+  - uid: 984
     components:
     - type: Transform
       pos: -26.5,12.5
       parent: 1
-  - uid: 1063
+  - uid: 985
     components:
     - type: Transform
       pos: -26.5,11.5
       parent: 1
-  - uid: 1064
+  - uid: 986
     components:
     - type: Transform
       pos: -25.5,12.5
       parent: 1
-  - uid: 1065
+  - uid: 987
     components:
     - type: Transform
       pos: -25.5,11.5
       parent: 1
-  - uid: 1066
+  - uid: 988
     components:
     - type: Transform
       pos: -24.5,12.5
       parent: 1
-  - uid: 1067
+  - uid: 989
     components:
     - type: Transform
       pos: -24.5,11.5
       parent: 1
-  - uid: 1068
+  - uid: 990
     components:
     - type: Transform
       pos: -23.5,12.5
       parent: 1
-  - uid: 1069
+  - uid: 991
     components:
     - type: Transform
       pos: -23.5,11.5
       parent: 1
-  - uid: 1070
+  - uid: 992
     components:
     - type: Transform
       pos: -22.5,12.5
       parent: 1
-  - uid: 1071
+  - uid: 993
     components:
     - type: Transform
       pos: -22.5,11.5
       parent: 1
-  - uid: 1072
+  - uid: 994
     components:
     - type: Transform
       pos: -26.5,13.5
       parent: 1
-  - uid: 1073
+  - uid: 995
     components:
     - type: Transform
       pos: -25.5,13.5
       parent: 1
-  - uid: 1074
+  - uid: 996
     components:
     - type: Transform
       pos: -23.5,13.5
       parent: 1
-  - uid: 1075
+  - uid: 997
     components:
     - type: Transform
       pos: -22.5,13.5
       parent: 1
 - proto: RMCGlassesMedicalHUDGlasses
   entities:
-  - uid: 1076
+  - uid: 998
     components:
     - type: Transform
       pos: -17.638454,52.679333
       parent: 1
 - proto: RMCGroundsideOperationsConsole
   entities:
-  - uid: 1077
+  - uid: 999
     components:
     - type: Transform
       pos: -9.091315,-3.4280453
       parent: 1
-  - uid: 1078
+  - uid: 1000
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -8667,112 +8237,105 @@ entities:
       parent: 1
 - proto: RMCGuidebookSOP
   entities:
-  - uid: 1079
+  - uid: 1001
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -4.595458,-4.435647
       parent: 1
-  - uid: 1080
+  - uid: 1002
     components:
     - type: Transform
       pos: -18.325954,50.694958
       parent: 1
 - proto: RMCGunRackM34IncineratorFilled
   entities:
-  - uid: 1081
+  - uid: 1003
     components:
     - type: Transform
-      pos: -24.196783,6.512508
-      parent: 1
-- proto: RMCGunRackM42A2Filled
-  entities:
-  - uid: 1082
-    components:
-    - type: Transform
-      pos: -24.774908,6.512508
+      pos: -24.25,6.5
       parent: 1
 - proto: RMCGunRackM54CMk1Filled
   entities:
-  - uid: 1083
+  - uid: 1004
     components:
     - type: Transform
       pos: -23.5,6.5
       parent: 1
-  - uid: 1084
+  - uid: 1005
     components:
     - type: Transform
       pos: -22.5,6.5
       parent: 1
 - proto: RMCHeadCapPatrol
   entities:
-  - uid: 1085
+  - uid: 1006
     components:
     - type: Transform
       pos: -4.564208,-4.060647
       parent: 1
 - proto: RMCHelmetGarbGunOil
   entities:
-  - uid: 1086
+  - uid: 1007
     components:
     - type: Transform
       pos: -4.548583,-3.154397
       parent: 1
-  - uid: 1087
+  - uid: 1008
     components:
     - type: Transform
       pos: -22.134283,7.153133
       parent: 1
-  - uid: 1088
+  - uid: 1009
     components:
     - type: Transform
       pos: -26.718382,6.350973
       parent: 1
 - proto: RMCHyperSleepChamberPVE
   entities:
-  - uid: 1089
+  - uid: 1010
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 1.5,1.5
       parent: 1
-  - uid: 1090
+  - uid: 1011
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 1.5,2.5
       parent: 1
-  - uid: 1091
+  - uid: 1012
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 1.5,4.5
       parent: 1
-  - uid: 1092
+  - uid: 1013
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 1.5,5.5
       parent: 1
-  - uid: 1093
+  - uid: 1014
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 1.5,7.5
       parent: 1
-  - uid: 1094
+  - uid: 1015
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 1.5,8.5
       parent: 1
-  - uid: 1095
+  - uid: 1016
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 1.5,-0.5
       parent: 1
-  - uid: 1096
+  - uid: 1017
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -8780,14 +8343,14 @@ entities:
       parent: 1
 - proto: RMCKitchenKnifeChef
   entities:
-  - uid: 1097
+  - uid: 1018
     components:
     - type: Transform
       pos: -9.274595,7.591068
       parent: 1
 - proto: RMCLadder
   entities:
-  - uid: 1098
+  - uid: 1019
     components:
     - type: Transform
       pos: -28.5,6.5
@@ -8796,7 +8359,7 @@ entities:
       id: 3
     - type: Fixtures
       fixtures: {}
-  - uid: 1099
+  - uid: 1020
     components:
     - type: Transform
       pos: -29.5,6.5
@@ -8805,7 +8368,7 @@ entities:
       id: 2
     - type: Fixtures
       fixtures: {}
-  - uid: 1100
+  - uid: 1021
     components:
     - type: Transform
       pos: -30.5,6.5
@@ -8817,7 +8380,7 @@ entities:
       fixtures: {}
 - proto: RMCLadderHatch
   entities:
-  - uid: 1101
+  - uid: 1022
     components:
     - type: Transform
       pos: -19.5,29.5
@@ -8826,7 +8389,7 @@ entities:
       fixtures: {}
 - proto: RMCLadderUp
   entities:
-  - uid: 1102
+  - uid: 1023
     components:
     - type: Transform
       pos: -30.5,21.5
@@ -8836,7 +8399,7 @@ entities:
       id: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1103
+  - uid: 1024
     components:
     - type: Transform
       pos: -29.5,21.5
@@ -8845,7 +8408,7 @@ entities:
       id: 2
     - type: Fixtures
       fixtures: {}
-  - uid: 1104
+  - uid: 1025
     components:
     - type: Transform
       pos: -28.5,21.5
@@ -8869,14 +8432,14 @@ entities:
         actions: !type:Container
           ents:
           - 3
-  - uid: 1105
+  - uid: 1026
     components:
     - type: Transform
       pos: -17.49783,50.601208
       parent: 1
 - proto: RMCLampGreen
   entities:
-  - uid: 1106
+  - uid: 1027
     components:
     - type: Transform
       pos: -26.223028,30.739697
@@ -8885,386 +8448,386 @@ entities:
       enabled: True
 - proto: RMCLaserDesignator
   entities:
-  - uid: 1107
+  - uid: 1028
     components:
     - type: Transform
       pos: -18.306297,-2.4636745
       parent: 1
 - proto: RMCLighter
   entities:
-  - uid: 1108
+  - uid: 1029
     components:
     - type: Transform
       pos: -3.7985828,-8.248147
       parent: 1
 - proto: RMCLightFixtureBlueDouble
   entities:
-  - uid: 1109
+  - uid: 1030
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -35.48696,4.8746367
       parent: 1
-  - uid: 1110
+  - uid: 1031
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -0.7894887,3.5106974
       parent: 1
-  - uid: 1111
+  - uid: 1032
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -1.4926137,8.861335
       parent: 1
-  - uid: 1112
+  - uid: 1033
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -7.7740564,6.486335
       parent: 1
-  - uid: 1113
+  - uid: 1034
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -7.7115564,0.48776007
       parent: 1
-  - uid: 1114
+  - uid: 1035
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -6.2584314,3.503385
       parent: 1
-  - uid: 1115
+  - uid: 1036
     components:
     - type: Transform
       pos: -1.4615567,-1.5278649
       parent: 1
-  - uid: 1116
+  - uid: 1037
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 1.6478183,6.4868793
       parent: 1
-  - uid: 1117
+  - uid: 1038
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 1.6634433,0.51812935
       parent: 1
-  - uid: 1118
+  - uid: 1039
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 0.7951672,-7.498147
       parent: 1
-  - uid: 1119
+  - uid: 1040
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 0.6701672,-4.513772
       parent: 1
-  - uid: 1120
+  - uid: 1041
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -8.520281,-3.0730495
       parent: 1
-  - uid: 1121
+  - uid: 1042
     components:
     - type: Transform
       pos: -8.520281,-6.5261745
       parent: 1
-  - uid: 1122
+  - uid: 1043
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.285906,-7.4949245
       parent: 1
-  - uid: 1123
+  - uid: 1044
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.369095,-2.5417995
       parent: 1
-  - uid: 1124
+  - uid: 1045
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -16.61707,-2.5730495
       parent: 1
-  - uid: 1125
+  - uid: 1046
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -16.64832,-7.5730495
       parent: 1
-  - uid: 1126
+  - uid: 1047
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -16.523273,6.8946996
       parent: 1
-  - uid: 1127
+  - uid: 1048
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -11.507648,6.8946996
       parent: 1
-  - uid: 1128
+  - uid: 1049
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -9.304523,1.4884496
       parent: 1
-  - uid: 1129
+  - uid: 1050
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -18.773273,1.4259496
       parent: 1
-  - uid: 1130
+  - uid: 1051
     components:
     - type: Transform
       pos: -17.492023,-0.5584254
       parent: 1
-  - uid: 1131
+  - uid: 1052
     components:
     - type: Transform
       pos: -10.460773,-0.5896754
       parent: 1
-  - uid: 1132
+  - uid: 1053
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -27.53583,-0.98805153
       parent: 1
-  - uid: 1133
+  - uid: 1054
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -31.645205,-2.5193014
       parent: 1
-  - uid: 1134
+  - uid: 1055
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -25.66083,-1.5349265
       parent: 1
-  - uid: 1135
+  - uid: 1056
     components:
     - type: Transform
       pos: -35.51821,2.5152614
       parent: 1
-  - uid: 1136
+  - uid: 1057
     components:
     - type: Transform
       pos: -21.604063,0.4134729
       parent: 1
-  - uid: 1137
+  - uid: 1058
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -21.604063,7.163473
       parent: 1
-  - uid: 1138
+  - uid: 1059
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -25.494688,7.132223
       parent: 1
-  - uid: 1139
+  - uid: 1060
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -28.5,6.5
       parent: 1
-  - uid: 1140
+  - uid: 1061
     components:
     - type: Transform
       pos: -25.510313,0.3665979
       parent: 1
-  - uid: 1141
+  - uid: 1062
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -28.5,0.5
       parent: 1
-  - uid: 1142
+  - uid: 1063
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -32.5,1.5
       parent: 1
-  - uid: 1143
+  - uid: 1064
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -32.5,5.5
       parent: 1
-  - uid: 1144
+  - uid: 1065
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -22.284472,23.439524
       parent: 1
-  - uid: 1145
+  - uid: 1066
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -26.628222,23.439524
       parent: 1
-  - uid: 1146
+  - uid: 1067
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -15.474433,25.002024
       parent: 1
-  - uid: 1147
+  - uid: 1068
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -13.349433,22.470774
       parent: 1
-  - uid: 1148
+  - uid: 1069
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.599434,22.455149
       parent: 1
-  - uid: 1149
+  - uid: 1070
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -13.529014,28.95639
       parent: 1
-  - uid: 1150
+  - uid: 1071
     components:
     - type: Transform
       pos: -17.48214,26.51889
       parent: 1
-  - uid: 1151
+  - uid: 1072
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -13.430585,40.438885
       parent: 1
-  - uid: 1152
+  - uid: 1073
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -9.46647,47.005623
       parent: 1
-  - uid: 1153
+  - uid: 1074
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -15.513345,47.021248
       parent: 1
-  - uid: 1154
+  - uid: 1075
     components:
     - type: Transform
       pos: -12.544595,44.536873
       parent: 1
-  - uid: 1155
+  - uid: 1076
     components:
     - type: Transform
       pos: -18.544594,44.505623
       parent: 1
-  - uid: 1156
+  - uid: 1077
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -17.49783,53.148083
       parent: 1
-  - uid: 1157
+  - uid: 1078
     components:
     - type: Transform
       pos: -17.46658,48.476208
       parent: 1
-  - uid: 1158
+  - uid: 1079
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -12.388454,50.460583
       parent: 1
-  - uid: 1159
+  - uid: 1080
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -21.351145,42.438225
       parent: 1
-  - uid: 1160
+  - uid: 1081
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -21.39802,33.12055
       parent: 1
-  - uid: 1161
+  - uid: 1082
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -37.78103,51.301743
       parent: 1
-  - uid: 1162
+  - uid: 1083
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -37.673607,40.819927
       parent: 1
-  - uid: 1163
+  - uid: 1084
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -21.421457,38.64135
       parent: 1
-  - uid: 1164
+  - uid: 1085
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -21.421457,51.090805
       parent: 1
-  - uid: 1165
+  - uid: 1086
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -37.75759,46.54393
       parent: 1
-  - uid: 1166
+  - uid: 1087
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -37.673607,33.418976
       parent: 1
-  - uid: 1167
+  - uid: 1088
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -41.47682,33.017662
       parent: 1
-  - uid: 1168
+  - uid: 1089
     components:
     - type: Transform
       pos: -41.47682,29.45516
       parent: 1
-  - uid: 1169
+  - uid: 1090
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -28.5,22.5
       parent: 1
-  - uid: 1170
+  - uid: 1091
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -30.5,22.5
       parent: 1
-  - uid: 1171
+  - uid: 1092
     components:
     - type: Transform
       pos: -32.5,24.5
       parent: 1
-  - uid: 1172
+  - uid: 1093
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -9272,162 +8835,162 @@ entities:
       parent: 1
 - proto: RMCLightFixtureSmallBlue
   entities:
-  - uid: 1173
+  - uid: 1094
     components:
     - type: Transform
       pos: -0.5,10.5
       parent: 1
-  - uid: 1174
+  - uid: 1095
     components:
     - type: Transform
       pos: -4.5,12.5
       parent: 1
-  - uid: 1175
+  - uid: 1096
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -2.5,11.5
       parent: 1
-  - uid: 1176
+  - uid: 1097
     components:
     - type: Transform
       pos: -3.450981,4.2681293
       parent: 1
-  - uid: 1177
+  - uid: 1098
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -3.435356,2.7681293
       parent: 1
-  - uid: 1178
+  - uid: 1099
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -4.564208,-3.998147
       parent: 1
-  - uid: 1179
+  - uid: 1100
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -4.486083,-8.466897
       parent: 1
-  - uid: 1180
+  - uid: 1101
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -18.50116,-2.2070448
       parent: 1
-  - uid: 1181
+  - uid: 1102
     components:
     - type: Transform
       pos: -19.50116,-4.5664196
       parent: 1
-  - uid: 1182
+  - uid: 1103
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -18.485535,-6.1132946
       parent: 1
-  - uid: 1183
+  - uid: 1104
     components:
     - type: Transform
       pos: -20.516785,-7.6445446
       parent: 1
-  - uid: 1184
+  - uid: 1105
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -0.5,13.5
       parent: 1
-  - uid: 1185
+  - uid: 1106
     components:
     - type: Transform
       pos: -4.5,10.5
       parent: 1
-  - uid: 1186
+  - uid: 1107
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -16.508709,42.720135
       parent: 1
-  - uid: 1187
+  - uid: 1108
     components:
     - type: Transform
       pos: -16.430584,38.501385
       parent: 1
-  - uid: 1188
+  - uid: 1109
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -40.51698,39.769066
       parent: 1
-  - uid: 1189
+  - uid: 1110
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -44.51698,39.769066
       parent: 1
-  - uid: 1190
+  - uid: 1111
     components:
     - type: Transform
       pos: -44.563854,41.50344
       parent: 1
-  - uid: 1191
+  - uid: 1112
     components:
     - type: Transform
       pos: -40.501354,41.47219
       parent: 1
-  - uid: 1192
+  - uid: 1113
     components:
     - type: Transform
       pos: -43.532604,34.487816
       parent: 1
-  - uid: 1193
+  - uid: 1114
     components:
     - type: Transform
       pos: -41.470104,34.50344
       parent: 1
-  - uid: 1194
+  - uid: 1115
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -43.552876,46.90345
       parent: 1
-  - uid: 1195
+  - uid: 1116
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -41.506,46.919075
       parent: 1
-  - uid: 1196
+  - uid: 1117
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -23.986525,52.405907
       parent: 1
-  - uid: 1197
+  - uid: 1118
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -34.955276,52.499657
       parent: 1
-  - uid: 1198
+  - uid: 1119
     components:
     - type: Transform
       pos: -31.820318,55.46875
       parent: 1
-  - uid: 1199
+  - uid: 1120
     components:
     - type: Transform
       pos: -27.039068,55.484375
       parent: 1
-  - uid: 1200
+  - uid: 1121
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -31.773443,53.5
       parent: 1
-  - uid: 1201
+  - uid: 1122
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -9435,502 +8998,502 @@ entities:
       parent: 1
 - proto: RMCLockerFridgeGroceries
   entities:
-  - uid: 1202
+  - uid: 1123
     components:
     - type: Transform
       pos: -9.5,6.5
       parent: 1
 - proto: RMCLockerSmartGunOperatorOne
   entities:
-  - uid: 1203
+  - uid: 1124
     components:
     - type: Transform
       pos: -25.5,6.5
       parent: 1
 - proto: RMCM82FHolsterFilled
   entities:
-  - uid: 1204
+  - uid: 1125
     components:
     - type: Transform
       pos: -19.516346,-4.4882946
       parent: 1
 - proto: RMCMagazineSmartGun
   entities:
-  - uid: 1205
+  - uid: 1126
     components:
     - type: Transform
       pos: -26.718382,6.710348
       parent: 1
-  - uid: 1206
+  - uid: 1127
     components:
     - type: Transform
       pos: -26.359007,6.725973
       parent: 1
 - proto: RMCMarineCorpsCup
   entities:
-  - uid: 1207
+  - uid: 1128
     components:
     - type: Transform
       pos: -19.188221,-4.0664196
       parent: 1
-  - uid: 1208
+  - uid: 1129
     components:
     - type: Transform
       pos: -19.31033,52.710583
       parent: 1
 - proto: RMCMechPowerLoader
   entities:
-  - uid: 1209
+  - uid: 1130
     components:
     - type: Transform
       pos: -15.461835,43.07951
       parent: 1
-  - uid: 1210
+  - uid: 1131
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -42.532604,35.081566
       parent: 1
-  - uid: 1211
+  - uid: 1132
     components:
     - type: Transform
       pos: -40.506,47.044075
       parent: 1
-  - uid: 1212
+  - uid: 1133
     components:
     - type: Transform
       pos: -42.506,47.044075
       parent: 1
 - proto: RMCMirror
   entities:
-  - uid: 1213
+  - uid: 1134
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 1.2668915,12.542996
       parent: 1
-  - uid: 1214
+  - uid: 1135
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 1.2981415,11.527371
       parent: 1
-  - uid: 1215
+  - uid: 1136
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 1.3293915,10.511746
       parent: 1
-  - uid: 1216
+  - uid: 1137
     components:
     - type: Transform
       pos: -13.50917,51.569847
       parent: 1
 - proto: RMCNanoMed
   entities:
-  - uid: 1217
+  - uid: 1138
     components:
     - type: Transform
       pos: -5.5,2.5
       parent: 1
-  - uid: 1218
+  - uid: 1139
     components:
     - type: Transform
       pos: -19.5,6.5
       parent: 1
-  - uid: 1219
+  - uid: 1140
     components:
     - type: Transform
       pos: -27.5,23.5
       parent: 1
-  - uid: 1220
+  - uid: 1141
     components:
     - type: Transform
       pos: -20.5,43.5
       parent: 1
-  - uid: 1221
+  - uid: 1142
     components:
     - type: Transform
       pos: -38.5,39.5
       parent: 1
-  - uid: 1222
+  - uid: 1143
     components:
     - type: Transform
       pos: -13.5,25.5
       parent: 1
 - proto: RMCNutriCoVendor
   entities:
-  - uid: 1223
+  - uid: 1144
     components:
     - type: Transform
       pos: -15.5,7.5
       parent: 1
-  - uid: 1224
+  - uid: 1145
     components:
     - type: Transform
       pos: -14.5,7.5
       parent: 1
-  - uid: 1225
+  - uid: 1146
     components:
     - type: Transform
       pos: -13.5,7.5
       parent: 1
 - proto: RMCOverheadCraneTrack1
   entities:
-  - uid: 1226
+  - uid: 1147
     components:
     - type: Transform
       pos: -13.5,27.5
       parent: 1
-  - uid: 1227
+  - uid: 1148
     components:
     - type: Transform
       pos: -15.5,27.5
       parent: 1
-  - uid: 1228
+  - uid: 1149
     components:
     - type: Transform
       pos: -17.5,27.5
       parent: 1
-  - uid: 1229
+  - uid: 1150
     components:
     - type: Transform
       pos: -20.5,27.5
       parent: 1
-  - uid: 1230
+  - uid: 1151
     components:
     - type: Transform
       pos: -22.5,27.5
       parent: 1
-  - uid: 1231
+  - uid: 1152
     components:
     - type: Transform
       pos: -24.5,27.5
       parent: 1
-  - uid: 1232
+  - uid: 1153
     components:
     - type: Transform
       pos: -21.5,27.5
       parent: 1
-  - uid: 1233
+  - uid: 1154
     components:
     - type: Transform
       pos: -19.5,27.5
       parent: 1
-  - uid: 1234
+  - uid: 1155
     components:
     - type: Transform
       pos: -16.5,27.5
       parent: 1
-  - uid: 1235
+  - uid: 1156
     components:
     - type: Transform
       pos: -14.5,27.5
       parent: 1
-  - uid: 1236
+  - uid: 1157
     components:
     - type: Transform
       pos: -12.5,27.5
       parent: 1
-  - uid: 1237
+  - uid: 1158
     components:
     - type: Transform
       pos: -18.5,27.5
       parent: 1
-  - uid: 1238
+  - uid: 1159
     components:
     - type: Transform
       pos: -10.5,27.5
       parent: 1
-  - uid: 1239
+  - uid: 1160
     components:
     - type: Transform
       pos: -9.5,27.5
       parent: 1
-  - uid: 1240
+  - uid: 1161
     components:
     - type: Transform
       pos: -11.5,27.5
       parent: 1
-  - uid: 1241
+  - uid: 1162
     components:
     - type: Transform
       pos: -22.5,39.5
       parent: 1
-  - uid: 1242
+  - uid: 1163
     components:
     - type: Transform
       pos: -21.5,39.5
       parent: 1
-  - uid: 1243
+  - uid: 1164
     components:
     - type: Transform
       pos: -20.5,39.5
       parent: 1
-  - uid: 1244
+  - uid: 1165
     components:
     - type: Transform
       pos: -19.5,39.5
       parent: 1
-  - uid: 1245
+  - uid: 1166
     components:
     - type: Transform
       pos: -18.5,39.5
       parent: 1
-  - uid: 1246
+  - uid: 1167
     components:
     - type: Transform
       pos: -17.5,39.5
       parent: 1
-  - uid: 1247
+  - uid: 1168
     components:
     - type: Transform
       pos: -16.5,39.5
       parent: 1
-  - uid: 1248
+  - uid: 1169
     components:
     - type: Transform
       pos: -15.5,39.5
       parent: 1
 - proto: RMCOverheadCraneTrack10
   entities:
-  - uid: 1249
+  - uid: 1170
     components:
     - type: Transform
       pos: -23.5,50.5
       parent: 1
 - proto: RMCOverheadCraneTrack2
   entities:
-  - uid: 1250
+  - uid: 1171
     components:
     - type: Transform
       pos: -23.5,28.5
       parent: 1
-  - uid: 1251
+  - uid: 1172
     components:
     - type: Transform
       pos: -23.5,29.5
       parent: 1
-  - uid: 1252
+  - uid: 1173
     components:
     - type: Transform
       pos: -23.5,30.5
       parent: 1
-  - uid: 1253
+  - uid: 1174
     components:
     - type: Transform
       pos: -23.5,31.5
       parent: 1
-  - uid: 1254
+  - uid: 1175
     components:
     - type: Transform
       pos: -23.5,32.5
       parent: 1
-  - uid: 1255
+  - uid: 1176
     components:
     - type: Transform
       pos: -23.5,33.5
       parent: 1
-  - uid: 1256
+  - uid: 1177
     components:
     - type: Transform
       pos: -23.5,34.5
       parent: 1
-  - uid: 1257
+  - uid: 1178
     components:
     - type: Transform
       pos: -23.5,35.5
       parent: 1
-  - uid: 1258
+  - uid: 1179
     components:
     - type: Transform
       pos: -23.5,36.5
       parent: 1
-  - uid: 1259
+  - uid: 1180
     components:
     - type: Transform
       pos: -23.5,37.5
       parent: 1
-  - uid: 1260
+  - uid: 1181
     components:
     - type: Transform
       pos: -23.5,38.5
       parent: 1
-  - uid: 1261
+  - uid: 1182
     components:
     - type: Transform
       pos: -23.5,40.5
       parent: 1
-  - uid: 1262
+  - uid: 1183
     components:
     - type: Transform
       pos: -23.5,41.5
       parent: 1
-  - uid: 1263
+  - uid: 1184
     components:
     - type: Transform
       pos: -23.5,42.5
       parent: 1
-  - uid: 1264
+  - uid: 1185
     components:
     - type: Transform
       pos: -23.5,43.5
       parent: 1
-  - uid: 1265
+  - uid: 1186
     components:
     - type: Transform
       pos: -23.5,44.5
       parent: 1
-  - uid: 1266
+  - uid: 1187
     components:
     - type: Transform
       pos: -23.5,45.5
       parent: 1
-  - uid: 1267
+  - uid: 1188
     components:
     - type: Transform
       pos: -23.5,46.5
       parent: 1
-  - uid: 1268
+  - uid: 1189
     components:
     - type: Transform
       pos: -23.5,47.5
       parent: 1
-  - uid: 1269
+  - uid: 1190
     components:
     - type: Transform
       pos: -23.5,48.5
       parent: 1
-  - uid: 1270
+  - uid: 1191
     components:
     - type: Transform
       pos: -23.5,49.5
       parent: 1
-  - uid: 1271
+  - uid: 1192
     components:
     - type: Transform
       pos: -23.5,49.5
       parent: 1
 - proto: RMCOverheadCraneTrack3
   entities:
-  - uid: 1272
+  - uid: 1193
     components:
     - type: Transform
       pos: -23.5,27.5
       parent: 1
 - proto: RMCOverheadCraneTrack5
   entities:
-  - uid: 1273
+  - uid: 1194
     components:
     - type: Transform
       pos: -23.5,39.5
       parent: 1
 - proto: RMCOverheadCraneTrack8
   entities:
-  - uid: 1274
+  - uid: 1195
     components:
     - type: Transform
       pos: -25.5,27.5
       parent: 1
 - proto: RMCOverheadCraneTrack9
   entities:
-  - uid: 1275
+  - uid: 1196
     components:
     - type: Transform
       pos: -14.5,39.5
       parent: 1
 - proto: RMCOverwatchConsole
   entities:
-  - uid: 1276
+  - uid: 1197
     components:
     - type: Transform
       pos: -19.68533,51.648083
       parent: 1
 - proto: RMCPackFlareCAS
   entities:
-  - uid: 1277
+  - uid: 1198
     components:
     - type: Transform
       pos: -18.772161,-2.3851957
       parent: 1
 - proto: RMCPersonalDesktop
   entities:
-  - uid: 1278
+  - uid: 1199
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -4.501708,-7.654397
       parent: 1
-  - uid: 1279
+  - uid: 1200
     components:
     - type: Transform
       pos: -19.5,-2.5
       parent: 1
-  - uid: 1280
+  - uid: 1201
     components:
     - type: Transform
       pos: -8.45069,-3.2874203
       parent: 1
-  - uid: 1281
+  - uid: 1202
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -23.37988,-2.5277567
       parent: 1
-  - uid: 1282
+  - uid: 1203
     components:
     - type: Transform
       pos: -40.367447,31.658285
       parent: 1
-  - uid: 1283
+  - uid: 1204
     components:
     - type: Transform
       pos: -27.410528,30.650656
       parent: 1
 - proto: RMCPhotocopier
   entities:
-  - uid: 1284
+  - uid: 1205
     components:
     - type: Transform
       pos: -20.5,22.5
       parent: 1
-  - uid: 1285
+  - uid: 1206
     components:
     - type: Transform
       pos: -17.5,52.5
       parent: 1
 - proto: RMCPlatformCornerSmall
   entities:
-  - uid: 1286
+  - uid: 1207
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -16.5,2.5
       parent: 1
-  - uid: 1287
+  - uid: 1208
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -11.5,2.5
       parent: 1
-  - uid: 1288
+  - uid: 1209
     components:
     - type: Transform
       pos: -16.5,4.5
       parent: 1
-  - uid: 1289
+  - uid: 1210
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -11.5,4.5
       parent: 1
-  - uid: 1290
+  - uid: 1211
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -11.5,6.5
       parent: 1
-  - uid: 1291
+  - uid: 1212
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -9938,41 +9501,41 @@ entities:
       parent: 1
 - proto: RMCPlatformStairRight
   entities:
-  - uid: 1292
+  - uid: 1213
     components:
     - type: Transform
       pos: -10.5,2.5
       parent: 1
-  - uid: 1293
+  - uid: 1214
     components:
     - type: Transform
       pos: -17.5,2.5
       parent: 1
-  - uid: 1294
+  - uid: 1215
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.5,1.5
       parent: 1
-  - uid: 1295
+  - uid: 1216
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -16.5,1.5
       parent: 1
-  - uid: 1296
+  - uid: 1217
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -28.5,23.5
       parent: 1
-  - uid: 1297
+  - uid: 1218
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -28.5,24.5
       parent: 1
-  - uid: 1298
+  - uid: 1219
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -9980,353 +9543,353 @@ entities:
       parent: 1
 - proto: RMCPodDoorAlmayer
   entities:
-  - uid: 1299
+  - uid: 1220
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,41.5
       parent: 1
-  - uid: 1300
+  - uid: 1221
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,40.5
       parent: 1
-  - uid: 1301
+  - uid: 1222
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -20.5,39.5
       parent: 1
-  - uid: 1302
+  - uid: 1223
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -20.5,46.5
       parent: 1
-  - uid: 1303
+  - uid: 1224
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -20.5,45.5
       parent: 1
-  - uid: 1304
+  - uid: 1225
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -20.5,44.5
       parent: 1
-  - uid: 1305
+  - uid: 1226
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -7.5,46.5
       parent: 1
-  - uid: 1306
+  - uid: 1227
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -7.5,45.5
       parent: 1
-  - uid: 1307
+  - uid: 1228
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -7.5,44.5
       parent: 1
-  - uid: 1308
+  - uid: 1229
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -5.5,44.5
       parent: 1
-  - uid: 1309
+  - uid: 1230
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -5.5,45.5
       parent: 1
-  - uid: 1310
+  - uid: 1231
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -5.5,46.5
       parent: 1
-  - uid: 1311
+  - uid: 1232
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -38.5,30.5
       parent: 1
-  - uid: 1312
+  - uid: 1233
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -38.5,38.5
       parent: 1
-  - uid: 1313
+  - uid: 1234
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -38.5,37.5
       parent: 1
-  - uid: 1314
+  - uid: 1235
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -38.5,36.5
       parent: 1
-  - uid: 1315
+  - uid: 1236
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -38.5,35.5
       parent: 1
-  - uid: 1316
+  - uid: 1237
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -38.5,44.5
       parent: 1
-  - uid: 1317
+  - uid: 1238
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -38.5,43.5
       parent: 1
-  - uid: 1318
+  - uid: 1239
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -38.5,42.5
       parent: 1
-  - uid: 1319
+  - uid: 1240
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -38.5,45.5
       parent: 1
-  - uid: 1320
+  - uid: 1241
     components:
     - type: Transform
       pos: -36.5,23.5
       parent: 1
-  - uid: 1321
+  - uid: 1242
     components:
     - type: Transform
       pos: -35.5,23.5
       parent: 1
-  - uid: 1322
+  - uid: 1243
     components:
     - type: Transform
       pos: -36.5,20.5
       parent: 1
-  - uid: 1323
+  - uid: 1244
     components:
     - type: Transform
       pos: -35.5,20.5
       parent: 1
-  - uid: 1324
+  - uid: 1245
     components:
     - type: Transform
       pos: -34.5,20.5
       parent: 1
 - proto: RMCPodDoorAlmayerIndestructible
   entities:
-  - uid: 1325
+  - uid: 1246
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -36.5,3.5
       parent: 1
-  - uid: 1326
+  - uid: 1247
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -36.5,4.5
       parent: 1
-  - uid: 1327
+  - uid: 1248
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -34.5,3.5
       parent: 1
-  - uid: 1328
+  - uid: 1249
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -34.5,4.5
       parent: 1
-  - uid: 1329
+  - uid: 1250
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -36.5,2.5
       parent: 1
-  - uid: 1330
+  - uid: 1251
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -34.5,2.5
       parent: 1
-  - uid: 1331
+  - uid: 1252
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.5,28.5
       parent: 1
-  - uid: 1332
+  - uid: 1253
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.5,27.5
       parent: 1
-  - uid: 1333
+  - uid: 1254
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -11.5,26.5
       parent: 1
-  - uid: 1334
+  - uid: 1255
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -9.5,28.5
       parent: 1
-  - uid: 1335
+  - uid: 1256
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -9.5,27.5
       parent: 1
-  - uid: 1336
+  - uid: 1257
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -9.5,26.5
       parent: 1
-  - uid: 1337
+  - uid: 1258
     components:
     - type: Transform
       pos: -17.5,29.5
       parent: 1
-  - uid: 1338
+  - uid: 1259
     components:
     - type: Transform
       pos: -16.5,29.5
       parent: 1
-  - uid: 1339
+  - uid: 1260
     components:
     - type: Transform
       pos: -15.5,29.5
       parent: 1
-  - uid: 1340
+  - uid: 1261
     components:
     - type: Transform
       pos: -14.5,29.5
       parent: 1
 - proto: RMCPodDoorAlmayerOpen
   entities:
-  - uid: 1341
+  - uid: 1262
     components:
     - type: Transform
       pos: -34.5,23.5
       parent: 1
 - proto: RMCPouchElectronics
   entities:
-  - uid: 1342
+  - uid: 1263
     components:
     - type: Transform
       pos: -24.198305,18.424973
       parent: 1
 - proto: RMCPouchMacheteFilled
   entities:
-  - uid: 1343
+  - uid: 1264
     components:
     - type: Transform
       pos: -20.613148,-7.4961123
       parent: 1
 - proto: RMCPowerCellSmartgun
   entities:
-  - uid: 1344
+  - uid: 1265
     components:
     - type: Transform
       pos: -26.296507,6.304098
       parent: 1
 - proto: RMCPropVehicleCargoCraneAltHitboxWest
   entities:
-  - uid: 1345
+  - uid: 1266
     components:
     - type: Transform
       pos: -34.068718,30.058907
       parent: 1
 - proto: RMCPVECaseFlamerFuel
   entities:
-  - uid: 1346
+  - uid: 1267
     components:
     - type: Transform
       pos: -22.640257,0.8509729
       parent: 1
-  - uid: 1347
+  - uid: 1268
     components:
     - type: Transform
       pos: -22.624632,0.5384729
       parent: 1
 - proto: RMCPVECaseM5SPR
   entities:
-  - uid: 1348
+  - uid: 1269
     components:
     - type: Transform
       pos: -20.671507,0.8197229
       parent: 1
 - proto: RMCPVECaseMotionDetector
   entities:
-  - uid: 1349
+  - uid: 1270
     components:
     - type: Transform
       pos: -23.593382,0.8197229
       parent: 1
-  - uid: 1350
+  - uid: 1271
     components:
     - type: Transform
       pos: -23.577757,0.5540979
       parent: 1
 - proto: RMCPVECaseSentry
   entities:
-  - uid: 1351
+  - uid: 1272
     components:
     - type: Transform
       pos: -20.690512,6.6664667
       parent: 1
 - proto: RMCRecharger
   entities:
-  - uid: 1352
+  - uid: 1273
     components:
     - type: Transform
       pos: -30.5,-1.5
       parent: 1
 - proto: RMCRollerBedHospitalSheet2
   entities:
-  - uid: 1353
+  - uid: 1274
     components:
     - type: Transform
       pos: -30.567493,-4.4450355
       parent: 1
-  - uid: 1354
+  - uid: 1275
     components:
     - type: Transform
       pos: -28.489368,-4.3825355
       parent: 1
 - proto: RMCRollingPin
   entities:
-  - uid: 1355
+  - uid: 1276
     components:
     - type: Transform
       pos: -9.47772,7.622318
       parent: 1
 - proto: RMCRotaryPhone
   entities:
-  - uid: 1356
+  - uid: 1277
     components:
     - type: MetaData
       name: Squad Lead's Office
@@ -10337,47 +9900,47 @@ entities:
       fixtures: {}
 - proto: RMCSecureCaseDouble
   entities:
-  - uid: 1357
+  - uid: 1278
     components:
     - type: Transform
       pos: -0.5329578,-8.529397
       parent: 1
 - proto: RMCSecureCaseMedicalBig
   entities:
-  - uid: 1358
+  - uid: 1279
     components:
     - type: Transform
       pos: -17.5,21.5
       parent: 1
 - proto: RMCSecureCaseSmall
   entities:
-  - uid: 1359
+  - uid: 1280
     components:
     - type: Transform
       pos: -0.4704578,-3.576272
       parent: 1
 - proto: RMCSecureCaseStrapped
   entities:
-  - uid: 1360
+  - uid: 1281
     components:
     - type: Transform
       pos: -18.5,21.5
       parent: 1
-  - uid: 1361
+  - uid: 1282
     components:
     - type: Transform
       pos: -18.493084,42.845135
       parent: 1
 - proto: RMCSecureCaseStrappedMetal
   entities:
-  - uid: 1362
+  - uid: 1283
     components:
     - type: Transform
       pos: -18.5,24.5
       parent: 1
 - proto: RMCSecurityCameraConsole
   entities:
-  - uid: 1363
+  - uid: 1284
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -10385,186 +9948,186 @@ entities:
       parent: 1
 - proto: RMCSecurityRecordsConsoleAlt
   entities:
-  - uid: 1364
+  - uid: 1285
     components:
     - type: Transform
       pos: -9.66985,-3.4436703
       parent: 1
 - proto: RMCSpawnPointFORECONPVEAssistantSL
   entities:
-  - uid: 1366
+  - uid: 1286
     components:
     - type: Transform
       pos: 0.5,-0.5
       parent: 1
 - proto: RMCSpawnPointFORECONPVECorpsman
   entities:
-  - uid: 1367
+  - uid: 1287
     components:
     - type: Transform
       pos: 0.5,2.5
       parent: 1
 - proto: RMCSpawnPointFORECONPVERadioTelephoneOperator
   entities:
-  - uid: 1368
+  - uid: 1288
     components:
     - type: Transform
       pos: 0.5,1.5
       parent: 1
 - proto: RMCSpawnPointFORECONPVERifleman
   entities:
-  - uid: 1369
+  - uid: 1289
     components:
     - type: Transform
       pos: 0.5,5.5
       parent: 1
-  - uid: 1370
+  - uid: 1290
     components:
     - type: Transform
       pos: 0.5,7.5
       parent: 1
-  - uid: 1371
+  - uid: 1291
     components:
     - type: Transform
       pos: 0.5,8.5
       parent: 1
 - proto: RMCSpawnPointFORECONPVESmartgunner
   entities:
-  - uid: 1372
+  - uid: 1292
     components:
     - type: Transform
       pos: 0.5,4.5
       parent: 1
 - proto: RMCSpawnPointFORECONPVESquadLead
   entities:
-  - uid: 1373
+  - uid: 1293
     components:
     - type: Transform
       pos: 0.5,-1.5
       parent: 1
 - proto: RMCSpoon
   entities:
-  - uid: 1374
+  - uid: 1294
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1375
+  - uid: 1295
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1376
+  - uid: 1296
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1377
+  - uid: 1297
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1378
+  - uid: 1298
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1379
+  - uid: 1299
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1380
+  - uid: 1300
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1381
+  - uid: 1301
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1382
+  - uid: 1302
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1383
+  - uid: 1303
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1384
+  - uid: 1304
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1385
+  - uid: 1305
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1386
+  - uid: 1306
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1387
+  - uid: 1307
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
-  - uid: 1388
+  - uid: 1308
     components:
     - type: Transform
       pos: -18.51337,7.528568
       parent: 1
 - proto: RMCSprayBottleSpaceCleaner
   entities:
-  - uid: 1389
+  - uid: 1309
     components:
     - type: Transform
       pos: -31.676455,-1.8402568
       parent: 1
 - proto: RMCStairs
   entities:
-  - uid: 1390
+  - uid: 1310
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -17.5,3.5
       parent: 1
-  - uid: 1391
+  - uid: 1311
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -10.5,3.5
       parent: 1
-  - uid: 1392
+  - uid: 1312
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -10.5,4.5
       parent: 1
-  - uid: 1393
+  - uid: 1313
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -17.5,4.5
       parent: 1
-  - uid: 1394
+  - uid: 1314
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -30.5,23.5
       parent: 1
-  - uid: 1395
+  - uid: 1315
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -28.5,23.5
       parent: 1
-  - uid: 1396
+  - uid: 1316
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -10572,13 +10135,13 @@ entities:
       parent: 1
 - proto: RMCStairsLeft
   entities:
-  - uid: 1397
+  - uid: 1317
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -10.5,4.5
       parent: 1
-  - uid: 1398
+  - uid: 1318
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -10586,19 +10149,19 @@ entities:
       parent: 1
 - proto: RMCStairsRight
   entities:
-  - uid: 1399
+  - uid: 1319
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -10.5,2.5
       parent: 1
-  - uid: 1400
+  - uid: 1320
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -17.5,4.5
       parent: 1
-  - uid: 1401
+  - uid: 1321
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -10606,28 +10169,28 @@ entities:
       parent: 1
 - proto: RMCStethoscope
   entities:
-  - uid: 1402
+  - uid: 1322
     components:
     - type: Transform
       pos: -23.41113,-3.3871317
       parent: 1
 - proto: RMCStool
   entities:
-  - uid: 1403
+  - uid: 1323
     components:
     - type: Transform
       pos: -40.51797,30.420322
       parent: 1
 - proto: RMCSurgicalTray
   entities:
-  - uid: 1404
+  - uid: 1324
     components:
     - type: Transform
       pos: -27.56708,-1.5590068
       parent: 1
 - proto: RMCSurveillanceCameraAlmayer
   entities:
-  - uid: 1405
+  - uid: 1325
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -10635,14 +10198,14 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1406
+  - uid: 1326
     components:
     - type: Transform
       pos: -0.51794857,9.312917
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1407
+  - uid: 1327
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -10650,7 +10213,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1408
+  - uid: 1328
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -10658,7 +10221,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1409
+  - uid: 1329
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -10666,7 +10229,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1410
+  - uid: 1330
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -10674,7 +10237,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1411
+  - uid: 1331
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -10682,14 +10245,14 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1412
+  - uid: 1332
     components:
     - type: Transform
       pos: -14.9958315,8.452607
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1413
+  - uid: 1333
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -10697,7 +10260,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1414
+  - uid: 1334
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -10705,7 +10268,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1415
+  - uid: 1335
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -10713,7 +10276,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1416
+  - uid: 1336
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
@@ -10721,7 +10284,7 @@ entities:
       parent: 1
     - type: Fixtures
       fixtures: {}
-  - uid: 1417
+  - uid: 1337
     components:
     - type: Transform
       pos: -17.622719,43.474373
@@ -10730,105 +10293,105 @@ entities:
       fixtures: {}
 - proto: RMCTacticalMapTableLargeRotated
   entities:
-  - uid: 1418
+  - uid: 1338
     components:
     - type: Transform
       pos: -14.5,-6.5
       parent: 1
 - proto: RMCTankReagentFuel
   entities:
-  - uid: 1419
+  - uid: 1339
     components:
     - type: Transform
       pos: -25.5,18.5
       parent: 1
 - proto: RMCTelecomOSServerBox
   entities:
-  - uid: 1420
+  - uid: 1340
     components:
     - type: Transform
       pos: -42.523697,29.533285
       parent: 1
 - proto: RMCToolboxMechanicalGreen
   entities:
-  - uid: 1421
+  - uid: 1341
     components:
     - type: Transform
       pos: -22.49518,18.39541
       parent: 1
-  - uid: 1422
+  - uid: 1342
     components:
     - type: Transform
       pos: -22.354555,18.73916
       parent: 1
 - proto: RMCTrashCart
   entities:
-  - uid: 1423
+  - uid: 1343
     components:
     - type: Transform
       pos: -3.4959488,8.862817
       parent: 1
-  - uid: 1424
+  - uid: 1344
     components:
     - type: Transform
       pos: -1.5017078,-3.076272
       parent: 1
-  - uid: 1425
+  - uid: 1345
     components:
     - type: Transform
       pos: -11.5,-7.5
       parent: 1
-  - uid: 1426
+  - uid: 1346
     components:
     - type: Transform
       pos: -18.492132,-0.23701918
       parent: 1
-  - uid: 1427
+  - uid: 1347
     components:
     - type: Transform
       pos: -31.488955,-3.0121317
       parent: 1
-  - uid: 1428
+  - uid: 1348
     components:
     - type: Transform
       pos: -30.5,0.5
       parent: 1
-  - uid: 1429
+  - uid: 1349
     components:
     - type: Transform
       pos: -20.5,21.5
       parent: 1
 - proto: RMCVendorCigsElectro
   entities:
-  - uid: 1430
+  - uid: 1350
     components:
     - type: Transform
       pos: -31.339949,5.918758
       parent: 1
 - proto: RMCVendorMedicalPVE
   entities:
-  - uid: 1431
+  - uid: 1351
     components:
     - type: Transform
       pos: -25.5,-1.5
       parent: 1
 - proto: RMCVendorNutriCoDrink
   entities:
-  - uid: 1432
+  - uid: 1352
     components:
     - type: Transform
       pos: -12.5,7.5
       parent: 1
 - proto: RMCVendorSnackSimple
   entities:
-  - uid: 1433
+  - uid: 1353
     components:
     - type: Transform
       pos: -32.71495,5.918758
       parent: 1
 - proto: RMCWeaponRevolver38Empty
   entities:
-  - uid: 1434
+  - uid: 1354
     components:
     - type: Transform
       pos: -3.7360828,-3.388772
@@ -10845,54 +10408,54 @@ entities:
           ent: null
 - proto: RMCWhistle
   entities:
-  - uid: 958
+  - uid: 880
     components:
     - type: Transform
       pos: -9.724949,-3.4571612
       parent: 1
     - type: RMCWhistle
-      action: 959
+      action: 881
     - type: ActionsContainer
     - type: ContainerContainer
       containers:
         actions: !type:Container
           ents:
-          - 959
+          - 881
 - proto: RMCWhiteSensorComputer
   entities:
-  - uid: 1435
+  - uid: 1355
     components:
     - type: Transform
       pos: -16.5,24.5
       parent: 1
 - proto: RMCWhiteSensorComputer3
   entities:
-  - uid: 1436
+  - uid: 1356
     components:
     - type: Transform
       pos: -15.5,24.5
       parent: 1
 - proto: RMCWindowDirectionalBlue
   entities:
-  - uid: 1437
+  - uid: 1357
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -0.5,-3.5
       parent: 1
-  - uid: 1438
+  - uid: 1358
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -0.5,-5.5
       parent: 1
-  - uid: 1439
+  - uid: 1359
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -0.5,-6.5
       parent: 1
-  - uid: 1440
+  - uid: 1360
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
@@ -10900,122 +10463,129 @@ entities:
       parent: 1
 - proto: RNMCClosetFORECONPersonalGear
   entities:
-  - uid: 1446
+  - uid: 1361
     components:
     - type: Transform
       pos: -4.711434,4.491232
       parent: 1
-  - uid: 1447
+  - uid: 1362
     components:
     - type: Transform
       pos: -2.258309,4.475607
       parent: 1
-  - uid: 1448
+  - uid: 1363
     components:
     - type: Transform
       pos: -4.227059,4.491232
       parent: 1
-  - uid: 1449
+  - uid: 1364
     components:
     - type: Transform
       pos: -2.711434,4.475607
       parent: 1
-  - uid: 1450
+  - uid: 1365
     components:
     - type: Transform
       pos: -3.242684,4.475607
       parent: 1
-  - uid: 1451
+  - uid: 1366
     components:
     - type: Transform
       pos: -3.711434,4.475607
       parent: 1
-  - uid: 1452
+  - uid: 1367
     components:
     - type: Transform
       pos: -2.273934,2.4912322
       parent: 1
-  - uid: 1453
+  - uid: 1368
     components:
     - type: Transform
       pos: -2.727059,2.4912322
       parent: 1
-  - uid: 1454
+  - uid: 1369
     components:
     - type: Transform
       pos: -3.258309,2.4912322
       parent: 1
-  - uid: 1455
+  - uid: 1370
     components:
     - type: Transform
       pos: -3.742684,2.4912322
       parent: 1
-  - uid: 1456
+  - uid: 1371
     components:
     - type: Transform
       pos: -4.242684,2.4912322
       parent: 1
-  - uid: 1457
+  - uid: 1372
     components:
     - type: Transform
       pos: -4.727059,2.4912322
       parent: 1
-  - uid: 1458
+  - uid: 1373
     components:
     - type: Transform
       pos: -5.5,-5.5
       parent: 1
-  - uid: 1459
+  - uid: 1374
     components:
     - type: Transform
       pos: -5.5,-6.5
       parent: 1
-  - uid: 1460
+  - uid: 1375
     components:
     - type: Transform
       pos: -9.250892,-6.5374203
       parent: 1
-  - uid: 1461
+  - uid: 1376
     components:
     - type: Transform
       pos: -18.253773,-7.5273623
       parent: 1
+- proto: RNMCGunRackM890
+  entities:
+  - uid: 1383
+    components:
+    - type: Transform
+      pos: -24.75,6.5
+      parent: 1
 - proto: RNMCSpawnerShuttleGoldenArrow
   entities:
-  - uid: 1365
+  - uid: 1377
     components:
     - type: Transform
       pos: -29.5,41.5
       parent: 1
 - proto: SignNosmoking
   entities:
-  - uid: 1441
+  - uid: 1378
     components:
     - type: Transform
       pos: -30.520205,-0.7152568
       parent: 1
-  - uid: 1442
+  - uid: 1379
     components:
     - type: Transform
       pos: -25.520205,-0.7308818
       parent: 1
 - proto: SpawnPointLatejoin
   entities:
-  - uid: 1445
+  - uid: 1380
     components:
     - type: Transform
       pos: -1.5,11.5
       parent: 1
 - proto: ToyFigurineMouse
   entities:
-  - uid: 1443
+  - uid: 1381
     components:
     - type: Transform
       pos: -24.472172,13.5843525
       parent: 1
 - proto: WeYaExperimentalToolsVendor
   entities:
-  - uid: 1444
+  - uid: 1382
     components:
     - type: Transform
       pos: -39.5,29.5

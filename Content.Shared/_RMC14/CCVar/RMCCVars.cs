@@ -629,5 +629,8 @@ public sealed partial class RMCCVars : CVars
 
     public static readonly CVarDef<bool> RNMCDefibsHardcore =
     CVarDef.Create("rnmc.defibs_hardcore", false, CVar.REPLICATED | CVar.SERVER);
+
+    public static readonly CVarDef<bool> RNMCDropshipWeedkillerEnabled =
+    CVarDef.Create("rnmc.dropship_weedkiller", false, CVar.REPLICATED | CVar.SERVER);
     // rnm14 end
 }

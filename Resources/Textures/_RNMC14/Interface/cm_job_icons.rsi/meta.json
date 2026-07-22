@@ -75,6 +75,9 @@
         },
         {
             "name": "platco"
+        },
+        {
+            "name": "platco_azure"
         }
     ]
 }

@@ -38,6 +38,7 @@ public sealed class WeedKillerSystem : EntitySystem
     private static readonly EntProtoId WeedKiller = "RMCGasWeedKiller";
     private TimeSpan _dropshipDelay;
     private TimeSpan _disableDuration;
+    private bool _enabled; // rnmc14
 
     public override void Initialize()
     {
@@ -47,10 +48,14 @@ public sealed class WeedKillerSystem : EntitySystem
 
         Subs.CVar(_config, RMCCVars.RMCWeedKillerDropshipDelaySeconds, v => _dropshipDelay = TimeSpan.FromSeconds(v), true);
         Subs.CVar(_config, RMCCVars.RMCWeedKillerDisableDurationMinutes, v => _disableDuration = TimeSpan.FromMinutes(v), true);
+        Subs.CVar(_config, RMCCVars.RNMCDropshipWeedkillerEnabled, v => _enabled = v, true); // rnmc14
     }
 
     private void OnDropshipLaunchedFromWarship(ref DropshipLaunchedFromWarshipEvent ev)
     {
+        if (!_enabled) // RNMC14
+            return;
+
         if (_net.IsClient)
             return;
 

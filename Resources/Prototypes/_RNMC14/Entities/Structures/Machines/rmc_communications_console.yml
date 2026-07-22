@@ -39,3 +39,13 @@
     group: SunRiders
   - type: TacticalMapComputer
   - type: SupplyDropComputer
+
+- type: entity
+  parent: RMCOverwatchConsoleSunRiders
+  id: RMCOverwatchConsoleAzure
+  name: overwatch console
+  description: State of the art machinery for giving orders to a squad.
+  suffix: Azure 15
+  components:
+  - type: OverwatchConsole
+    group: PMC

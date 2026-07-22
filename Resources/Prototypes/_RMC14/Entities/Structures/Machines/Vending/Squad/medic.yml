@@ -350,6 +350,7 @@
     - RMCSPPCorpsmanPVE
     - RMCFORECONPVECorpsman
     - RMCCLFDoctorPVE
+    - RNMCMedicalSpecialistAzurePVE # RNMC14
     sections:
     - name: Standard Equipment
       takeAll: CMStandard

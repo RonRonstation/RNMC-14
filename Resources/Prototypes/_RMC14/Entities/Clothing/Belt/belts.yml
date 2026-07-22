@@ -963,11 +963,13 @@
           tags:
           - RMCWeaponSMGM63
           - RMCWeaponSMGM63B2
+          - RNMCWeaponSMGM63B3 # RNMC14
   - type: CMHolster
     whitelist:
       tags:
       - RMCWeaponSMGM63
       - RMCWeaponSMGM63B2
+      - RNMCWeaponSMGM63B3 # RNMC14
   - type: CMItemSlots
   - type: Tag
     tags:

@@ -7,6 +7,7 @@
             <Control HorizontalExpand="True" SizeFlagsStretchRatio="1" />
             <Button Name="ToggleDefibs" Access="Public" Text="{Loc rnmc-defibs}" HorizontalExpand="True" SizeFlagsStretchRatio="2"/>
             <Button Name="Hardcore" Access="Public" Text="{Loc rnmc-hardcore}" HorizontalExpand="True" SizeFlagsStretchRatio="2"/>
+            <Button Name="DropshipWeedkillers" Access="Public" Text="{Loc rnmc-dropship-weedkillers}" HorizontalExpand="True" SizeFlagsStretchRatio="2"/>
         </BoxContainer>
     </GridContainer>
 </DefaultWindow>

@@ -1,0 +1,93 @@
+- type: job
+  parent: CMJobBase
+  id: RNMCTeamLeadPVE
+  name: cm-job-name-team-leader
+  description: cm-job-description-squad-leader
+  playTimeTracker: RNMCTeamLeadPVE
+  ranks:
+    RNMCRankWeYaTeamLeader: []
+  startingGear: RMCGearAzureTeamLead
+  dummyStartingGear: RMCGearAzureTeamLead
+  icon: "CMJobIconFireteamLeader"
+  joinNotifyCrew: false
+  supervisors: cm-job-supervisors-section-sergeant
+  accessGroups:
+  - PMCFTL
+  spawnMenuRoleName: Team Leader (AZURE 15 PVE)
+  overwatchSortPriority: -6
+  overwatchShowName: true
+  overwatchRoleName: Team Lead
+  roleWeight: 1
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
+    - type: DemoSpecWhitelist
+    - type: GrenadeSpecWhitelist
+    - type: ScoutWhitelist
+    - type: SniperWhitelist
+    - type: PyroWhitelist
+    - type: Skills
+      skills:
+        RMCSkillConstruction: 2
+        RMCSkillEndurance: 2
+        RMCSkillEngineer: 2
+        RMCSkillFirearms: 1
+        RMCSkillFireman: 3
+        RMCSkillJtac: 2
+        RMCSkillLeadership: 1
+        RMCSkillMedical: 1
+        RMCSkillVehicles: 1
+        RMCSkillSpecialistWeapons: 7
+        RMCSkillPowerLoader: 1
+        RMCSkillPilot: 1
+    - type: MarineOrders
+    - type: SquadArmorWearer
+      leader: true
+    - type: RMCPointing
+    - type: JobPrefix
+      prefix: cm-job-prefix-team-leader
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: tl
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadAzure15
+    - type: NpcFactionMember
+      factions:
+      - WeYa
+
+- type: playTimeTracker
+  id: RNMCTeamLeadPVE
+  isHumanoid: true
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointTeamLeaderAzure
+  name: azure 15 team leader spawn point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCTeamLeadPVE
+  - type: Sprite
+    state: marine_spawn
+
+- type: entity
+  parent: CMIDCardStandardDogtag
+  id: CMDogtagTeamLeaderAzure
+  name: Team Leader's dogtags
+  components:
+  - type: PresetIdCard
+    job: RNMCTeamLeadPVE
+
+- type: startingGear
+  id: RMCGearAzureTeamLead
+  equipment:
+    id: CMDogtagTeamLeaderAzure
