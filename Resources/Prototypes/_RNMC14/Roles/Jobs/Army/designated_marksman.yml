@@ -17,6 +17,13 @@
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
     - type: NpcFactionMember
       factions:
       - UNMC
@@ -29,6 +36,14 @@
         RMCSkillVehicles: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-marksman
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: spec
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadArmy
 
 - type: job
   parent: CMJobBase

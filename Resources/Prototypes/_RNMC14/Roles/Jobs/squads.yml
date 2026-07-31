@@ -49,31 +49,78 @@
     - RNMCSquadRedDawn
 
 - type: entity
-  id: SquadArmy
-  name: Army
+  id: SquadPMCOmega
+  name: AZURE 15
   components:
   - type: SquadTeam
-    color: "#5D6532"
+    accessLevels:
+    - RNMCAccessPMCSquadOmega
+    color: "#ccffe9"
     background:
       sprite: _RMC14/Interface/cm_job_icons.rsi
       state: hudsquad
-    radio: US Army
+    radio: RedDawn
     blacklistedSquadArmor:
     - Helmet
     - Goggles
     - Armor
     - Gloves
     maxRoles:
-      RNMCArmyPlatoonOfficer: 1
-      RNMCArmySquadLeader: 1
-      RNMCArmyFireteamLead: 1
-      RNMCArmyGunner: 1
-      RNMCArmyMedicalTechnician: 1
-      RNMCArmyTrooper: 4
-      RNMCAntiTankGunner: 1
-      RNMCArmyDesignatedMarksman: 1
-      RNMCArmyCombatTechnician: 1
+      RNMCTacticalUnitPVE: 2
+      RNMCPMCHeavyWeaponsSpecialistPVE: 1
+      RNMCMedicalSpecialistAzurePVE: 1
+      RNMCTeamLeadPVE: 1
+    group: PMC
+  - type: Tag
+    tags:
+    - RNMCSquadAzure15
+
+- type: entity
+  id: SquadPMCTheta
+  name: AZURE 15
+  components:
+  - type: SquadTeam
+    accessLevels:
+    - RNMCAccessPMCSquadTheta
+    color: "#ccffe9"
+    background:
+      sprite: _RMC14/Interface/cm_job_icons.rsi
+      state: hudsquad
+    radio: WEYA
+    blacklistedSquadArmor:
+    - Helmet
+    - Goggles
+    - Armor
+    - Gloves
+    maxRoles:
+      RNMCTacticalUnitPVE: 2
+      RNMCPMCHeavyWeaponsSpecialistPVE: 1
+      RNMCOperationsLeaderPVE: 1
+      RNMCTeamLeadPVE: 1
+    group: PMC
+  - type: Tag
+    tags:
+    - RNMCSquadAzure15
+
+- type: entity
+  id: SquadArmy
+  name: Army
+  components:
+  - type: SquadTeam
+    color: "#075f31"
+    background:
+      sprite: _RMC14/Interface/cm_job_icons.rsi
+      state: hudsquad
+    radio: USArmy
+    blacklistedSquadArmor:
+    - Helmet
+    - Goggles
+    - Armor
+    - Gloves
     group: Army
+    minimapBackground:
+      sprite: /Textures/_RMC14/Interface/map_blips.rsi
+      state: background_delta
   - type: Tag
     tags:
     - RNMCSquadArmy

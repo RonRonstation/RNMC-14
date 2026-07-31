@@ -12,11 +12,18 @@
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-sl
   accessGroups:
-  - ArmyAccessPVE
+  - ArmyAccessCommandPVE
   spawnMenuRoleName: Army Squad Leader
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
     - type: NpcFactionMember
       factions:
       - UNMC
@@ -32,6 +39,14 @@
         RMCSkillJtac: 3
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-sl
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: leader
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadArmy
 
 - type: job
   parent: CMJobBase

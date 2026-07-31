@@ -45,3 +45,148 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: RNMCFORECONPersonalFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RNMCClosetAzurePersonalGear
+  name: personal locker
+  description: An immobile storage unit.
+  suffix: PvE, Azure 15
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RNMCPMCPersonalFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RMCClosetAzureSGOGear
+  name: heavy weapons specialist locker
+  description: An immobile storage unit.
+  suffix: PvE, Azure 15
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RNMCPMCPMachinegunnerFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RMCClosetAzureTeamLeaderGear
+  name: team leader locker
+  description: An immobile storage unit.
+  suffix: PvE, Azure 15
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RNMCPMCTeamLeaderFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RNMCClosetArmyPersonalGear
+  name: personal locker
+  description: An immobile storage unit.
+  suffix: PvE, Army
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RMCClosetArmyGearFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RNMCClosetArmySquadLeaderGear
+  name: Squad Leader locker
+  description: An immobile storage unit.
+  suffix: PvE, Army
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RMCClosetArmySLFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RNMCClosetArmyGunnerGear
+  name: Gunner locker
+  description: An immobile storage unit.
+  suffix: PvE, Army
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RMCClosetArmyLMGFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RNMCClosetArmyMarksmanGear
+  name: Marksman locker
+  description: An immobile storage unit.
+  suffix: PvE, Army
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RMCClosetArmyMarksmanFill
+
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RNMCClosetArmyHeavyGunnerGear
+  name: Heavy Gunner locker
+  description: An immobile storage unit.
+  suffix: PvE, Army
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RMCClosetArmyHeavyGunnerFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RNMCClosetArmyEngineerGear
+  name: Engineer locker
+  description: An immobile storage unit.
+  suffix: PvE, Army
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RMCClosetArmyEngineerFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RNMCClosetArmyATGunnerGear
+  name: AT Gunner locker
+  description: An immobile storage unit.
+  suffix: PvE, Army
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RMCClosetArmyATGunnerFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RNMCClosetArmyPlatcoGear
+  name: Platco locker
+  description: An immobile storage unit.
+  suffix: PvE, Army
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RMCClosetArmyPlatcoFill
+
+- type: entity
+  parent: CMClosetBaseUnanchored
+  id: RNMCClosetArmyFireteamLeaderGear
+  name: Fireteam Leader locker
+  description: An immobile storage unit.
+  suffix: PvE, Army
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: RMCClosetArmyFireteamLeaderFill

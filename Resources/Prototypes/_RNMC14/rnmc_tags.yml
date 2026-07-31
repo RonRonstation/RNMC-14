@@ -23,6 +23,12 @@
 - type: Tag
   id: RNMCSquadRedDawn
 
+- type: Tag
+  id: RNMCSquadAzure15
+
+- type: Tag
+  id: RNMCSquadArmy
+
 # UPSTREAM PARTS WITH TAGS:
 - type: Tag
   id: CMStockPartMatterBin

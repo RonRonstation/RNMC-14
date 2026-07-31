@@ -11,11 +11,19 @@
   icon: RNMCJobIconArmyPlatoonOfficer
   joinNotifyCrew: false
   accessGroups:
-  - ArmyAccessPVE
+  - ArmyAccessCommandPVE
+  - PlatcoAccess
   spawnMenuRoleName: Army Platoon Officer
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
     - type: NpcFactionMember
       factions:
       - UNMC
@@ -34,6 +42,14 @@
         RMCSkillConstruction: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-platoon-officer
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: platco
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadArmy
 
 - type: job
   parent: CMJobBase

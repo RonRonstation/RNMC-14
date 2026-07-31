@@ -12,13 +12,10 @@
   id: RMCClosetArmySLFill
   table: !type:AllSelector
     children:
-    - id: CMHeadCap
-    - id: RNMCJumpsuitArmy
     - id: RMCLaserDesignator
     - id: RMCWhistle
-    - id: CMBootsArmyBlack
     - id: RMCBackpackRTO
-    - id: CMHeadsetUSArmy
+    - id: CMHeadsetUSArmyCommand
 
 - type: entityTable
   parent: CMLockerBase
@@ -34,12 +31,8 @@
   id: RMCClosetArmyPlatcoFill
   table: !type:AllSelector
     children:
-    - id: CMHeadCap
     - id: CMBootsArmyBlack
     - id: RNMCGlassesBiMex
-    - id: RNMCJumpsuitArmy
-    - id: RMCBeltHolsterPistol
-    - id: RNMCArmorPBASMk2
     - id: CMHeadsetUSArmyCommand
 
 - type: entityTable
@@ -62,6 +55,7 @@
     - id: RMCSatchelWelderChestrig
     - id: RMCPouchConstructionFillFull
     - id: RMCSentryPVE
+    - id: RMCEngineeringUpgrade
 
 - type: entityTable
   parent: CMLockerBase
@@ -74,3 +68,23 @@
       amount: 3
     - id: RMCRocket84mmAntiArmor
       amount: 3
+
+- type: entityTable
+  parent: CMLockerBase
+  id: RMCClosetArmyHeavyGunnerFill
+  table: !type:AllSelector
+    children:
+    - id: RNMCMinigun
+    - id: RNMCMinigunBackpack
+    - id: RNMCMinigunBelt
+      amount: 6
+
+- type: entityTable
+  parent: CMLockerBase
+  id: RMCClosetArmyFireteamLeaderFill
+  table: !type:AllSelector
+    children:
+    - id: RMCLaserDesignator
+    - id: RMCWhistle
+    - id: RMCBackpackRTO
+    - id: CMHeadsetUSArmyCommand

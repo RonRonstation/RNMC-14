@@ -41,6 +41,20 @@
   - RMCLoadoutGroupPins
 
 - type: roleLoadout
+  id: JobRNMCArmyHeavyGunner
+  points: 20
+  groups:
+  - MarineBackpack
+  - HeadwearRMCPVE
+  - EyewearRMCPVE
+  - MasksRMCPVE
+  - HelmetGarbsRMCPVE
+  - AccessoriesRMCPVE
+  - PlushiesRMC
+  - WeaponsRMC
+  - RMCLoadoutGroupPins
+
+- type: roleLoadout
   id: JobRNMCArmyGunner
   points: 20
   groups:

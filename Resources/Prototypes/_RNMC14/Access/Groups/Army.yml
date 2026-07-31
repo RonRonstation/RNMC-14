@@ -10,3 +10,14 @@
   - CMAccessArmy
   - CMAccessArmyMedical
   - CMAccessMarinePrep
+
+- type: accessGroup
+  id: ArmyAccessCommandPVE
+  tags:
+  - CMAccessArmy
+  - CMAccessMarinePrep
+  - RMCAccessCommand
+  - CMAccessDropship
+  - CMAccessPilot
+  - CMAccessCrewman
+  - CMAccessPlatco
