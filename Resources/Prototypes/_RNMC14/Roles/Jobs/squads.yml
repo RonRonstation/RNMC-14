@@ -51,8 +51,6 @@
 - type: entity
   id: SquadPMCOmega
   name: AZURE 15
-<<<<<<< HEAD
-=======
   components:
   - type: SquadTeam
     accessLevels:
@@ -107,7 +105,6 @@
 - type: entity
   id: SquadArmy
   name: Army
->>>>>>> 610aced1917dceac616112992c797f9083dddcfa
   components:
   - type: SquadTeam
     accessLevels:
