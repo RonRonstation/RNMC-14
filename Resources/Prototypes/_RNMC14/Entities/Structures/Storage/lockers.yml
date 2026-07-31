@@ -80,6 +80,7 @@
   - type: EntityTableContainerFill
     containers:
       entity_storage: !type:NestedSelector
+<<<<<<< HEAD
         tableId: RNMCPMCTeamLeaderFill
 
 - type: entity
@@ -190,3 +191,6 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: RMCClosetArmyFireteamLeaderFill
+=======
+        tableId: RNMCPMCTeamLeaderFill
+>>>>>>> 610aced1917dceac616112992c797f9083dddcfa

@@ -48,6 +48,7 @@
   suffix: Azure 15
   components:
   - type: OverwatchConsole
+<<<<<<< HEAD
     group: PMC
 
 - type: entity
@@ -59,3 +60,6 @@
   components:
   - type: OverwatchConsole
     group: Army
+=======
+    group: PMC
+>>>>>>> 610aced1917dceac616112992c797f9083dddcfa

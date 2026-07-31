@@ -1,0 +1,17 @@
+- type: entity
+  parent: AU14MobWorkingJoe
+  id: AU14MobWorkingJoeGOVFOR
+  suffix: AU14, GOVFOR
+  components:
+  - type: GhostTakeoverAvailable
+  - type: GhostRoleApplySpecial
+  - type: GhostRole
+    makeSentient: true
+    allowSpeech: true
+    allowMovement: true
+    reregister: false
+    name: Working Joe (GOVFOR)
+    description: au14-job-description-workingjoe
+    job: AU14JobGOVFORWorkingJoe
+    raffle:
+      settings: short

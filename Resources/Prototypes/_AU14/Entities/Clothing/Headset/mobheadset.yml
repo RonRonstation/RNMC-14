@@ -1,0 +1,9 @@
+
+- type: entity
+  parent: RMCHeadsetMarine
+  id: AU14HeadsetWorkingJoe
+  name: Working Joe headset
+  description: A common headset used by Working Joes.
+  components:
+  - type: Sprite
+    state: generic_headset

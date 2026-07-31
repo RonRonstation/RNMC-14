@@ -26,9 +26,12 @@
 - type: Tag
   id: RNMCSquadAzure15
 
+<<<<<<< HEAD
 - type: Tag
   id: RNMCSquadArmy
 
+=======
+>>>>>>> 610aced1917dceac616112992c797f9083dddcfa
 # UPSTREAM PARTS WITH TAGS:
 - type: Tag
   id: CMStockPartMatterBin

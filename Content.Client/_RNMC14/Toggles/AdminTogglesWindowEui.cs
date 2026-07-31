@@ -15,6 +15,7 @@ namespace Content.Client._RNMC14.Toggles
             _window.OnClose += () => SendMessage(new CloseEuiMessage());
             _window.ToggleDefibs.OnPressed += ToggleDefibsOnPressed;
             _window.Hardcore.OnPressed += ToggleHardcoreOnPressed;
+            _window.DropshipWeedkillers.OnPressed += ToggleHardcoreOnPressed;
         }
 
         private void ToggleDefibsOnPressed(BaseButton.ButtonEventArgs obj)
@@ -25,6 +26,11 @@ namespace Content.Client._RNMC14.Toggles
         private void ToggleHardcoreOnPressed(BaseButton.ButtonEventArgs obj)
         {
             SendMessage(new AdminToggleEuiMsg.ToggleHardcore{});
+        }
+
+        private void ToggleDropshipWeedkillersOnPressed(BaseButton.ButtonEventArgs obj)
+        {
+            SendMessage(new AdminToggleEuiMsg.ToggleDropshipWeedkillers { });
         }
 
         public override void Opened()

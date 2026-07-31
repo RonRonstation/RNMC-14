@@ -1,0 +1,8 @@
+﻿
+- type: entity
+  parent: CMIDCardBase
+  id: AU14IDCardGOVFORWorkingJoe
+  name: Working Joe ID card
+  components:
+  - type: PresetIdCard
+    job: AU14JobGOVFORWorkingJoe

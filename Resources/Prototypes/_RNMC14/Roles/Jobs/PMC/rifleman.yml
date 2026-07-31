@@ -1,0 +1,85 @@
+- type: job
+  parent: CMJobBase
+  id: RNMCTacticalUnitPVE
+  name: cm-job-name-tactical-unit
+  description: cm-job-description-rifleman
+  playTimeTracker: CMJobTacticalUnitPVE
+  startingGear: RMCGearAzureTacUnit
+  dummyStartingGear: RMCGearAzureTacUnit
+  icon: "CMJobIconEmpty"
+  joinNotifyCrew: false
+  supervisors: cm-job-supervisors-sl
+  ranks:
+    RMCRankWeYaOperator: []
+  accessGroups:
+  - PMCRifleman
+  spawnMenuRoleName: Tactical Unit (AZURE 15 PVE)
+  hasIcon: false
+  roleWeight: 1
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
+    - type: DemoSpecWhitelist
+    - type: GrenadeSpecWhitelist
+    - type: ScoutWhitelist
+    - type: SniperWhitelist
+    - type: PyroWhitelist
+    - type: Skills
+      skills:
+        RMCSkillEndurance: 2
+        RMCSkillEngineer: 2
+        RMCSkillConstruction: 2
+        RMCSkillPilot: 1
+        RMCSkillPowerLoader: 1
+        RMCSkillVehicles: 2
+        RMCSkillFireman: 3
+        RMCSkillSpecialistWeapons: 7
+        RMCSkillFirearms: 1 # yes this is PVE parity
+    - type: SquadArmorWearer
+    - type: JobPrefix
+      prefix: cm-job-prefix-tacunit
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: private
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadAzure15
+    - type: NpcFactionMember
+      factions:
+      - WeYa
+
+- type: playTimeTracker
+  id: CMJobTacticalUnitPVE
+  isHumanoid: true
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointTacticalUnitAzure15
+  name: azure 15 tactical unit spawn point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCTacticalUnitPVE
+  - type: Sprite
+    state: marine_spawn
+
+- type: entity
+  parent: CMIDCardStandardDogtag
+  id: CMDogtagTacUnitAzure
+  name: Tactical Unit's dogtags
+  components:
+  - type: PresetIdCard
+    job: RNMCTacticalUnitPVE
+
+- type: startingGear
+  id: RMCGearAzureTacUnit
+  equipment:
+    id: CMDogtagTacUnitAzure

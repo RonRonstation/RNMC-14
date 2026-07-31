@@ -4,3 +4,10 @@
   icon:
     sprite: _RNMC14/Interface/cm_job_icons.rsi
     state: platco
+
+- type: jobIcon
+  parent: CMJobIconBase
+  id: RNMCJobIconOverwatchOperator
+  icon:
+    sprite: _RNMC14/Interface/cm_job_icons.rsi
+    state: platco_azure

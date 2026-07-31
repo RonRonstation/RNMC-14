@@ -52,7 +52,7 @@
       leader: true
     - type: RMCPointing
     - type: JobPrefix
-      prefix: cm-job-prefix-section-sergeant
+      prefix: cm-job-prefix-squad-leader
     - type: TacticalMapIcon
       icon:
         sprite: /Textures/_RMC14/Interface/map_blips.rsi

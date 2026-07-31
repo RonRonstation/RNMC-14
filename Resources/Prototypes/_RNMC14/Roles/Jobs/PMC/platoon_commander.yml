@@ -1,0 +1,101 @@
+﻿- type: job
+  parent: CMJobBase
+  id: RNMCOverwatchOperatorPVE
+  name: cm-job-name-overwatch-operator
+  description: cm-job-description-platoon-commander
+  playTimeTracker: RNMCOverwatchOperatorPVE
+  ranks:
+    RNMCRankWeYaOverwatch: []
+  weight: 5
+  startingGear: RMCGearAzureOverwatch
+  icon: "RNMCJobIconOverwatchOperator"
+  requireAdminNotify: true
+  joinNotifyCrew: false
+  supervisors: cm-job-supervisors-co
+  accessGroups:
+  - PMCPlatcoAccess
+  spawnMenuRoleName: Overwatch Operator (AZURE 15 PVE)
+  roleWeight: 0.25
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
+    - type: DemoSpecWhitelist
+    - type: GrenadeSpecWhitelist
+    - type: ScoutWhitelist
+    - type: SniperWhitelist
+    - type: PyroWhitelist
+    - type: Skills
+      skills:
+        RMCSkillPilot: 2
+        RMCSkillNavigations: 1
+        RMCSkillEndurance: 2
+        RMCSkillConstruction: 2
+        RMCSkillEngineer: 2
+        RMCSkillFirearms: 1
+        RMCSkillFireman: 3
+        RMCSkillIntel: 1
+        RMCSkillJtac: 3
+        RMCSkillLeadership: 2
+        RMCSkillMedical: 2
+        RMCSkillOverwatch: 1
+        RMCSkillPolice: 1
+        RMCSkillPowerLoader: 1
+        RMCSkillSurgery: 1
+        RMCSkillVehicles: 2
+        RMCSkillSpecialistWeapons: 7
+    - type: MarineOrders
+    - type: RMCPointing
+    - type: JobPrefix
+      prefix: cm-job-prefix-overwatch-operator
+    - type: ViewIntelObjectives
+    - type: CommandAccent
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RNMC14/Interface/map_blips.rsi
+        state: platco_azure
+    - type: NpcFactionMember
+      factions:
+      - WeYa
+
+- type: playTimeTracker
+  id: RNMCOverwatchOperatorPVE
+  isHumanoid: true
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointOverwatchOperatorAzure
+  name: azure 15 overwatch operator spawn point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCOverwatchOperatorPVE
+  - type: Sprite
+    state: marine_spawn
+
+- type: entity
+  parent: CMIDCardStandardDogtag
+  id: CMDogtagOverwatchAzure
+  name: Overwatch Operator's dogtags
+  components:
+  - type: PresetIdCard
+    job: RNMCOverwatchOperatorPVE
+
+- type: startingGear
+  id: RMCGearAzureOverwatch
+  equipment:
+    id: CMDogtagOverwatchAzure
+    jumpsuit: CMJumpsuitLiaisonFormal
+    back: CMSatchel
+    pocket1: RMCPouchGeneralLarge
+    pocket2: RMCPouchGeneralLarge
+    belt: RMCMK80BeltPMCFilled
+    shoes: RMCShoesLaceupBrown
+    ears: RMCHeadsetDistressGoonLeader
+  inhand:
+  - RMCRangefinder
