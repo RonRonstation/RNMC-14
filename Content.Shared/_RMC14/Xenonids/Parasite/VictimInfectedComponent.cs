@@ -1,4 +1,4 @@
-using Content.Shared._RMC14.Medical.Autodoc;
+using Content.Shared.Chat.Prototypes;
 using Content.Shared._RMC14.Medical.Surgery;
 using Content.Shared._RMC14.Xenonids.JoinXeno;
 using Content.Shared.Chat.Prototypes;
@@ -77,7 +77,7 @@ public sealed partial class VictimInfectedComponent : Component
     /// <summary>
     ///     Used by larva removal surgery.
     /// </summary>
-    [DataField, AutoNetworkedField, Access(typeof(SharedCMSurgerySystem), typeof(SharedAutodocSystem))]
+    [DataField, AutoNetworkedField, Access(typeof(SharedCMSurgerySystem))]
     public bool RootsCut;
 
     /// <summary>
