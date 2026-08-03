@@ -190,4 +190,3 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: RMCClosetArmyFireteamLeaderFill
-        tableId: RNMCPMCTeamLeaderFill
