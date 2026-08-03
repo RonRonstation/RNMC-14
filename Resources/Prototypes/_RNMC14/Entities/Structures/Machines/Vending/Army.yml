@@ -33,6 +33,22 @@
       - id: RMCBoonie
         name: Boonie Hat
         amount: 15
+    - name: Webbings
+      entries:
+      - id: CMWebbingBlack
+        name: Webbing, Black
+        amount: 5
+      - id: CMWebbingBrown
+        name: Webbing, Brown
+        amount: 5
+      - id: RMCWebbingLegPouch
+        name: Leg Pouch, Camo Conforming
+        amount: 5
+      - id: RMCWebbingLegPouchBlack
+        name: Leg Pouch, Black
+        amount: 5
+      - id: RMCWebbingDropPouch
+        amount: 5
     - name: Armor
       entries:
       - id: RNMCArmorPBASLight

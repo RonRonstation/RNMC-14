@@ -1,0 +1,25 @@
+- type: gameMap
+  id: Area_58
+  mapName: "Area 58"
+  mapPath: /Maps/_RNMC14/Area58.yml
+  minPlayers: 0
+  maxRandomOffset: 0
+  randomRotation: false
+  stations:
+    Area_58:
+      stationProto: StandardUNMCWarship
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Area 58'
+        - type: StationJobs
+          availableJobs:
+            RNMCArmyGunner: [1, 1]
+            RNMCArmyHeavyGunner: [1, 1]
+            RNMCArmySquadLeader: [ 1, 1 ]
+            RNMCArmyTrooper: [8, 8]
+            RNMCAntiTankGunner: [1, 1]
+            RNMCArmyCombatTechnician: [1, 1]
+            RNMCArmyDesignatedMarksman: [1, 1]
+            RNMCArmyFireteamLead: [1, 1]
+            RNMCArmyMedicalTechnician: [1, 1]
+            RNMCArmyPlatoonOfficer: [1, 1]
