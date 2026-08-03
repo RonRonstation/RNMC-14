@@ -482,7 +482,7 @@ public abstract class SharedCMUSurgeryFlowSystem : EntitySystem
             }
 
             if (armed.RequiredToolCategory == "severed_limb"
-                && !LimbMatchesAnyMissingSlot(patient, used))
+                && !LimbMatchesMissingSlot(patient, used, armed.TargetPartType, armed.TargetSymmetry))
             {
                 Popup.PopupEntity(Loc.GetString("cmu-medical-surgery-wrong-limb"), patient, user, PopupType.SmallCaution);
                 return true;

@@ -1,13 +1,12 @@
-using System.Numerics;
 using Content.Shared._RMC14.Projectiles.Penetration;
-using Content.Shared._RMC14.Weapons.Ranged.Prediction;
 using Content.Shared._RMC14.Weapons.Ranged;
+using Content.Shared._RMC14.Weapons.Ranged.Prediction;
 using Content.Shared._RMC14.Xenonids.Damage;
 using Content.Shared._RMC14.Xenonids.Projectile;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Components;
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Camera;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.Database;
 using Content.Shared.Destructible;
@@ -17,6 +16,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
+using Content.Shared.Random;
 using Content.Shared.Throwing;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Audio.Systems;
@@ -29,8 +29,10 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using System.Numerics;
 
 namespace Content.Shared.Projectiles;
 
@@ -61,6 +63,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly SharedGunSystem _guns = default!;
     [Dependency] private readonly SharedCameraRecoilSystem _sharedCameraRecoil = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
