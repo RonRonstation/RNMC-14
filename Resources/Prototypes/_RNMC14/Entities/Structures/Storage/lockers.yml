@@ -130,7 +130,6 @@
       entity_storage: !type:NestedSelector
         tableId: RMCClosetArmyMarksmanFill
 
-
 - type: entity
   parent: CMClosetBaseUnanchored
   id: RNMCClosetArmyHeavyGunnerGear
