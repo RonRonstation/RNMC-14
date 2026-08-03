@@ -905,7 +905,7 @@ public sealed class CMUSurgeryDispatchSystem : EntitySystem
 
         var parts = BuildPartEntries(marker.Patient, medic);
         var refreshedArmed = CompOrNull<CMUSurgeryArmedStepComponent>(marker.Patient);
-        var state = _flowSurgery.BuildBuiState(marker.Patient, Name(marker.Patient), parts, refreshedArmed, medic);
+        var state = _flowSurgery.BuildBuiState(marker.Patient, Name(marker.Patient), parts, refreshedArmed);
         _ui.SetUiState(medic, CMUSurgeryUIKey.Key, state);
     }
 
