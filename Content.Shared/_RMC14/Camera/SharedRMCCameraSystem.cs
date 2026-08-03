@@ -235,6 +235,12 @@ public abstract class SharedRMCCameraSystem : EntitySystem
             return false;
         }
 
+        if (index >= computer.Comp.CameraNames.Count)
+        {
+            name = default;
+            return false;
+        }
+
         name = computer.Comp.CameraNames[index];
         return true;
     }
@@ -254,7 +260,8 @@ public abstract class SharedRMCCameraSystem : EntitySystem
                 if (index >= 0)
                 {
                     comp.CameraIds.RemoveAt(index);
-                    comp.CameraNames.RemoveAt(index);
+                    if (index < comp.CameraNames.Count)
+                        comp.CameraNames.RemoveAt(index);
                 }
 
                 if (comp.CurrentCamera == camera)

@@ -440,6 +440,7 @@
     slots:
       secondary:
         startingItem: VehicleSPPVanTurret
+        disableEject: true
         whitelist:
           components:
           - HardpointItem

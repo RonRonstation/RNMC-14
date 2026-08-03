@@ -136,7 +136,6 @@
     onlyHalf: true
     alert: SynthNightVision
   - type: EyeProtection
-  - type: WoundableUntreatable
   - type: Insulated
   - type: RMCLeapProtection
     inherentStunDuration: 3
@@ -150,16 +149,19 @@
   id: RMCSynthRemoveComponents
   categories: [ HideSpawnMenu ]
   components:
-  - type: CMSurgeryTarget
   - type: Infectable
   - type: Hunger
   - type: Thirst
   - type: Perishable
   - type: ThermalRegulator
+  - type: Temperature
   - type: Stamina
   - type: DamageForceSay
   - type: Dna
   - type: InjectableSolution
   - type: IVDripTarget
+  - type: PainShock
+  - type: Woundable
+  - type: Wounded
   - type: RMCSuicide
     damage: { }

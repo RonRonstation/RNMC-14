@@ -133,5 +133,12 @@ public sealed partial class SynthComponent : Component
     [DataField]
     public TimeSpan NextUnableUsePopup;
 
+    /// <summary>
+    ///     True once <see cref="SharedSynthSystem.MakeSynth"/> has run, so the
+    ///     same setup isn't re-applied if the entity hits both MapInit and a
+    ///     later ComponentStartup (the AddComponentSpecial path).
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool Initialized;
 }
 

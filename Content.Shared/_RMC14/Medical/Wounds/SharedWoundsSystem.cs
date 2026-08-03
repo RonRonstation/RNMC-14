@@ -4,6 +4,7 @@ using Content.Shared._RMC14.CCVar;
 using Content.Shared._RMC14.Damage;
 using Content.Shared._RMC14.DoAfter;
 using Content.Shared._RMC14.Marines.Skills;
+using Content.Shared._RMC14.Synth;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
@@ -102,15 +103,20 @@ public abstract class SharedWoundsSystem : EntitySystem
 
     private void OnWoundedUnpaused(Entity<WoundedComponent> ent, ref EntityUnpausedEvent args)
     {
+        var dirty = false;
         var wounds = CollectionsMarshal.AsSpan(ent.Comp.Wounds);
         foreach (ref var wound in wounds)
         {
             if (wound.StopBleedAt != null)
+            {
                 wound.StopBleedAt = wound.StopBleedAt + args.PausedTime;
+                dirty = true;
+            }
         }
 
         ent.Comp.UpdateAt += args.PausedTime;
-        Dirty(ent);
+        if (dirty)
+            Dirty(ent);
     }
 
     private void OnWoundTreaterUseInHand(Entity<WoundTreaterComponent> ent, ref UseInHandEvent args)
@@ -123,6 +129,17 @@ public abstract class SharedWoundsSystem : EntitySystem
     {
         if (!args.CanReach || args.Target == null)
             return;
+
+        if (HasComp<Content.Shared._CMU14.Medical.CMUHumanMedicalComponent>(args.Target.Value)
+            && HasComp<Content.Shared._CMU14.Medical.CMUHumanMedicalComponent>(args.User))
+        {
+            var ev = new Content.Shared._CMU14.Medical.Wounds.Events.CMUWoundTreaterInterceptEvent(
+                args.User, ent.Owner, args.Target.Value);
+            RaiseLocalEvent(ref ev);
+            if (ev.Handled)
+                args.Handled = true;
+            return;
+        }
 
         StartTreatment(args.User, args.Target.Value, ent, out var handled);
         args.Handled = handled;
@@ -168,6 +185,9 @@ public abstract class SharedWoundsSystem : EntitySystem
 
         if (anyWounds)
         {
+            // Force the next WoundsSystem tick to resync BleedAmount immediately;
+            // otherwise the analyzer keeps reading stale bleed for up to UpdateCooldown.
+            wounded.UpdateAt = _timing.CurTime;
             Dirty(target, wounded);
         }
         else if (damage == FixedPoint2.Zero)
@@ -238,6 +258,15 @@ public abstract class SharedWoundsSystem : EntitySystem
         handle = false;
         wounded = default;
         damage = FixedPoint2.Zero;
+        if (HasComp<SynthComponent>(target))
+        {
+            handle = true;
+            if (doPopups)
+                _popup.PopupClient(Loc.GetString("cmu-medical-bandage-synth-requires-repair-tools"), target, user, PopupType.SmallCaution);
+
+            return false;
+        }
+
         if (!HasComp<WoundableComponent>(target) &&
             !TryComp(target, out wounded))
         {
@@ -455,6 +484,7 @@ public abstract class SharedWoundsSystem : EntitySystem
         }
 
         limit ??= FixedPoint2.New(1f);
+        var dirty = false;
         var wounds = CollectionsMarshal.AsSpan(wounded.Comp.Wounds);
         for (var i = 0; i < wounds.Length; i++)
         {
@@ -468,10 +498,14 @@ public abstract class SharedWoundsSystem : EntitySystem
 
             wound.Healed += healing;
             amount += healing;
+            dirty = true;
 
             if (amount == FixedPoint2.Zero)
                 break;
         }
+
+        if (dirty)
+            Dirty(wounded.Owner, wounded.Comp);
     }
 
     public void AddWound(Entity<WoundableComponent?> woundable, FixedPoint2 total, WoundType type, TimeSpan? fixedDuration = null)
@@ -527,11 +561,18 @@ public abstract class SharedWoundsSystem : EntitySystem
             return;
 
         var wounds = wounded.Comp.Wounds;
+        var dirty = false;
         for (var i = wounds.Count - 1; i >= 0; i--)
         {
             if (wounds[i].Type == type)
+            {
                 wounds.RemoveSwap(i);
+                dirty = true;
+            }
         }
+
+        if (dirty)
+            Dirty(wounded.Owner, wounded.Comp);
     }
 
     public bool HasUntreated(Entity<WoundedComponent?> wounded, ProtoId<DamageGroupPrototype> group)

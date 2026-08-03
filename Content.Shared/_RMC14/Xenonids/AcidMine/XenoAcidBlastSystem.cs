@@ -6,6 +6,7 @@ using Content.Shared._RMC14.Xenonids.Construction.DeployedTraps;
 using Content.Shared._RMC14.Xenonids.DeployTraps;
 using Content.Shared._RMC14.Xenonids.Hive;
 using Content.Shared._RMC14.Xenonids.Projectile.Spit.Charge;
+using Content.Shared._CMU14.Medical.BodyPart;
 using Content.Shared.Actions;
 using Content.Shared.Damage;
 using Content.Shared.Effects;
@@ -35,6 +36,7 @@ public sealed class XenoAcidBlastSystem : EntitySystem
     [Dependency] private readonly XenoSystem _xeno = default!;
 
     private readonly HashSet<EntityUid> _targets = new();
+    [Dependency] private readonly SharedHitLocationSystem _hitLocation = default!;
 
     public override void Initialize()
     {
@@ -100,8 +102,9 @@ public sealed class XenoAcidBlastSystem : EntitySystem
     {
         var hits = 0;
         var position = _transform.GetMapCoordinates(ent);
-        _targets.Clear();
-        _lookup.GetEntitiesInRange(position.MapId, position.Position, ent.Comp.BlastRadius, _targets, LookupFlags.Uncontained);
+        using var targetingSuppression = ent.Comp.Attached is { } attached
+            ? _hitLocation.SuppressBodyZoneTargeting(attached)
+            : default;
 
         foreach (var target in _targets)
         {
