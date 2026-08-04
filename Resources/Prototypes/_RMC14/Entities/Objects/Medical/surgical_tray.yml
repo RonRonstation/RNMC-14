@@ -21,7 +21,7 @@
   - type: Storage
     maxItemSize: Small
     grid:
-    - 0,0,13,3 # 14 slots
+    - 0,0,15,3 # 14 slots
     whitelist:
       tags:
       - CMTraumaKit
@@ -52,6 +52,8 @@
     - id: CMSurgicalDrill
     - id: CMUBoneGraftItem
     - id: CMUOrganClampItem
+    - id: CMBoneGel
+    - id: CMBonesetter
 #   - FixOVein
 #   - Nanopaste
     - id: CMSurgicalLine
