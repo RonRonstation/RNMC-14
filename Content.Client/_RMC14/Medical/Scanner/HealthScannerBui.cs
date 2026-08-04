@@ -57,7 +57,6 @@ public sealed class HealthScannerBui : BoundUserInterface
         base.Open();
 
         var window = EnsureWindow();
-        window.ShowServerLoadingPulse();
         if (!window.IsOpen)
             window.OpenCentered();
 
@@ -74,7 +73,6 @@ public sealed class HealthScannerBui : BoundUserInterface
     private void UpdateState(HealthScannerBuiState uiState)
     {
         _window = EnsureWindow();
-        _window.ShowServerLoadingPulse();
 
         if (_entities.GetEntity(uiState.Target) is not { Valid: true } target)
             return;

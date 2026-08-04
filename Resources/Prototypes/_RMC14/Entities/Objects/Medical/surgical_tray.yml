@@ -50,8 +50,8 @@
     - id: CMCautery
     - id: CMCircularSaw
     - id: CMSurgicalDrill
-    - id: CMBoneGel
-    - id: CMBonesetter
+    - id: CMUBoneGraftItem
+    - id: CMUOrganClampItem
 #   - FixOVein
 #   - Nanopaste
     - id: CMSurgicalLine

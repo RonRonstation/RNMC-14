@@ -102,3 +102,11 @@
   components:
   - type: Sprite
     drawdepth: LowFloors
+
+- type: entity
+  parent: CMFloorShallowWaterEntity
+  id: RMCFloorShallowWaterEntityBelowPipes
+  suffix: Below Pipes
+  components:
+  - type: Sprite
+    drawdepth: LowFloors

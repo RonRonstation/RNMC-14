@@ -1,0 +1,175 @@
+- type: entity
+  parent: CMPill
+  id: AU14PillCMUTramadol
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: CMUTramadol
+          Quantity: 10
+  - type: Sprite
+    layers:
+    - state: pill10
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: ExamineRequiresSkill
+    skilledExamine: cm-pill-contents-tramadol
+
+- type: entity
+  parent: CMPill
+  id: AU14PillCMUOxycodone
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: CMUOxycodone
+          Quantity: 10
+  - type: Sprite
+    layers:
+    - state: pill2
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: ExamineRequiresSkill
+    skilledExamine: cm-pill-contents-oxycodone
+
+- type: entity
+  parent: CMPill
+  id: AU14PillCMUParacetamol
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: CMUParacetamol
+          Quantity: 10
+  - type: Sprite
+    layers:
+    - state: pill2
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: ExamineRequiresSkill
+    skilledExamine: cm-pill-contents-paracetamol
+
+- type: entity
+  parent: CMPacketPills
+  id: AU14PacketPillsTramadol
+  name: tramadol pill packet
+  description: This packet contains tramadol pills. Alleviates moderate amounts of pain. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period.
+  components:
+  - type: Sprite
+    state: tramadol_packet
+  - type: StorageFill
+    contents:
+    - id: AU14PillCMUTramadol
+      amount: 4
+  - type: IconLabel
+    labelTextLocId: rmc-tramadol-container-label-text
+
+- type: entity
+  parent: CMPillCanister
+  id: AU14PillCanisterTramadol
+  name: tramadol pill bottle
+  suffix: tramadol, 16
+  components:
+  - type: Item
+    heldPrefix: 11
+  - type: Sprite
+    layers:
+    - state: pill_canister3
+      map: [ "bottleSurfaceLayer" ]
+    - state: open
+      map: [ "openLayer" ]
+    - state: closed
+      map: [ "closedLayer" ]
+  - type: StorageFill
+    contents:
+    - id: AU14PillCMUTramadol
+      amount: 16
+  - type: IconLabel
+    labelTextLocId: rmc-tramadol-container-label-text
+
+- type: entity
+  parent: CMPillCanister
+  id: AU14PillCanisterOxycodone
+  name: oxycodone pill bottle
+  suffix: oxycodone, 16
+  components:
+  - type: Item
+    heldPrefix: 11
+  - type: Sprite
+    layers:
+    - state: pill_canister5
+      map: [ "bottleSurfaceLayer" ]
+    - state: open
+      map: [ "openLayer" ]
+    - state: closed
+      map: [ "closedLayer" ]
+  - type: StorageFill
+    contents:
+    - id: AU14PillCMUOxycodone
+      amount: 16
+  - type: IconLabel
+    labelTextLocId: rmc-oxycodone-container-label-text
+
+- type: entity
+  parent: CMPillCanister
+  id: AU14PillCanisterParacetamol
+  name: paracetamol pill bottle
+  suffix: paracetamol, 16
+  components:
+  - type: Item
+    heldPrefix: 11
+  - type: Sprite
+    layers:
+    - state: pill_canister9
+      map: [ "bottleSurfaceLayer" ]
+    - state: open
+      map: [ "openLayer" ]
+    - state: closed
+      map: [ "closedLayer" ]
+  - type: StorageFill
+    contents:
+    - id: AU14PillCMUParacetamol
+      amount: 16
+  - type: IconLabel
+    labelTextLocId: rmc-paracetamol-container-label-text
+
+- type: entity
+  parent: CMAutoInjector
+  id: AU14OxycodoneAutoInjector
+  name: oxycodone autoinjector
+  description: An autoinjector loaded with 3 uses of Oxycodone.
+  components:
+  - type: Hypospray
+    transferAmount: 20
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 60
+        reagents:
+        - ReagentId: CMUOxycodone
+          Quantity: 60
+  - type: CMRefillableSolution
+    reagents:
+      CMUOxycodone: 60
+  - type: IconLabel
+    labelTextLocId: rmc-oxycodone-container-label-text
+
+- type: entity
+  parent: CMAutoInjector
+  id: AU14TramadolAutoInjector
+  name: tramadol autoinjector
+  description: An autoinjector loaded with 3 uses of Tramadol.
+  components:
+  - type: Hypospray
+    transferAmount: 20
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 60
+        reagents:
+        - ReagentId: CMUTramadol
+          Quantity: 60
+  - type: CMRefillableSolution

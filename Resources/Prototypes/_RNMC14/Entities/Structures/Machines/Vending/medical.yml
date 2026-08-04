@@ -25,9 +25,9 @@
     - CMTricordrazine
     - CMEpinephrine
     - CMInaprovaline
-#    - CMOxycodone # TODO RMC14
-#    - CMTramadol # TODO RMC14
-#    - CMPeridaxon # TODO RMC14
+    - CMUOxycodone
+    - CMUTramadol
+    - CMUPeridaxon
     whitelist:
       components:
       - Hypospray
@@ -50,8 +50,7 @@
       - id: CMTraumaKit10
       - id: CMOintment10
       - id: CMGauze10
-#      - id: CMSplints10 # TODO RMC14
-#        amount: 6
+      - id: CMUSplintItem
     - name: Autoinjectors
       entries:
       - id: CMBicaridineAutoInjector
@@ -59,10 +58,8 @@
       - id: CMEpinephrineAutoInjector
       - id: CMInaprovalineAutoInjector
       - id: CMKelotaneAutoInjector
-#      - id: CMOxycodoneAutoinjector # TODO RMC14
-#        amount: 3
-#      - id: CMTramadolAutoinjector # TODO RMC14
-#        amount: 3
+      - id: AU14OxycodoneAutoInjector
+      - id: AU14TramadolAutoInjector
       - id: CMTricordrazineAutoInjector
     - name: Liquid bottles
       entries:
@@ -71,11 +68,7 @@
       - id: CMBottleDexalin
       - id: CMBottleInaprovaline
       - id: CMBottleKelotane
-#      - id: CMBottleOxycodone # TODO RMC14
-#        amount: 3
 #      - id: CMBottlePeridaxon # TODO RMC14
-#        amount: 3
-#      - id: CMBottleTramadol # TODO RMC14
 #        amount: 3
     - name: Pill bottles
       entries:
@@ -84,9 +77,9 @@
       - id: CMPillCanisterDylovene
       - id: CMPillCanisterInaprovaline
       - id: CMPillCanisterKelotane
+      - id: AU14PillCanisterOxycodone
+      - id: AU14PillCanisterTramadol
 #      - id: CMPillCanisterPeridaxon # TODO RMC14
-#        amount: 2
-#      - id: CMPillCanisterTramadol # TODO RMC14
 #        amount: 2
     - name: Medical utilities
       entries:

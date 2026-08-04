@@ -182,6 +182,14 @@
 
 - type: entity
   parent: RMCChemStorageBase
+  id: RMCChemStorageGround
+  suffix: Ground
+  components:
+    - type: RMCChemicalStorage
+      network: RMCChemStorageGround
+
+- type: entity
+  parent: RMCChemStorageBase
   id: RMCChemStorageMedbay
   suffix: Medbay
   components:
