@@ -2,7 +2,6 @@ using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.Body.Part;
 using Content.Shared.Projectiles;
-using Content.Shared._AU14.Abominations;
 using Content.Shared._RMC14.Xenonids;
 using Content.Shared._RMC14.Xenonids.ClawSharpness;
 using Robust.Shared.Configuration;
@@ -17,7 +16,6 @@ public sealed partial class SharedCMUTraumaSystem : EntitySystem
 
     private EntityQuery<XenoComponent> _xenoQuery;
     private EntityQuery<XenoClawsComponent> _xenoClawsQuery;
-    private EntityQuery<AbominationComponent> _abominationQuery;
 
     private CMUTraumaContactSettings _settings = CMUTraumaContactSettings.Default;
 
@@ -27,7 +25,7 @@ public sealed partial class SharedCMUTraumaSystem : EntitySystem
 
         _xenoQuery = GetEntityQuery<XenoComponent>();
         _xenoClawsQuery = GetEntityQuery<XenoClawsComponent>();
-        _abominationQuery = GetEntityQuery<AbominationComponent>();
+
 
         _cfg.OnValueChanged(CMUMedicalCCVars.BoneProjectileHighDamageThreshold, v => _settings = _settings with { BallisticHighDamageThreshold = (FixedPoint2)v }, true);
         _cfg.OnValueChanged(CMUMedicalCCVars.TraumaMeleeHighDamageThreshold, v => _settings = _settings with { MeleeHighDamageThreshold = (FixedPoint2)v }, true);
@@ -130,21 +128,6 @@ public sealed partial class SharedCMUTraumaSystem : EntitySystem
         if (impact.Contact == DamageImpactContact.Crush)
             return impact.WithMinimumEnergy(DamageImpactEnergy.High);
 
-        if (TryGetAbominationSource(origin, tool))
-        {
-            return impact with
-            {
-                Contact = impact.Contact == DamageImpactContact.Generic ? DamageImpactContact.Slash : impact.Contact,
-                Penetration = impact.Penetration == DamageImpactPenetration.Unspecified ||
-                              impact.Penetration < DamageImpactPenetration.Medium
-                    ? DamageImpactPenetration.Medium
-                    : impact.Penetration,
-                Energy = impact.Energy == DamageImpactEnergy.Unspecified || impact.Energy < DamageImpactEnergy.High
-                    ? DamageImpactEnergy.High
-                    : impact.Energy,
-            };
-        }
-
         if (!TryGetXenoSource(origin, tool, out var xenoUid, out var xeno))
             return impact;
 
@@ -191,15 +174,6 @@ public sealed partial class SharedCMUTraumaSystem : EntitySystem
         xeno = default!;
         return false;
     }
-
-    private bool TryGetAbominationSource(EntityUid? origin, EntityUid? tool)
-    {
-        if (origin is { } originUid && _abominationQuery.HasComp(originUid))
-            return true;
-
-        return tool is { } toolUid && _abominationQuery.HasComp(toolUid);
-    }
-
     private CMUTraumaMechanism InferMechanism(DamageSpecifier damage, EntityUid? tool)
     {
         if (tool is { } toolUid && HasComp<ProjectileComponent>(toolUid))
