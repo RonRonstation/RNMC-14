@@ -1,16 +1,9 @@
 using Content.Shared._CMU14.Medical;
 using Content.Shared._CMU14.Medical.Examine;
-using Content.Shared._CMU14.Input;
-using Content.Shared._RMC14.Marines.Skills;
-using Content.Shared.ActionBlocker;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
-using Robust.Shared.Input.Binding;
-using Robust.Shared.Map;
-using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Server._CMU14.Medical.Examine;
@@ -21,12 +14,8 @@ public sealed partial class CMUDetailedMedicalExamineSystem : EntitySystem
     [Dependency] private ExamineSystemShared _examineShared = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
-    [Dependency] private SkillsSystem _skills = default!;
 
     private static readonly TimeSpan ExamineDelay = TimeSpan.FromSeconds(2);
-    private static readonly TimeSpan CorpsmanExamineDelay = TimeSpan.FromSeconds(0.4);
-    private static readonly EntProtoId<SkillDefinitionComponent> MedicalSkill = "RMCSkillMedical";
-    private const int CorpsmanMedicalSkillLevel = 2;
 
     public override void Initialize()
     {
@@ -54,46 +43,12 @@ public sealed partial class CMUDetailedMedicalExamineSystem : EntitySystem
         });
     }
 
-    public bool TryStartDetailedExamine(EntityUid user, EntityUid target)
-    {
-        if (!HasComp<CMUHumanMedicalComponent>(target))
-            return false;
-
-        if (!_actionBlocker.CanInteract(user, target) ||
-            !_interaction.InRangeAndAccessible(user, target))
-        {
-            return false;
-        }
-
-        return StartDetailedExamine(user, target);
-    }
-
-    public TimeSpan GetExamineDelay(EntityUid user)
-    {
-        return _skills.HasSkill(user, MedicalSkill, CorpsmanMedicalSkillLevel)
-            ? CorpsmanExamineDelay
-            : ExamineDelay;
-    }
-
-    private bool HandleInspectInjuries(ICommonSession? session, EntityCoordinates coordinates, EntityUid target)
-    {
-        if (session?.AttachedEntity is not { Valid: true } user ||
-            !Exists(user) ||
-            !Exists(target) ||
-            !coordinates.IsValid(EntityManager))
-        {
-            return false;
-        }
-
-        return TryStartDetailedExamine(user, target);
-    }
-
-    private bool StartDetailedExamine(EntityUid user, EntityUid target)
+    private void StartDetailedExamine(EntityUid user, EntityUid target)
     {
         var doAfter = new DoAfterArgs(
             EntityManager,
             user,
-            GetExamineDelay(user),
+            ExamineDelay,
             new CMUDetailedPhysicalExamineDoAfterEvent(),
             target,
             target)

@@ -91,7 +91,7 @@ public sealed class CMUBandageInterceptionSystem : EntitySystem
         }
 
         if (woundTarget != null
-            && CanApplyInstantWoundTreatment(args.User, treater)
+            && treater.InstantWoundTreatment
             && TryApplyInstantWoundTreatment(args.User, patient, targetPart, used, treater))
         {
             args.Handled = true;
@@ -446,13 +446,6 @@ public sealed class CMUBandageInterceptionSystem : EntitySystem
         }
 
         return worst is { } w ? WoundSizeProfile.BandageDelay(w) : TreatDelay;
-    }
-
-    private bool CanApplyInstantWoundTreatment(EntityUid user, WoundTreaterComponent treater)
-    {
-        return treater.InstantWoundTreatment ||
-               (treater.InstantWoundTreatmentSkills.Count > 0 &&
-                _skills.HasAllSkills(user, treater.InstantWoundTreatmentSkills));
     }
 
     private void OnBandageDoAfter(Entity<CMUBandagePendingComponent> ent, ref CMUBandageDoAfterEvent args)

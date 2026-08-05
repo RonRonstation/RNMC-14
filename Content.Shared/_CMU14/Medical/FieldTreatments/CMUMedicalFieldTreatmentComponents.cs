@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Content.Shared._RMC14.Marines.Skills;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -36,7 +35,4 @@ public sealed partial class CMUMedicalMixingBaseComponent : Component
 
     [DataField, AutoNetworkedField]
     public TimeSpan BleedControlDelay;
-
-    [DataField, AutoNetworkedField]
-    public Dictionary<EntProtoId<SkillDefinitionComponent>, int> InstantBleedControlSkills = new();
 }

@@ -670,8 +670,6 @@
     controlsBleeding: true
     stopsArterialBleeding: true
     bleedControlDelay: 1
-    instantBleedControlSkills:
-      RMCSkillMedical: 2
   - type: Stack
     stackType: CMUPlainTraumaDressing
     count: 50
@@ -913,8 +911,6 @@
     - CMTraumaKit
   - type: WoundTreater
     instantWoundTreatment: false
-    instantWoundTreatmentSkills:
-      RMCSkillMedical: 2
     woundsTreatedPerUse: 2
     cmuStopsArterialBleeding: true
   - type: StackPrice
