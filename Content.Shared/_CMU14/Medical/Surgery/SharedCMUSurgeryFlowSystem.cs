@@ -825,59 +825,9 @@ public abstract class SharedCMUSurgeryFlowSystem : EntitySystem
             toolCategory,
             totalSteps,
             // Gating prereq id only when the leaf surgery isn't the one
-            // being armed - lets the BUI flag "(via Open Incision)".
+            // being armed — lets the BUI flag "(via Open Incision)".
             resolvedSurgeryProtoId == surgeryId ? null : resolvedSurgeryProtoId);
         return true;
-    }
-
-    protected bool TryResolveNextStepAfterCompletedStep(
-        EntityUid patient,
-        EntityUid targetPart,
-        string leafSurgeryId,
-        string completedSurgeryId,
-        int completedStepIndex,
-        out CMUResolvedStep resolved)
-    {
-        if (completedSurgeryId != leafSurgeryId)
-            return TryResolveNextStep(patient, targetPart, leafSurgeryId, out resolved);
-
-        if (ShouldInjectSurgicalTraits(leafSurgeryId, leafSurgeryId)
-            && TryResolveSurgicalTraitCleanupStep(targetPart, out resolved))
-        {
-            return true;
-        }
-
-        return TryResolveIncompleteStepFromIndex(
-            patient,
-            targetPart,
-            leafSurgeryId,
-            completedStepIndex + 1,
-            out resolved);
-    }
-
-    private bool TryResolveIncompleteStepFromIndex(
-        EntityUid patient,
-        EntityUid targetPart,
-        string surgeryId,
-        int startIndex,
-        out CMUResolvedStep resolved)
-    {
-        resolved = default!;
-        if (RmcSurgery.GetSingleton(surgeryId) is not { } surgeryEnt)
-            return false;
-        if (!TryComp<CMSurgeryComponent>(surgeryEnt, out var surgeryComp))
-            return false;
-
-        for (var i = Math.Max(0, startIndex); i < surgeryComp.Steps.Count; i++)
-        {
-            var stepId = surgeryComp.Steps[i];
-            if (RmcSurgery.IsStepComplete(patient, targetPart, stepId))
-                continue;
-
-            return TryResolveStepAt(surgeryId, i, out resolved, targetPart);
-        }
-
-        return false;
     }
 
     private bool TryResolveSurgicalTraitCleanupStep(EntityUid targetPart, out CMUResolvedStep resolved)
@@ -979,13 +929,6 @@ public abstract class SharedCMUSurgeryFlowSystem : EntitySystem
             return TryResolveGatedStep("CMUSurgeryOpenSoftTissue", 1, targetPart, out resolved);
         if (!HasComp<CMSkinRetractedComponent>(targetPart))
             return TryResolveGatedStep("CMUSurgeryOpenSoftTissue", 2, targetPart, out resolved);
-
-        if (HasComp<CMUReattachCompleteComponent>(targetPart))
-            return TryResolveStepAt(surgeryId, 3, out resolved, targetPart);
-        if (HasComp<CMUReattachPreppedComponent>(targetPart))
-            return TryResolveStepAt(surgeryId, 2, out resolved, targetPart);
-        if (HasComp<CMUStumpRemovedComponent>(targetPart))
-            return TryResolveStepAt(surgeryId, 1, out resolved, targetPart);
 
         return TryResolveStepAt(surgeryId, 0, out resolved, targetPart);
     }
