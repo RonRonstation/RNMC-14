@@ -55,14 +55,3 @@ public sealed partial class HeartComponent : Component
     [DataField]
     public TimeSpan CardiacArrestUnconsciousDelay = TimeSpan.FromSeconds(5);
 }
-
-[RegisterComponent]
-[Access(typeof(SharedHeartSystem))]
-public sealed partial class MissingHeartComponent : Component
-{
-    [DataField]
-    public TimeSpan? NoPulseSince;
-
-    [DataField]
-    public TimeSpan NextCardiacArrestTick;
-}
