@@ -72,18 +72,7 @@ public sealed class XenoImpaleSystem : EntitySystem
     private void Impale(DamageSpecifier damage, int aP, EntProtoId animation, SoundSpecifier sound, EntityUid target, EntityUid xeno)
     {
         //TODO RMC14 targets chest
-        var finalDamage = _xeno.TryApplyXenoSlashDamageMultiplier(target, damage);
-        var damageTaken = _damage.TryChangeDamage(
-            target,
-            finalDamage,
-            armorPiercing: aP,
-            origin: xeno,
-            tool: xeno,
-            impact: DamageImpact.XenoRendingSlash(3) with
-            {
-                Contact = DamageImpactContact.Stab,
-                Penetration = DamageImpactPenetration.High,
-            });
+        var damageTaken = _damage.TryChangeDamage(target, _xeno.TryApplyXenoSlashDamageMultiplier(target, damage), armorPiercing: aP, origin: xeno, tool: xeno);
         if (damageTaken?.GetTotal() > FixedPoint2.Zero)
         {
             var filter = Filter.Pvs(target, entityManager: EntityManager).RemoveWhereAttachedEntity(o => o == xeno);

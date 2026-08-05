@@ -64,17 +64,7 @@ public sealed class XenoTailJabSystem : EntitySystem
         if (HasComp<DestroyOnXenoPierceScissorComponent>(target))
             damage.DamageDict.TryAdd(WindowBonusDamageType, WindowDamageBonus);
 
-        var finalDamage = _xeno.TryApplyXenoSlashDamageMultiplier(target, damage);
-        var damageTaken = _damage.TryChangeDamage(
-            target,
-            finalDamage,
-            origin: xeno,
-            tool: xeno,
-            impact: DamageImpact.XenoRendingSlash(3) with
-            {
-                Contact = DamageImpactContact.Stab,
-                Penetration = DamageImpactPenetration.High,
-            });
+        var damageTaken = _damage.TryChangeDamage(target, _xeno.TryApplyXenoSlashDamageMultiplier(target, damage), origin: xeno, tool: xeno);
         if (damageTaken?.GetTotal() > FixedPoint2.Zero)
         {
             var filter = Filter.Pvs(target, entityManager: EntityManager).RemoveWhereAttachedEntity(o => o == xeno.Owner);

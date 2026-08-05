@@ -11,7 +11,4 @@ public sealed partial class DamagedByContactComponent : Component
 
     [ViewVariables]
     public DamageSpecifier? Damage;
-
-    [ViewVariables]
-    public DamageImpact Impact;
 }

@@ -48,13 +48,6 @@
     damage:
       types:
         Slash: 2
-  - type: DamageImpactProfile
-    melee:
-      contact: Fragment
-      penetration: Low
-    thrown:
-      contact: Fragment
-      penetration: Low
   - type: Tag
     tags:
     - Trash

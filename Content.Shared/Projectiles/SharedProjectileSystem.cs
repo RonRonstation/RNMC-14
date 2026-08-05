@@ -127,15 +127,14 @@ public abstract partial class SharedProjectileSystem : EntitySystem
                 ev.Damage,
                 component.IgnoreResistances,
                 origin: component.Shooter,
-                tool: uid,
-                impact: DamageImpact.Projectile)
+                tool: uid)
             : new DamageSpecifier(ev.Damage);
         var deleted = Deleted(target);
 
         // RMC14 this is already done on the server in TryChangeDamage.
         if (_net.IsClient)
         {
-            var modifyEvent = new DamageModifyEvent(ev.Damage, component.Shooter, uid, impact: DamageImpact.Projectile);
+            var modifyEvent = new DamageModifyEvent(ev.Damage, component.Shooter, uid);
             RaiseLocalEvent(target, modifyEvent);
             modifiedDamage = modifyEvent.Damage;
         }
