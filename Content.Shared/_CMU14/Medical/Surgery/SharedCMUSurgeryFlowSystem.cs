@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Content.Shared._CMU14.Medical.Items;
 using Content.Shared._CMU14.Medical.Surgery.Markers;
-using Content.Shared._CMU14.Medical.Surgery.Traits;
 using Content.Shared._CMU14.Medical.StatusEffects;
 using Content.Shared._RMC14.Medical.Surgery;
 using Content.Shared._RMC14.Medical.Surgery.Steps;
@@ -34,20 +33,19 @@ namespace Content.Shared._CMU14.Medical.Surgery;
 
 public abstract class SharedCMUSurgeryFlowSystem : EntitySystem
 {
-    [Dependency] protected IConfigurationManager Cfg = default!;
-    [Dependency] protected INetManager Net = default!;
-    [Dependency] protected IPrototypeManager Prototypes = default!;
-    [Dependency] protected IGameTiming Timing = default!;
-    [Dependency] protected SharedBodySystem Body = default!;
-    [Dependency] protected SharedDoAfterSystem DoAfter = default!;
-    [Dependency] protected SharedHandsSystem Hands = default!;
-    [Dependency] protected ItemToggleSystem ItemToggle = default!;
-    [Dependency] protected SharedPopupSystem Popup = default!;
-    [Dependency] protected SharedPainShockSystem Pain = default!;
-    [Dependency] protected SharedCMUSurgicalTraitSystem SurgicalTraits = default!;
-    [Dependency] protected SharedStatusEffectsSystem Status = default!;
-    [Dependency] protected SharedUserInterfaceSystem UserInterface = default!;
-    [Dependency] protected SharedCMSurgerySystem RmcSurgery = default!;
+    [Dependency] protected readonly IConfigurationManager Cfg = default!;
+    [Dependency] protected readonly INetManager Net = default!;
+    [Dependency] protected readonly IPrototypeManager Prototypes = default!;
+    [Dependency] protected readonly IGameTiming Timing = default!;
+    [Dependency] protected readonly SharedBodySystem Body = default!;
+    [Dependency] protected readonly SharedDoAfterSystem DoAfter = default!;
+    [Dependency] protected readonly SharedHandsSystem Hands = default!;
+    [Dependency] protected readonly ItemToggleSystem ItemToggle = default!;
+    [Dependency] protected readonly SharedPopupSystem Popup = default!;
+    [Dependency] protected readonly SharedPainShockSystem Pain = default!;
+    [Dependency] protected readonly SharedStatusEffectsSystem Status = default!;
+    [Dependency] protected readonly SharedUserInterfaceSystem UserInterface = default!;
+    [Dependency] protected readonly SharedCMSurgerySystem RmcSurgery = default!;
 
     private readonly Dictionary<string, CMUSurgeryStepMetadataPrototype> _bySurgery = new();
 
@@ -58,21 +56,7 @@ public abstract class SharedCMUSurgeryFlowSystem : EntitySystem
     private const int SurgeryPainSuppressionTierMinimum = 2;
     private const string SurgeryUnconsciousStatus = "StatusEffectCMUUnconscious";
     private const string SurgeryForcedSleepingStatus = "StatusEffectForcedSleeping";
-    private const string TieVascularTearSurgery = "CMUSurgeryTieVascularTear";
-    private const string ExtractForeignBodySurgery = "CMUSurgeryExtractForeignBody";
-    private const string RelieveCompartmentPressureSurgery = "CMUSurgeryRelieveCompartmentPressure";
-    private const string DebrideContaminatedWoundSurgery = "CMUSurgeryDebrideContaminatedWound";
-    private const string RemoveBoneFragmentsSurgery = "CMUSurgeryRemoveBoneFragments";
-    private const string FreeOrganAdhesionsSurgery = "CMUSurgeryFreeOrganAdhesions";
-    private const string PackOrganBleedSurgery = "CMUSurgeryPackOrganBleed";
     private static readonly EntProtoId MendRibcageStep = "CMSurgeryStepMendRibcage";
-    private static readonly EntProtoId TieVascularTearStep = "CMUSurgeryStepTieVascularTear";
-    private static readonly EntProtoId ExtractForeignBodyStep = "CMUSurgeryStepExtractForeignBody";
-    private static readonly EntProtoId RelieveCompartmentPressureStep = "CMUSurgeryStepRelieveCompartmentPressure";
-    private static readonly EntProtoId DebrideContaminatedWoundStep = "CMUSurgeryStepDebrideContaminatedWound";
-    private static readonly EntProtoId RemoveBoneFragmentsStep = "CMUSurgeryStepRemoveBoneFragments";
-    private static readonly EntProtoId FreeOrganAdhesionsStep = "CMUSurgeryStepFreeOrganAdhesions";
-    private static readonly EntProtoId PackOrganBleedStep = "CMUSurgeryStepPackOrganBleed";
     private float _armedStepScanAccumulator;
 
     public override void Initialize()
@@ -790,13 +774,6 @@ public abstract class SharedCMUSurgeryFlowSystem : EntitySystem
 
         var totalSteps = resolvedSurgery.Comp.Steps.Count;
 
-        if (ShouldInjectSurgicalTraits(surgeryId, resolvedSurgeryProtoId)
-            && TryResolveSurgicalTraitCleanupStep(targetPart.Value, out var traitStep))
-        {
-            resolved = traitStep;
-            return true;
-        }
-
         var stepLabel = string.Empty;
         string? toolCategory = null;
 
@@ -828,78 +805,6 @@ public abstract class SharedCMUSurgeryFlowSystem : EntitySystem
             // being armed — lets the BUI flag "(via Open Incision)".
             resolvedSurgeryProtoId == surgeryId ? null : resolvedSurgeryProtoId);
         return true;
-    }
-
-    private bool TryResolveSurgicalTraitCleanupStep(EntityUid targetPart, out CMUResolvedStep resolved)
-    {
-        foreach (var trait in SurgicalTraits.EnumerateOrderedTraits(targetPart))
-        {
-            var surgeryId = TraitCleanupSurgeryId(trait);
-            if (surgeryId is null)
-                continue;
-            if (!TryResolveGatedStep(surgeryId, 0, targetPart, out resolved))
-                continue;
-
-            return true;
-        }
-
-        resolved = default!;
-        return false;
-    }
-
-    private static string? TraitCleanupSurgeryId(CMUSurgicalTrait trait)
-    {
-        return trait switch
-        {
-            CMUSurgicalTrait.VascularTear => TieVascularTearSurgery,
-            CMUSurgicalTrait.EmbeddedForeignBody => ExtractForeignBodySurgery,
-            CMUSurgicalTrait.CompartmentPressure => RelieveCompartmentPressureSurgery,
-            CMUSurgicalTrait.ContaminatedWound => DebrideContaminatedWoundSurgery,
-            CMUSurgicalTrait.BoneSplintered => RemoveBoneFragmentsSurgery,
-            CMUSurgicalTrait.OrganAdhesion => FreeOrganAdhesionsSurgery,
-            CMUSurgicalTrait.OrganHemorrhage => PackOrganBleedSurgery,
-            _ => null,
-        };
-    }
-
-    private static bool ShouldInjectSurgicalTraits(string leafSurgeryId, string resolvedSurgeryId)
-    {
-        if (resolvedSurgeryId != leafSurgeryId)
-            return false;
-
-        return IsFractureSurgeryId(leafSurgeryId)
-            || IsOrganRepairSurgeryId(leafSurgeryId)
-            || IsCloseUpSurgeryId(leafSurgeryId);
-    }
-
-    public static bool IsFractureSurgeryId(string surgeryId)
-    {
-        return surgeryId is "CMUSurgerySetSimpleFracture"
-            or "CMUSurgerySetSimpleFractureCavity"
-            or "CMUSurgerySetCompoundFracture"
-            or "CMUSurgerySetCompoundFractureCavity"
-            or "CMUSurgerySetComminutedFracture"
-            or "CMUSurgerySetComminutedFractureCavity";
-    }
-
-    public static bool IsCloseUpSurgeryId(string surgeryId)
-    {
-        return surgeryId is "CMUSurgeryCloseIncision"
-            or "CMUSurgeryCloseBoneCavity"
-            or "CMSurgeryCloseIncision"
-            or "CMSurgeryCloseRibcage";
-    }
-
-    public static bool IsOrganRepairSurgeryId(string surgeryId)
-    {
-        return surgeryId is "CMUSurgeryRepairLiver"
-            or "CMUSurgeryRepairLungs"
-            or "CMUSurgeryRepairKidneys"
-            or "CMUSurgeryRepairHeart"
-            or "CMUSurgeryRepairStomach"
-            or "CMUSurgeryRepairBrain"
-            or "CMUSurgeryRepairEyes"
-            or "CMUSurgeryRepairEars";
     }
 
     private bool TryResolveReattachNextStep(EntityUid patient, EntityUid targetPart, string surgeryId, out CMUResolvedStep resolved)
@@ -992,21 +897,6 @@ public abstract class SharedCMUSurgeryFlowSystem : EntitySystem
 
     private string ResolveContextualStepLabel(EntProtoId stepProtoId, string fallback, EntityUid? targetPart)
     {
-        if (stepProtoId == TieVascularTearStep)
-            return Loc.GetString("cmu-medical-surgery-step-tie-vessel-label");
-        if (stepProtoId == ExtractForeignBodyStep)
-            return Loc.GetString("cmu-medical-surgery-step-extract-foreign-body-label");
-        if (stepProtoId == RelieveCompartmentPressureStep)
-            return Loc.GetString("cmu-medical-surgery-step-relieve-pressure-label");
-        if (stepProtoId == DebrideContaminatedWoundStep)
-            return Loc.GetString("cmu-medical-surgery-step-debride-contamination-label");
-        if (stepProtoId == RemoveBoneFragmentsStep)
-            return Loc.GetString("cmu-medical-surgery-step-remove-bone-fragments-label");
-        if (stepProtoId == FreeOrganAdhesionsStep)
-            return Loc.GetString("cmu-medical-surgery-step-free-organ-adhesions-label");
-        if (stepProtoId == PackOrganBleedStep)
-            return Loc.GetString("cmu-medical-surgery-step-pack-organ-bleed-label");
-
         if (stepProtoId != MendRibcageStep)
             return fallback;
 

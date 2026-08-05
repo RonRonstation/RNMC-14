@@ -9,7 +9,6 @@ using Content.Shared._CMU14.Medical.Organs;
 using Content.Shared._CMU14.Medical.Surgery;
 using Content.Shared._CMU14.Medical.Surgery.Conditions;
 using Content.Shared._CMU14.Medical.Surgery.Effects;
-using Content.Shared._CMU14.Medical.Surgery.Traits;
 using Content.Shared._CMU14.Medical.Wounds;
 using Content.Shared._RMC14.Marines.Skills;
 using Content.Shared._RMC14.Medical.Surgery;
@@ -33,17 +32,16 @@ namespace Content.Server._CMU14.Medical.Surgery;
 
 public sealed class CMUSurgeryDispatchSystem : EntitySystem
 {
-    [Dependency] private IConfigurationManager _cfg = default!;
-    [Dependency] private IPrototypeManager _prototypes = default!;
-    [Dependency] private SharedBodySystem _body = default!;
-    [Dependency] private SharedContainerSystem _containers = default!;
-    [Dependency] private SharedHandsSystem _hands = default!;
-    [Dependency] private CMSurgerySystem _rmcSurgery = default!;
-    [Dependency] private PopupSystem _popup = default!;
-    [Dependency] private SkillsSystem _skills = default!;
-    [Dependency] private UserInterfaceSystem _ui = default!;
-    [Dependency] private SharedCMUSurgeryFlowSystem _flowSurgery = default!;
-    [Dependency] private SharedCMUSurgicalTraitSystem _surgicalTraits = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IPrototypeManager _prototypes = default!;
+    [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private readonly SharedContainerSystem _containers = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly CMSurgerySystem _rmcSurgery = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly SkillsSystem _skills = default!;
+    [Dependency] private readonly UserInterfaceSystem _ui = default!;
+    [Dependency] private readonly SharedCMUSurgeryFlowSystem _flowSurgery = default!;
 
     private static readonly EntProtoId<SkillDefinitionComponent> SurgerySkill = "RMCSkillSurgery";
 
@@ -401,10 +399,6 @@ public sealed class CMUSurgeryDispatchSystem : EntitySystem
             bits.Add(Loc.GetString("cmu-medical-surgery-condition-internal-bleed"));
         if (HasComp<CMUEscharComponent>(part))
             bits.Add(Loc.GetString("cmu-medical-surgery-condition-eschar"));
-        foreach (var trait in _surgicalTraits.EnumerateOrderedTraits(part))
-        {
-            bits.Add(Loc.GetString(CMUSurgicalTraitMetadata.ConditionLocId(trait)));
-        }
         return string.Join(" · ", bits);
     }
 

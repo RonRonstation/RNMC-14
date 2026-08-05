@@ -10,17 +10,19 @@ using Content.Shared.Examine;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Verbs;
 using Robust.Shared.Configuration;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._RMC14.Medical.Examine;
 
 public sealed class RMCMedicalExamineSystem : EntitySystem
 {
-    [Dependency] private MobStateSystem _mobState = default!;
-    [Dependency] private RMCSizeStunSystem _sizeStun = default!;
-    [Dependency] private RMCUnrevivableSystem _unrevivable = default!;
-    [Dependency] private SharedBodySystem _body = default!;
-    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly RMCSizeStunSystem _sizeStun = default!;
+    [Dependency] private readonly RMCUnrevivableSystem _unrevivable = default!;
+    [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -82,13 +84,21 @@ public sealed class RMCMedicalExamineSystem : EntitySystem
             return false;
         }
 
+        var now = _timing.CurTime;
         foreach (var (partUid, _) in _body.GetBodyChildren(body))
         {
             if (!TryComp<BodyPartWoundComponent>(partUid, out var pw))
                 continue;
 
-            if (pw.ExternalBleeding != ExternalBleedTier.None)
-                return true;
+            foreach (var wound in pw.Wounds)
+            {
+                if (!wound.Treated &&
+                    wound.Bloodloss > 0f &&
+                    (wound.StopBleedAt is null || now < wound.StopBleedAt.Value))
+                {
+                    return true;
+                }
+            }
         }
 
         return false;
@@ -104,7 +114,18 @@ public sealed class RMCMedicalExamineSystem : EntitySystem
             if (!TryComp<BodyPartWoundComponent>(partUid, out var pw))
                 continue;
 
-            if (pw.ExternalBleeding == ExternalBleedTier.None)
+            var bleeding = false;
+            foreach (var wound in pw.Wounds)
+            {
+                if (wound.Treated)
+                    continue;
+                if (wound.Bloodloss <= 0f)
+                    continue;
+                bleeding = true;
+                break;
+            }
+
+            if (!bleeding)
                 continue;
 
             if (!seen.Add((partComp.PartType, partComp.Symmetry)))
