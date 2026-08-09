@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Content.Shared._CMU14.Medical.BodyPart.Events;
+using Content.Shared._CMU14.Medical.Trauma;
 using Content.Shared._CMU14.Medical.Wounds;
 using Content.Shared._RMC14.Medical.Unrevivable;
 using Content.Shared.Body.Components;
@@ -18,13 +19,14 @@ namespace Content.Shared._CMU14.Medical.BodyPart;
 
 public abstract class SharedBodyPartHealthSystem : EntitySystem
 {
-    [Dependency] protected readonly IConfigurationManager Cfg = default!;
-    [Dependency] protected readonly IGameTiming Timing = default!;
-    [Dependency] protected readonly INetManager Net = default!;
-    [Dependency] protected readonly SharedBodySystem Body = default!;
-    [Dependency] protected readonly SharedHitLocationSystem HitLocation = default!;
-    [Dependency] protected readonly RMCUnrevivableSystem Unrevivable = default!;
-    [Dependency] private readonly IPrototypeManager _prototypes = default!;
+    [Dependency] protected IConfigurationManager Cfg = default!;
+    [Dependency] protected IGameTiming Timing = default!;
+    [Dependency] protected INetManager Net = default!;
+    [Dependency] protected SharedBodySystem Body = default!;
+    [Dependency] protected SharedHitLocationSystem HitLocation = default!;
+    [Dependency] protected SharedCMUTraumaSystem Trauma = default!;
+    [Dependency] protected RMCUnrevivableSystem Unrevivable = default!;
+    [Dependency] private IPrototypeManager _prototypes = default!;
 
     private const float HealScanInterval = 1f;
     private static readonly ProtoId<DamageGroupPrototype> BruteGroup = "Brute";
@@ -67,14 +69,14 @@ public abstract class SharedBodyPartHealthSystem : EntitySystem
         var positive = DamageSpecifier.GetPositive(delta);
         var localizable = ExtractLocalizableDamage(positive);
         if (!localizable.Empty)
-            ApplyPartDamage(ent, localizable);
+            ApplyPartDamage(ent, localizable, args.Origin, args.Tool, args.Impact);
 
         var healing = GetHealingInGroup(delta, BruteGroup) + GetHealingInGroup(delta, BurnGroup);
         if (healing > FixedPoint2.Zero)
             HealDamagedParts(ent.Owner, healing * (FixedPoint2)_bodyPartDamagePropagation, args.Origin);
     }
 
-    private void ApplyPartDamage(Entity<HitLocationComponent> ent, DamageSpecifier damage)
+    private void ApplyPartDamage(Entity<HitLocationComponent> ent, DamageSpecifier damage, EntityUid? origin, EntityUid? tool, DamageImpact impact)
     {
         // No mob-state gate: dead bodies still take new wounds, fractures, organ
         // damage, and severance from external hits (overkill, desecration). The
@@ -86,10 +88,18 @@ public abstract class SharedBodyPartHealthSystem : EntitySystem
         if (resolved.ResolvedPartEntity is not { } partUid)
             return;
 
-        TryApplyPartDamage(ent.Owner, partUid, damage);
+        TryApplyPartDamage(ent.Owner, partUid, damage, tool: tool, origin: origin, impact: impact);
     }
 
-    public bool TryApplyPartDamage(EntityUid body, EntityUid partUid, DamageSpecifier damage, float scale = 1f)
+    public bool TryApplyPartDamage(
+        EntityUid body,
+        EntityUid partUid,
+        DamageSpecifier damage,
+        float scale = 1f,
+        EntityUid? tool = null,
+        CMUTraumaMechanism? mechanism = null,
+        EntityUid? origin = null,
+        DamageImpact impact = default)
     {
         if (!_medicalEnabled || !_bodyPartEnabled)
             return false;
@@ -104,10 +114,17 @@ public abstract class SharedBodyPartHealthSystem : EntitySystem
         if (scale != 1f)
             localizable *= scale;
 
-        return TryApplyPartDamageToPart(body, partUid, localizable);
+        return TryApplyPartDamageToPart(body, partUid, localizable, origin, tool, mechanism, impact);
     }
 
-    private bool TryApplyPartDamageToPart(EntityUid body, EntityUid partUid, DamageSpecifier damage)
+    private bool TryApplyPartDamageToPart(
+        EntityUid body,
+        EntityUid partUid,
+        DamageSpecifier damage,
+        EntityUid? origin,
+        EntityUid? tool,
+        CMUTraumaMechanism? mechanism,
+        DamageImpact impact)
     {
         if (!TryComp<BodyPartHealthComponent>(partUid, out var health))
             return false;
@@ -127,7 +144,8 @@ public abstract class SharedBodyPartHealthSystem : EntitySystem
 
         var organs = CollectOrgans(partUid);
         var partType = TryComp<BodyPartComponent>(partUid, out var partComp) ? partComp.PartType : BodyPartType.Other;
-        var damaged = new BodyPartDamagedEvent(body, partUid, partType, modified, health.Current, organs);
+        var trauma = Trauma.CreateContactResult(partType, modified, organs.Count > 0, origin, tool, impact, mechanism);
+        var damaged = new BodyPartDamagedEvent(body, partUid, partType, modified, health.Current, organs, tool, impact, trauma);
         RaiseLocalEvent(partUid, ref damaged);
 
         if (health.SeveranceDamage >= health.Max + health.SeveranceThreshold && !IsSeveranceLocked(partType))
@@ -443,5 +461,21 @@ public abstract class SharedBodyPartHealthSystem : EntitySystem
         var prevFraction = prev.Float() / part.Comp.Max.Float();
         var nextFraction = newCurrent.Float() / part.Comp.Max.Float();
         RaisePainThresholdEvents(body, part.Owner, partBody.PartType, prevFraction, nextFraction);
+    }
+
+    public void RestoreToFractionCap(Entity<BodyPartHealthComponent?> part, float capFraction)
+    {
+        if (!Resolve(part.Owner, ref part.Comp, logMissing: false))
+            return;
+
+        if (part.Comp.Max <= FixedPoint2.Zero)
+            return;
+
+        capFraction = Math.Clamp(capFraction, 0f, 1f);
+        var cap = FixedPoint2.New(part.Comp.Max.Float() * capFraction);
+        if (part.Comp.Current >= cap)
+            return;
+
+        SetCurrent((part.Owner, part.Comp), cap);
     }
 }

@@ -41,7 +41,8 @@ public record struct AttachableModifierConditions(
 [DataRecord, Serializable, NetSerializable]
 public record struct AttachableWeaponMeleeModifierSet(
     AttachableModifierConditions? Conditions,
-    DamageSpecifier? BonusDamage
+    DamageSpecifier? BonusDamage,
+    DamageImpactProfile? Impact
 );
 
 [DataRecord, Serializable, NetSerializable]

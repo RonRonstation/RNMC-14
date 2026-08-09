@@ -12,6 +12,7 @@ using Content.Shared.Administration.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.FixedPoint;
@@ -595,7 +596,13 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         RaiseLocalEvent(target.Value, attackedEvent);
 
         var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
-        var damageResult = Damageable.TryChangeDamage(target, modifiedDamage, origin:user, ignoreResistances:resistanceBypass, tool: meleeUid);
+        var damageResult = Damageable.TryChangeDamage(
+            target,
+            modifiedDamage,
+            origin: user,
+            ignoreResistances: resistanceBypass,
+            tool: meleeUid,
+            impact: GetMeleeImpact(meleeUid, hitEvent, modifiedDamage, heavy: false));
 
         if (damageResult is {Empty: false})
         {
@@ -630,6 +637,31 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     }
 
     protected abstract void DoDamageEffect(List<EntityUid> targets, EntityUid? user,  TransformComponent targetXform);
+
+    private DamageImpact GetMeleeImpact(EntityUid weapon, MeleeHitEvent hitEvent, DamageSpecifier damage, bool heavy)
+    {
+        var impact = DamageImpact.ForMelee(damage, heavy);
+
+        if (TryComp<DamageImpactProfileComponent>(weapon, out var profile))
+            impact = profile.GetMeleeImpact(impact, heavy);
+
+        if (hitEvent.Impact.IsSpecified)
+            impact = hitEvent.Impact.FillUnspecifiedFrom(impact);
+
+        return impact;
+    }
+
+    protected Color GetDamageEffectColor(EntityUid target)
+    {
+        if (TryComp(target, out BloodstreamComponent? bloodstream) &&
+            bloodstream.BloodReagent == YautjaBloodReagent &&
+            _reagent.TryIndex(bloodstream.BloodReagent, out var reagent))
+        {
+            return reagent.SubstanceColor;
+        }
+
+        return Color.Red;
+    }
 
     private bool DoHeavyAttack(EntityUid user, HeavyAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)
     {
@@ -751,7 +783,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             RaiseLocalEvent(entity, attackedEvent);
             var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
 
-            var damageResult = Damageable.TryChangeDamage(entity, modifiedDamage, origin:user, tool: meleeUid);
+            var damageResult = Damageable.TryChangeDamage(
+                entity,
+                modifiedDamage,
+                origin: user,
+                tool: meleeUid,
+                impact: GetMeleeImpact(meleeUid, hitEvent, modifiedDamage, heavy: true));
 
             if (damageResult != null && damageResult.GetTotal() > FixedPoint2.Zero)
             {
