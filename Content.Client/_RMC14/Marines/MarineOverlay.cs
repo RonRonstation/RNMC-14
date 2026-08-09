@@ -108,6 +108,16 @@ public sealed class MarineOverlay : Overlay
         var scaleMatrix = Matrix3x2.CreateScale(new Vector2(1, 1));
         var rotationMatrix = Matrix3Helpers.CreateRotation(-eyeRot);
 
+        var isSpectator = false;
+        if (_players.LocalEntity != null && _entity.TryGetComponent(_players.LocalEntity.Value, out MetaDataComponent? localMeta))
+        {
+            var protoId = localMeta.EntityPrototype?.ID;
+            if (!string.IsNullOrEmpty(protoId) && (string.Equals(protoId, "MobObserver", StringComparison.InvariantCultureIgnoreCase) || string.Equals(protoId, "RMCAdminObserver", StringComparison.InvariantCultureIgnoreCase)))
+            {
+                isSpectator = true;
+            }
+        }
+
         handle.UseShader(_shader);
 
         _marineCandidates.Clear();
@@ -148,7 +158,7 @@ public sealed class MarineOverlay : Overlay
             var matrix = Matrix3x2.Multiply(rotationMatrix, scaledWorld);
             handle.SetTransform(matrix);
 
-            var icon = GetCachedMarineIcon(uid);
+            var icon = GetCachedMarineIcon(uid, marineHudComp.Factions, isSpectator);
             var factionIcons = _marine.GetFactionIcons(uid);
 
             if (marineHudComp.Factions != null && !_npcFaction.IsMemberOfAny(uid, marineHudComp.Factions) && factionIcons != null)
