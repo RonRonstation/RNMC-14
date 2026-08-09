@@ -1,8 +1,8 @@
 ﻿- type: entity
   parent: [BaseItem, RMCBaseMeleeWeapon]
   id: RMCBaseballBat
-  name: wooden baseball bat
-  description: A large wooden baseball bat. Commonly used in colony recreation, but also used as a means of self defense. Often carried by thugs and ruffians.
+  name: common tung tung
+  description: A basic tung tung. At least you can sahur with it.
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/Melee/baseball_bat.rsi
@@ -22,8 +22,8 @@
 - type: entity
   parent: RMCBaseballBat
   id: RMCBaseballBatMetal
-  name: metal baseball bat
-  description: A large metal baseball bat. Compared to its wooden cousin, the metal bat offers a bit more more force. Often carried by thugs and ruffians.
+  name: uncommon tung tung
+  description: A better tung tung, though not much better than the common tung tung.
   components:
   - type: Sprite
     sprite: _RMC14/Objects/Weapons/Melee/metal_bat.rsi
@@ -34,3 +34,196 @@
         Blunt: 35
   - type: Item
     sprite: _RMC14/Objects/Weapons/Melee/metal_bat.rsi
+
+- type: entity
+  parent: RMCBaseballBat
+  id: RMCBaseballBatEpic
+  name: epic tung tung
+  description: This tung tung has been created by a master of the sahurcraft. Truly, a marvel.
+  components:
+  - type: Sprite
+    sprite: /Prototypes/_RNMC14/stuff/epic_tung.rsi
+    state: icon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 50
+  - type: Item
+    sprite: /Prototypes/_RNMC14/stuff/epic_tung.rsi
+
+- type: entity
+  parent: RMCBaseballBat
+  id: RMCBaseballBatMythic
+  name: mythic tung tung
+  description: A dangerous artifact often wielded by the best warriors of the ancient Sahur Legions.
+  components:
+  - type: Sprite
+    sprite: /Prototypes/_RNMC14/stuff/mythic_tung.rsi
+    state: icon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 75
+        Heat: 20
+  - type: Item
+    sprite: /Prototypes/_RNMC14/stuff/mythic_tung.rsi
+
+- type: entity
+  parent: RMCBaseballBat
+  id: RMCBaseballBatLegendary
+  name: Legendary Tung Tung Of The T'un Sa'ur
+  description: ""
+  components:
+  - type: Sprite
+    sprite: /Prototypes/_RNMC14/stuff/legendary_tung.rsi
+    state: icon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 150
+        Heat: 80
+  - type: Item
+    sprite: /Prototypes/_RNMC14/stuff/legendary_tung.rsi
+  - type: PointLight
+    color: "#fffb00"
+    radius: 1.5
+
+- type: entity
+  parent: MarkerBase
+  id: RMCSpawnerTTTSpawner
+  name: triple T spawner spawner
+  description: This is a random crate loot spawner
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _RMC14/Markers/landmarks.rsi
+    layers:
+    - state: random_toolbox
+  - type: RandomSpawner
+    offset: 0
+    chance: 1.0
+    prototypes:
+    - RMCBaseballBat
+    - RMCBaseballBat
+    - RMCBaseballBat
+    - RMCBaseballBat
+    - RMCBaseballBatMetal
+    - RMCBaseballBatMetal
+    - RMCBaseballBatMetal
+    - RMCBaseballBatEpic
+    - RMCBaseballBatEpic
+    - RMCBaseballBatMythic
+    - RMCBaseballBatMythic
+    - RMCBaseballBatMythic
+    - RMCBaseballBatLegendary
+
+- type: entity
+  id: EffectTakeAChanceOnMe
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Sprite
+    snapCardinals: true
+    noRot: true
+    drawdepth: Effects
+    sprite: /Prototypes/_RNMC14/stuff/chance.rsi
+    state: animation
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: AnimationPlayer
+  - type: AmbientSound
+    enabled: true
+    sound:
+      path: /Prototypes/_RNMC14/stuff/take_a_chance.ogg
+  - type: TimedDespawn
+    lifetime: 2.4
+  - type: SpawnOnTerminate
+    spawn: RMCSpawnerTTTSpawner
+  - type: PointLight
+    color: "#fffb00"
+    radius: 3
+    energy: 2
+
+- type: entity
+  parent: RMCCrateOpenableBase
+  id: RMCCrateTTTPass
+  name: TTT pass
+  description: A 'Triple T' pass that allows you to gamble for a tung tung.
+  components:
+  - type: Sprite
+    sprite: /Prototypes/_RNMC14/stuff/triple_t.rsi
+    noRot: true
+    layers:
+    - state: triple_t_pass
+      map: ["enum.StorageVisualLayers.Base"]
+  - type: Icon
+    sprite: /Prototypes/_RNMC14/stuff/triple_t.rsi
+    state: triple_t
+  - type: Transform
+    noRot: true
+  - type: InteractionOutline
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.29"
+        density: 50
+        mask:
+        - SmallMobMask
+        layer:
+        - MachineLayer
+  - type: PlaceableSurface
+    isPlaceable: false
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_RMC14/Structures/metalhit.ogg
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Appearance
+  - type: SpawnOnTerminate
+    spawn: EffectTakeAChanceOnMe
+
+- type: entity
+  parent: RMCSimpleMob
+  id: RNMCMobTripleT
+  name: Tung Tung Tung Sahur
+  suffix: RMC
+  description: It's Him.
+  components:
+  - type: Sprite
+    sprite: /Prototypes/_RNMC14/stuff/triple_t_species.rsi
+    noRot: true
+    state: triple_t
+  - type: MeleeWeapon
+    angle: 0
+    animation: WeaponArcPunch
+    range: 3
+    damage:
+      types:
+        Blunt: 100
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.9,-0.9,0.9,0.9"
+        density: 80
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Transform
+    noRot: true
