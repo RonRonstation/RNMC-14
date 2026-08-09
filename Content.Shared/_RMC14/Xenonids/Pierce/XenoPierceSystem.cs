@@ -110,18 +110,7 @@ public sealed class XenoPierceSystem : EntitySystem
 
                 hits++;
 
-                var finalDamage = _xeno.TryApplyXenoSlashDamageMultiplier(ent, xeno.Comp.Damage);
-                var change = _damage.TryChangeDamage(
-                    ent,
-                    finalDamage,
-                    origin: xeno,
-                    armorPiercing: xeno.Comp.AP,
-                    tool: xeno,
-                    impact: DamageImpact.XenoRendingSlash(3) with
-                    {
-                        Contact = DamageImpactContact.Stab,
-                        Penetration = DamageImpactPenetration.High,
-                    });
+                var change = _damage.TryChangeDamage(ent, _xeno.TryApplyXenoSlashDamageMultiplier(ent, xeno.Comp.Damage), origin: xeno, armorPiercing: xeno.Comp.AP, tool: xeno);
 
                 if (change?.GetTotal() > FixedPoint2.Zero)
                 {

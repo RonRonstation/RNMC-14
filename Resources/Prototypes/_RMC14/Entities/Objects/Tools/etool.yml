@@ -46,13 +46,6 @@
         Blunt: 3
     soundHit:
       collection: MetalThud
-  - type: DamageImpactProfile
-    melee:
-      contact: Crush
-      penetration: None
-    heavyMelee:
-      contact: Crush
-      penetration: None
   - type: PhysicalComposition
     materialComposition:
       CMSteel: 50

@@ -37,19 +37,7 @@ namespace Content.Server.Damage.Systems
             if (TerminatingOrDeleted(args.Target))
                 return;
 
-            var damage = GetThrownHitDamage(uid, args.Target, component.Damage);
-            var modified = damage * _damageable.UniversalThrownDamageModifier;
-            var impact = DamageImpact.ForThrown(modified);
-            if (TryComp<DamageImpactProfileComponent>(uid, out var profile))
-                impact = profile.GetThrownImpact(impact);
-
-            var dmg = _damageable.TryChangeDamage(
-                args.Target,
-                modified,
-                component.IgnoreResistances,
-                origin: args.Component.Thrower,
-                tool: uid,
-                impact: impact);
+            var dmg = _damageable.TryChangeDamage(args.Target, component.Damage * _damageable.UniversalThrownDamageModifier, component.IgnoreResistances, origin: args.Component.Thrower);
 
             // Log damage only for mobs. Useful for when people throw spears at each other, but also avoids log-spam when explosions send glass shards flying.
             if (dmg != null && HasComp<MobStateComponent>(args.Target))
