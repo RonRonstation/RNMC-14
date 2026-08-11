@@ -25,6 +25,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._CMU14.Medical.Wounds;
@@ -44,6 +45,7 @@ public abstract class SharedCMUWoundsSystem : EntitySystem
     [Dependency] protected readonly SharedContainerSystem Containers = default!;
     [Dependency] protected readonly INetManager Net = default!;
     [Dependency] protected readonly RMCUnrevivableSystem Unrevivable = default!;
+    [Dependency] protected readonly IRobustRandom _random = default!;
 
     private static readonly ProtoId<DamageGroupPrototype> BruteGroup = "Brute";
     private static readonly ProtoId<DamageGroupPrototype> BurnGroup = "Burn";
@@ -149,7 +151,7 @@ public abstract class SharedCMUWoundsSystem : EntitySystem
         // No-op when a catastrophic fracture or other source already drives a
         // higher rate (recompute picks the max).
         var blunt = GetTypeAmount(args.Delta, "Blunt");
-        if (blunt >= SevereBluntInternalBleed)
+        if (blunt >= SevereBluntInternalBleed && _random.Prob(0.2f + (0.2f * (blunt / SevereBluntInternalBleed))))
             SeedInternalBleed(ent.Owner, "blunt", 0.3f);
 
         if (type == WoundType.Burn

@@ -13,7 +13,7 @@ namespace Content.Shared._CMU14.Medical.Wounds;
 public sealed partial class InternalBleedingComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public float BloodlossPerSecond = 0.5f;
+    public float BloodlossPerSecond = 0.2f;
 
     /// <summary>
     ///     Diagnostic tag — e.g. <c>fracture:Compound</c> or

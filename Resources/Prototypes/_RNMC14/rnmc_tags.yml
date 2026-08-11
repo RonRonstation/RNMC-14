@@ -26,6 +26,9 @@
 - type: Tag
   id: RNMCSquadAzure15
 
+- type: Tag
+  id: CMUSplint
+
 # UPSTREAM PARTS WITH TAGS:
 - type: Tag
   id: CMStockPartMatterBin
