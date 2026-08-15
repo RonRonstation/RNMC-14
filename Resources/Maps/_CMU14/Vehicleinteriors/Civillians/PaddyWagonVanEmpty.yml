@@ -102,13 +102,6 @@ entities:
       data:
         chunkSize: 4
     - type: GasTileOverlay
-- proto: AU14VehicleRadioSet
-  entities:
-  - uid: 5
-    components:
-    - type: Transform
-      pos: -2.5,2.5
-      parent: 2
 - proto: CMChairComfy
   entities:
   - uid: 3

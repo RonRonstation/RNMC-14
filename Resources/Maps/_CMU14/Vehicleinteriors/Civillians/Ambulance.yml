@@ -102,7 +102,7 @@ entities:
       data:
         chunkSize: 4
     - type: GasTileOverlay
-- proto: AU14IVFoldable
+- proto: CMIV
   entities:
   - uid: 5
     components:
@@ -114,13 +114,6 @@ entities:
       linearDamping: 8
     - type: Pullable
       prevFixedRotation: True
-- proto: AU14VehicleRadioSet
-  entities:
-  - uid: 37
-    components:
-    - type: Transform
-      pos: -1.5,2.5
-      parent: 2
 - proto: CMChairComfy
   entities:
   - uid: 3
@@ -166,13 +159,6 @@ entities:
       buckleTime: 0
     - type: EntityStorage
       open: True
-- proto: CMUDefibrillatorCabinetFilled
-  entities:
-  - uid: 35
-    components:
-    - type: Transform
-      pos: -1.5,2.5
-      parent: 2
 - proto: VehicleBoxVanBack1
   entities:
   - uid: 6
