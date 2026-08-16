@@ -22,9 +22,9 @@
   id: CMUPartHumanHead
   components:
   - type: BodyPartHealth
-    max: 60
-    current: 60
-    severanceThreshold: 999999  # safety lock — head never severs
+    max: 120
+    current: 120
+    severanceThreshold: 200  # safety lock — head never severs
     resistance:
       Brute: 0.85
   - type: Bone

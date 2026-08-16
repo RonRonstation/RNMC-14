@@ -8,6 +8,7 @@ using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
+using Content.Shared.Zombies;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Network;
@@ -130,10 +131,24 @@ public abstract class SharedBodyPartHealthSystem : EntitySystem
         var damaged = new BodyPartDamagedEvent(body, partUid, partType, modified, health.Current, organs);
         RaiseLocalEvent(partUid, ref damaged);
 
-        if (health.SeveranceDamage >= health.Max + health.SeveranceThreshold && !IsSeveranceLocked(partType))
+        bool zombie = HasComp<ZombieComponent>(body);
+
+        switch (zombie)
         {
-            var severed = new BodyPartSeveredEvent(body, partUid, partType);
-            RaiseLocalEvent(partUid, ref severed);
+            case false:
+                if (health.SeveranceDamage >= health.Max + health.SeveranceThreshold && !IsSeveranceLocked(partType))
+                {
+                    var severed = new BodyPartSeveredEvent(body, partUid, partType);
+                    RaiseLocalEvent(partUid, ref severed);
+                }
+                break;
+            case true:
+                if (health.SeveranceDamage >= (health.Max + health.SeveranceThreshold) / 2 && !IsSeveranceLocked(partType))
+                {
+                    var severed = new BodyPartSeveredEvent(body, partUid, partType);
+                    RaiseLocalEvent(partUid, ref severed);
+                }
+                break;
         }
 
         return true;
