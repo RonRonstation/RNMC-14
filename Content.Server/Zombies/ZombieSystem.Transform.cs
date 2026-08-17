@@ -192,6 +192,8 @@ public sealed partial class ZombieSystem
             pryComp.PryPowered = true;
             pryComp.Force = true;
 
+            RemComp<MaxDamageComponent>(target)
+
             Dirty(target, pryComp);
         }
 
