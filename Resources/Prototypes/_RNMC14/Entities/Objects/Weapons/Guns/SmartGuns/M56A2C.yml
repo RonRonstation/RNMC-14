@@ -1,7 +1,7 @@
 ﻿- type: entity
   parent: RNMCSmartGunPVENoCamo
   id: RNMCSmartGunCO
-  name: L56A2C smart gun
+  name: M56A2C smart gun
   description: The actual firearm in the 4-piece M56A2C Smartgun system. Back order only. Besides a more robust weapons casing, a fancy paintjob, the gun's performance is identical to the standard-issue M56A2.
   components:
   - type: Sprite
