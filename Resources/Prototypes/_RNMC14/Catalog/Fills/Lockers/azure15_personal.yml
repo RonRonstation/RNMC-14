@@ -19,7 +19,7 @@
     - id: CMArmorM4PMCSmartGunHarness
     - id: ArmorHelmetPMCGunner
     - id: RMCPowerCellSmartgun
-    - id: RMCSmartGunPMCPVE
+    - id: RNMCSmartGunPMC
 
 - type: entityTable
   id: RNMCPMCTeamLeaderFill
