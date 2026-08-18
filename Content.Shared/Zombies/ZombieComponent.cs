@@ -39,6 +39,8 @@ public sealed partial class ZombieComponent : Component
             {"Slash", 0.5},
             {"Piercing", 0.3},
             {"Blunt", 0.1},
+            {"Asphyxiation", 0},
+            {"Bloodloss", 0}
         }
     };
 
@@ -148,7 +150,7 @@ public sealed partial class ZombieComponent : Component
     {
         DamageDict = new()
         {
-            { "Slash", 13 },
+            { "Slash", 25 }, // RNMC
             { "Piercing", 7 },
             { "Structural", 10 }
         }

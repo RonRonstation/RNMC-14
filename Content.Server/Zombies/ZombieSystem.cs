@@ -187,7 +187,6 @@ namespace Content.Server.Zombies
                     _inventory.TryUnequip(uid, "back", force: true);
                     _inventory.TryUnequip(uid, "suitstorage", force: true);
                     _inventory.TryUnequip(uid, "belt", force: true);
-                    _inventory.TryUnequip(uid, "outerClothing", force: true);
                     _inventory.TryUnequip(uid, "shoes", force: true);
                     _inventory.TryUnequip(uid, "gloves", force: true);
                     _entMan.DeleteEntity(uid);
