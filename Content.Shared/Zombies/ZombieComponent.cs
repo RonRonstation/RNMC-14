@@ -188,4 +188,10 @@ public sealed partial class ZombieComponent : Component
 
     [DataField]
     public TimeSpan DespawnTime = TimeSpan.FromSeconds(180); // RNMC14
+
+    [DataField]
+    public TimeSpan LastHit; // RNMC14
+
+    [DataField]
+    public TimeSpan NoRegenOnHitTime = TimeSpan.FromSeconds(2); // RNMC14
 }

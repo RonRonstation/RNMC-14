@@ -91,6 +91,8 @@ namespace Content.Server.Zombies
             SubscribeLocalEvent<IncurableZombieComponent, MapInitEvent>(OnPendingMapInit);
 
             SubscribeLocalEvent<ZombifyOnDeathComponent, MobStateChangedEvent>(OnDamageChanged);
+
+            SubscribeLocalEvent<ZombieComponent, DamageChangedEvent>(OnDamage); // RNMC14
         }
 
         private void OnBeforeRemoveAnomalyOnDeath(Entity<PendingZombieComponent> ent, ref BeforeRemoveAnomalyOnDeathEvent args)
@@ -204,7 +206,8 @@ namespace Content.Server.Zombies
                     return;
 
                 // Gradual healing for living zombies.
-                _damageable.TryChangeDamage(uid, comp.PassiveHealing * multiplier, true, false, damage);
+                if (_timing.CurTime > comp.LastHit + comp.NoRegenOnHitTime)
+                    _damageable.TryChangeDamage(uid, comp.PassiveHealing * multiplier, true, false, damage);
 
                 _mobThresholds.TryGetDeadThreshold(uid, out var deadThreshold);
             }
@@ -382,5 +385,11 @@ namespace Content.Server.Zombies
         {
             _role.MindRemoveRole<ZombieRoleComponent>((args.Mind.Owner,  args.Mind.Comp));
         }
+
+        private void OnDamage(EntityUid uid, ZombieComponent component, ref DamageChangedEvent args) // RNMC14
+        {
+            component.LastHit = _timing.CurTime;
+        }
+
     }
 }
