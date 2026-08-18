@@ -8,7 +8,4 @@ public sealed partial class PuddleFootPrintsComponent : Component
 
     [ViewVariables(VVAccess.ReadWrite)]
     public float OffPercent = 80f;
-
-    [ViewVariables]
-    public HashSet<EntityUid> ActivatedEntities = new();
 }
