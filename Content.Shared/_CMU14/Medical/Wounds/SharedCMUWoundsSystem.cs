@@ -151,7 +151,7 @@ public abstract class SharedCMUWoundsSystem : EntitySystem
         // No-op when a catastrophic fracture or other source already drives a
         // higher rate (recompute picks the max).
         var blunt = GetTypeAmount(args.Delta, "Blunt");
-        if (blunt >= SevereBluntInternalBleed && _random.Prob(0.2f + (0.2f * (blunt / SevereBluntInternalBleed))))
+        if (blunt >= SevereBluntInternalBleed && _random.Prob(0.5f + (0.25f * (blunt / SevereBluntInternalBleed))))
             SeedInternalBleed(ent.Owner, "blunt", 0.3f);
 
         if (type == WoundType.Burn
