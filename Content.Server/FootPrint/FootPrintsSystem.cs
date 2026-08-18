@@ -10,6 +10,9 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Content.Shared.Decals;
+using Content.Server.Decals;
+using System.Numerics;
 
 namespace Content.Server.FootPrint;
 
@@ -17,6 +20,7 @@ public sealed class FootPrintsSystem : EntitySystem
 {
     [Dependency] private DecalSystem _decals = default!;
     [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private IMapManager _mapMan = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedXenoWeedsSystem _weeds = default!;
@@ -61,7 +65,7 @@ public sealed class FootPrintsSystem : EntitySystem
         if (component.PrintsColor.A <= 0f
             || !_transformQuery.TryComp(uid, out var transform)
             || !_mobThresholdQuery.TryComp(uid, out var mobThreshHolds)
-            || !_map.TryFindGridAt(_transform.GetMapCoordinates((uid, transform)), out var gridUid, out _))
+            || !_mapMan.TryFindGridAt(_transform.GetMapCoordinates((uid, transform)), out var gridUid, out _))
             return;
 
         var dragging = mobThreshHolds.CurrentThresholdState is MobState.Critical or MobState.Dead;

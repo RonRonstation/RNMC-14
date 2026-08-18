@@ -1,6 +1,7 @@
 using System.Numerics;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Shared.Decals;
 
 namespace Content.Shared.FootPrint;
 
