@@ -177,4 +177,13 @@ public sealed partial class ZombieComponent : Component
     /// </summary>
     [DataField("newBloodReagent", customTypeSerializer: typeof(PrototypeIdSerializer<ReagentPrototype>))]
     public string NewBloodReagent = "ZombieBlood";
+
+    [DataField]
+    public TimeSpan LastDiedAt; // RNMC14
+
+    [DataField]
+    public TimeSpan ReviveGraceTime = TimeSpan.FromSeconds(60); // RNMC14
+
+    [DataField]
+    public TimeSpan DespawnTime = TimeSpan.FromSeconds(180); // RNMC14
 }

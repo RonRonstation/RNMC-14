@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Server.Construction.Completions;
 using Content.Server.StatusEffectNew;
 using Content.Shared._CMU14.Medical;
 using Content.Shared._CMU14.Medical.BodyPart;
@@ -9,6 +10,7 @@ using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Throwing;
+using Content.Shared.Zombies;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
@@ -38,6 +40,7 @@ public sealed class BodyPartSeveranceSystem : EntitySystem
     [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoid = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IEntityManager _entMan = default!; // rnmc14
     private static readonly ProtoId<DamageTypePrototype> Bloodloss = "Bloodloss";
     private const float StumpBleedDamage = 30f;
     private static readonly SoundSpecifier SeveranceSound =
@@ -75,7 +78,10 @@ public sealed class BodyPartSeveranceSystem : EntitySystem
             return;
         }
 
-        FlingPartFromBody(args.Body, args.Part);
+        if (HasComp<ZombieComponent>(args.Body))
+            _entMan.DeleteEntity(args.Part);
+        else
+            FlingPartFromBody(args.Body, args.Part);
         HideHumanoidLimbLayer(args.Body, args.Type, symmetry);
         ApplyStumpBleed(args.Body);
         ApplyMissingLimbStatus(args.Body, args.Part, args.Type);
