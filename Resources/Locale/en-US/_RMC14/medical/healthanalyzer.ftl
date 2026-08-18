@@ -13,12 +13,13 @@ rmc-health-analyzer-healthy = {$percent} healthy
 
 rmc-health-analyzer-unknown-reagents = [color=white][italic]Unknown reagents detected.[/italic][/color]
 
-rmc-health-analyzer-advice-epinephrine = [color=#6bd43c][font="Emoji"]💉[/font][/color] Administer a single dose of epinephrine.
+rmc-health-analyzer-advice-epinedrine = [color=#6bd43c][font="Emoji"]💉[/font][/color] Administer a single dose of epinedrine.
 rmc-health-analyzer-advice-defib = [color=yellow][font="Emoji"]⚡[/font][/color] Apply shock via defibrillator!
 rmc-health-analyzer-advice-defib-repeated = [color=yellow][font="Emoji"]⚡[/font][/color] Apply repeated shocks via defibrillator.
 rmc-health-analyzer-advice-cpr = [color=skyblue][font="Emoji"]🫀[/font][/color] Perform CPR regularly to prevent braindeath.
 
-rmc-health-analyzer-advice-larva-surgery = [color=purple][font="Emoji"]🐛[/font][/color] Take patient to a surgical table to perform embryo removal surgery.
+rmc-health-analyzer-advice-larva-surgery = [color=purple][font="Emoji"]🐛[/font][/color] Further evaluate patient for disease.
+rmc-health-analyzer-advice-larva-bursted = [color=red][font="Emoji"]☠[/font][/color] Chest cavity ruptured — patient is beyond surgical recovery.
 
 rmc-health-analyzer-advice-brute-wounds = [color=green][font="Emoji"]🩹[/font][/color] Use trauma kits or surgical line to repair the lacerated areas.
 rmc-health-analyzer-advice-burn-wounds = [color=orange][font="Emoji"]🩹[/font][/color] Use burn kits or synth-graft to repair the burned areas.

@@ -167,6 +167,8 @@
         amount: 15
       - id: CMOintment10
         amount: 15
+      - id: CMUSplintItem
+        amount: 15
       - id: CMEmergencyAutoInjector
         name: Emergency Autoinjector
         amount: 15
@@ -175,6 +177,8 @@
       - id: RNMCEZKelotaneAutoInjector
         amount: 15
       - id: RNMCEZTricordrazineAutoInjector
+        amount: 15
+      - id: AU14TramadolAutoInjector
         amount: 15
     - name: Tools
       entries:

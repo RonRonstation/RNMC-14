@@ -1523,3 +1523,7 @@ DrinkMilkCarton: RMCDrinkMilkCarton
 
 #2026-06-06
 RMCBeakerHighCapacity: RMCReagentJug
+
+#2026-08-04
+RMCAutodoc: CMUAutodocPod
+RMCBodyScanner: CMUBodyScannerPod

@@ -1,27 +1,34 @@
 using System.Linq;
 using System.Numerics;
+using Content.Shared._RMC14.CCVar;
 using Content.Shared._RMC14.CrashLand;
 using Content.Shared._RMC14.Marines;
+using Content.Shared._RMC14.Marines.Squads;
 using Content.Shared._RMC14.Stealth;
 using Content.Shared._RMC14.Tracker.SquadLeader;
 using Content.Shared.NPC.Components;
+using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
 using Content.Shared.ParaDrop;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
+using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Client._RMC14.Marines;
 
 public sealed class MarineOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entity = default!;
-    [Dependency] private readonly IPlayerManager _players = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IEntityManager _entity = default!;
+    [Dependency] private IPlayerManager _players = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IConfigurationManager _configuration = default!;
 
     private static readonly SpriteSpecifier.Rsi FireteamOneRsi = new(new ResPath("_RMC14/Interface/marine_hud.rsi"), "hudsquad_ft1");
     private static readonly SpriteSpecifier.Rsi FireteamTwoRsi = new(new ResPath("_RMC14/Interface/marine_hud.rsi"), "hudsquad_ft2");
@@ -33,8 +40,13 @@ public sealed class MarineOverlay : Overlay
     private readonly MarineSystem _marine;
     private readonly SpriteSystem _sprite;
     private readonly TransformSystem _transform;
+    private readonly EntityLookupSystem _lookup;
 
     private readonly ShaderInstance _shader;
+    private readonly Texture _fireteamOneIcon;
+    private readonly Texture _fireteamTwoIcon;
+    private readonly Texture _fireteamThreeIcon;
+    private readonly Texture _fireteamLeaderIcon;
 
     private readonly EntityQuery<NpcFactionMemberComponent> _npcFactionMemberQuery;
     private readonly EntityQuery<FireteamLeaderComponent> _fireteamLeaderQuery;
@@ -43,6 +55,12 @@ public sealed class MarineOverlay : Overlay
     private readonly EntityQuery<ShowMarineIconsComponent> _marineIconsQuery;
     private readonly EntityQuery<ParaDroppingComponent> _paraDroppingQuery;
     private readonly EntityQuery<CrashLandingComponent> _crashLandingQuery;
+    private readonly Dictionary<EntityUid, CachedMarineIcon> _marineIconCache = new();
+    private readonly Dictionary<SpriteSpecifier, Texture> _textureCache = new();
+    private readonly HashSet<Entity<MarineComponent>> _marineCandidates = new();
+
+    private static readonly TimeSpan MarineIconCacheLifetime = TimeSpan.FromSeconds(0.5);
+    private const int MaxCachedTextures = 128;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowFOV;
 
@@ -55,6 +73,7 @@ public sealed class MarineOverlay : Overlay
         _marine = _entity.System<MarineSystem>();
         _sprite = _entity.System<SpriteSystem>();
         _transform = _entity.System<TransformSystem>();
+        _lookup = _entity.System<EntityLookupSystem>();
 
         _npcFactionMemberQuery = _entity.GetEntityQuery<NpcFactionMemberComponent>();
         _fireteamLeaderQuery = _entity.GetEntityQuery<FireteamLeaderComponent>();
@@ -65,10 +84,17 @@ public sealed class MarineOverlay : Overlay
         _crashLandingQuery = _entity.GetEntityQuery<CrashLandingComponent>();
 
         _shader = _prototype.Index<ShaderPrototype>("shaded").Instance();
+        _fireteamOneIcon = GetTexture(FireteamOneRsi);
+        _fireteamTwoIcon = GetTexture(FireteamTwoRsi);
+        _fireteamThreeIcon = GetTexture(FireteamThreeRsi);
+        _fireteamLeaderIcon = GetTexture(FireteamLeaderRsi);
     }
 
     protected override void Draw(in OverlayDrawArgs args)
     {
+        if (!_configuration.GetCVar(RMCCVars.RMCMarineOverlayEnabled))
+            return;
+
         if (!_marineIconsQuery.TryComp(_players.LocalEntity, out var marineHudComp))
             return;
 
@@ -77,19 +103,40 @@ public sealed class MarineOverlay : Overlay
         var eyeRot = args.Viewport.Eye?.Rotation ?? default;
 
         var xformQuery = _entity.GetEntityQuery<TransformComponent>();
+        var statusQuery = _entity.GetEntityQuery<StatusIconComponent>();
+        var spriteQuery = _entity.GetEntityQuery<SpriteComponent>();
         var scaleMatrix = Matrix3x2.CreateScale(new Vector2(1, 1));
         var rotationMatrix = Matrix3Helpers.CreateRotation(-eyeRot);
 
+        var isSpectator = false;
+        if (_players.LocalEntity != null && _entity.TryGetComponent(_players.LocalEntity.Value, out MetaDataComponent? localMeta))
+        {
+            var protoId = localMeta.EntityPrototype?.ID;
+            if (!string.IsNullOrEmpty(protoId) && (string.Equals(protoId, "MobObserver", StringComparison.InvariantCultureIgnoreCase) || string.Equals(protoId, "RMCAdminObserver", StringComparison.InvariantCultureIgnoreCase)))
+            {
+                isSpectator = true;
+            }
+        }
+
         handle.UseShader(_shader);
 
-        var fireteamOneIcon = _sprite.Frame0(FireteamOneRsi);
-        var fireteamTwoIcon = _sprite.Frame0(FireteamTwoRsi);
-        var fireteamThreeIcon = _sprite.Frame0(FireteamThreeRsi);
-        var fireteamLeaderIcon = _sprite.Frame0(FireteamLeaderRsi);
+        _marineCandidates.Clear();
+        _lookup.GetEntitiesIntersecting(
+            args.MapId,
+            args.WorldAABB,
+            _marineCandidates,
+            LookupFlags.Uncontained);
 
-        var marineQuery = _entity.AllEntityQueryEnumerator<MarineComponent, StatusIconComponent, SpriteComponent, TransformComponent>();
-        while (marineQuery.MoveNext(out var uid, out _, out var status, out var sprite, out var xform))
+        foreach (var candidate in _marineCandidates)
         {
+            var uid = candidate.Owner;
+            if (!statusQuery.TryGetComponent(uid, out var status) ||
+                !spriteQuery.TryGetComponent(uid, out var sprite) ||
+                !xformQuery.TryGetComponent(uid, out var xform))
+            {
+                continue;
+            }
+
             if (xform.MapID != args.MapId)
                 continue;
 
@@ -111,7 +158,7 @@ public sealed class MarineOverlay : Overlay
             var matrix = Matrix3x2.Multiply(rotationMatrix, scaledWorld);
             handle.SetTransform(matrix);
 
-            var icon = _marine.GetMarineIcon(uid);
+            var icon = GetCachedMarineIcon(uid, marineHudComp.Factions, isSpectator);
             var factionIcons = _marine.GetFactionIcons(uid);
 
             if (marineHudComp.Factions != null && !_npcFaction.IsMemberOfAny(uid, marineHudComp.Factions) && factionIcons != null)
@@ -130,7 +177,7 @@ public sealed class MarineOverlay : Overlay
 
             if (icon.Icon != null)
             {
-                var texture = _sprite.Frame0(icon.Icon);
+                var texture = GetTexture(icon.Icon);
                 var yOffset = 0.1f + (bounds.Height + sprite.Offset.Y) / 2f - (float)texture.Height / EyeManager.PixelsPerMeter;
                 var xOffset = 0.1f + (bounds.Width + sprite.Offset.X) / 2f - (float)texture.Width / EyeManager.PixelsPerMeter;
 
@@ -144,7 +191,7 @@ public sealed class MarineOverlay : Overlay
                 var position = new Vector2(xOffset, yOffset);
                 if (icon.Icon != null && icon.Background != null)
                 {
-                    var background = _sprite.Frame0(icon.Background);
+                    var background = GetTexture(icon.Background);
                     handle.DrawTexture(background, position, icon.BackgroundColor);
                 }
 
@@ -155,15 +202,15 @@ public sealed class MarineOverlay : Overlay
             {
                 var texture = member.Fireteam switch
                 {
-                    0 => fireteamOneIcon,
-                    1 => fireteamTwoIcon,
-                    2 => fireteamThreeIcon,
+                    0 => _fireteamOneIcon,
+                    1 => _fireteamTwoIcon,
+                    2 => _fireteamThreeIcon,
                     _ => null,
                 };
 
                 if (texture != null)
                 {
-                    var offset = -(float)fireteamOneIcon.Height / 2 / EyeManager.PixelsPerMeter;
+                    var offset = -(float)_fireteamOneIcon.Height / 2 / EyeManager.PixelsPerMeter;
                     var yOffset = 0.1f + (bounds.Height + sprite.Offset.Y + offset) / 2f - (float)texture.Height / EyeManager.PixelsPerMeter;
                     var xOffset = (bounds.Width + sprite.Offset.X) / 2f - (float)texture.Width / EyeManager.PixelsPerMeter;
                     var position = new Vector2(xOffset, yOffset);
@@ -173,8 +220,8 @@ public sealed class MarineOverlay : Overlay
 
             if (_fireteamLeaderQuery.HasComp(uid))
             {
-                var texture = fireteamLeaderIcon;
-                var offset = -(float)fireteamOneIcon.Height / 2 / EyeManager.PixelsPerMeter;
+                var texture = _fireteamLeaderIcon;
+                var offset = -(float)_fireteamOneIcon.Height / 2 / EyeManager.PixelsPerMeter;
                 var yOffset = 0.1f + (bounds.Height + sprite.Offset.Y + offset) / 2f - (float)texture.Height / EyeManager.PixelsPerMeter;
                 var xOffset = (bounds.Width + sprite.Offset.X) / 2f - (float)texture.Width / EyeManager.PixelsPerMeter;
                 var position = new Vector2(xOffset, yOffset);
@@ -184,5 +231,96 @@ public sealed class MarineOverlay : Overlay
 
         handle.SetTransform(Matrix3x2.Identity);
         handle.UseShader(null);
+    }
+
+    private Texture GetTexture(SpriteSpecifier specifier)
+    {
+        if (_textureCache.TryGetValue(specifier, out var texture))
+            return texture;
+
+        if (_textureCache.Count > MaxCachedTextures)
+            _textureCache.Clear();
+
+        texture = _sprite.Frame0(specifier);
+        _textureCache[specifier] = texture;
+        return texture;
+    }
+
+    private GetMarineIconEvent GetCachedMarineIcon(
+        EntityUid uid,
+        List<ProtoId<NpcFactionPrototype>>? visibleFactions,
+        bool isSpectator)
+    {
+        var now = _timing.CurTime;
+        if (_marineIconCache.TryGetValue(uid, out var cached)
+            && cached.Expires > now
+            && ReferenceEquals(cached.VisibleFactions, visibleFactions)
+            && cached.IsSpectator == isSpectator)
+        {
+            return cached.Icon;
+        }
+
+        var icon = _marine.GetMarineIcon(uid);
+        ApplyFactionIconOverride(uid, visibleFactions, isSpectator, ref icon);
+
+        if (cached is null)
+        {
+            if (_marineIconCache.Count > 512)
+                _marineIconCache.Clear();
+
+            cached = new CachedMarineIcon();
+            _marineIconCache[uid] = cached;
+        }
+
+        cached.Expires = now + MarineIconCacheLifetime;
+        cached.Icon = icon;
+        cached.VisibleFactions = visibleFactions;
+        cached.IsSpectator = isSpectator;
+
+        return icon;
+    }
+
+    private void ApplyFactionIconOverride(
+        EntityUid uid,
+        List<ProtoId<NpcFactionPrototype>>? visibleFactions,
+        bool isSpectator,
+        ref GetMarineIconEvent icon)
+    {
+        if (visibleFactions == null || _npcFaction.IsMemberOfAny(uid, visibleFactions))
+            return;
+
+        var factionIcons = _marine.GetFactionIcons(uid);
+        if (factionIcons == null)
+            return;
+
+        if (!_npcFactionMemberQuery.TryComp(uid, out var factionMember))
+            return;
+
+        ProtoId<NpcFactionPrototype>? primaryFaction = null;
+        var isClf = false;
+
+        foreach (var faction in factionMember.Factions)
+        {
+            primaryFaction ??= faction;
+            isClf |= string.Equals(faction.ToString(), "CLF", StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        if ((isClf && !isSpectator) ||
+            primaryFaction is not { } primary ||
+            !factionIcons.TryGetValue(primary, out var newIcon))
+        {
+            return;
+        }
+
+        icon.Background = null;
+        icon.Icon = newIcon;
+    }
+
+    private sealed class CachedMarineIcon
+    {
+        public TimeSpan Expires;
+        public GetMarineIconEvent Icon;
+        public List<ProtoId<NpcFactionPrototype>>? VisibleFactions;
+        public bool IsSpectator;
     }
 }

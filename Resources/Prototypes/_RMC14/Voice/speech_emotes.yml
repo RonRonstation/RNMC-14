@@ -424,3 +424,12 @@
   - cheeps
   - cheeping
   - cheeped
+
+- type: emote
+  id: Warcry
+  name: au14-emote-name-warcry
+  category: Vocal
+  icon: _AU14/Interface/Emotes/warcry.png
+  chatMessages: ["au14-chat-emote-msg-warcry"]
+  chatTriggers:
+   - shouts an inspiring cry!

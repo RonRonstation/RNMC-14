@@ -9,6 +9,18 @@
         reagents:
         - ReagentId: RMCBlackGoo
           Quantity: 250
+  - type: HTN
+    rootTask:
+      task: CMXenoCompound
+    blackboard:
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+      VisionRadius: !type:Single
+        30
+      AggroVisionRadius: !type:Single
+        30
 
 # Colonist
 

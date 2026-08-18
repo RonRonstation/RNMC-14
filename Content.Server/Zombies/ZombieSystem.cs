@@ -25,6 +25,8 @@ using Content.Shared.Roles;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Zombies;
 using Content.Shared._RMC14.Atmos; // RMC14
+using Content.Shared.Body.Systems; // RNMC14
+using Content.Shared.Mobs.Systems; // RNMC14
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -46,6 +48,8 @@ namespace Content.Server.Zombies
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly SharedRoleSystem _role = default!;
         [Dependency] private readonly SharedRMCFlammableSystem _rmcFlammable = default!; // RMC14
+        [Dependency] private readonly SharedBodySystem _body = default!; // RNMC14
+        [Dependency] private readonly MobThresholdSystem _mobThresholds = default!; // RNMC14
 
         public readonly ProtoId<NpcFactionPrototype> Faction = "Zombie";
 
@@ -142,7 +146,7 @@ namespace Content.Server.Zombies
                 if (_random.Prob(comp.InfectionWarningChance))
                     _popup.PopupEntity(Loc.GetString(_random.Pick(comp.InfectionWarnings)), uid, uid);
 
-                var multiplier = _mobState.IsCritical(uid, mobState)
+                var multiplier = _mobState.IsCritical(uid, mobState) && _body.BodyHasPartType(uid, Shared.Body.Part.BodyPartType.Head) // RNMC14
                     ? comp.CritDamageMultiplier
                     : 1f;
 
@@ -150,8 +154,8 @@ namespace Content.Server.Zombies
             }
 
             // Heal the zombified
-            var zombQuery = EntityQueryEnumerator<ZombieComponent, DamageableComponent, MobStateComponent>();
-            while (zombQuery.MoveNext(out var uid, out var comp, out var damage, out var mobState))
+            var zombQuery = EntityQueryEnumerator<ZombieComponent, DamageableComponent, MobStateComponent, MobThresholdsComponent>();
+            while (zombQuery.MoveNext(out var uid, out var comp, out var damage, out var mobState, out var mobThresholds))
             {
                 // Process only once per second
                 if (comp.NextTick + TimeSpan.FromSeconds(1) > curTime)
@@ -159,8 +163,8 @@ namespace Content.Server.Zombies
 
                 comp.NextTick = curTime;
 
-                if (_mobState.IsDead(uid, mobState))
-                    continue;
+                //if (_mobState.IsDead(uid, mobState)) // RNMC14
+                //    continue;
 
                 var multiplier = _mobState.IsCritical(uid, mobState)
                     ? comp.PassiveHealingCritMultiplier
@@ -172,6 +176,13 @@ namespace Content.Server.Zombies
 
                 // Gradual healing for living zombies.
                 _damageable.TryChangeDamage(uid, comp.PassiveHealing * multiplier, true, false, damage);
+
+                _mobThresholds.TryGetDeadThreshold(uid, out var deadThreshold);
+
+                if (damage.TotalDamage < deadThreshold && _body.BodyHasPartType(uid, Shared.Body.Part.BodyPartType.Head) && _mobState.IsDead(uid))
+                {
+                    _mobState.ChangeMobState(uid, MobState.Critical);
+                }
             }
         }
 

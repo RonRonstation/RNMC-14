@@ -158,6 +158,8 @@
         amount: 15
       - id: CMOintment10
         amount: 15
+      - id: CMUSplintItem
+        amount: 15
       - id: CMEmergencyAutoInjector
         name: Emergency Autoinjector
         amount: 15
@@ -166,6 +168,8 @@
       - id: CMKelotaneAutoInjector
         amount: 15
       - id: CMTricordrazineAutoInjector
+        amount: 15
+      - id: AU14TramadolAutoInjector
         amount: 15
     - name: Tools
       entries:
@@ -286,6 +290,9 @@
       - id: CMPillCanisterKelotane
         points: 5
         recommended: true
+      - id: CMPillCanisterTramadol
+        points: 5
+      - id: AU14PillCanisterOxycodone
 #      - id: CMPillCanisterPeridaxon
 #        points: 5
 #      - id: CMPillCanisterTramadol
@@ -303,10 +310,10 @@
         points: 1
       - id: CMKelotaneAutoInjector
         points: 1
-#      - id: CMAutoinjectorOxycodone
-#        points: 2
-#      - id: CMAutoinjectorTramadol
-#        points: 1
+      - id: AU14OxycodoneAutoInjector
+        points: 2
+      - id: AU14TramadolAutoInjector
+        points: 1
       - id: CMTricordrazineAutoInjector
         points: 1
     - name: Medical Utilities
@@ -427,7 +434,7 @@
 - type: entity
   parent: ColMarTechBase
   id: UnTechMedicalEquipment
-  name: ColMarTech squad medical equipment rack
+  name: UnTech squad medical equipment rack
   description: An automated rack hooked up to a colossal storage of hospital corpsman standard-issue equipment.
   components:
   - type: AccessReader

@@ -29,6 +29,9 @@
 - type: Tag
   id: RNMCSquadArmy
 
+- type: Tag
+  id: CMUSplint
+
 # UPSTREAM PARTS WITH TAGS:
 - type: Tag
   id: CMStockPartMatterBin

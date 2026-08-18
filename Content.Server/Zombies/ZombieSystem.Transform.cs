@@ -37,6 +37,7 @@ using Content.Shared.Traits.Assorted;
 using Robust.Shared.Audio.Systems;
 using Content.Shared.Ghost.Roles.Components;
 using Content.Shared.Tag;
+using Content.Shared._RMC14.Damage; //RNMC 14
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Content.Shared.NPC.Prototypes;
@@ -191,6 +192,8 @@ public sealed partial class ZombieSystem
             pryComp.SpeedModifier = 0.75f;
             pryComp.PryPowered = true;
             pryComp.Force = true;
+
+            RemComp<MaxDamageComponent>(target);
 
             Dirty(target, pryComp);
         }

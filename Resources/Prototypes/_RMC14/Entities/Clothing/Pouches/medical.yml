@@ -25,6 +25,7 @@
       - CMSynthGraft
       - Hypospray
       - PillPacket
+      - CMUSplint
       components:
       - Hypospray
 
@@ -36,12 +37,12 @@
   - type: StorageFill # todo rmc14 autoinjectors oxycodone
     contents:
     - id: CMHealthAnalyzer
-      # splint
+    - id: CMUSplintItem
     - id: CMTraumaKit10
     - id: CMBurnKit10
     - id: CMKelotaneAutoInjector
     - id: CMBicaridineAutoInjector
-    #- id: CMOxycodoneAutoInjector
+    - id: AU14OxycodoneAutoInjector
     - id: CMEmergencyAutoInjector
     - id: CMEmergencyAutoInjector
 
@@ -61,14 +62,14 @@
   - type: StorageFill
     contents:
     - id: CMHealthAnalyzer
-      # splint x2
+    - id: CMUSplintItem
+      amount: 2
     - id: CMTraumaKit10
       amount: 2
     - id: CMBurnKit10
       amount: 2
-    # todo rmc14 autoinjectors oxycodone x2
-#    - id: CMOxycodoneAutoInjector
-#      amount: 2
+    - id: AU14OxycodoneAutoInjector
+      amount: 2
     - id: CMEmergencyAutoInjector
       amount: 1
 
@@ -90,6 +91,7 @@
     - id: CMFireExtinguisherPortable
     - id: Stimpack
       amount: 3
+    - id: CMUSplintItem
 
 - type: entity
   parent: RMCPouchMedicalSocDutch

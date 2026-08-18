@@ -52,11 +52,11 @@
     text:
       primaryColor: "#a8d6ff"
       font: "Cozette"
-      fontSize: 20
-      lineHeight: 48
+      fontSize: 18
+      lineHeight: 42
       showSpeakerName: true
       speakerNameColor: "#ffffff"
-      speakerNameFontSize: 14
+      speakerNameFontSize: 12
     sprite:
       showSpriteBox: true
       spriteBoxColor: "#0a1a2d"
@@ -71,7 +71,7 @@
       showTitle: true
       title: ">> COMMAND <<"
       titleColor: "#4a9eff"
-      titleFontSize: 40
+      titleFontSize: 30
       titleFont: "CozetteBold"
       titleUnderline: true
       titleUnderlineThickness: 2
@@ -139,11 +139,11 @@
     text:
       primaryColor: "#a8d6ff"
       font: "Cozette"
-      fontSize: 20
-      lineHeight: 48
+      fontSize: 18
+      lineHeight: 42
       showSpeakerName: true
       speakerNameColor: "#ffffff"
-      speakerNameFontSize: 14
+      speakerNameFontSize: 12
     sprite:
       showSpriteBox: true
       spriteBoxColor: "#0a1a2d"
@@ -158,7 +158,7 @@
       showTitle: true
       title: ">> OVERWATCH <<"
       titleColor: "#4a9eff"
-      titleFontSize: 40
+      titleFontSize: 28
       titleFont: "CozetteBold"
       titleUnderline: true
       titleUnderlineThickness: 2
@@ -207,11 +207,11 @@
     text:
       primaryColor: "#a8d6ff"
       font: "Cozette"
-      fontSize: 20
-      lineHeight: 48
+      fontSize: 18
+      lineHeight: 42
       showSpeakerName: true
       speakerNameColor: "#ffffff"
-      speakerNameFontSize: 14
+      speakerNameFontSize: 12
     sprite:
       showSpriteBox: true
       spriteBoxColor: "#0a1a2d"
@@ -227,7 +227,7 @@
       showTitle: true
       title: ">> COMMAND <<"
       titleColor: "#4a9eff"
-      titleFontSize: 40
+      titleFontSize: 30
       titleFont: "CozetteBold"
       titleUnderline: true
       titleUnderlineThickness: 2
@@ -269,8 +269,8 @@
     text:
       primaryColor: "#a8d6ff"
       font: "Cozette"
-      fontSize: 20
-      lineHeight: 48
+      fontSize: 18
+      lineHeight: 42
       showSpeakerName: false
     sprite:
       showSpriteBox: false
@@ -279,7 +279,7 @@
       showTitle: true
       title: ">> COMMAND <<"
       titleColor: "#4a9eff"
-      titleFontSize: 40
+      titleFontSize: 30
       titleFont: "CozetteBold"
       titleUnderline: true
       titleUnderlineThickness: 2

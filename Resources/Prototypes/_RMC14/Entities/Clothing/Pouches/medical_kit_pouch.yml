@@ -23,7 +23,7 @@
         - CMOintment
         - Brutepack
         - CMBloodPack
-        # - TODO RMC14 splint
+        - CMUSplint
         - CMAutoInjector
         - RMCSyringeCase
         - CMSurgicalCase
@@ -57,7 +57,7 @@
       - CMOintment
       - Brutepack
       - CMBloodPack
-      #      - TODO RMC14 splint
+      - CMUSplint
       - CMAutoInjector
       - RMCSyringeCase
       - CMSurgicalCase
@@ -85,7 +85,7 @@
     contents:
     - id: CMTraumaKit10
     - id: CMBurnKit10
-    # splint
+    - id: CMUSplintItem
     - id: CMBicaridineAutoInjector
     - id: CMKelotaneAutoInjector
 
@@ -102,7 +102,7 @@
     - id: CMTraumaKit10
     - id: CMBurnKit10
     - id: CMBurnKit10
-#    - id: CMSplints5 # TODO RMC14
+    - id: CMUSplintItem
 
 - type: entity
   parent: RMCPouchMedkit
@@ -137,7 +137,7 @@
     - id: CMSurgicalCaseFilled
     - id: CMBloodPackFull
     - id: CMBloodPackFull
-    # TODO RMC14: splint nano
+    - id: CMUSplintItem
 
 - type: entity
   parent: RMCPouchMedkitPMC
@@ -152,7 +152,7 @@
     - id: CMTraumaKit10
     - id: CMOintment10
     - id: CMOintment10
-    # TODO RMC14: splints
+    - id: CMUSplintItem
 
 - type: entity
   parent: RMCPouchMedkit
@@ -161,10 +161,10 @@
   components:
   - type: StorageFill
     contents:
-    #    - id: CMSplints5 # TODO RMC14
+    - id: CMUSplintItem
     - id: CMTraumaKit10
     - id: CMBurnKit10
-    #    - id: CMOxycodoneAutoInjector # TODO RMC14
+    - id: AU14OxycodoneAutoInjector
     - id: CMBicaridineAutoInjector
     - id: CMKelotaneAutoInjector
     - id: CMHealthAnalyzer
@@ -182,4 +182,4 @@
     - id: CMTraumaKit10
     - id: CMBurnKit10
     - id: CMBurnKit10
-    #- id: RMCSplints5 # TODO RMC14
+    - id: CMUSplintItem

@@ -60,9 +60,8 @@
     - CMTricordrazine
     - CMEpinephrine
     - CMInaprovaline
-#    - CMOxycodone # TODO RMC14
-#    - CMTramadol # TODO RMC14
-#    - CMPeridaxon # TODO RMC14
+    - CMUOxycodone
+    - CMUTramadol
     whitelist:
       components:
       - Hypospray
@@ -86,8 +85,8 @@
         amount: 10
       - id: CMGauze10
         amount: 10
-#      - id: CMSplints10 # TODO RMC14
-#        amount: 10
+      - id: CMUSplintItem
+        amount: 10
     - name: Autoinjectors
       entries:
       - id: CMBicaridineAutoInjector
@@ -102,12 +101,12 @@
         amount: 5
       - id: CMKelotaneAutoInjector
         amount: 5
-#      - id: CMOxycodoneAutoinjector # TODO RMC14
-#        amount: 5
+      - id: AU14OxycodoneAutoInjector
+        amount: 5
 #      - id: CMPeridaxonAutoinjector # TODO RMC14
 #        amount: 5
-#      - id: CMTramadolAutoinjector # TODO RMC14
-#        amount: 5
+      - id: AU14TramadolAutoInjector
+        amount: 5
       - id: CMTricordrazineAutoInjector
         amount: 5
     - name: Liquid bottles
@@ -140,12 +139,12 @@
         amount: 4
       - id: CMPillCanisterKelotane
         amount: 4
-#      - id: CMPillCanisterOxycodone # TODO RMC14
-#        amount: 3
+      - id: AU14PillCanisterOxycodone
+        amount: 3
 #      - id: CMPillCanisterPeridaxon # TODO RMC14
 #        amount: 3
-#      - id: CMPillCanisterTramadol # TODO RMC14
-#        amount: 4
+      - id: AU14PillCanisterTramadol
+        amount: 3
     - name: Medical utilities
       entries:
       - id: CMDefibrillator
@@ -206,12 +205,12 @@
         amount: 3
       - id: RNMCEZKelotaneAutoInjector
         amount: 3
-#      - id: CMOxycodoneAutoinjector # TODO RMC14
-#        amount: 5
+      - id: AU14OxycodoneAutoInjector
+        amount: 5
 #      - id: CMPeridaxonAutoinjector # TODO RMC14
 #        amount: 5
-#      - id: CMTramadolAutoinjector # TODO RMC14
-#        amount: 3
+      - id: AU14TramadolAutoInjector
+        amount: 5
       - id: RNMCEZTricordrazineAutoInjector
         amount: 3
     - name: Liquid bottles
@@ -250,12 +249,12 @@
         amount: 4
       - id: CMPillCanisterKelotane
         amount: 4
-#      - id: CMPillCanisterOxycodone # TODO RMC14
-#        amount: 3
+      - id: AU14PillCanisterOxycodone
+        amount: 4
 #      - id: CMPillCanisterPeridaxon # TODO RMC14
 #        amount: 3
-#      - id: CMPillCanisterTramadol # TODO RMC14
-#        amount: 4
+      - id: AU14PillCanisterTramadol
+        amount: 4
     - name: Medical utilities
       entries:
       - id: CMSurgicalLine
