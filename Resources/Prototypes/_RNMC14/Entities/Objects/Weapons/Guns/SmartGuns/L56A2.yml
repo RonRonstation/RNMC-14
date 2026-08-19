@@ -1,0 +1,34 @@
+﻿- type: entity
+  parent: RNMCSmartGunPVENoCamo
+  id: RNMCSmartGunPMC
+  name: L56A2 smart gun
+  description: Originally produced for the Three World Empires Royal Marines forces, it mostly ended up in hands of W-Y PMCs and other affiliated forces, with Three World Empire giving preference for other design, that is still produced by W-Y regardless. Compared to more commonly used M56A2, it has improved recoil control, better electronics and advanced tracking software.
+  components:
+  - type: Sprite
+    sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/l56a2.rsi
+    layers:
+    - state: base
+      sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/l56a2.rsi
+    - state: mag-0
+      sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/l56a2.rsi
+      map: [ "enum.GunVisualLayers.Mag" ]
+  - type: Clothing
+    sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/l56a2.rsi
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: RMCMagazineSmartGunirradiated
+        insertSound: /Audio/_RMC14/Weapons/Guns/Reload/gun_sg_reload.ogg
+        ejectSound: /Audio/_RMC14/Weapons/Guns/Reload/gun_sg_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - RMCMagazineSmartGunirradiated
+          - RMCMagazineSmartGun #For some reason when this is removed mags literally becomes unusable :confused:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: RMCPowerCellSmartgun
+        whitelist:
+          components:
+          - SmartGunBattery

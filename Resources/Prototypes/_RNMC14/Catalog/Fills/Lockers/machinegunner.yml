@@ -2,9 +2,9 @@
   id: RMCChapaevMachinegunnerFill
   table: !type:AllSelector
     children:
-    - id: RMCMagazineLMGQYJ72
-    - id: RMCMagazineLMGQYJ72
-    - id: RMCMagazineLMGQYJ72
-    - id: RMCMagazineLMGQYJ72
-    - id: RMCWeaponLMGQYJ72PVE
+    - id: RMCMagazineSmartGun
+    - id: RMCMagazineSmartGun
+    - id: RMCMagazineSmartGun
+    - id: RMCMagazineSmartGun
+    - id: RNMCSmartGunUPP
     - id: RMCArmorSPPHeavyMachinegunner

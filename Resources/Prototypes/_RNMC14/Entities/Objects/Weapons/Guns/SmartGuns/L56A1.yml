@@ -1,0 +1,34 @@
+﻿- type: entity
+  parent: RNMCSmartGunPVENoCamo
+  id: RNMCSmartGunTWE
+  name: L56A1 smart gun
+  description: The L56A1 is a W-Y licensed copy of the original M56 developed for the USCM, this version was marketed to the TWE's Royal Marines as having a lighter weight construction and as being more reliable then the LMG's in service at the time.
+  components:
+  - type: Sprite
+    sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/l56a1.rsi
+    layers:
+    - state: base
+      sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/l56a1.rsi
+    - state: mag-0
+      sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/l56a1.rsi
+      map: [ "enum.GunVisualLayers.Mag" ]
+  - type: Clothing
+    sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/l56a1.rsi
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: RMCMagazineSmartGunHT
+        insertSound: /Audio/_RMC14/Weapons/Guns/Reload/gun_sg_reload.ogg
+        ejectSound: /Audio/_RMC14/Weapons/Guns/Reload/gun_sg_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - RMCMagazineSmartGun
+          - RMCMagazineSmartGunHT
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: RMCPowerCellSmartgun
+        whitelist:
+          components:
+          - SmartGunBattery

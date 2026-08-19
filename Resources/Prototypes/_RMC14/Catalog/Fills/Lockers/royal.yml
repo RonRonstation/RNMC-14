@@ -23,7 +23,7 @@
   id: RMCClosetRCMGPMGFill
   table: !type:AllSelector
     children:
-    - id: RMCSmartGunRCMPVE
+    - id: RNMCSmartGunTWE
     - id: RMCPowerCellSmartgun
     - id: RMCPVEArmorCaseRoyalHarness
     - id: RMCMagazineSmartGunHT

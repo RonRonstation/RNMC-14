@@ -19,7 +19,7 @@
   id: RMCClosetGoldenArrowSGOFill
   table: !type:AllSelector
     children:
-    - id: RMCSmartGunPVE
+    - id: RNMCSmartGun
     - id: RMCPowerCellSmartgun
     - id: RMCPVEArmorCaseM3SGO
     - id: RMCBeltSmartGunOperatorPistolFilled

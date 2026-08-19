@@ -1,0 +1,16 @@
+﻿- type: entity
+  parent: RNMCSmartGunPVENoCamo
+  id: RNMCSmartGunCO
+  name: M56A2C smart gun
+  description: The actual firearm in the 4-piece M56A2C Smartgun system. Back order only. Besides a more robust weapons casing, a fancy paintjob, the gun's performance is identical to the standard-issue M56A2.
+  components:
+  - type: Sprite
+    sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/m56a2c.rsi
+    layers:
+    - state: base
+      sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/m56a2c.rsi
+    - state: mag-0
+      sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/m56a2c.rsi
+      map: [ "enum.GunVisualLayers.Mag" ]
+  - type: Clothing
+    sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/m56a2c.rsi
