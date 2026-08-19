@@ -169,7 +169,7 @@
   - type: Tag
     tags:
     - RMCAttachmentStock
-    - RMCAttachmentSmartgunHarness
+    - RNMCAttachmentSmartgunHarness
   - type: AttachableToggleable
     doAfter: 0.35
     heldOnlyActivate: true
@@ -343,3 +343,6 @@
       state: all
   - type: GunAttachableIFF # RNMC
     preventFriendlyFire: true # RNMC
+
+- type: Tag
+  id: RNMCAttachmentSmartgunHarness

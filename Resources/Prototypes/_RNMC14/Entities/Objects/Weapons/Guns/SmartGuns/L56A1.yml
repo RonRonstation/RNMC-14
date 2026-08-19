@@ -2,7 +2,7 @@
   parent: RNMCSmartGunPVENoCamo
   id: RNMCSmartGunTWE
   name: L56A1 smart gun
-  description: The L56A1 is a W-Y licensed copy of the original M56 developed for the USMC, this version was marketed to the TWE's Royal Marines as having a lighter weight construction and as being more reliable then the LMG's in service at the time.
+  description: The L56A1 is a W-Y licensed copy of the original M56 developed for the USCM, this version was marketed to the TWE's Royal Marines as having a lighter weight construction and as being more reliable then the LMG's in service at the time.
   components:
   - type: Sprite
     sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/l56a1.rsi

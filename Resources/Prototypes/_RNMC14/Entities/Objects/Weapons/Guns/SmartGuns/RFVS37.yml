@@ -2,7 +2,7 @@
   parent: RNMCSmartGunPVENoCamoNoHarnessReq
   id: RNMCSmartGunUPP
   name: RFVS37 smart gun
-  description: Seeing the successful use of the M56 and L56 by the UA and 3WE Militaries during military conflicts such as the linna 349 campaign and the the australia wars, the UPP SOF saw a need for a similar self aiming LMG for their own units, following extensive trials the NORCOMM RFVS-37 was chosen, fulfilling all of the SOF's criteria.
+  description: Seeing the successful use of the M56 and L56 by the UA and TWE Militaries during military conflicts such as the Linna 349 campaign and the Australia Wars, the UPP SOF saw a need for a similar self aiming LMG for their own units, following extensive trials the NORCOMM RFVS-37 was chosen, fulfilling all of the SOF's criteria.
   components:
   - type: Sprite
     sprite: _RNMC14/Objects/Weapons/Guns/SmartGuns/rfvs37.rsi
