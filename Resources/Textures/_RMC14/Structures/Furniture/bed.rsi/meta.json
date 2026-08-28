@@ -20,22 +20,20 @@
       "name": "dingy_bed"
     },
     {
-      "name": "bunk_black"
+        "name": "bunk_black",
+        "directions": 4
     },
     {
-      "name": "bunk_blue"
+        "name": "bunk_blue",
+        "directions": 4
     },
     {
-      "name": "bunk_green"
+        "name": "bunk_green",
+        "directions": 4
     },
     {
-      "name": "bunk_red"
-    },
-		{
-			"name": "alien_bed"
-		},
-    {
-      "name": "queen_bed"
+        "name": "bunk_red",
+        "directions": 4
     },
 	  {
 	  "name": "alien_bed"

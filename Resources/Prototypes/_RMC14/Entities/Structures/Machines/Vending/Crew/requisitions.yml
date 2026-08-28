@@ -72,6 +72,7 @@
       - id: CMGrenadeHighExplosive
       - id: RMCGrenadeIncendiary
       - id: RMCPacketGrenadeWhitePhosphorusCompoundFilled
+      - id: RMCGrenadeWhitePhosphorusCompound
       - id: CMGrenadeSmoke
       - id: RMC40MMGrenadeM74AGMF
       - id: RMC40MMGrenadeM74AGMI
@@ -212,6 +213,11 @@
       - id: RMCPacketGrenadeIncendiaryFilled
         name: 30mm HIDP grenade packet
         box: RMCGrenadeIncendiary
+        boxAmount: 30
+        boxSlots: 30
+      - id: RMCPacketGrenadeWhitePhosphorusCompoundFilled
+        name: 30mm CCDP grenade packet
+        box: RMCGrenadeWhitePhosphorusCompound
         boxAmount: 30
         boxSlots: 30
       - id: RMCPacketGrenadeSmokeFilled
@@ -562,8 +568,9 @@
       - id: RMCAttachmentLaserSight
       - id: RMCAttachmentMicroLaserSight
       - id: RMCAttachmentMiniFlamethrower
-      #- id: RMCAttachmentXMVESG1FlamerNozzle
-      #  amount: 5
+        amount: 0
+      - id: RMCAttachmentXMVESG1FlamerNozzle
+        amount: 0
       - id: RMCAttachmentU7UnderbarrelShotgun
       - id: RMCAttachmentUnderbarrelExtinguisher
       - id: RMCAttachmentFlashlightGrip
@@ -637,7 +644,7 @@
       - id: RMCArmorM3LightPadded
     - name: Gloves
       entries:
-      - id: CMHandsBrown
+      - id: RMCHandsBrownMarine
       - id: RMCHandsGreyMarine
       - id: CMHandsBlackMarine
     - name: Radio

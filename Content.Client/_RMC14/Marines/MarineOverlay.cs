@@ -30,10 +30,10 @@ public sealed class MarineOverlay : Overlay
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IConfigurationManager _configuration = default!;
 
-    private static readonly SpriteSpecifier.Rsi FireteamOneRsi = new(new ResPath("_RMC14/Interface/marine_hud.rsi"), "hudsquad_ft1");
-    private static readonly SpriteSpecifier.Rsi FireteamTwoRsi = new(new ResPath("_RMC14/Interface/marine_hud.rsi"), "hudsquad_ft2");
-    private static readonly SpriteSpecifier.Rsi FireteamThreeRsi = new(new ResPath("_RMC14/Interface/marine_hud.rsi"), "hudsquad_ft3");
-    private static readonly SpriteSpecifier.Rsi FireteamLeaderRsi = new(new ResPath("_RMC14/Interface/marine_hud.rsi"), "hudsquad_ftl");
+    private static readonly SpriteSpecifier.Rsi FireteamOneRsi = new(new ResPath("_RMC14/Interface/fireteam.rsi"), "hudsquad_ft1");
+    private static readonly SpriteSpecifier.Rsi FireteamTwoRsi = new(new ResPath("_RMC14/Interface/fireteam.rsi"), "hudsquad_ft2");
+    private static readonly SpriteSpecifier.Rsi FireteamThreeRsi = new(new ResPath("_RMC14/Interface/fireteam.rsi"), "hudsquad_ft3");
+    private static readonly SpriteSpecifier.Rsi FireteamLeaderRsi = new(new ResPath("_RMC14/Interface/fireteam.rsi"), "hudsquad_ftl");
 
     private readonly NpcFactionSystem _npcFaction;
     private readonly ContainerSystem _container;

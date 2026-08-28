@@ -299,7 +299,18 @@
       "directions": 4
     },
     {
-      "name": "ladder",
+      "name": "ladder"
+    },
+    {
+      "name": "tyrargo_rock_platform",
+      "directions": 4
+    },
+    {
+      "name": "tyrargo_rock_platform_deco",
+      "directions": 4
+    },
+    {
+      "name": "tyrargo_rock_platform_broken",
       "directions": 4
     }
   ]

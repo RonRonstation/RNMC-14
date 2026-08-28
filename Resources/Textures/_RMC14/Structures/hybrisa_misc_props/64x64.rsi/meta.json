@@ -15,47 +15,11 @@
     },
     {
       "name": "factory_roboticarm",
-      "directions": 4,
-      "delays": [
-        [
-          0.5,
-          2.5
-        ],
-        [
-          0.5,
-          2.5
-        ],
-        [
-          0.5,
-          2.5
-        ],
-        [
-          0.5,
-          2.5
-        ]
-      ]
+      "directions": 4
     },
     {
       "name": "factory_roboticarm2",
-      "directions": 4,
-      "delays": [
-        [
-          0.4,
-          2.4
-        ],
-        [
-          0.4,
-          2.4
-        ],
-        [
-          0.4,
-          2.4
-        ],
-        [
-          0.4,
-          2.4
-        ]
-      ]
+      "directions": 4
     },
     {
       "name": "fire_barrel",

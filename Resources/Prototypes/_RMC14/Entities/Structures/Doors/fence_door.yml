@@ -5,7 +5,7 @@
   description: A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it.
   components:
   - type: Sprite
-    sprite: _RMC14/Structures/Doors/fence_door.rsi
+    sprite: _RMC14/Structures/Doors/fence_doors/fence_door.rsi
     layers:
     - state: closed
       map: ["enum.DoorVisualLayers.Base"]
@@ -82,7 +82,7 @@
   description: Someone really didn't want to use the door.
   components:
   - type: Sprite
-    sprite: _RMC14/Structures/Doors/fence_door.rsi
+    sprite: _RMC14/Structures/Doors/fence_doors/fence_door.rsi
     layers:
     - state: broken
       map: ["enum.DoorVisualLayers.Base"]

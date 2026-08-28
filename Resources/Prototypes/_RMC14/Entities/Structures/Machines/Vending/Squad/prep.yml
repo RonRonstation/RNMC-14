@@ -142,7 +142,7 @@
       - id: CMBootsBrown
       - id: CMBootsGrey
       - id: JumpsuitMarine
-      - id: CMHandsBrown
+      - id: RMCHandsBrownMarine
       - id: CMHandsBlackMarine
       - id: RMCHandsGreyMarine
       - id: RMCHeadsetMarine
@@ -466,8 +466,7 @@
       - id: RMCAttachmentLaserSight
       - id: RMCAttachmentMicroLaserSight
       - id: RMCAttachmentMiniFlamethrower
-#      - id: CMAttachmentXMVESG1FlamerNozzle
-#        amount: 2
+      - id: RMCAttachmentXMVESG1FlamerNozzle
       - id: RMCAttachmentU7UnderbarrelShotgun
       - id: RMCAttachmentUnderbarrelExtinguisher
       - id: RMCAttachmentVerticalGrip
