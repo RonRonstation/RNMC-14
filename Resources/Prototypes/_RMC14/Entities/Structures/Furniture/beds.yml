@@ -178,7 +178,7 @@
     sprite: _RMC14/Structures/Furniture/bed.rsi
     state: bunk_brown
   - type: Construction
-  
+
 # Bedroll
 
 - type: entity

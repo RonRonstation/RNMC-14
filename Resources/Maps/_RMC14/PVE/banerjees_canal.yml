@@ -372099,6 +372099,7 @@ entities:
 - proto: RMCLaptop
   entities:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - uid: 73453
     components:
     - type: Transform
@@ -372108,6 +372109,8 @@ entities:
   entities:
 =======
 >>>>>>> 2875885e20b (fixes)
+=======
+>>>>>>> banerjee/banerjees-canal
   - uid: 73443
     components:
     - type: Transform

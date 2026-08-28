@@ -35,7 +35,14 @@
         "name": "bunk_red",
         "directions": 4
     },
+<<<<<<< HEAD
 	  {
+=======
+    {
+      "name": "queen_bed"
+    },
+	{
+>>>>>>> banerjee/banerjees-canal
 	  "name": "alien_bed"
 	  },
     {
