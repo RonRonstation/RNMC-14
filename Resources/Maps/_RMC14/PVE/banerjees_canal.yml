@@ -372098,19 +372098,6 @@ entities:
       parent: 1
 - proto: RMCLaptop
   entities:
-<<<<<<< HEAD
-<<<<<<< HEAD
-  - uid: 73453
-    components:
-    - type: Transform
-      pos: 19.470451,12.547643
-      parent: 1
-- proto: RMCLaptopBudget
-  entities:
-=======
->>>>>>> 2875885e20b (fixes)
-=======
->>>>>>> banerjee/banerjees-canal
   - uid: 73443
     components:
     - type: Transform
