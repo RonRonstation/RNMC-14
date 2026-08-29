@@ -11,11 +11,19 @@
   icon: RNMCJobIconArmyPlatoonOfficer
   joinNotifyCrew: false
   accessGroups:
-  - Colony
+  - ArmyAccessCommandPVE
+  - PlatcoAccess
   spawnMenuRoleName: Army Platoon Officer
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
     - type: NpcFactionMember
       factions:
       - UNMC
@@ -34,8 +42,14 @@
         RMCSkillConstruction: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-platoon-officer
-  hidden: true
-
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: platco
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadArmy
 
 - type: job
   parent: CMJobBase
@@ -47,7 +61,7 @@
     RMCRankSecondLT: []
   startingGear: RNMCJobArmyPlatoonOfficer
   icon: RNMCJobIconArmyPlatoonOfficer
-  joinNotifyCrew: false
+  joinNotifyCrew: true
   accessGroups:
   - Colony
   spawnMenuRoleName: Army Platoon Officer (Lesser Rank)
@@ -72,7 +86,7 @@
         RMCSkillConstruction: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-platoon-officer
-  hidden: true
+  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmyPlatoonOfficer
@@ -102,32 +116,6 @@
   id: RNMCJobArmyPlatoonOfficer
   equipment:
     id: RNMCDogtagArmyPlatoonOfficer
-    ears: CMHeadsetUSArmyCommand
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBASMk2
-    gloves: RNMCHandsBrownFingerless
-    head: CMHeadCap
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMex
-    belt: RMCBeltHolsterPistol
-    suitstorage: RNMCWeaponRifleM41AMK1Army
-    pocket1: RMCPouchFirstAidSplintsGauzeOintment
-    pocket2: RMCPouchMagazine
-  storage:
-    belt:
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS # yes i know i can define an amount of 1 specific id no im not gonna do that fuck you
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS
-    - RMCWeaponPistolB92FS
-    pocket2:
-    - CMMagazineRifleM54CMK1
-    - CMMagazineRifleM54CMK1
-    - CMMagazineRifleM54CMK1
-    outerClothing:
-    - RMCLaserDesignator
 
 - type: playTimeTracker
   id: RNMCJobArmyPlatoonOfficer
@@ -149,3 +137,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmyPlatoonOfficer
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointPlatoonOfficerArmy
+  name: Army Platoon Officer Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmyPlatoonOfficer
+  - type: Sprite
+    state: marine_spawn

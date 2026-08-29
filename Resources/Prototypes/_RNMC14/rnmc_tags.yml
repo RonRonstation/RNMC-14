@@ -27,6 +27,9 @@
   id: RNMCSquadAzure15
 
 - type: Tag
+  id: RNMCSquadArmy
+
+- type: Tag
   id: CMUSplint
 
 # UPSTREAM PARTS WITH TAGS:

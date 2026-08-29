@@ -12,11 +12,18 @@
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-sl
   accessGroups:
-  - Colony
+  - ArmyAccessMedicalPVE
   spawnMenuRoleName: Army Combat Medical Technician
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
     - type: NpcFactionMember
       factions:
       - UNMC
@@ -32,7 +39,14 @@
         RMCSkillIntel: 2
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-medtech
-  hidden: true
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: medic
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadArmy
 
 - type: entity
   id: RMCRandomHumanoidArmyMedtech
@@ -62,33 +76,6 @@
   id: RNMCJobArmyMedtech
   equipment:
     id: RNMCDogtagArmyMedTech
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBASMk2
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMex
-    back: RNMCBackpackArmyMedic
-    belt: CMBeltMedicBagFilled
-    suitstorage: RNMCWeaponRifleM41AMK1Army
-    pocket1: RMCPouchAutoinjectorFill
-    pocket2: RMCPouchMedkit
-  storage:
-    back:
-    - CMCanteen
-    - CMMRE
-    - CMPackFlare
-    - CMFirstAidKitFilled
-    - CMAdvFirstAidKitFilled
-    - CMHealthAnalyzer
-    pocket2:
-    - RMCSyringeCaseFilled
-    - CMRollerBedSpawnFolded
-    - CMSynthGraft
-    - CMSurgicalLine
-    - CMStasisBagFolded
-    - CMBloodPackFull
 
 - type: playTimeTracker
   id: RNMCJobArmyMedtech
@@ -107,3 +94,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmyMedicalTechnician
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointMedtechArmy
+  name: Army Combat Medical Technician Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmyMedicalTechnician
+  - type: Sprite
+    state: marine_spawn

@@ -98,3 +98,26 @@
   - type: Tag
     tags:
     - RNMCSquadAzure15
+
+- type: entity
+  id: SquadArmy
+  name: Army
+  components:
+  - type: SquadTeam
+    color: "#075f31"
+    background:
+      sprite: _RMC14/Interface/cm_job_icons.rsi
+      state: hudsquad
+    radio: USArmy
+    blacklistedSquadArmor:
+    - Helmet
+    - Goggles
+    - Armor
+    - Gloves
+    group: Army
+    minimapBackground:
+      sprite: /Textures/_RMC14/Interface/map_blips.rsi
+      state: background_delta
+  - type: Tag
+    tags:
+    - RNMCSquadArmy

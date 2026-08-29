@@ -12,11 +12,18 @@
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-sl
   accessGroups:
-  - Colony
+  - ArmyAccessPVE
   spawnMenuRoleName: Army Designated Marksman
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
     - type: NpcFactionMember
       factions:
       - UNMC
@@ -29,7 +36,14 @@
         RMCSkillVehicles: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-marksman
-  hidden: true
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: spec
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadArmy
 
 - type: job
   parent: CMJobBase
@@ -60,7 +74,7 @@
         RMCSkillVehicles: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-marksman
-  hidden: true
+  hidden: false
 
 - type: entity
   id: RMCRandomHumanoidArmyMarksman
@@ -90,31 +104,6 @@
   id: RNMCJobArmyMarksman
   equipment:
     id: RNMCDogtagArmyMarksman
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBASLight
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMex
-    belt: RMCBeltHolsterPistol
-    suitstorage: RNMCWeaponRifleM49A
-    pocket1: RMCPouchFirstAidSplintsGauzeOintment
-    pocket2: RMCPouchMagazineLarge
-  storage:
-    belt:
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS # yes i know i can define an amount of 1 specific id no im not gonna do that fuck you
-    - RMCMagazinePistolB92FS
-    - RMCMagazinePistolB92FS
-    - RMCWeaponPistolB92FS
-    pocket2:
-    - CMMagazineRifleM4SPRAP
-    - CMMagazineRifleM4SPRAP
-    - CMMagazineRifleM4SPRAP
-    - RNMCMagazineRifleM4SPRIncendiary
 
 - type: playTimeTracker
   id: RNMCJobArmyMarksman
@@ -136,3 +125,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmyDesignatedMarksman
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointDesignatedMarksmanArmy
+  name: Army Designated Marksman Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmyDesignatedMarksman
+  - type: Sprite
+    state: marine_spawn

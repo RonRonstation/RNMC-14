@@ -12,11 +12,18 @@
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-sl
   accessGroups:
-  - Colony
+  - ArmyAccessCommandPVE
   spawnMenuRoleName: Army Fireteam Lead
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
     - type: NpcFactionMember
       factions:
       - UNMC
@@ -32,7 +39,14 @@
         RMCSkillJtac: 3
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-ftl-lead
-  hidden: true
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: tl
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadArmy
 
 - type: entity
   id: RMCRandomHumanoidArmyFireteamLead
@@ -62,29 +76,6 @@
   id: RNMCJobArmyFTLLead
   equipment:
     id: RNMCDogtagArmyFTLLead
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBAS
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMexBlack
-    back: RNMCBreachingHammer
-    belt: RNMCMK1BeltFilled
-    suitstorage: RNMCWeaponRifleM41AMK1ArmyShotgun
-    pocket1: RMCPouchFirstAidSplintsGauzeOintment
-    pocket2: RMCPouchShotgunLarge
-  storage:
-    outerClothing:
-    - RMCLaserDesignator
-    pocket2:
-    - CMShellShotgunBuckshot
-    - CMShellShotgunBuckshot
-    - CMShellShotgunBuckshot
-    - CMShellShotgunBuckshot
-    - CMShellShotgunBuckshot
-    - CMShellShotgunBuckshot
-    - CMShellShotgunBuckshot
 
 - type: playTimeTracker
   id: RNMCJobArmyFireteamLead
@@ -103,3 +94,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmyFireteamLead
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointFireteamLeadArmy
+  name: Army Fireteam Lead Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmyFireteamLead
+  - type: Sprite
+    state: marine_spawn

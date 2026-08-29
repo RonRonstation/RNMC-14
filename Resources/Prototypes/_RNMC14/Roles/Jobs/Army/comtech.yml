@@ -12,11 +12,18 @@
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-sl
   accessGroups:
-  - Colony
+  - ArmyAccessPVE
   spawnMenuRoleName: Army Combat Engineering Technician
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
     - type: NpcFactionMember
       factions:
       - UNMC
@@ -31,7 +38,14 @@
         RMCSkillVehicles: 1
     - type: JobPrefix
       prefix: rnmc-job-prefix-army-comtech
-  hidden: true
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: engi
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadArmy
 
 - type: entity
   id: RMCRandomHumanoidArmyComtech
@@ -61,24 +75,6 @@
   id: RNMCJobArmyComtech
   equipment:
     id: RNMCDogtagArmyCombatTech
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmyWebbing
-    outerClothing: RNMCArmorPBAS
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMex
-    back: RMCSatchelWelderChestrig
-    belt: RNMCMK1BeltFilled
-    suitstorage: RNMCWeaponRifleM41AMK1Army
-    pocket1: RMCPouchConstructionFillFull
-    pocket2: RMCPouchFirstAidSplintsGauzeOintment
-  storage:
-    back:
-    - CMPackFlare
-    - RMCEngineerKit
-    outerClothing:
-    - RMCExplosiveBreachingCharge
 
 - type: playTimeTracker
   id: RNMCJobArmyComtech
@@ -97,3 +93,13 @@
   components:
   - type: PresetIdCard
     job: RNMCArmyCombatTechnician
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointComtechArmy
+  name: Army Combat Engineer Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCArmyCombatTechnician
+  - type: Sprite
+    state: marine_spawn

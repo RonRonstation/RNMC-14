@@ -1,0 +1,24 @@
+- type: accessGroup
+  id: ArmyAccessPVE
+  tags:
+  - CMAccessArmy
+  - CMAccessMarinePrep 
+  
+- type: accessGroup
+  id: ArmyAccessMedicalPVE
+  tags:
+  - CMAccessArmy
+  - CMAccessArmyMedical
+  - CMAccessMarinePrep
+  - CMAccessMedical
+
+- type: accessGroup
+  id: ArmyAccessCommandPVE
+  tags:
+  - CMAccessArmy
+  - CMAccessMarinePrep
+  - RMCAccessCommand
+  - CMAccessDropship
+  - CMAccessPilot
+  - CMAccessCrewman
+  - CMAccessPlatco

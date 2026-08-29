@@ -12,11 +12,18 @@
   joinNotifyCrew: false
   supervisors: cm-job-supervisors-sl
   accessGroups:
-  - Colony
+  - ArmyAccessPVE
   spawnMenuRoleName: Army Anti-Tank Gunner (Needs Loader)
   special:
   - !type:AddComponentSpecial
     components:
+    - type: Language
+      spokenLanguages:
+      - English
+      understoodLanguages:
+      - English
+      currentLanguage: English
+      defaultLanguage: English
     - type: NpcFactionMember
       factions:
       - UNMC
@@ -30,7 +37,14 @@
     - type: DemoSpecWhitelist
     - type: JobPrefix
       prefix: rnmc-job-prefix-at-gunner
-  hidden: true
+    - type: TacticalMapIcon
+      icon:
+        sprite: /Textures/_RMC14/Interface/map_blips.rsi
+        state: private
+    - type: AssignSquad
+      whitelist:
+        tags:
+        - RNMCSquadArmy
 
 - type: entity
   id: RMCRandomHumanoidArmyATGunner
@@ -60,24 +74,6 @@
   id: RNMCJobAntiTankGunner
   equipment:
     id: RNMCDogtagArmyATGunner
-    ears: CMHeadsetUSArmy
-    jumpsuit: RNMCJumpsuitArmy
-    outerClothing: RNMCArmorPBAS
-    gloves: RNMCHandsBrownFingerless
-    head: RNMCArmorHelmetPHAS
-    shoes: CMBootsArmyBlack
-    eyes: RNMCGlassesBiMex
-    back: RNMCWeaponRifleM41AMK1Army
-    belt: RMCBeltMarineMK1
-    suitstorage: RMCWeaponLauncherM5ATL
-    pocket1: RMCPouchFirstAidSplintsGauzeOintment
-    pocket2: RMCPouchFlareFilled
-  storage:
-    back:
-    - RMCRocket84mm
-    - RMCRocket84mm
-    - RMCRocket84mmAntiArmor
-    - RMCRocket84mmAntiArmor
 
 - type: playTimeTracker
   id: RNMCJobAntiTankGunner
@@ -96,3 +92,13 @@
   components:
   - type: PresetIdCard
     job: RNMCAntiTankGunner
+
+- type: entity
+  parent: CMSpawnPointJobBase
+  id: CMSpawnPointATGunnerArmy
+  name: Army AT Gunner Spawn Point
+  components:
+  - type: SpawnPoint
+    job_id: RNMCAntiTankGunner
+  - type: Sprite
+    state: marine_spawn
