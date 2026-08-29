@@ -94,7 +94,7 @@
   parent: CMJobIconBase
   id: RMCJobIconSPPPlatco
   icon:
-    sprite: _RMC14/Interface/cm_job_icons.rsi
+    sprite: _RMC14/Interface/job_icons/SPP/standard.rsi
     state: upp_slt
 
 - type: entity
